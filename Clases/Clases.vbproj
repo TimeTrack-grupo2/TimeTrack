@@ -102,7 +102,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\BuscarServidor\BuscarServidor.vbproj">
+    <ProjectReference Include="..\BuscarServidor\BuscarServidor.vbproj">
       <Project>{a62a6d25-99b1-482d-8215-8d7c6464cadf}</Project>
       <Name>BuscarServidor</Name>
     </ProjectReference>

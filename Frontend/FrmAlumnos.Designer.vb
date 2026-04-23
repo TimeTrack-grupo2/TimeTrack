@@ -36,11 +36,6 @@ Partial Class FrmAlumnos
         Me.lblNombre = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.Nombre = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Apellido = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Apellido2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Ciclo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DNI = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -172,51 +167,22 @@ Partial Class FrmAlumnos
         'DataGridView1
         '
         Me.DataGridView1.AllowUserToAddRows = False
+        Me.DataGridView1.AllowUserToDeleteRows = False
         Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DataGridView1.BackgroundColor = System.Drawing.Color.White
         Me.DataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Nombre, Me.Apellido, Me.Apellido2, Me.Ciclo, Me.DNI})
         Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.DataGridView1.GridColor = System.Drawing.SystemColors.ControlLight
         Me.DataGridView1.Location = New System.Drawing.Point(200, 0)
         Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.RowHeadersVisible = False
         Me.DataGridView1.RowHeadersWidth = 51
         Me.DataGridView1.RowTemplate.Height = 24
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView1.Size = New System.Drawing.Size(600, 450)
         Me.DataGridView1.TabIndex = 1
-        '
-        'Nombre
-        '
-        Me.Nombre.HeaderText = "Nombre"
-        Me.Nombre.MinimumWidth = 6
-        Me.Nombre.Name = "Nombre"
-        '
-        'Apellido
-        '
-        Me.Apellido.HeaderText = "Apellido"
-        Me.Apellido.MinimumWidth = 6
-        Me.Apellido.Name = "Apellido"
-        '
-        'Apellido2
-        '
-        Me.Apellido2.HeaderText = "Apellido2"
-        Me.Apellido2.MinimumWidth = 6
-        Me.Apellido2.Name = "Apellido2"
-        '
-        'Ciclo
-        '
-        Me.Ciclo.HeaderText = "Ciclo"
-        Me.Ciclo.MinimumWidth = 6
-        Me.Ciclo.Name = "Ciclo"
-        '
-        'DNI
-        '
-        Me.DNI.HeaderText = "DNI"
-        Me.DNI.MinimumWidth = 6
-        Me.DNI.Name = "DNI"
         '
         'FrmAlumnos
         '
@@ -247,10 +213,5 @@ Partial Class FrmAlumnos
     Friend WithEvents txtCiclo As TextBox
     Friend WithEvents txtApellido2 As TextBox
     Friend WithEvents DataGridView1 As DataGridView
-    Friend WithEvents Nombre As DataGridViewTextBoxColumn
-    Friend WithEvents Apellido As DataGridViewTextBoxColumn
-    Friend WithEvents Apellido2 As DataGridViewTextBoxColumn
-    Friend WithEvents Ciclo As DataGridViewTextBoxColumn
-    Friend WithEvents DNI As DataGridViewTextBoxColumn
     Friend WithEvents btnGuardar As Button
 End Class

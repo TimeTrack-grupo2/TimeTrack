@@ -18,6 +18,7 @@ Public NotInheritable Class MiServidor
                 Dim cadConexion As String = $"Data Source={serv};Initial Catalog=GRUPO2;Integrated Security=True;MultipleActiveResultSets=True;Connect Timeout=2"
 
                 Using con As New SqlConnection(cadConexion)
+                    errorServidor = ""
                     con.Open()
                     Return serv ' Ha podido conectar con SqlServer
                 End Using

@@ -2,14 +2,72 @@
 Imports System.Runtime.Remoting.Messaging
 Imports BuscarServidor
 Imports Clases
-Public Class gestionAlumno
-
+Public Class GestionAlumno
+    Public Enum TipoLogin
+        Incorrecto
+        Alumno
+        Administrador
+    End Enum
     Private cadConexion As String
 
     Public Sub New(ByRef errorConexion As String)
         cadConexion = $"Data Source = {MiServidor.Servidor(errorConexion)}; Initial Catalog = GRUPO2; Integrated Security = SSPI; MultipleActiveResultSets=true"
     End Sub
 
+    Public Function LogIn(dni As String, ByRef mensaje As String) As TipoLogin
+        mensaje = ""
+        Dim conexion As New SqlConnection(cadConexion)
+        If dni.Equals("ADMIN") Then
+            Return TipoLogin.Administrador
+        End If
+
+        Dim letraParte As String
+        Dim numeroParte As String
+        Dim letraCorrecta As Char
+        Dim numero As Integer
+        Dim letras As String = "TRWAGMYFPDXBNJZSQVHLCKE"
+        Dim resto As Integer
+
+        If Not dni.Length = 9 Then
+            mensaje = "El DNI debe tener 9 caracteres."
+            Return TipoLogin.Incorrecto
+
+        Else
+            numeroParte = dni.Substring(0, 8)
+            If Not Integer.TryParse(numeroParte, numero) Then
+                mensaje = "No has introducido un nvalor numerico"
+                Return 0
+
+            Else
+                letraParte = dni.Chars(8)
+                resto = numeroParte Mod 23
+                letraCorrecta = letras.Chars(resto)
+                If letraParte = letraCorrecta Then
+
+                Else
+                    Return 0
+                    mensaje = "El DNI no es válido. La letra correcta debería ser: " & letraCorrecta
+                End If
+            End If
+        End If
+
+        Try
+            conexion.Open()
+            Dim sql As String = "SELECT DNI FORM ALUMNOS WHERE DNI=@DNI"
+            Dim cmdAlumno As New SqlCommand(sql, conexion)
+            cmdAlumno.Parameters.AddWithValue("@DNI", dni)
+            Dim drAlumn As SqlDataReader = cmdAlumno.ExecuteReader
+            If drAlumn.HasRows Then
+                Return 1
+            End If
+            mensaje = "El DNI introducido no esta en la base de datos."
+            Return 0
+        Catch ex As Exception
+            Return ex.Message
+        Finally
+            conexion.Close()
+        End Try
+    End Function
     Public Function AñadirAlumno(alumno As Alumno) As String
 
         Dim conexion As New SqlConnection(cadConexion)

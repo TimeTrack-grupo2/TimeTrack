@@ -68,7 +68,7 @@ Public Class FrmAlumnos
 
     Private Sub CargarDatosGrid()
         Dim errorConexion As String = ""
-        Dim gestor As New gestionAlumno(errorConexion)
+        Dim gestor As New GestionAlumno(errorConexion)
 
         If Not String.IsNullOrEmpty(errorConexion) Then
             MessageBox.Show($"Error de conexión: {errorConexion}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -83,6 +83,7 @@ Public Class FrmAlumnos
             Return
         End If
 
+        DataGridView1.DataSource = Nothing  ' <- Limpia cualquier enlace previo
         DataGridView1.DataSource = tabla
     End Sub
     Private Sub LimpiarFormulario()

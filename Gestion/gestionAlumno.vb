@@ -118,5 +118,21 @@ Public Class gestionAlumno
             conexion.Close()
         End Try
     End Function
+    Public Function ObtenerAlumnos(ByRef errorMensaje As String) As DataTable
+        Dim conexion As New SqlConnection(cadConexion)
+        Dim tabla As New DataTable()
+        Try
+            conexion.Open()
+            Dim sql As String = "SELECT DNI, NOMBRE, APELLIDO1, APELLIDO2, ID_CICLO FROM ALUMNOS"
+            Dim cmd As New SqlCommand(sql, conexion)
+            Dim adapter As New SqlDataAdapter(cmd)
+            adapter.Fill(tabla)
+        Catch ex As Exception
+            errorMensaje = ex.Message
+        Finally
+            conexion.Close()
+        End Try
+        Return tabla
+    End Function
 End Class
 

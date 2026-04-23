@@ -80,14 +80,14 @@ Partial Class FrmAlumnos
         '
         'txtDNI
         '
-        Me.txtDNI.Location = New System.Drawing.Point(45, 354)
+        Me.txtDNI.Location = New System.Drawing.Point(45, 289)
         Me.txtDNI.Name = "txtDNI"
         Me.txtDNI.Size = New System.Drawing.Size(100, 22)
         Me.txtDNI.TabIndex = 10
         '
         'txtCiclo
         '
-        Me.txtCiclo.Location = New System.Drawing.Point(45, 289)
+        Me.txtCiclo.Location = New System.Drawing.Point(45, 354)
         Me.txtCiclo.Name = "txtCiclo"
         Me.txtCiclo.Size = New System.Drawing.Size(100, 22)
         Me.txtCiclo.TabIndex = 9
@@ -125,7 +125,7 @@ Partial Class FrmAlumnos
         'lblDNI
         '
         Me.lblDNI.AutoSize = True
-        Me.lblDNI.Location = New System.Drawing.Point(42, 335)
+        Me.lblDNI.Location = New System.Drawing.Point(42, 270)
         Me.lblDNI.Name = "lblDNI"
         Me.lblDNI.Size = New System.Drawing.Size(30, 16)
         Me.lblDNI.TabIndex = 4
@@ -134,7 +134,7 @@ Partial Class FrmAlumnos
         'lblCiclo
         '
         Me.lblCiclo.AutoSize = True
-        Me.lblCiclo.Location = New System.Drawing.Point(42, 270)
+        Me.lblCiclo.Location = New System.Drawing.Point(42, 335)
         Me.lblCiclo.Name = "lblCiclo"
         Me.lblCiclo.Size = New System.Drawing.Size(37, 16)
         Me.lblCiclo.TabIndex = 3
@@ -218,14 +218,14 @@ Partial Class FrmAlumnos
         Me.DNI.MinimumWidth = 6
         Me.DNI.Name = "DNI"
         '
-        'Form1
+        'FrmAlumnos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.Panel1)
-        Me.Name = "Form1"
+        Me.Name = "FrmAlumnos"
         Me.Text = "Form1"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()

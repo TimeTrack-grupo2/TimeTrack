@@ -1,0 +1,7 @@
+﻿Imports Gestion
+
+Module Module1
+    Public logIn As GestionAlumno.TipoLogin
+
+    Public gestionAlumno As GestionAlumno
+End Module

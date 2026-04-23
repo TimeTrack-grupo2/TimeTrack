@@ -79,4 +79,44 @@ Public Class gestionAlumno
             mesage = ex.Message
         End Try
     End Function
+
+    ' Método 2: Elimina tareas, jornadas y el alumno directamente
+    Public Function EliminarAlumno(dni As String) As String
+        Dim conexion As New SqlConnection(cadConexion)
+        Try
+            conexion.Open()
+
+            Dim sqlTareaRA As String = "DELETE FROM TAREA_RA WHERE DNI = @DNI"
+            Dim cmdTareaRA As New SqlCommand(sqlTareaRA, conexion)
+            cmdTareaRA.Parameters.AddWithValue("@DNI", dni)
+            cmdTareaRA.ExecuteNonQuery()
+
+            Dim sqlTarea As String = "DELETE FROM TAREA WHERE DNI = @DNI"
+            Dim cmdTarea As New SqlCommand(sqlTarea, conexion)
+            cmdTarea.Parameters.AddWithValue("@DNI", dni)
+            cmdTarea.ExecuteNonQuery()
+
+            Dim sqlJornada As String = "DELETE FROM JORNADA WHERE DNI = @DNI"
+            Dim cmdJornada As New SqlCommand(sqlJornada, conexion)
+            cmdJornada.Parameters.AddWithValue("@DNI", dni)
+            cmdJornada.ExecuteNonQuery()
+
+            Dim sqlAlumno As String = "DELETE FROM ALUMNO WHERE DNI = @DNI"
+            Dim cmdAlumno As New SqlCommand(sqlAlumno, conexion)
+            cmdAlumno.Parameters.AddWithValue("@DNI", dni)
+            Dim filas As Integer = cmdAlumno.ExecuteNonQuery()
+
+            If filas = 0 Then
+                Return "No se encontró ningún alumno con ese DNI."
+            Else
+                Return "Alumno eliminado correctamente."
+            End If
+
+        Catch ex As Exception
+            Return "Error al eliminar alumno: " & ex.Message
+        Finally
+            conexion.Close()
+        End Try
+    End Function
 End Class
+

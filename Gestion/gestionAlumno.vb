@@ -181,7 +181,9 @@ Public Class GestionAlumno
         Dim tabla As New DataTable()
         Try
             conexion.Open()
-            Dim sql As String = "SELECT DNI, NOMBRE, APELLIDO1, APELLIDO2, ID_CICLO FROM ALUMNOS"
+            Dim sql As String = "SELECT A.DNI, A.APELLIDO1, A.APELLIDO2, A.NOMBRE, C.NOMBRECICLO AS CICLO
+                             FROM ALUMNOS A
+                             INNER JOIN CICLOS C ON A.ID_CICLO = C.ID_CICLO"
             Dim cmd As New SqlCommand(sql, conexion)
             Dim adapter As New SqlDataAdapter(cmd)
             adapter.Fill(tabla)

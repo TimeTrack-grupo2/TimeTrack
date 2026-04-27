@@ -194,5 +194,6 @@ Public Class GestionAlumno
         End Try
         Return tabla
     End Function
+
 End Class
 

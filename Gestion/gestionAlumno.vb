@@ -36,7 +36,7 @@ Public Class GestionAlumno
             numeroParte = dni.Substring(0, 8)
             If Not Integer.TryParse(numeroParte, numero) Then
                 mensaje = "No has introducido un nvalor numerico"
-                Return 0
+                Return TipoLogin.Incorrecto
 
             Else
                 letraParte = dni.Chars(8)
@@ -45,25 +45,26 @@ Public Class GestionAlumno
                 If letraParte = letraCorrecta Then
 
                 Else
-                    Return 0
                     mensaje = "El DNI no es válido. La letra correcta debería ser: " & letraCorrecta
+                    Return TipoLogin.Incorrecto
+
                 End If
             End If
         End If
 
         Try
             conexion.Open()
-            Dim sql As String = "SELECT DNI FORM ALUMNOS WHERE DNI=@DNI"
+            Dim sql As String = "SELECT DNI FROM ALUMNOS WHERE DNI=@DNI"
             Dim cmdAlumno As New SqlCommand(sql, conexion)
             cmdAlumno.Parameters.AddWithValue("@DNI", dni)
             Dim drAlumn As SqlDataReader = cmdAlumno.ExecuteReader
             If drAlumn.HasRows Then
-                Return 1
+                Return TipoLogin.Alumno
             End If
             mensaje = "El DNI introducido no esta en la base de datos."
-            Return 0
+            Return TipoLogin.Incorrecto
         Catch ex As Exception
-            Return ex.Message
+            mensaje = ex.Message
         Finally
             conexion.Close()
         End Try

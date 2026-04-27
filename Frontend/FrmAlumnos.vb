@@ -37,7 +37,8 @@ Public Class FrmAlumnos
 
         ' Obtener el ID del ciclo a partir del nombre escrito
         Dim mensajeCiclo As String = ""
-        Dim idCiclo As Integer = gestor.IdCicloPorNombre(cboCiclos.Text.Trim(), mensajeCiclo)
+        Dim ciclo As Ciclos = TryCast(cboCiclos.SelectedItem, Ciclos)
+        Dim idCiclo As Integer = ciclo.Id_ciclo
 
         If Not String.IsNullOrEmpty(mensajeCiclo) Then
             MessageBox.Show(mensajeCiclo, "Error en Ciclo", MessageBoxButtons.OK, MessageBoxIcon.Warning)
@@ -97,7 +98,11 @@ Public Class FrmAlumnos
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CargarDatosGrid()
-        cboCiclos.Items.Add(gestionAlumno.ciclos)
+        Dim ciclos = gestionAlumno.ciclos
+        For Each ciclo In ciclos
+            cboCiclos.Items.Add(ciclo)
+        Next
+        cboCiclos.DisplayMember = "NombreCiclo"
     End Sub
 
     Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
@@ -117,6 +122,7 @@ Public Class FrmAlumnos
     End Sub
 
     Private Sub cboCiclos_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboCiclos.SelectedIndexChanged
+
 
     End Sub
 End Class

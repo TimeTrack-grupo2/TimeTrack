@@ -6,4 +6,8 @@
     Private Sub btnTareas_Click(sender As Object, e As EventArgs) Handles btnTareas.Click
 
     End Sub
+
+    Private Sub btnDatos_Click(sender As Object, e As EventArgs) Handles btnDatos.Click
+
+    End Sub
 End Class

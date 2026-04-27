@@ -23,9 +23,9 @@ Partial Class FrmAlumnos
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.cboCiclos = New System.Windows.Forms.ComboBox()
         Me.btnGuardar = New System.Windows.Forms.Button()
         Me.txtDNI = New System.Windows.Forms.TextBox()
-        Me.txtCiclo = New System.Windows.Forms.TextBox()
         Me.txtApellido2 = New System.Windows.Forms.TextBox()
         Me.txtApellido = New System.Windows.Forms.TextBox()
         Me.txtNombre = New System.Windows.Forms.TextBox()
@@ -36,6 +36,7 @@ Partial Class FrmAlumnos
         Me.lblNombre = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.btnEliminar = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -43,9 +44,9 @@ Partial Class FrmAlumnos
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.SystemColors.ActiveBorder
+        Me.Panel1.Controls.Add(Me.cboCiclos)
         Me.Panel1.Controls.Add(Me.btnGuardar)
         Me.Panel1.Controls.Add(Me.txtDNI)
-        Me.Panel1.Controls.Add(Me.txtCiclo)
         Me.Panel1.Controls.Add(Me.txtApellido2)
         Me.Panel1.Controls.Add(Me.txtApellido)
         Me.Panel1.Controls.Add(Me.txtNombre)
@@ -61,6 +62,14 @@ Partial Class FrmAlumnos
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(200, 450)
         Me.Panel1.TabIndex = 0
+        '
+        'cboCiclos
+        '
+        Me.cboCiclos.FormattingEnabled = True
+        Me.cboCiclos.Location = New System.Drawing.Point(45, 354)
+        Me.cboCiclos.Name = "cboCiclos"
+        Me.cboCiclos.Size = New System.Drawing.Size(100, 24)
+        Me.cboCiclos.TabIndex = 3
         '
         'btnGuardar
         '
@@ -79,13 +88,6 @@ Partial Class FrmAlumnos
         Me.txtDNI.Name = "txtDNI"
         Me.txtDNI.Size = New System.Drawing.Size(100, 22)
         Me.txtDNI.TabIndex = 10
-        '
-        'txtCiclo
-        '
-        Me.txtCiclo.Location = New System.Drawing.Point(45, 354)
-        Me.txtCiclo.Name = "txtCiclo"
-        Me.txtCiclo.Size = New System.Drawing.Size(100, 22)
-        Me.txtCiclo.TabIndex = 9
         '
         'txtApellido2
         '
@@ -184,11 +186,21 @@ Partial Class FrmAlumnos
         Me.DataGridView1.Size = New System.Drawing.Size(600, 450)
         Me.DataGridView1.TabIndex = 1
         '
+        'btnEliminar
+        '
+        Me.btnEliminar.Location = New System.Drawing.Point(344, 404)
+        Me.btnEliminar.Name = "btnEliminar"
+        Me.btnEliminar.Size = New System.Drawing.Size(112, 34)
+        Me.btnEliminar.TabIndex = 2
+        Me.btnEliminar.Text = "Eliminar Alumno"
+        Me.btnEliminar.UseVisualStyleBackColor = True
+        '
         'FrmAlumnos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.btnEliminar)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.Panel1)
         Me.Name = "FrmAlumnos"
@@ -210,8 +222,9 @@ Partial Class FrmAlumnos
     Friend WithEvents lblApellido2 As Label
     Friend WithEvents lblDNI As Label
     Friend WithEvents txtDNI As TextBox
-    Friend WithEvents txtCiclo As TextBox
     Friend WithEvents txtApellido2 As TextBox
     Friend WithEvents DataGridView1 As DataGridView
     Friend WithEvents btnGuardar As Button
+    Friend WithEvents btnEliminar As Button
+    Friend WithEvents cboCiclos As ComboBox
 End Class

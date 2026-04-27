@@ -1,4 +1,5 @@
-﻿Imports Gestion
+﻿Imports Clases
+Imports Gestion
 
 Public Class FrmLogIn
     Private Sub btnacceder_Click(sender As Object, e As EventArgs) Handles btnacceder.Click
@@ -26,5 +27,7 @@ Public Class FrmLogIn
         If Not String.IsNullOrWhiteSpace(errorEnLaConexion) Then
             MessageBox.Show(errorEnLaConexion)
         End If
+
+
     End Sub
 End Class

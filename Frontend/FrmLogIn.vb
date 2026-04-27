@@ -12,7 +12,7 @@ Public Class FrmLogIn
         Else
             Dim f1 As New FrmMenu
             f1.ShowDialog()
-
+            Me.Close()
         End If
 
     End Sub

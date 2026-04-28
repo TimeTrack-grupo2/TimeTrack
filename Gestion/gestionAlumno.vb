@@ -140,6 +140,27 @@ Public Class GestionAlumno
     End Function
 
     ' Método 2: Elimina tareas, jornadas y el alumno directamente
+
+    Public Function ComprobarDatosAlumno(dni As String) As Boolean
+        Dim conexion As New SqlConnection(cadConexion)
+        Try
+            conexion.Open()
+
+            Dim sql As String = "SELECT DNI FROM JORNADAS WHERE DNI=@DNI"
+            Dim cmdDatos As New SqlCommand(sql, conexion)
+            cmdDatos.Parameters.AddWithValue("@DNI", dni)
+            Dim drDatos As SqlDataReader = cmdDatos.ExecuteReader
+            If drDatos.Read Then
+                Return True
+            End If
+            Return False
+
+        Catch ex As Exception
+
+        Finally
+
+        End Try
+    End Function
     Public Function EliminarAlumno(dni As String) As String
         Dim conexion As New SqlConnection(cadConexion)
         Try

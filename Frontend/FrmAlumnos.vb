@@ -75,7 +75,6 @@ Public Class FrmAlumnos
             MessageBox.Show($"Error de conexión: {errorConexion}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Return
         End If
-
         Dim errorMensaje As String = ""
         Dim tabla As DataTable = gestor.ObtenerAlumnos(errorMensaje)
 

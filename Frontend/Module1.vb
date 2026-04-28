@@ -5,4 +5,6 @@ Module Module1
 
     Public gestionAlumno As GestionAlumno
     Public gestionJornada As gestionJornadas
+    Public gestionTareas As GestionTareas
+
 End Module

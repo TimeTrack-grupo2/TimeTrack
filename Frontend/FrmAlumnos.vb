@@ -37,11 +37,12 @@ Public Class FrmAlumnos
 
         ' Obtener el ID del ciclo a partir del nombre escrito
         Dim mensajeCiclo As String = ""
-        Dim idCiclo As Integer = gestor.IdCicloPorNombre(txtCiclo.Text.Trim(), mensajeCiclo)
+        Dim ciclo As Ciclos = TryCast(cboCiclos.SelectedItem, Ciclos)
+        Dim idCiclo As Integer = ciclo.Id_ciclo
 
         If Not String.IsNullOrEmpty(mensajeCiclo) Then
             MessageBox.Show(mensajeCiclo, "Error en Ciclo", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            txtCiclo.Focus()
+            cboCiclos.Focus()
             Return
         End If
 
@@ -90,15 +91,38 @@ Public Class FrmAlumnos
         txtNombre.Text = ""
         txtApellido.Text = ""
         txtApellido2.Text = ""
-        txtCiclo.Text = ""
+        cboCiclos.Text = ""
         txtDNI.Text = ""
         txtNombre.Focus()
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CargarDatosGrid()
+        Dim ciclos = gestionAlumno.ciclos
+        For Each ciclo In ciclos
+            cboCiclos.Items.Add(ciclo)
+        Next
+        cboCiclos.DisplayMember = "NombreCiclo"
     End Sub
 
     Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
+        If e.RowIndex >= 0 Then
+            Dim fila As DataGridViewRow = DataGridView1.Rows(e.RowIndex)
+            Dim dniSeleccionado As String = fila.Cells(0).Value.ToString()
+
+            ' Guardarlo en una variable global o textbox
+            txtDNI.Text = dniSeleccionado
+        End If
+    End Sub
+
+    Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
+
+        MessageBox.Show(gestionAlumno.EliminarAlumno(txtDNI.Text))
+        CargarDatosGrid()
+    End Sub
+
+    Private Sub cboCiclos_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboCiclos.SelectedIndexChanged
+
+
     End Sub
 End Class

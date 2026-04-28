@@ -150,17 +150,17 @@ Public Class GestionAlumno
             cmdTareaRA.Parameters.AddWithValue("@DNI", dni)
             cmdTareaRA.ExecuteNonQuery()
 
-            Dim sqlTarea As String = "DELETE FROM TAREA WHERE DNI = @DNI"
+            Dim sqlTarea As String = "DELETE FROM TAREAS WHERE DNI = @DNI"
             Dim cmdTarea As New SqlCommand(sqlTarea, conexion)
             cmdTarea.Parameters.AddWithValue("@DNI", dni)
             cmdTarea.ExecuteNonQuery()
 
-            Dim sqlJornada As String = "DELETE FROM JORNADA WHERE DNI = @DNI"
+            Dim sqlJornada As String = "DELETE FROM JORNADAS WHERE DNI = @DNI"
             Dim cmdJornada As New SqlCommand(sqlJornada, conexion)
             cmdJornada.Parameters.AddWithValue("@DNI", dni)
             cmdJornada.ExecuteNonQuery()
 
-            Dim sqlAlumno As String = "DELETE FROM ALUMNO WHERE DNI = @DNI"
+            Dim sqlAlumno As String = "DELETE FROM ALUMNOS WHERE DNI = @DNI"
             Dim cmdAlumno As New SqlCommand(sqlAlumno, conexion)
             cmdAlumno.Parameters.AddWithValue("@DNI", dni)
             Dim filas As Integer = cmdAlumno.ExecuteNonQuery()

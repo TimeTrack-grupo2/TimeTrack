@@ -17,4 +17,9 @@ Public Class FrmMenu
         f2.ShowDialog()
 
     End Sub
+
+    Private Sub btnVolver_Click(sender As Object, e As EventArgs) Handles btnVolver.Click
+        Dim fVolver As New FrmLogIn
+        fVolver.ShowDialog()
+    End Sub
 End Class

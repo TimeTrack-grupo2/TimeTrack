@@ -133,8 +133,4 @@ Public Class FrmAlumnos
 
     End Sub
 
-    Private Sub cboCiclos_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboCiclos.SelectedIndexChanged
-
-
-    End Sub
 End Class

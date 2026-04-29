@@ -10,6 +10,7 @@ Public Class FrmLogIn
         If logIn = GestionAlumno.TipoLogin.Incorrecto Then
             MessageBox.Show(mensaje)
         Else
+            alumno = New Alumno(dniText)
             Dim f1 As New FrmMenu
             f1.ShowDialog()
             Me.Close()

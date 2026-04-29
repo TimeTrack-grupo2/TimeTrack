@@ -1,10 +1,20 @@
 ﻿Public Class FrmFichar
 
+
+    Private Sub FrmFichar_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Timer1.Start()
+
+    End Sub
+
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
 
-        lblHora.Text = TimeOfDay.ToString("HH:mm:ss")
         lblFecha.Text = Today.ToString("dd/MM/yyyy")
 
 
     End Sub
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 59f9c471b2beb5b5dbd62032e148d5afed788c5b
 End Class

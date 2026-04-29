@@ -59,6 +59,7 @@ Public Class GestionAlumno
             cmdAlumno.Parameters.AddWithValue("@DNI", dni)
             Dim drAlumn As SqlDataReader = cmdAlumno.ExecuteReader
             If drAlumn.HasRows Then
+
                 Return TipoLogin.Alumno
             End If
             mensaje = "El DNI introducido no esta en la base de datos."
@@ -158,6 +159,7 @@ Public Class GestionAlumno
         Catch ex As Exception
 
         Finally
+            conexion.Close()
 
         End Try
     End Function

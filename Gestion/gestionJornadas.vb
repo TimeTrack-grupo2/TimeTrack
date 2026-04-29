@@ -13,7 +13,6 @@ Public Class gestionJornadas
         Dim conexion As New SqlConnection(cadConexion)
         Try
             conexion.Open()
-
             ' 1. Verificar que el alumno existe
             Dim sql As String = "SELECT COUNT(*) FROM ALUMNOS WHERE DNI = @dni"
             Dim cmdAlumno As New SqlCommand(sql, conexion)
@@ -23,7 +22,6 @@ Public Class gestionJornadas
             If alumnoExiste = 0 Then
                 Return "El alumno no existe en la base de datos."
             End If
-
             ' 2. Obtener el siguiente ID_JORNADA
             Dim sqlMaxId As String = "SELECT ISNULL(MAX(ID_JORNADA), 0) + 1 FROM JORNADAS"
             Dim cmdMaxId As New SqlCommand(sqlMaxId, conexion)
@@ -65,8 +63,6 @@ Public Class gestionJornadas
             If alumnoExiste = 0 Then
                 Return "No se encontró ningún alumno con DNI: " & dni
             End If
-
-            ' 2. Obtener el total de horas de las jornadas del alumno
             Dim sqlJornadas As String = "SELECT SUM(HORAS) FROM JORNADAS WHERE DNI = @DNI"
             Dim cmdJornada As New SqlCommand(sqlJornadas, conexion)
             cmdJornada.Parameters.AddWithValue("@DNI", dni)

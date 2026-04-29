@@ -12,9 +12,5 @@
 
 
     End Sub
-<<<<<<< HEAD
-=======
 
-
->>>>>>> 59f9c471b2beb5b5dbd62032e148d5afed788c5b
 End Class

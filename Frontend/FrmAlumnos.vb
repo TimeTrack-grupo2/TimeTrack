@@ -75,7 +75,6 @@ Public Class FrmAlumnos
             MessageBox.Show($"Error de conexión: {errorConexion}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Return
         End If
-
         Dim errorMensaje As String = ""
         Dim tabla As DataTable = gestor.ObtenerAlumnos(errorMensaje)
 
@@ -116,9 +115,22 @@ Public Class FrmAlumnos
     End Sub
 
     Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
+        If gestionAlumno.ComprobarDatosAlumno(txtDNI.Text) = True Then
+            Dim resultado As DialogResult
+            resultado = MessageBox.Show("¿Estás seguro de que quieres eliminar el alumno?",
+                                "Confirmar eliminación",
+                                MessageBoxButtons.YesNo,
+                                MessageBoxIcon.Warning)
+            If resultado = DialogResult.Yes Then
+                MessageBox.Show(gestionAlumno.EliminarAlumno(txtDNI.Text))
+                CargarDatosGrid()
+            End If
+        End If
+        If gestionAlumno.ComprobarDatosAlumno(txtDNI.Text) = False Then
+            MessageBox.Show(gestionAlumno.EliminarAlumno(txtDNI.Text))
+            CargarDatosGrid()
+        End If
 
-        MessageBox.Show(gestionAlumno.EliminarAlumno(txtDNI.Text))
-        CargarDatosGrid()
     End Sub
 
     Private Sub cboCiclos_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboCiclos.SelectedIndexChanged

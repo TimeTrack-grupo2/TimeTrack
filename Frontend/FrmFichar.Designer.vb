@@ -40,15 +40,10 @@ Partial Class FrmFichar
         Me.btnEntrada = New System.Windows.Forms.Button()
         Me.btnSalida = New System.Windows.Forms.Button()
         Me.btnLimpiar = New System.Windows.Forms.Button()
-        Me.btnBuscar = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.DNI = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Nombre = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Curso = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Entrada = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Salida = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Estado = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -57,7 +52,7 @@ Partial Class FrmFichar
         Me.LabelTitulo.Dock = System.Windows.Forms.DockStyle.Top
         Me.LabelTitulo.Location = New System.Drawing.Point(0, 0)
         Me.LabelTitulo.Name = "LabelTitulo"
-        Me.LabelTitulo.Size = New System.Drawing.Size(999, 34)
+        Me.LabelTitulo.Size = New System.Drawing.Size(658, 34)
         Me.LabelTitulo.TabIndex = 0
         Me.LabelTitulo.Text = "SISTEMA DE FICHAJES"
         Me.LabelTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -65,7 +60,7 @@ Partial Class FrmFichar
         'lblFecha
         '
         Me.lblFecha.AutoSize = True
-        Me.lblFecha.Location = New System.Drawing.Point(384, 34)
+        Me.lblFecha.Location = New System.Drawing.Point(208, 34)
         Me.lblFecha.Name = "lblFecha"
         Me.lblFecha.Size = New System.Drawing.Size(45, 16)
         Me.lblFecha.TabIndex = 1
@@ -74,7 +69,7 @@ Partial Class FrmFichar
         'lblHora
         '
         Me.lblHora.AutoSize = True
-        Me.lblHora.Location = New System.Drawing.Point(629, 34)
+        Me.lblHora.Location = New System.Drawing.Point(454, 34)
         Me.lblHora.Name = "lblHora"
         Me.lblHora.Size = New System.Drawing.Size(37, 16)
         Me.lblHora.TabIndex = 2
@@ -86,7 +81,7 @@ Partial Class FrmFichar
         'lvlFecha1
         '
         Me.lvlFecha1.AutoSize = True
-        Me.lvlFecha1.Location = New System.Drawing.Point(333, 34)
+        Me.lvlFecha1.Location = New System.Drawing.Point(157, 34)
         Me.lvlFecha1.Name = "lvlFecha1"
         Me.lvlFecha1.Size = New System.Drawing.Size(48, 16)
         Me.lvlFecha1.TabIndex = 3
@@ -95,7 +90,7 @@ Partial Class FrmFichar
         'lblhora1
         '
         Me.lblhora1.AutoSize = True
-        Me.lblhora1.Location = New System.Drawing.Point(578, 34)
+        Me.lblhora1.Location = New System.Drawing.Point(403, 34)
         Me.lblhora1.Name = "lblhora1"
         Me.lblhora1.Size = New System.Drawing.Size(40, 16)
         Me.lblhora1.TabIndex = 4
@@ -171,7 +166,7 @@ Partial Class FrmFichar
         '
         Me.btnEntrada.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.btnEntrada.FlatAppearance.BorderSize = 4
-        Me.btnEntrada.Location = New System.Drawing.Point(404, 198)
+        Me.btnEntrada.Location = New System.Drawing.Point(238, 200)
         Me.btnEntrada.Name = "btnEntrada"
         Me.btnEntrada.Size = New System.Drawing.Size(89, 34)
         Me.btnEntrada.TabIndex = 13
@@ -180,7 +175,7 @@ Partial Class FrmFichar
         '
         'btnSalida
         '
-        Me.btnSalida.Location = New System.Drawing.Point(510, 198)
+        Me.btnSalida.Location = New System.Drawing.Point(344, 200)
         Me.btnSalida.Name = "btnSalida"
         Me.btnSalida.Size = New System.Drawing.Size(89, 34)
         Me.btnSalida.TabIndex = 14
@@ -189,21 +184,12 @@ Partial Class FrmFichar
         '
         'btnLimpiar
         '
-        Me.btnLimpiar.Location = New System.Drawing.Point(404, 238)
+        Me.btnLimpiar.Location = New System.Drawing.Point(293, 240)
         Me.btnLimpiar.Name = "btnLimpiar"
         Me.btnLimpiar.Size = New System.Drawing.Size(89, 34)
         Me.btnLimpiar.TabIndex = 15
         Me.btnLimpiar.Text = "Limpiar"
         Me.btnLimpiar.UseVisualStyleBackColor = True
-        '
-        'btnBuscar
-        '
-        Me.btnBuscar.Location = New System.Drawing.Point(510, 238)
-        Me.btnBuscar.Name = "btnBuscar"
-        Me.btnBuscar.Size = New System.Drawing.Size(89, 34)
-        Me.btnBuscar.TabIndex = 16
-        Me.btnBuscar.Text = "Buscar"
-        Me.btnBuscar.UseVisualStyleBackColor = True
         '
         'Label1
         '
@@ -217,36 +203,15 @@ Partial Class FrmFichar
         'DataGridView1
         '
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DNI, Me.Nombre, Me.Curso, Me.Entrada, Me.Salida, Me.Estado})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Entrada, Me.Salida})
         Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.DataGridView1.Location = New System.Drawing.Point(0, 342)
+        Me.DataGridView1.Location = New System.Drawing.Point(0, 341)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.RowHeadersVisible = False
         Me.DataGridView1.RowHeadersWidth = 51
         Me.DataGridView1.RowTemplate.Height = 24
-        Me.DataGridView1.Size = New System.Drawing.Size(999, 150)
+        Me.DataGridView1.Size = New System.Drawing.Size(658, 150)
         Me.DataGridView1.TabIndex = 18
-        '
-        'DNI
-        '
-        Me.DNI.HeaderText = "DNI"
-        Me.DNI.MinimumWidth = 6
-        Me.DNI.Name = "DNI"
-        Me.DNI.Width = 125
-        '
-        'Nombre
-        '
-        Me.Nombre.HeaderText = "Nombre"
-        Me.Nombre.MinimumWidth = 6
-        Me.Nombre.Name = "Nombre"
-        Me.Nombre.Width = 125
-        '
-        'Curso
-        '
-        Me.Curso.HeaderText = "Curso"
-        Me.Curso.MinimumWidth = 6
-        Me.Curso.Name = "Curso"
-        Me.Curso.Width = 125
         '
         'Entrada
         '
@@ -262,21 +227,13 @@ Partial Class FrmFichar
         Me.Salida.Name = "Salida"
         Me.Salida.Width = 125
         '
-        'Estado
-        '
-        Me.Estado.HeaderText = "Estado"
-        Me.Estado.MinimumWidth = 6
-        Me.Estado.Name = "Estado"
-        Me.Estado.Width = 125
-        '
         'FrmFichar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(999, 492)
+        Me.ClientSize = New System.Drawing.Size(658, 491)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.btnBuscar)
         Me.Controls.Add(Me.btnLimpiar)
         Me.Controls.Add(Me.btnSalida)
         Me.Controls.Add(Me.btnEntrada)
@@ -318,13 +275,8 @@ Partial Class FrmFichar
     Friend WithEvents btnEntrada As Button
     Friend WithEvents btnSalida As Button
     Friend WithEvents btnLimpiar As Button
-    Friend WithEvents btnBuscar As Button
     Friend WithEvents Label1 As Label
     Friend WithEvents DataGridView1 As DataGridView
-    Friend WithEvents DNI As DataGridViewTextBoxColumn
-    Friend WithEvents Nombre As DataGridViewTextBoxColumn
-    Friend WithEvents Curso As DataGridViewTextBoxColumn
     Friend WithEvents Entrada As DataGridViewTextBoxColumn
     Friend WithEvents Salida As DataGridViewTextBoxColumn
-    Friend WithEvents Estado As DataGridViewTextBoxColumn
 End Class

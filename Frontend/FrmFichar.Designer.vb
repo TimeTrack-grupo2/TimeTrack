@@ -25,10 +25,8 @@ Partial Class FrmFichar
         Me.components = New System.ComponentModel.Container()
         Me.LabelTitulo = New System.Windows.Forms.Label()
         Me.lblFecha = New System.Windows.Forms.Label()
-        Me.lblHora = New System.Windows.Forms.Label()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.lvlFecha1 = New System.Windows.Forms.Label()
-        Me.lblhora1 = New System.Windows.Forms.Label()
         Me.txtDNI = New System.Windows.Forms.TextBox()
         Me.txtNombre = New System.Windows.Forms.TextBox()
         Me.lblDNI = New System.Windows.Forms.Label()
@@ -42,8 +40,8 @@ Partial Class FrmFichar
         Me.btnLimpiar = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.Entrada = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Salida = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Dia = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Hora = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -60,20 +58,11 @@ Partial Class FrmFichar
         'lblFecha
         '
         Me.lblFecha.AutoSize = True
-        Me.lblFecha.Location = New System.Drawing.Point(208, 34)
+        Me.lblFecha.Location = New System.Drawing.Point(308, 34)
         Me.lblFecha.Name = "lblFecha"
         Me.lblFecha.Size = New System.Drawing.Size(45, 16)
         Me.lblFecha.TabIndex = 1
         Me.lblFecha.Text = "Fecha"
-        '
-        'lblHora
-        '
-        Me.lblHora.AutoSize = True
-        Me.lblHora.Location = New System.Drawing.Point(454, 34)
-        Me.lblHora.Name = "lblHora"
-        Me.lblHora.Size = New System.Drawing.Size(37, 16)
-        Me.lblHora.TabIndex = 2
-        Me.lblHora.Text = "Hora"
         '
         'Timer1
         '
@@ -81,20 +70,11 @@ Partial Class FrmFichar
         'lvlFecha1
         '
         Me.lvlFecha1.AutoSize = True
-        Me.lvlFecha1.Location = New System.Drawing.Point(157, 34)
+        Me.lvlFecha1.Location = New System.Drawing.Point(257, 34)
         Me.lvlFecha1.Name = "lvlFecha1"
         Me.lvlFecha1.Size = New System.Drawing.Size(48, 16)
         Me.lvlFecha1.TabIndex = 3
         Me.lvlFecha1.Text = "Fecha:"
-        '
-        'lblhora1
-        '
-        Me.lblhora1.AutoSize = True
-        Me.lblhora1.Location = New System.Drawing.Point(403, 34)
-        Me.lblhora1.Name = "lblhora1"
-        Me.lblhora1.Size = New System.Drawing.Size(40, 16)
-        Me.lblhora1.TabIndex = 4
-        Me.lblhora1.Text = "Hora:"
         '
         'txtDNI
         '
@@ -203,7 +183,7 @@ Partial Class FrmFichar
         'DataGridView1
         '
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Entrada, Me.Salida})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Dia, Me.Hora})
         Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.DataGridView1.Location = New System.Drawing.Point(0, 341)
         Me.DataGridView1.Name = "DataGridView1"
@@ -213,19 +193,19 @@ Partial Class FrmFichar
         Me.DataGridView1.Size = New System.Drawing.Size(658, 150)
         Me.DataGridView1.TabIndex = 18
         '
-        'Entrada
+        'Dia
         '
-        Me.Entrada.HeaderText = "Entrada"
-        Me.Entrada.MinimumWidth = 6
-        Me.Entrada.Name = "Entrada"
-        Me.Entrada.Width = 125
+        Me.Dia.HeaderText = "Dia"
+        Me.Dia.MinimumWidth = 6
+        Me.Dia.Name = "Dia"
+        Me.Dia.Width = 125
         '
-        'Salida
+        'Hora
         '
-        Me.Salida.HeaderText = "Salida"
-        Me.Salida.MinimumWidth = 6
-        Me.Salida.Name = "Salida"
-        Me.Salida.Width = 125
+        Me.Hora.HeaderText = "Hora"
+        Me.Hora.MinimumWidth = 6
+        Me.Hora.Name = "Hora"
+        Me.Hora.Width = 125
         '
         'FrmFichar
         '
@@ -245,9 +225,7 @@ Partial Class FrmFichar
         Me.Controls.Add(Me.lblDNI)
         Me.Controls.Add(Me.txtNombre)
         Me.Controls.Add(Me.txtDNI)
-        Me.Controls.Add(Me.lblhora1)
         Me.Controls.Add(Me.lvlFecha1)
-        Me.Controls.Add(Me.lblHora)
         Me.Controls.Add(Me.lblFecha)
         Me.Controls.Add(Me.LabelTitulo)
         Me.Name = "FrmFichar"
@@ -260,10 +238,8 @@ Partial Class FrmFichar
 
     Friend WithEvents LabelTitulo As Label
     Friend WithEvents lblFecha As Label
-    Friend WithEvents lblHora As Label
     Friend WithEvents Timer1 As Timer
     Friend WithEvents lvlFecha1 As Label
-    Friend WithEvents lblhora1 As Label
     Friend WithEvents txtDNI As TextBox
     Friend WithEvents txtNombre As TextBox
     Friend WithEvents lblDNI As Label
@@ -277,6 +253,6 @@ Partial Class FrmFichar
     Friend WithEvents btnLimpiar As Button
     Friend WithEvents Label1 As Label
     Friend WithEvents DataGridView1 As DataGridView
-    Friend WithEvents Entrada As DataGridViewTextBoxColumn
-    Friend WithEvents Salida As DataGridViewTextBoxColumn
+    Friend WithEvents Dia As DataGridViewTextBoxColumn
+    Friend WithEvents Hora As DataGridViewTextBoxColumn
 End Class

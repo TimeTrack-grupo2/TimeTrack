@@ -11,4 +11,10 @@ Public Class FrmMenu
             MessageBox.Show("No eres administrador de la aplicación.")
         End If
     End Sub
+
+    Private Sub btnFichar_Click(sender As Object, e As EventArgs) Handles btnFichar.Click
+        Dim f2 As New FrmFichar
+        f2.ShowDialog()
+
+    End Sub
 End Class

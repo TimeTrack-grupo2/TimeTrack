@@ -32,9 +32,7 @@ Partial Class FrmFichar
         Me.lblDNI = New System.Windows.Forms.Label()
         Me.lblNombre = New System.Windows.Forms.Label()
         Me.lblCurso = New System.Windows.Forms.Label()
-        Me.lblGrupo = New System.Windows.Forms.Label()
         Me.cmbCurso = New System.Windows.Forms.ComboBox()
-        Me.cmbGrupo = New System.Windows.Forms.ComboBox()
         Me.btnEntrada = New System.Windows.Forms.Button()
         Me.btnSalida = New System.Windows.Forms.Button()
         Me.btnLimpiar = New System.Windows.Forms.Button()
@@ -78,22 +76,22 @@ Partial Class FrmFichar
         '
         'txtDNI
         '
-        Me.txtDNI.Location = New System.Drawing.Point(91, 88)
+        Me.txtDNI.Location = New System.Drawing.Point(78, 100)
         Me.txtDNI.Name = "txtDNI"
-        Me.txtDNI.Size = New System.Drawing.Size(100, 22)
+        Me.txtDNI.Size = New System.Drawing.Size(116, 22)
         Me.txtDNI.TabIndex = 5
         '
         'txtNombre
         '
-        Me.txtNombre.Location = New System.Drawing.Point(91, 120)
+        Me.txtNombre.Location = New System.Drawing.Point(78, 132)
         Me.txtNombre.Name = "txtNombre"
-        Me.txtNombre.Size = New System.Drawing.Size(148, 22)
+        Me.txtNombre.Size = New System.Drawing.Size(174, 22)
         Me.txtNombre.TabIndex = 6
         '
         'lblDNI
         '
         Me.lblDNI.AutoSize = True
-        Me.lblDNI.Location = New System.Drawing.Point(34, 91)
+        Me.lblDNI.Location = New System.Drawing.Point(21, 103)
         Me.lblDNI.Name = "lblDNI"
         Me.lblDNI.Size = New System.Drawing.Size(33, 16)
         Me.lblDNI.TabIndex = 7
@@ -102,7 +100,7 @@ Partial Class FrmFichar
         'lblNombre
         '
         Me.lblNombre.AutoSize = True
-        Me.lblNombre.Location = New System.Drawing.Point(34, 123)
+        Me.lblNombre.Location = New System.Drawing.Point(21, 135)
         Me.lblNombre.Name = "lblNombre"
         Me.lblNombre.Size = New System.Drawing.Size(59, 16)
         Me.lblNombre.TabIndex = 8
@@ -111,36 +109,19 @@ Partial Class FrmFichar
         'lblCurso
         '
         Me.lblCurso.AutoSize = True
-        Me.lblCurso.Location = New System.Drawing.Point(34, 155)
+        Me.lblCurso.Location = New System.Drawing.Point(21, 167)
         Me.lblCurso.Name = "lblCurso"
         Me.lblCurso.Size = New System.Drawing.Size(45, 16)
         Me.lblCurso.TabIndex = 9
         Me.lblCurso.Text = "Curso:"
         '
-        'lblGrupo
-        '
-        Me.lblGrupo.AutoSize = True
-        Me.lblGrupo.Location = New System.Drawing.Point(34, 185)
-        Me.lblGrupo.Name = "lblGrupo"
-        Me.lblGrupo.Size = New System.Drawing.Size(47, 16)
-        Me.lblGrupo.TabIndex = 10
-        Me.lblGrupo.Text = "Grupo:"
-        '
         'cmbCurso
         '
         Me.cmbCurso.FormattingEnabled = True
-        Me.cmbCurso.Location = New System.Drawing.Point(91, 152)
+        Me.cmbCurso.Location = New System.Drawing.Point(78, 164)
         Me.cmbCurso.Name = "cmbCurso"
-        Me.cmbCurso.Size = New System.Drawing.Size(70, 24)
+        Me.cmbCurso.Size = New System.Drawing.Size(78, 24)
         Me.cmbCurso.TabIndex = 11
-        '
-        'cmbGrupo
-        '
-        Me.cmbGrupo.FormattingEnabled = True
-        Me.cmbGrupo.Location = New System.Drawing.Point(91, 182)
-        Me.cmbGrupo.Name = "cmbGrupo"
-        Me.cmbGrupo.Size = New System.Drawing.Size(46, 24)
-        Me.cmbGrupo.TabIndex = 12
         '
         'btnEntrada
         '
@@ -217,9 +198,7 @@ Partial Class FrmFichar
         Me.Controls.Add(Me.btnLimpiar)
         Me.Controls.Add(Me.btnSalida)
         Me.Controls.Add(Me.btnEntrada)
-        Me.Controls.Add(Me.cmbGrupo)
         Me.Controls.Add(Me.cmbCurso)
-        Me.Controls.Add(Me.lblGrupo)
         Me.Controls.Add(Me.lblCurso)
         Me.Controls.Add(Me.lblNombre)
         Me.Controls.Add(Me.lblDNI)
@@ -245,9 +224,7 @@ Partial Class FrmFichar
     Friend WithEvents lblDNI As Label
     Friend WithEvents lblNombre As Label
     Friend WithEvents lblCurso As Label
-    Friend WithEvents lblGrupo As Label
     Friend WithEvents cmbCurso As ComboBox
-    Friend WithEvents cmbGrupo As ComboBox
     Friend WithEvents btnEntrada As Button
     Friend WithEvents btnSalida As Button
     Friend WithEvents btnLimpiar As Button

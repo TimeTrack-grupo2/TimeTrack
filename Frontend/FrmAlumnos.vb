@@ -104,7 +104,7 @@ Public Class FrmAlumnos
         cboCiclos.DisplayMember = "NombreCiclo"
     End Sub
 
-    Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
+    Private Sub DataGridView1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellClick
         If e.RowIndex >= 0 Then
             Dim fila As DataGridViewRow = DataGridView1.Rows(e.RowIndex)
             Dim dniSeleccionado As String = fila.Cells(0).Value.ToString()

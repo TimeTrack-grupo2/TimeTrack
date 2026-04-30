@@ -218,5 +218,29 @@ Public Class GestionAlumno
         Return tabla
     End Function
 
+    Public Function ObtenerAlumnoPorDni(dni As String) As DataRow
+        Dim conexion As New SqlConnection(cadConexion)
+        Try
+            conexion.Open()
+            Dim sql As String = "SELECT A.DNI, A.NOMBRE, A.APELLIDO1, A.APELLIDO2, C.NOMBRECICLO
+                             FROM ALUMNOS A
+                             INNER JOIN CICLOS C ON A.ID_CICLO = C.ID_CICLO
+                             WHERE A.DNI = @DNI"
+            Dim cmd As New SqlCommand(sql, conexion)
+            cmd.Parameters.AddWithValue("@DNI", dni)
+            Dim adapter As New SqlDataAdapter(cmd)
+            Dim tabla As New DataTable()
+            adapter.Fill(tabla)
+            If tabla.Rows.Count > 0 Then
+                Return tabla.Rows(0)
+            End If
+            Return Nothing
+        Catch ex As Exception
+            Return Nothing
+        Finally
+            conexion.Close()
+        End Try
+    End Function
+
 End Class
 

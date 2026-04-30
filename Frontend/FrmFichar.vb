@@ -9,6 +9,16 @@
 
         cmbCurso.SelectedValue = alumno.Id_ciclo
 
+        Dim fila As DataRow = gestionAlumno.ObtenerAlumnoPorDni(alumno.Dni)
+
+        If fila IsNot Nothing Then
+            txtDNI.Text = fila("DNI").ToString()
+            txtNombre.Text = fila("NOMBRE").ToString() & " " &
+                             fila("APELLIDO1").ToString() & " " &
+                             fila("APELLIDO2").ToString()
+            cmbCurso.Text = fila("NOMBRECICLO").ToString()
+        End If
+
         txtDNI.ReadOnly = True
         txtNombre.ReadOnly = True
         cmbCurso.Enabled = False

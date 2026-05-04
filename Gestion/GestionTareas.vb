@@ -57,7 +57,6 @@ Public Class GestionTareas
             conexion.Open()
             Dim sql As String = "I"
         Catch ex As Exception
-
         End Try
     End Function
 End Class

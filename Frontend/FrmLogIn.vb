@@ -12,6 +12,7 @@ Public Class FrmLogIn
         Else
             alumno = New Alumno(dniText)
             Dim f1 As New FrmMenu
+
             f1.ShowDialog()
             Me.Close()
         End If

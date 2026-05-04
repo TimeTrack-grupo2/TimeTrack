@@ -27,7 +27,6 @@ Partial Class FrmLogIn
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.lbllogin = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -75,7 +74,6 @@ Partial Class FrmLogIn
         '
         Me.Panel1.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.Panel1.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.Panel1.Controls.Add(Me.LinkLabel1)
         Me.Panel1.Controls.Add(Me.lbllogin)
         Me.Panel1.Controls.Add(Me.btnacceder)
         Me.Panel1.Controls.Add(Me.TextBox1)
@@ -84,16 +82,6 @@ Partial Class FrmLogIn
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(300, 300)
         Me.Panel1.TabIndex = 4
-        '
-        'LinkLabel1
-        '
-        Me.LinkLabel1.AutoSize = True
-        Me.LinkLabel1.Location = New System.Drawing.Point(87, 249)
-        Me.LinkLabel1.Name = "LinkLabel1"
-        Me.LinkLabel1.Size = New System.Drawing.Size(117, 16)
-        Me.LinkLabel1.TabIndex = 5
-        Me.LinkLabel1.TabStop = True
-        Me.LinkLabel1.Text = "¿Olvidaste tu DNI?"
         '
         'FrmLogIn
         '
@@ -113,5 +101,4 @@ Partial Class FrmLogIn
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents lbllogin As Label
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents LinkLabel1 As LinkLabel
 End Class

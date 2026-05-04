@@ -49,7 +49,6 @@ Public Class GestionAlumno
                 End If
             End If
         End If
-
         Try
             conexion.Open()
             Dim sql As String = "SELECT DNI FROM ALUMNOS WHERE DNI=@DNI"
@@ -155,7 +154,7 @@ Public Class GestionAlumno
             Return False
 
         Catch ex As Exception
-
+            Return ex.Message
         Finally
             conexion.Close()
 

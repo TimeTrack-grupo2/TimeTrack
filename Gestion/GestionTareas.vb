@@ -49,11 +49,13 @@ Public Class GestionTareas
         End Try
     End Function
 
-    Public Function agregarTarea(idJornada As String)
+    Public Function agregarTarea(idJornada As String, idModulo As String, idCiclo As String, horas As Integer, descripcion As String) As String
+
+
         Dim conexion As New SqlConnection(cadConexion)
         Try
             conexion.Open()
-            Dim sql As String = ""
+            Dim sql As String = "I"
         Catch ex As Exception
 
         End Try

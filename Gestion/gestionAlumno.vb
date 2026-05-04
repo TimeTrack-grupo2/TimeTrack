@@ -42,9 +42,7 @@ Public Class GestionAlumno
                 letraParte = dni.Chars(8)
                 resto = numeroParte Mod 23
                 letraCorrecta = letras.Chars(resto)
-                If letraParte = letraCorrecta Then
-
-                Else
+                If letraParte.ToUpper <> letraCorrecta Then
                     mensaje = "El DNI no es válido. La letra correcta debería ser: " & letraCorrecta
                     Return TipoLogin.Incorrecto
 

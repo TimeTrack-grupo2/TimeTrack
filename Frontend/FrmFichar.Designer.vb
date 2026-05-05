@@ -39,7 +39,7 @@ Partial Class FrmFichar
         Me.Hora = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.txtCurso = New System.Windows.Forms.TextBox()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -183,19 +183,19 @@ Partial Class FrmFichar
         Me.Label2.TabIndex = 20
         Me.Label2.Text = "Horas realizadas:"
         '
-        'TextBox2
+        'txtCurso
         '
-        Me.TextBox2.Location = New System.Drawing.Point(78, 164)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(100, 22)
-        Me.TextBox2.TabIndex = 21
+        Me.txtCurso.Location = New System.Drawing.Point(78, 164)
+        Me.txtCurso.Name = "txtCurso"
+        Me.txtCurso.Size = New System.Drawing.Size(100, 22)
+        Me.txtCurso.TabIndex = 21
         '
         'FrmFichar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(658, 491)
-        Me.Controls.Add(Me.TextBox2)
+        Me.Controls.Add(Me.txtCurso)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.DataGridView1)
@@ -233,5 +233,5 @@ Partial Class FrmFichar
     Friend WithEvents Hora As DataGridViewTextBoxColumn
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents Label2 As Label
-    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents txtCurso As TextBox
 End Class

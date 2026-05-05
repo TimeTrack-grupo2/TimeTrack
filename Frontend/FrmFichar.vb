@@ -7,8 +7,6 @@
         txtDNI.Text = alumno.Dni
         txtNombre.Text = alumno.Nombre & " " & alumno.Apellido1 & " " & alumno.Apellido2
 
-        cmbCurso.SelectedValue = alumno.Id_ciclo
-
         Dim fila As DataRow = gestionAlumno.ObtenerAlumnoPorDni(alumno.Dni)
 
         If fila IsNot Nothing Then
@@ -16,12 +14,12 @@
             txtNombre.Text = fila("NOMBRE").ToString() & " " &
                              fila("APELLIDO1").ToString() & " " &
                              fila("APELLIDO2").ToString()
-            cmbCurso.Text = fila("NOMBRECICLO").ToString()
+            txtCurso.Text = fila("NOMBRECICLO").ToString()
         End If
 
         txtDNI.ReadOnly = True
         txtNombre.ReadOnly = True
-        cmbCurso.Enabled = False
+        txtCurso.Enabled = False
 
     End Sub
 

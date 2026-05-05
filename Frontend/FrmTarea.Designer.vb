@@ -48,7 +48,7 @@ Partial Class FrmTarea
         '
         'Panel1
         '
-        Me.Panel1.BackColor = System.Drawing.SystemColors.ActiveBorder
+        Me.Panel1.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.Panel1.Controls.Add(Me.Button1)
         Me.Panel1.Controls.Add(Me.ComboBox2)
         Me.Panel1.Controls.Add(Me.Label3)
@@ -71,14 +71,16 @@ Partial Class FrmTarea
         '
         'Button1
         '
+        Me.Button1.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.Button1.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ControlLight
         Me.Button1.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDark
-        Me.Button1.Location = New System.Drawing.Point(112, 405)
+        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.Location = New System.Drawing.Point(112, 398)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.Size = New System.Drawing.Size(75, 30)
         Me.Button1.TabIndex = 16
         Me.Button1.Text = "Eliminar"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.Button1.UseVisualStyleBackColor = False
         '
         'ComboBox2
         '
@@ -116,14 +118,16 @@ Partial Class FrmTarea
         '
         'btnGuardar
         '
+        Me.btnGuardar.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.btnGuardar.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ControlLight
         Me.btnGuardar.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDark
-        Me.btnGuardar.Location = New System.Drawing.Point(17, 405)
+        Me.btnGuardar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnGuardar.Location = New System.Drawing.Point(17, 398)
         Me.btnGuardar.Name = "btnGuardar"
-        Me.btnGuardar.Size = New System.Drawing.Size(75, 23)
+        Me.btnGuardar.Size = New System.Drawing.Size(75, 30)
         Me.btnGuardar.TabIndex = 11
         Me.btnGuardar.Text = "Guardar"
-        Me.btnGuardar.UseVisualStyleBackColor = True
+        Me.btnGuardar.UseVisualStyleBackColor = False
         '
         'txtApellido2
         '
@@ -175,7 +179,7 @@ Partial Class FrmTarea
         '
         'Label1
         '
-        Me.Label1.BackColor = System.Drawing.SystemColors.ActiveBorder
+        Me.Label1.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.Location = New System.Drawing.Point(12, 9)
         Me.Label1.Name = "Label1"
@@ -187,6 +191,7 @@ Partial Class FrmTarea
         'dgvTareas
         '
         Me.dgvTareas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgvTareas.BackgroundColor = System.Drawing.SystemColors.InactiveCaption
         Me.dgvTareas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvTareas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5})
         Me.dgvTareas.Location = New System.Drawing.Point(257, 12)

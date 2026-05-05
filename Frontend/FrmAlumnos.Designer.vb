@@ -43,7 +43,7 @@ Partial Class FrmAlumnos
         '
         'Panel1
         '
-        Me.Panel1.BackColor = System.Drawing.SystemColors.ActiveBorder
+        Me.Panel1.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.Panel1.Controls.Add(Me.cboCiclos)
         Me.Panel1.Controls.Add(Me.btnGuardar)
         Me.Panel1.Controls.Add(Me.txtDNI)
@@ -66,46 +66,48 @@ Partial Class FrmAlumnos
         'cboCiclos
         '
         Me.cboCiclos.FormattingEnabled = True
-        Me.cboCiclos.Location = New System.Drawing.Point(45, 354)
+        Me.cboCiclos.Location = New System.Drawing.Point(44, 338)
         Me.cboCiclos.Name = "cboCiclos"
         Me.cboCiclos.Size = New System.Drawing.Size(100, 24)
         Me.cboCiclos.TabIndex = 3
         '
         'btnGuardar
         '
+        Me.btnGuardar.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.btnGuardar.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ControlLight
         Me.btnGuardar.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDark
-        Me.btnGuardar.Location = New System.Drawing.Point(54, 404)
+        Me.btnGuardar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnGuardar.Location = New System.Drawing.Point(44, 388)
         Me.btnGuardar.Name = "btnGuardar"
-        Me.btnGuardar.Size = New System.Drawing.Size(75, 23)
+        Me.btnGuardar.Size = New System.Drawing.Size(91, 28)
         Me.btnGuardar.TabIndex = 11
         Me.btnGuardar.Text = "Guardar"
-        Me.btnGuardar.UseVisualStyleBackColor = True
+        Me.btnGuardar.UseVisualStyleBackColor = False
         '
         'txtDNI
         '
-        Me.txtDNI.Location = New System.Drawing.Point(45, 289)
+        Me.txtDNI.Location = New System.Drawing.Point(44, 273)
         Me.txtDNI.Name = "txtDNI"
         Me.txtDNI.Size = New System.Drawing.Size(100, 22)
         Me.txtDNI.TabIndex = 10
         '
         'txtApellido2
         '
-        Me.txtApellido2.Location = New System.Drawing.Point(45, 222)
+        Me.txtApellido2.Location = New System.Drawing.Point(44, 206)
         Me.txtApellido2.Name = "txtApellido2"
         Me.txtApellido2.Size = New System.Drawing.Size(100, 22)
         Me.txtApellido2.TabIndex = 8
         '
         'txtApellido
         '
-        Me.txtApellido.Location = New System.Drawing.Point(45, 153)
+        Me.txtApellido.Location = New System.Drawing.Point(44, 137)
         Me.txtApellido.Name = "txtApellido"
         Me.txtApellido.Size = New System.Drawing.Size(100, 22)
         Me.txtApellido.TabIndex = 7
         '
         'txtNombre
         '
-        Me.txtNombre.Location = New System.Drawing.Point(45, 89)
+        Me.txtNombre.Location = New System.Drawing.Point(44, 73)
         Me.txtNombre.Name = "txtNombre"
         Me.txtNombre.Size = New System.Drawing.Size(100, 22)
         Me.txtNombre.TabIndex = 6
@@ -113,16 +115,16 @@ Partial Class FrmAlumnos
         'lblApellido2
         '
         Me.lblApellido2.AutoSize = True
-        Me.lblApellido2.Location = New System.Drawing.Point(42, 203)
+        Me.lblApellido2.Location = New System.Drawing.Point(41, 187)
         Me.lblApellido2.Name = "lblApellido2"
-        Me.lblApellido2.Size = New System.Drawing.Size(64, 16)
+        Me.lblApellido2.Size = New System.Drawing.Size(67, 16)
         Me.lblApellido2.TabIndex = 5
-        Me.lblApellido2.Text = "Apellido2"
+        Me.lblApellido2.Text = "Apellido 2"
         '
         'lblDNI
         '
         Me.lblDNI.AutoSize = True
-        Me.lblDNI.Location = New System.Drawing.Point(42, 270)
+        Me.lblDNI.Location = New System.Drawing.Point(41, 254)
         Me.lblDNI.Name = "lblDNI"
         Me.lblDNI.Size = New System.Drawing.Size(30, 16)
         Me.lblDNI.TabIndex = 4
@@ -131,7 +133,7 @@ Partial Class FrmAlumnos
         'lblCiclo
         '
         Me.lblCiclo.AutoSize = True
-        Me.lblCiclo.Location = New System.Drawing.Point(42, 335)
+        Me.lblCiclo.Location = New System.Drawing.Point(41, 319)
         Me.lblCiclo.Name = "lblCiclo"
         Me.lblCiclo.Size = New System.Drawing.Size(37, 16)
         Me.lblCiclo.TabIndex = 3
@@ -140,7 +142,7 @@ Partial Class FrmAlumnos
         'lblApellido
         '
         Me.lblApellido.AutoSize = True
-        Me.lblApellido.Location = New System.Drawing.Point(42, 134)
+        Me.lblApellido.Location = New System.Drawing.Point(41, 118)
         Me.lblApellido.Name = "lblApellido"
         Me.lblApellido.Size = New System.Drawing.Size(57, 16)
         Me.lblApellido.TabIndex = 2
@@ -149,7 +151,7 @@ Partial Class FrmAlumnos
         'lblNombre
         '
         Me.lblNombre.AutoSize = True
-        Me.lblNombre.Location = New System.Drawing.Point(42, 70)
+        Me.lblNombre.Location = New System.Drawing.Point(41, 54)
         Me.lblNombre.Name = "lblNombre"
         Me.lblNombre.Size = New System.Drawing.Size(56, 16)
         Me.lblNombre.TabIndex = 1
@@ -157,7 +159,7 @@ Partial Class FrmAlumnos
         '
         'Label1
         '
-        Me.Label1.BackColor = System.Drawing.SystemColors.ActiveBorder
+        Me.Label1.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.Location = New System.Drawing.Point(12, 9)
         Me.Label1.Name = "Label1"

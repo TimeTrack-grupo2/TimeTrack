@@ -32,7 +32,7 @@ Partial Class FrmLogIn
         '
         'btnacceder
         '
-        Me.btnacceder.Location = New System.Drawing.Point(93, 164)
+        Me.btnacceder.Location = New System.Drawing.Point(94, 191)
         Me.btnacceder.Name = "btnacceder"
         Me.btnacceder.Size = New System.Drawing.Size(94, 23)
         Me.btnacceder.TabIndex = 3
@@ -43,7 +43,7 @@ Partial Class FrmLogIn
         '
         Me.lbliniciar.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbliniciar.ForeColor = System.Drawing.Color.Black
-        Me.lbliniciar.Location = New System.Drawing.Point(42, 89)
+        Me.lbliniciar.Location = New System.Drawing.Point(48, 107)
         Me.lbliniciar.Name = "lbliniciar"
         Me.lbliniciar.Size = New System.Drawing.Size(211, 35)
         Me.lbliniciar.TabIndex = 1
@@ -52,9 +52,9 @@ Partial Class FrmLogIn
         '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(79, 136)
+        Me.TextBox1.Location = New System.Drawing.Point(52, 154)
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(125, 22)
+        Me.TextBox1.Size = New System.Drawing.Size(186, 22)
         Me.TextBox1.TabIndex = 2
         Me.TextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -63,7 +63,7 @@ Partial Class FrmLogIn
         Me.lbllogin.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.lbllogin.AutoSize = True
         Me.lbllogin.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbllogin.Location = New System.Drawing.Point(86, 25)
+        Me.lbllogin.Location = New System.Drawing.Point(87, 54)
         Me.lbllogin.Name = "lbllogin"
         Me.lbllogin.Size = New System.Drawing.Size(118, 41)
         Me.lbllogin.TabIndex = 0
@@ -78,9 +78,9 @@ Partial Class FrmLogIn
         Me.Panel1.Controls.Add(Me.btnacceder)
         Me.Panel1.Controls.Add(Me.TextBox1)
         Me.Panel1.Controls.Add(Me.lbliniciar)
-        Me.Panel1.Location = New System.Drawing.Point(259, 66)
+        Me.Panel1.Location = New System.Drawing.Point(256, 77)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(300, 300)
+        Me.Panel1.Size = New System.Drawing.Size(286, 273)
         Me.Panel1.TabIndex = 4
         '
         'FrmLogIn

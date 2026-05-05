@@ -46,6 +46,7 @@ Partial Class FrmFichar
         'LabelTitulo
         '
         Me.LabelTitulo.Dock = System.Windows.Forms.DockStyle.Top
+        Me.LabelTitulo.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelTitulo.Location = New System.Drawing.Point(0, 0)
         Me.LabelTitulo.Name = "LabelTitulo"
         Me.LabelTitulo.Size = New System.Drawing.Size(658, 34)
@@ -56,7 +57,7 @@ Partial Class FrmFichar
         'lblFecha
         '
         Me.lblFecha.AutoSize = True
-        Me.lblFecha.Location = New System.Drawing.Point(308, 34)
+        Me.lblFecha.Location = New System.Drawing.Point(307, 34)
         Me.lblFecha.Name = "lblFecha"
         Me.lblFecha.Size = New System.Drawing.Size(45, 16)
         Me.lblFecha.TabIndex = 1
@@ -68,7 +69,7 @@ Partial Class FrmFichar
         'lvlFecha1
         '
         Me.lvlFecha1.AutoSize = True
-        Me.lvlFecha1.Location = New System.Drawing.Point(257, 34)
+        Me.lvlFecha1.Location = New System.Drawing.Point(253, 34)
         Me.lvlFecha1.Name = "lvlFecha1"
         Me.lvlFecha1.Size = New System.Drawing.Size(48, 16)
         Me.lvlFecha1.TabIndex = 3
@@ -117,14 +118,17 @@ Partial Class FrmFichar
         '
         'btnEntrada
         '
+        Me.btnEntrada.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.btnEntrada.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.btnEntrada.FlatAppearance.BorderSize = 4
+        Me.btnEntrada.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnEntrada.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.btnEntrada.Location = New System.Drawing.Point(402, 135)
         Me.btnEntrada.Name = "btnEntrada"
         Me.btnEntrada.Size = New System.Drawing.Size(89, 34)
         Me.btnEntrada.TabIndex = 13
         Me.btnEntrada.Text = "Fichar"
-        Me.btnEntrada.UseVisualStyleBackColor = True
+        Me.btnEntrada.UseVisualStyleBackColor = False
         '
         'Label1
         '
@@ -137,6 +141,7 @@ Partial Class FrmFichar
         '
         'DataGridView1
         '
+        Me.DataGridView1.BackgroundColor = System.Drawing.SystemColors.ActiveCaption
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Dia, Me.Hora})
         Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom

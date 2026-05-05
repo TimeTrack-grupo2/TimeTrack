@@ -43,7 +43,7 @@ Partial Class FrmAlumnos
         '
         'Panel1
         '
-        Me.Panel1.BackColor = System.Drawing.SystemColors.ActiveBorder
+        Me.Panel1.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.Panel1.Controls.Add(Me.cboCiclos)
         Me.Panel1.Controls.Add(Me.btnGuardar)
         Me.Panel1.Controls.Add(Me.txtDNI)
@@ -73,14 +73,16 @@ Partial Class FrmAlumnos
         '
         'btnGuardar
         '
+        Me.btnGuardar.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.btnGuardar.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ControlLight
         Me.btnGuardar.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDark
-        Me.btnGuardar.Location = New System.Drawing.Point(53, 388)
+        Me.btnGuardar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnGuardar.Location = New System.Drawing.Point(44, 388)
         Me.btnGuardar.Name = "btnGuardar"
-        Me.btnGuardar.Size = New System.Drawing.Size(75, 23)
+        Me.btnGuardar.Size = New System.Drawing.Size(91, 28)
         Me.btnGuardar.TabIndex = 11
         Me.btnGuardar.Text = "Guardar"
-        Me.btnGuardar.UseVisualStyleBackColor = True
+        Me.btnGuardar.UseVisualStyleBackColor = False
         '
         'txtDNI
         '
@@ -115,9 +117,9 @@ Partial Class FrmAlumnos
         Me.lblApellido2.AutoSize = True
         Me.lblApellido2.Location = New System.Drawing.Point(41, 187)
         Me.lblApellido2.Name = "lblApellido2"
-        Me.lblApellido2.Size = New System.Drawing.Size(64, 16)
+        Me.lblApellido2.Size = New System.Drawing.Size(67, 16)
         Me.lblApellido2.TabIndex = 5
-        Me.lblApellido2.Text = "Apellido2"
+        Me.lblApellido2.Text = "Apellido 2"
         '
         'lblDNI
         '
@@ -157,7 +159,7 @@ Partial Class FrmAlumnos
         '
         'Label1
         '
-        Me.Label1.BackColor = System.Drawing.SystemColors.ActiveBorder
+        Me.Label1.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.Location = New System.Drawing.Point(12, 9)
         Me.Label1.Name = "Label1"

@@ -34,12 +34,12 @@ Partial Class FrmFichar
         Me.lblCurso = New System.Windows.Forms.Label()
         Me.cmbCurso = New System.Windows.Forms.ComboBox()
         Me.btnEntrada = New System.Windows.Forms.Button()
-        Me.btnSalida = New System.Windows.Forms.Button()
-        Me.btnLimpiar = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.Dia = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Hora = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -127,30 +127,12 @@ Partial Class FrmFichar
         '
         Me.btnEntrada.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.btnEntrada.FlatAppearance.BorderSize = 4
-        Me.btnEntrada.Location = New System.Drawing.Point(238, 200)
+        Me.btnEntrada.Location = New System.Drawing.Point(402, 135)
         Me.btnEntrada.Name = "btnEntrada"
         Me.btnEntrada.Size = New System.Drawing.Size(89, 34)
         Me.btnEntrada.TabIndex = 13
-        Me.btnEntrada.Text = "Entrada"
+        Me.btnEntrada.Text = "Fichar"
         Me.btnEntrada.UseVisualStyleBackColor = True
-        '
-        'btnSalida
-        '
-        Me.btnSalida.Location = New System.Drawing.Point(344, 200)
-        Me.btnSalida.Name = "btnSalida"
-        Me.btnSalida.Size = New System.Drawing.Size(89, 34)
-        Me.btnSalida.TabIndex = 14
-        Me.btnSalida.Text = "Salida"
-        Me.btnSalida.UseVisualStyleBackColor = True
-        '
-        'btnLimpiar
-        '
-        Me.btnLimpiar.Location = New System.Drawing.Point(293, 240)
-        Me.btnLimpiar.Name = "btnLimpiar"
-        Me.btnLimpiar.Size = New System.Drawing.Size(89, 34)
-        Me.btnLimpiar.TabIndex = 15
-        Me.btnLimpiar.Text = "Limpiar"
-        Me.btnLimpiar.UseVisualStyleBackColor = True
         '
         'Label1
         '
@@ -188,15 +170,31 @@ Partial Class FrmFichar
         Me.Hora.Name = "Hora"
         Me.Hora.Width = 125
         '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(140, 201)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(125, 22)
+        Me.TextBox1.TabIndex = 19
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(21, 207)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(113, 16)
+        Me.Label2.TabIndex = 20
+        Me.Label2.Text = "Horas realizadas:"
+        '
         'FrmFichar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(658, 491)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.btnLimpiar)
-        Me.Controls.Add(Me.btnSalida)
         Me.Controls.Add(Me.btnEntrada)
         Me.Controls.Add(Me.cmbCurso)
         Me.Controls.Add(Me.lblCurso)
@@ -226,10 +224,10 @@ Partial Class FrmFichar
     Friend WithEvents lblCurso As Label
     Friend WithEvents cmbCurso As ComboBox
     Friend WithEvents btnEntrada As Button
-    Friend WithEvents btnSalida As Button
-    Friend WithEvents btnLimpiar As Button
     Friend WithEvents Label1 As Label
     Friend WithEvents DataGridView1 As DataGridView
     Friend WithEvents Dia As DataGridViewTextBoxColumn
     Friend WithEvents Hora As DataGridViewTextBoxColumn
+    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents Label2 As Label
 End Class

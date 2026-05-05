@@ -32,7 +32,6 @@ Partial Class FrmFichar
         Me.lblDNI = New System.Windows.Forms.Label()
         Me.lblNombre = New System.Windows.Forms.Label()
         Me.lblCurso = New System.Windows.Forms.Label()
-        Me.cmbCurso = New System.Windows.Forms.ComboBox()
         Me.btnEntrada = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
@@ -40,6 +39,7 @@ Partial Class FrmFichar
         Me.Hora = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -115,14 +115,6 @@ Partial Class FrmFichar
         Me.lblCurso.TabIndex = 9
         Me.lblCurso.Text = "Curso:"
         '
-        'cmbCurso
-        '
-        Me.cmbCurso.FormattingEnabled = True
-        Me.cmbCurso.Location = New System.Drawing.Point(78, 164)
-        Me.cmbCurso.Name = "cmbCurso"
-        Me.cmbCurso.Size = New System.Drawing.Size(78, 24)
-        Me.cmbCurso.TabIndex = 11
-        '
         'btnEntrada
         '
         Me.btnEntrada.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
@@ -186,17 +178,24 @@ Partial Class FrmFichar
         Me.Label2.TabIndex = 20
         Me.Label2.Text = "Horas realizadas:"
         '
+        'TextBox2
+        '
+        Me.TextBox2.Location = New System.Drawing.Point(78, 164)
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.Size = New System.Drawing.Size(100, 22)
+        Me.TextBox2.TabIndex = 21
+        '
         'FrmFichar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(658, 491)
+        Me.Controls.Add(Me.TextBox2)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.btnEntrada)
-        Me.Controls.Add(Me.cmbCurso)
         Me.Controls.Add(Me.lblCurso)
         Me.Controls.Add(Me.lblNombre)
         Me.Controls.Add(Me.lblDNI)
@@ -222,7 +221,6 @@ Partial Class FrmFichar
     Friend WithEvents lblDNI As Label
     Friend WithEvents lblNombre As Label
     Friend WithEvents lblCurso As Label
-    Friend WithEvents cmbCurso As ComboBox
     Friend WithEvents btnEntrada As Button
     Friend WithEvents Label1 As Label
     Friend WithEvents DataGridView1 As DataGridView
@@ -230,4 +228,5 @@ Partial Class FrmFichar
     Friend WithEvents Hora As DataGridViewTextBoxColumn
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents Label2 As Label
+    Friend WithEvents TextBox2 As TextBox
 End Class

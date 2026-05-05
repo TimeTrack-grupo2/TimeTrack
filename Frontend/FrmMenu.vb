@@ -21,4 +21,8 @@ Public Class FrmMenu
         FrmLogIn.Show()
         Me.Close()
     End Sub
+
+    Private Sub btnTareas_Click(sender As Object, e As EventArgs) Handles btnTareas.Click
+        FrmTarea.Show()
+    End Sub
 End Class

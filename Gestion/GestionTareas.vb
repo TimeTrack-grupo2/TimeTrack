@@ -1,4 +1,5 @@
-﻿Imports System.Data.SqlClient
+﻿Imports System.ComponentModel.Design
+Imports System.Data.SqlClient
 Imports BuscarServidor
 Imports Clases
 
@@ -46,17 +47,53 @@ Public Class GestionTareas
             Return listaRa
         Catch ex As Exception
             Return Nothing
+        Finally
+            conexion.Close()
         End Try
     End Function
+    Public Function calcularIdTareaPorJornada(jornada As Jornada) As Integer
+        Dim conexion As New SqlConnection(cadConexion)
+        Try
+            conexion.Open()
+            Dim sqlMaxId As String = "SELECT ISNULL(MAX(ID_TAREA), 0) + 1 FROM TAREAS WHERE TAREA.ID_JORNADA = @IDJORNADA"
+            Dim cmdMaxId As New SqlCommand(sqlMaxId, conexion)
+            cmdMaxId.Parameters.AddWithValue("@IDJORNADA", jornada.ID_JORNADA)
+            Dim nuevoId As Integer = CInt(cmdMaxId.ExecuteScalar())
+            If (nuevoId = 0) Then
+                Return Nothing
+            End If
+            Return nuevoId
+        Catch ex As Exception
+            Return Nothing
+        Finally
+            conexion.Close()
 
-    Public Function agregarTarea(idJornada As String, idModulo As String, idCiclo As String, horas As Integer, descripcion As String) As String
+        End Try
+    End Function
+    Public Function agregarTarea(tarea As Tarea) As String
 
 
         Dim conexion As New SqlConnection(cadConexion)
         Try
             conexion.Open()
-            Dim sql As String = "I"
+
+            Dim sqlInsertar As String = "INSERT INTO TAREAS VALUES(@DNI, @ID_JORNADA, @ID_TAREA, @HORAS, @DESCRIPCION)"
+            Dim cmdInsert As New SqlCommand(sqlInsertar, conexion)
+            cmdInsert.Parameters.AddWithValue("@DNI", tarea.Dni)
+            cmdInsert.Parameters.AddWithValue("@ID_JONADA", tarea.Id_Jornada)
+            cmdInsert.Parameters.AddWithValue("@ID_TAREA", tarea.Id_Tarea)
+            cmdInsert.Parameters.AddWithValue("@HORAS", tarea.Horas)
+            cmdInsert.Parameters.AddWithValue("@DESCRIPCION", tarea.Descripcion)
+
+            Dim numFilas As Integer = cmdInsert.ExecuteNonQuery()
+            If numFilas = 0 Then
+                Return "Error al añadir la tarea."
+            End If
+            Return "La tarea se a añadido con exito."
         Catch ex As Exception
+            Return ex.Message
+        Finally
+            conexion.Close()
         End Try
     End Function
 End Class

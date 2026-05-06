@@ -141,17 +141,17 @@ Partial Class FrmFichar
         '
         'dtgMovimientos
         '
-        Me.DataGridView1.BackgroundColor = System.Drawing.SystemColors.ActiveCaption
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Dia, Me.Hora})
-        Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.DataGridView1.Location = New System.Drawing.Point(0, 341)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.RowHeadersVisible = False
-        Me.DataGridView1.RowHeadersWidth = 51
-        Me.DataGridView1.RowTemplate.Height = 24
-        Me.DataGridView1.Size = New System.Drawing.Size(658, 150)
-        Me.DataGridView1.TabIndex = 18
+        Me.dtgMovimientos.BackgroundColor = System.Drawing.SystemColors.ActiveCaption
+        Me.dtgMovimientos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dtgMovimientos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Dia, Me.Hora})
+        Me.dtgMovimientos.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.dtgMovimientos.Location = New System.Drawing.Point(0, 341)
+        Me.dtgMovimientos.Name = "DataGridView1"
+        Me.dtgMovimientos.RowHeadersVisible = False
+        Me.dtgMovimientos.RowHeadersWidth = 51
+        Me.dtgMovimientos.RowTemplate.Height = 24
+        Me.dtgMovimientos.Size = New System.Drawing.Size(658, 150)
+        Me.dtgMovimientos.TabIndex = 18
         '
         'Dia
         '

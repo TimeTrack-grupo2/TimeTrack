@@ -38,13 +38,7 @@ Public Class FrmFichar
         Dim dni As String = txtDNI.Text
         Dim horas As Integer = CInt(txtHoras.Text)
 
-        Dim jornada As New Jornada(
-    dni,
-    0,
-    horas,
-    DateTime.Now,
-    "EN CURSO"       ' ← antes ponía "Entrada"
-)
+        Dim jornada As New Jornada(dni, 0, horas, DateTime.Now, "EN CURSO")
 
         ' Llamar a AnadirJornada solo con la jornada
         Dim errorConexion As String = ""

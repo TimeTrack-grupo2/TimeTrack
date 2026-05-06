@@ -33,7 +33,7 @@ Partial Class FrmMenu
         '
         'Panel1
         '
-        Me.Panel1.BackColor = System.Drawing.SystemColors.ControlDark
+        Me.Panel1.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.Panel1.Controls.Add(Me.btnVolver)
         Me.Panel1.Controls.Add(Me.btnTareas)
         Me.Panel1.Controls.Add(Me.btnFichar)
@@ -50,6 +50,7 @@ Partial Class FrmMenu
         Me.btnVolver.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(26, Byte), Integer), CType(CType(188, Byte), Integer), CType(CType(156, Byte), Integer))
         Me.btnVolver.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(52, Byte), Integer), CType(CType(73, Byte), Integer), CType(CType(94, Byte), Integer))
         Me.btnVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnVolver.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnVolver.ForeColor = System.Drawing.Color.Black
         Me.btnVolver.Location = New System.Drawing.Point(0, 518)
         Me.btnVolver.Name = "btnVolver"
@@ -64,6 +65,7 @@ Partial Class FrmMenu
         Me.btnTareas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(26, Byte), Integer), CType(CType(188, Byte), Integer), CType(CType(156, Byte), Integer))
         Me.btnTareas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(52, Byte), Integer), CType(CType(73, Byte), Integer), CType(CType(94, Byte), Integer))
         Me.btnTareas.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnTareas.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnTareas.ForeColor = System.Drawing.Color.Black
         Me.btnTareas.Location = New System.Drawing.Point(0, 100)
         Me.btnTareas.Name = "btnTareas"
@@ -78,6 +80,7 @@ Partial Class FrmMenu
         Me.btnFichar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(26, Byte), Integer), CType(CType(188, Byte), Integer), CType(CType(156, Byte), Integer))
         Me.btnFichar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(52, Byte), Integer), CType(CType(73, Byte), Integer), CType(CType(94, Byte), Integer))
         Me.btnFichar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnFichar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnFichar.ForeColor = System.Drawing.Color.Black
         Me.btnFichar.Location = New System.Drawing.Point(0, 50)
         Me.btnFichar.Name = "btnFichar"
@@ -92,6 +95,7 @@ Partial Class FrmMenu
         Me.btnDatos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(26, Byte), Integer), CType(CType(188, Byte), Integer), CType(CType(156, Byte), Integer))
         Me.btnDatos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(52, Byte), Integer), CType(CType(73, Byte), Integer), CType(CType(94, Byte), Integer))
         Me.btnDatos.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnDatos.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnDatos.ForeColor = System.Drawing.Color.Black
         Me.btnDatos.Location = New System.Drawing.Point(0, 0)
         Me.btnDatos.Name = "btnDatos"

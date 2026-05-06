@@ -32,7 +32,6 @@ Partial Class FrmFichar
         Me.lblDNI = New System.Windows.Forms.Label()
         Me.lblNombre = New System.Windows.Forms.Label()
         Me.lblCurso = New System.Windows.Forms.Label()
-        Me.cmbCurso = New System.Windows.Forms.ComboBox()
         Me.btnEntrada = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.dtgMovimientos = New System.Windows.Forms.DataGridView()
@@ -40,12 +39,14 @@ Partial Class FrmFichar
         Me.Hora = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.txtHoras = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        CType(Me.dtgMovimientos, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.txtCurso = New System.Windows.Forms.TextBox()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'LabelTitulo
         '
         Me.LabelTitulo.Dock = System.Windows.Forms.DockStyle.Top
+        Me.LabelTitulo.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelTitulo.Location = New System.Drawing.Point(0, 0)
         Me.LabelTitulo.Name = "LabelTitulo"
         Me.LabelTitulo.Size = New System.Drawing.Size(658, 34)
@@ -56,7 +57,7 @@ Partial Class FrmFichar
         'lblFecha
         '
         Me.lblFecha.AutoSize = True
-        Me.lblFecha.Location = New System.Drawing.Point(308, 34)
+        Me.lblFecha.Location = New System.Drawing.Point(307, 34)
         Me.lblFecha.Name = "lblFecha"
         Me.lblFecha.Size = New System.Drawing.Size(45, 16)
         Me.lblFecha.TabIndex = 1
@@ -68,7 +69,7 @@ Partial Class FrmFichar
         'lvlFecha1
         '
         Me.lvlFecha1.AutoSize = True
-        Me.lvlFecha1.Location = New System.Drawing.Point(257, 34)
+        Me.lvlFecha1.Location = New System.Drawing.Point(253, 34)
         Me.lvlFecha1.Name = "lvlFecha1"
         Me.lvlFecha1.Size = New System.Drawing.Size(48, 16)
         Me.lvlFecha1.TabIndex = 3
@@ -115,24 +116,19 @@ Partial Class FrmFichar
         Me.lblCurso.TabIndex = 9
         Me.lblCurso.Text = "Curso:"
         '
-        'cmbCurso
-        '
-        Me.cmbCurso.FormattingEnabled = True
-        Me.cmbCurso.Location = New System.Drawing.Point(78, 164)
-        Me.cmbCurso.Name = "cmbCurso"
-        Me.cmbCurso.Size = New System.Drawing.Size(78, 24)
-        Me.cmbCurso.TabIndex = 11
-        '
         'btnEntrada
         '
+        Me.btnEntrada.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.btnEntrada.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.btnEntrada.FlatAppearance.BorderSize = 4
+        Me.btnEntrada.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnEntrada.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.btnEntrada.Location = New System.Drawing.Point(402, 135)
         Me.btnEntrada.Name = "btnEntrada"
         Me.btnEntrada.Size = New System.Drawing.Size(89, 34)
         Me.btnEntrada.TabIndex = 13
         Me.btnEntrada.Text = "Fichar"
-        Me.btnEntrada.UseVisualStyleBackColor = True
+        Me.btnEntrada.UseVisualStyleBackColor = False
         '
         'Label1
         '
@@ -145,16 +141,17 @@ Partial Class FrmFichar
         '
         'dtgMovimientos
         '
-        Me.dtgMovimientos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dtgMovimientos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Dia, Me.Hora})
-        Me.dtgMovimientos.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.dtgMovimientos.Location = New System.Drawing.Point(0, 341)
-        Me.dtgMovimientos.Name = "dtgMovimientos"
-        Me.dtgMovimientos.RowHeadersVisible = False
-        Me.dtgMovimientos.RowHeadersWidth = 51
-        Me.dtgMovimientos.RowTemplate.Height = 24
-        Me.dtgMovimientos.Size = New System.Drawing.Size(658, 150)
-        Me.dtgMovimientos.TabIndex = 18
+        Me.DataGridView1.BackgroundColor = System.Drawing.SystemColors.ActiveCaption
+        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Dia, Me.Hora})
+        Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.DataGridView1.Location = New System.Drawing.Point(0, 341)
+        Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.RowHeadersVisible = False
+        Me.DataGridView1.RowHeadersWidth = 51
+        Me.DataGridView1.RowTemplate.Height = 24
+        Me.DataGridView1.Size = New System.Drawing.Size(658, 150)
+        Me.DataGridView1.TabIndex = 18
         '
         'Dia
         '
@@ -186,17 +183,24 @@ Partial Class FrmFichar
         Me.Label2.TabIndex = 20
         Me.Label2.Text = "Horas realizadas:"
         '
+        'txtCurso
+        '
+        Me.txtCurso.Location = New System.Drawing.Point(78, 164)
+        Me.txtCurso.Name = "txtCurso"
+        Me.txtCurso.Size = New System.Drawing.Size(100, 22)
+        Me.txtCurso.TabIndex = 21
+        '
         'FrmFichar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(658, 491)
+        Me.Controls.Add(Me.txtCurso)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.txtHoras)
         Me.Controls.Add(Me.dtgMovimientos)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.btnEntrada)
-        Me.Controls.Add(Me.cmbCurso)
         Me.Controls.Add(Me.lblCurso)
         Me.Controls.Add(Me.lblNombre)
         Me.Controls.Add(Me.lblDNI)
@@ -222,7 +226,6 @@ Partial Class FrmFichar
     Friend WithEvents lblDNI As Label
     Friend WithEvents lblNombre As Label
     Friend WithEvents lblCurso As Label
-    Friend WithEvents cmbCurso As ComboBox
     Friend WithEvents btnEntrada As Button
     Friend WithEvents Label1 As Label
     Friend WithEvents dtgMovimientos As DataGridView
@@ -230,4 +233,5 @@ Partial Class FrmFichar
     Friend WithEvents Hora As DataGridViewTextBoxColumn
     Friend WithEvents txtHoras As TextBox
     Friend WithEvents Label2 As Label
+    Friend WithEvents txtCurso As TextBox
 End Class

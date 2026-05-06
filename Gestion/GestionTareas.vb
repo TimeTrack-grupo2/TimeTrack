@@ -10,7 +10,7 @@ Public Class GestionTareas
         cadConexion = $"Data Source = {MiServidor.Servidor(errorConexion)}; Initial Catalog = GRUPO2; Integrated Security = SSPI; MultipleActiveResultSets=true"
     End Sub
 
-    Public Function modulosPorCiclo(idCiclo) As List(Of Modulo)
+    Public Function ModulosPorCiclo(idCiclo) As List(Of Modulo)
         Dim conexion As New SqlConnection(cadConexion)
         Dim listaModulos As New List(Of Modulo)
         Try
@@ -32,7 +32,7 @@ Public Class GestionTareas
 
     End Function
 
-    Public Function raPorModulos(idModulo) As List(Of Ra)
+    Public Function RaPorModulos(idModulo) As List(Of Ra)
         Dim conexion As New SqlConnection
         Dim listaRa As New List(Of Ra)
         Try
@@ -51,7 +51,7 @@ Public Class GestionTareas
             conexion.Close()
         End Try
     End Function
-    Public Function calcularIdTareaPorJornada(jornada As Jornada) As Integer
+    Public Function CalcularIdTareaPorJornada(jornada As Jornada) As Integer
         Dim conexion As New SqlConnection(cadConexion)
         Try
             conexion.Open()
@@ -70,7 +70,7 @@ Public Class GestionTareas
 
         End Try
     End Function
-    Public Function agregarTarea(tarea As Tarea) As String
+    Public Function AgregarTarea(tarea As Tarea) As String
 
 
         Dim conexion As New SqlConnection(cadConexion)
@@ -94,6 +94,28 @@ Public Class GestionTareas
             Return ex.Message
         Finally
             conexion.Close()
+        End Try
+    End Function
+    Public Function EliminarTarea(tarea As Tarea) As String
+        Dim conexion As New SqlConnection(cadConexion)
+        Try
+
+            Dim sql As String = "DELETE FROM TAREAS WHERE TAREAS.DNI = @DNI AND TAREAS.ID_JORNADA = @ID_JORNADA AND TAREAS.ID_TAREA = @ID_TAREA"
+            Dim cmdDelete As New SqlCommand(sql, conexion)
+            cmdDelete.Parameters.AddWithValue("@DNI", tarea.Dni)
+            cmdDelete.Parameters.AddWithValue("@ID_JORNADA", tarea.Id_Jornada)
+            cmdDelete.Parameters.AddWithValue("@ID_TAREA", tarea.Id_Tarea)
+
+            Dim numFilas As Integer = cmdDelete.ExecuteNonQuery
+            If numFilas = 0 Then
+                Return "Error al eliminar la tarea."
+            End If
+            Return "La tarea se elimino con exito"
+        Catch ex As Exception
+            Return ex.Message
+        Finally
+            conexion.Close()
+
         End Try
     End Function
 End Class

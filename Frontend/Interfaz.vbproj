@@ -73,10 +73,6 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FrmTarea.Designer.vb">
-      <DependentUpon>FrmTarea.vb</DependentUpon>
-    </Compile>
-    <Compile Include="FrmTarea.vb" />
     <Compile Include="FrmAlumnos.Designer.vb">
       <DependentUpon>FrmAlumnos.vb</DependentUpon>
     </Compile>
@@ -99,6 +95,12 @@
       <DependentUpon>FrmMenu.vb</DependentUpon>
     </Compile>
     <Compile Include="FrmMenu.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTarea.Designer.vb">
+      <DependentUpon>FrmTarea.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTarea.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Module1.vb" />

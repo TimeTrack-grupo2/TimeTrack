@@ -22,6 +22,12 @@ Partial Class FrmTarea
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.dgvTareas = New System.Windows.Forms.DataGridView()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.ComboBox2 = New System.Windows.Forms.ComboBox()
@@ -36,15 +42,59 @@ Partial Class FrmTarea
         Me.lblApellido = New System.Windows.Forms.Label()
         Me.lblNombre = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.dgvTareas = New System.Windows.Forms.DataGridView()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Panel1.SuspendLayout()
         CType(Me.dgvTareas, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
+        '
+        'dgvTareas
+        '
+        Me.dgvTareas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgvTareas.BackgroundColor = System.Drawing.SystemColors.InactiveCaption
+        Me.dgvTareas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvTareas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5})
+        Me.dgvTareas.Location = New System.Drawing.Point(237, 12)
+        Me.dgvTareas.Name = "dgvTareas"
+        Me.dgvTareas.ReadOnly = True
+        Me.dgvTareas.RowHeadersWidth = 51
+        Me.dgvTareas.RowTemplate.Height = 24
+        Me.dgvTareas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgvTareas.Size = New System.Drawing.Size(644, 141)
+        Me.dgvTareas.TabIndex = 4
+        '
+        'Column1
+        '
+        Me.Column1.HeaderText = "#"
+        Me.Column1.MinimumWidth = 6
+        Me.Column1.Name = "Column1"
+        Me.Column1.ReadOnly = True
+        '
+        'Column2
+        '
+        Me.Column2.HeaderText = "Descripción"
+        Me.Column2.MinimumWidth = 6
+        Me.Column2.Name = "Column2"
+        Me.Column2.ReadOnly = True
+        '
+        'Column3
+        '
+        Me.Column3.HeaderText = "Horas"
+        Me.Column3.MinimumWidth = 6
+        Me.Column3.Name = "Column3"
+        Me.Column3.ReadOnly = True
+        '
+        'Column4
+        '
+        Me.Column4.HeaderText = "Módulo"
+        Me.Column4.MinimumWidth = 6
+        Me.Column4.Name = "Column4"
+        Me.Column4.ReadOnly = True
+        '
+        'Column5
+        '
+        Me.Column5.HeaderText = "RA asociado"
+        Me.Column5.MinimumWidth = 6
+        Me.Column5.Name = "Column5"
+        Me.Column5.ReadOnly = True
         '
         'Panel1
         '
@@ -67,7 +117,7 @@ Partial Class FrmTarea
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(217, 450)
-        Me.Panel1.TabIndex = 1
+        Me.Panel1.TabIndex = 3
         '
         'Button1
         '
@@ -188,73 +238,34 @@ Partial Class FrmTarea
         Me.Label1.Text = "Gestión de tareas"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
-        'dgvTareas
-        '
-        Me.dgvTareas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.dgvTareas.BackgroundColor = System.Drawing.SystemColors.InactiveCaption
-        Me.dgvTareas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvTareas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5})
-        Me.dgvTareas.Location = New System.Drawing.Point(257, 12)
-        Me.dgvTareas.Name = "dgvTareas"
-        Me.dgvTareas.ReadOnly = True
-        Me.dgvTareas.RowHeadersWidth = 51
-        Me.dgvTareas.RowTemplate.Height = 24
-        Me.dgvTareas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvTareas.Size = New System.Drawing.Size(677, 164)
-        Me.dgvTareas.TabIndex = 2
-        '
-        'Column1
-        '
-        Me.Column1.HeaderText = "#"
-        Me.Column1.MinimumWidth = 6
-        Me.Column1.Name = "Column1"
-        Me.Column1.ReadOnly = True
-        '
-        'Column2
-        '
-        Me.Column2.HeaderText = "Descripción"
-        Me.Column2.MinimumWidth = 6
-        Me.Column2.Name = "Column2"
-        Me.Column2.ReadOnly = True
-        '
-        'Column3
-        '
-        Me.Column3.HeaderText = "Horas"
-        Me.Column3.MinimumWidth = 6
-        Me.Column3.Name = "Column3"
-        Me.Column3.ReadOnly = True
-        '
-        'Column4
-        '
-        Me.Column4.HeaderText = "Módulo"
-        Me.Column4.MinimumWidth = 6
-        Me.Column4.Name = "Column4"
-        Me.Column4.ReadOnly = True
-        '
-        'Column5
-        '
-        Me.Column5.HeaderText = "RA asociado"
-        Me.Column5.MinimumWidth = 6
-        Me.Column5.Name = "Column5"
-        Me.Column5.ReadOnly = True
-        '
         'FrmTarea
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1002, 450)
+        Me.ClientSize = New System.Drawing.Size(940, 450)
         Me.Controls.Add(Me.dgvTareas)
         Me.Controls.Add(Me.Panel1)
         Me.Name = "FrmTarea"
-        Me.Text = "Form1"
+        Me.Text = "FrmTarea"
+        CType(Me.dgvTareas, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
-        CType(Me.dgvTareas, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
 
+    Friend WithEvents dgvTareas As DataGridView
+    Friend WithEvents Column1 As DataGridViewTextBoxColumn
+    Friend WithEvents Column2 As DataGridViewTextBoxColumn
+    Friend WithEvents Column3 As DataGridViewTextBoxColumn
+    Friend WithEvents Column4 As DataGridViewTextBoxColumn
+    Friend WithEvents Column5 As DataGridViewTextBoxColumn
     Friend WithEvents Panel1 As Panel
+    Friend WithEvents Button1 As Button
+    Friend WithEvents ComboBox2 As ComboBox
+    Friend WithEvents Label3 As Label
+    Friend WithEvents Label2 As Label
+    Friend WithEvents ComboBox1 As ComboBox
     Friend WithEvents btnGuardar As Button
     Friend WithEvents txtApellido2 As TextBox
     Friend WithEvents txtApellido As TextBox
@@ -263,15 +274,4 @@ Partial Class FrmTarea
     Friend WithEvents lblApellido As Label
     Friend WithEvents lblNombre As Label
     Friend WithEvents Label1 As Label
-    Friend WithEvents Button1 As Button
-    Friend WithEvents ComboBox2 As ComboBox
-    Friend WithEvents Label3 As Label
-    Friend WithEvents Label2 As Label
-    Friend WithEvents ComboBox1 As ComboBox
-    Friend WithEvents dgvTareas As DataGridView
-    Friend WithEvents Column1 As DataGridViewTextBoxColumn
-    Friend WithEvents Column2 As DataGridViewTextBoxColumn
-    Friend WithEvents Column3 As DataGridViewTextBoxColumn
-    Friend WithEvents Column4 As DataGridViewTextBoxColumn
-    Friend WithEvents Column5 As DataGridViewTextBoxColumn
 End Class

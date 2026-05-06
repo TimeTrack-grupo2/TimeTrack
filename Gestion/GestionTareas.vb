@@ -99,6 +99,7 @@ Public Class GestionTareas
     Public Function EliminarTarea(tarea As Tarea) As String
         Dim conexion As New SqlConnection(cadConexion)
         Try
+            conexion.Open()
 
             Dim sql As String = "DELETE FROM TAREAS WHERE TAREAS.DNI = @DNI AND TAREAS.ID_JORNADA = @ID_JORNADA AND TAREAS.ID_TAREA = @ID_TAREA"
             Dim cmdDelete As New SqlCommand(sql, conexion)
@@ -115,7 +116,30 @@ Public Class GestionTareas
             Return ex.Message
         Finally
             conexion.Close()
-
         End Try
+
+    End Function
+
+    Public Function BuscarTarea(alumno As Alumno) As List(Of Tarea)
+        Dim conexion As New SqlConnection
+        Dim listaTareas As New List(Of Tarea)
+        Try
+            conexion.Open()
+
+            Dim sql As String = "SELECT (*) FROM TAREAS WHERE TAREAS.DNI = @DNI"
+            Dim cmd As New SqlCommand(sql, conexion)
+            cmd.Parameters.AddWithValue("@DNI", alumno.Dni)
+
+            Dim drCmd As SqlDataReader = cmd.ExecuteReader
+            While drCmd.Read
+                listaTareas.Add(New Tarea(drCmd("DNI"), drCmd("ID_JORNADA"), drCmd("ID_TAREA"), drCmd("HORAS"), drCmd("DESCRIPCION")))
+            End While
+
+        Catch ex As Exception
+            Return Nothing
+        Finally
+            conexion.Close()
+        End Try
+        Return listaTareas
     End Function
 End Class

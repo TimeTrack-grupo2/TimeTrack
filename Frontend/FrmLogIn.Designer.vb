@@ -34,7 +34,7 @@ Partial Class FrmLogIn
         '
         Me.btnacceder.Location = New System.Drawing.Point(94, 191)
         Me.btnacceder.Name = "btnacceder"
-        Me.btnacceder.Size = New System.Drawing.Size(94, 23)
+        Me.btnacceder.Size = New System.Drawing.Size(94, 31)
         Me.btnacceder.TabIndex = 3
         Me.btnacceder.Text = "Iniciar sesion"
         Me.btnacceder.UseVisualStyleBackColor = True
@@ -85,6 +85,7 @@ Partial Class FrmLogIn
         '
         'FrmLogIn
         '
+        Me.AcceptButton = Me.btnacceder
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(819, 426)

@@ -76,9 +76,7 @@
     <Compile Include="FrmTarea.Designer.vb">
       <DependentUpon>FrmTarea.vb</DependentUpon>
     </Compile>
-    <Compile Include="FrmTarea.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="FrmTarea.vb" />
     <Compile Include="FrmAlumnos.Designer.vb">
       <DependentUpon>FrmAlumnos.vb</DependentUpon>
     </Compile>

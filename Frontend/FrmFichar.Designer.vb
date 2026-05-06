@@ -35,12 +35,12 @@ Partial Class FrmFichar
         Me.cmbCurso = New System.Windows.Forms.ComboBox()
         Me.btnEntrada = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.dtgMovimientos = New System.Windows.Forms.DataGridView()
         Me.Dia = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Hora = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.txtHoras = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dtgMovimientos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'LabelTitulo
@@ -143,18 +143,18 @@ Partial Class FrmFichar
         Me.Label1.TabIndex = 17
         Me.Label1.Text = "Registro de Movimientos"
         '
-        'DataGridView1
+        'dtgMovimientos
         '
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Dia, Me.Hora})
-        Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.DataGridView1.Location = New System.Drawing.Point(0, 341)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.RowHeadersVisible = False
-        Me.DataGridView1.RowHeadersWidth = 51
-        Me.DataGridView1.RowTemplate.Height = 24
-        Me.DataGridView1.Size = New System.Drawing.Size(658, 150)
-        Me.DataGridView1.TabIndex = 18
+        Me.dtgMovimientos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dtgMovimientos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Dia, Me.Hora})
+        Me.dtgMovimientos.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.dtgMovimientos.Location = New System.Drawing.Point(0, 341)
+        Me.dtgMovimientos.Name = "dtgMovimientos"
+        Me.dtgMovimientos.RowHeadersVisible = False
+        Me.dtgMovimientos.RowHeadersWidth = 51
+        Me.dtgMovimientos.RowTemplate.Height = 24
+        Me.dtgMovimientos.Size = New System.Drawing.Size(658, 150)
+        Me.dtgMovimientos.TabIndex = 18
         '
         'Dia
         '
@@ -170,12 +170,12 @@ Partial Class FrmFichar
         Me.Hora.Name = "Hora"
         Me.Hora.Width = 125
         '
-        'TextBox1
+        'txtHoras
         '
-        Me.TextBox1.Location = New System.Drawing.Point(140, 201)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(125, 22)
-        Me.TextBox1.TabIndex = 19
+        Me.txtHoras.Location = New System.Drawing.Point(140, 201)
+        Me.txtHoras.Name = "txtHoras"
+        Me.txtHoras.Size = New System.Drawing.Size(125, 22)
+        Me.txtHoras.TabIndex = 19
         '
         'Label2
         '
@@ -192,8 +192,8 @@ Partial Class FrmFichar
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(658, 491)
         Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.TextBox1)
-        Me.Controls.Add(Me.DataGridView1)
+        Me.Controls.Add(Me.txtHoras)
+        Me.Controls.Add(Me.dtgMovimientos)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.btnEntrada)
         Me.Controls.Add(Me.cmbCurso)
@@ -207,7 +207,7 @@ Partial Class FrmFichar
         Me.Controls.Add(Me.LabelTitulo)
         Me.Name = "FrmFichar"
         Me.Text = "FrmFichar"
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dtgMovimientos, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -225,9 +225,9 @@ Partial Class FrmFichar
     Friend WithEvents cmbCurso As ComboBox
     Friend WithEvents btnEntrada As Button
     Friend WithEvents Label1 As Label
-    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents dtgMovimientos As DataGridView
     Friend WithEvents Dia As DataGridViewTextBoxColumn
     Friend WithEvents Hora As DataGridViewTextBoxColumn
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents txtHoras As TextBox
     Friend WithEvents Label2 As Label
 End Class

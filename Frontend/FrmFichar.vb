@@ -1,4 +1,7 @@
-﻿Public Class FrmFichar
+﻿Imports Clases
+Imports Gestion
+
+Public Class FrmFichar
 
 
     Private Sub FrmFichar_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -32,4 +35,39 @@
 
     End Sub
 
+    Private Sub btnEntrada_Click(sender As Object, e As EventArgs) Handles btnEntrada.Click
+        ' Los datos DNI, Nombre y Curso ya están cargados automáticamente
+        Dim dni As String = txtDNI.Text
+        Dim horas As Integer = CInt(txtHoras.Text)
+
+        Dim jornada As New Jornada(
+    dni,
+    0,
+    horas,
+    DateTime.Now,
+    "EN CURSO"       ' ← antes ponía "Entrada"
+)
+
+        ' Llamar a AnadirJornada solo con la jornada
+        Dim errorConexion As String = ""
+        Dim gestionJornada As New gestionJornadas(errorConexion)
+        Dim resultado As String = gestionJornada.AnadirJornada(jornada)
+
+        MessageBox.Show(resultado, "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+        If resultado.Contains("con éxito") Then
+            LimpiarFormulario()
+            Dim fila As New DataGridViewRow()
+            fila.CreateCells(dtgMovimientos)
+            fila.Cells(0).Value = DateTime.Now.ToShortDateString
+            fila.Cells(1).Value = DateTime.Now.ToString("HH:mm:ss")   ' Columna Hora
+            dtgMovimientos.Rows.Add(fila)
+        End If
+    End Sub
+
+    Private Sub LimpiarFormulario()
+        txtDNI.Text = ""
+        txtHoras.Text = ""
+        txtNombre.Text = ""
+    End Sub
 End Class

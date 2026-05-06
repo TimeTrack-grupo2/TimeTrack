@@ -54,18 +54,13 @@ Public Class FrmFichar
         MessageBox.Show(resultado, "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
         If resultado.Contains("con éxito") Then
-            LimpiarFormulario()
             Dim fila As New DataGridViewRow()
             fila.CreateCells(dtgMovimientos)
             fila.Cells(0).Value = DateTime.Now.ToShortDateString
-            fila.Cells(1).Value = DateTime.Now.ToString("HH:mm:ss")   ' Columna Hora
+            fila.Cells(1).Value = txtHoras.Text
             dtgMovimientos.Rows.Add(fila)
         End If
     End Sub
 
-    Private Sub LimpiarFormulario()
-        txtDNI.Text = ""
-        txtHoras.Text = ""
-        txtNombre.Text = ""
-    End Sub
+
 End Class

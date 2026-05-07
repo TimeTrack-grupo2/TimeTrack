@@ -40,6 +40,7 @@ Partial Class FrmFichar
         Me.txtHoras = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtCurso = New System.Windows.Forms.TextBox()
+        Me.btnVolver = New System.Windows.Forms.Button()
         CType(Me.dtgMovimientos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -146,7 +147,7 @@ Partial Class FrmFichar
         Me.dtgMovimientos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Dia, Me.Hora})
         Me.dtgMovimientos.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.dtgMovimientos.Location = New System.Drawing.Point(0, 341)
-        Me.dtgMovimientos.Name = "DataGridView1"
+        Me.dtgMovimientos.Name = "dtgMovimientos"
         Me.dtgMovimientos.RowHeadersVisible = False
         Me.dtgMovimientos.RowHeadersWidth = 51
         Me.dtgMovimientos.RowTemplate.Height = 24
@@ -190,11 +191,21 @@ Partial Class FrmFichar
         Me.txtCurso.Size = New System.Drawing.Size(100, 22)
         Me.txtCurso.TabIndex = 21
         '
+        'btnVolver
+        '
+        Me.btnVolver.Location = New System.Drawing.Point(564, 307)
+        Me.btnVolver.Name = "btnVolver"
+        Me.btnVolver.Size = New System.Drawing.Size(82, 28)
+        Me.btnVolver.TabIndex = 22
+        Me.btnVolver.Text = "Volver"
+        Me.btnVolver.UseVisualStyleBackColor = True
+        '
         'FrmFichar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(658, 491)
+        Me.Controls.Add(Me.btnVolver)
         Me.Controls.Add(Me.txtCurso)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.txtHoras)
@@ -234,4 +245,5 @@ Partial Class FrmFichar
     Friend WithEvents txtHoras As TextBox
     Friend WithEvents Label2 As Label
     Friend WithEvents txtCurso As TextBox
+    Friend WithEvents btnVolver As Button
 End Class

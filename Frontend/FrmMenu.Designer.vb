@@ -29,6 +29,11 @@ Partial Class FrmMenu
         Me.btnFichar = New System.Windows.Forms.Button()
         Me.btnDatos = New System.Windows.Forms.Button()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.lblHoras = New System.Windows.Forms.Label()
+        Me.lblDias = New System.Windows.Forms.Label()
+        Me.lblTitHoras = New System.Windows.Forms.Label()
+        Me.lblTitDias = New System.Windows.Forms.Label()
+        Me.lblTitulo = New System.Windows.Forms.Label()
         Me.DataGridViewJornadas = New System.Windows.Forms.DataGridView()
         Me.NombreAlumno = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.HoraEntrada = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -117,6 +122,11 @@ Partial Class FrmMenu
         'Panel2
         '
         Me.Panel2.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.Panel2.Controls.Add(Me.lblHoras)
+        Me.Panel2.Controls.Add(Me.lblDias)
+        Me.Panel2.Controls.Add(Me.lblTitHoras)
+        Me.Panel2.Controls.Add(Me.lblTitDias)
+        Me.Panel2.Controls.Add(Me.lblTitulo)
         Me.Panel2.Controls.Add(Me.DataGridViewJornadas)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel2.ForeColor = System.Drawing.Color.Black
@@ -125,16 +135,62 @@ Partial Class FrmMenu
         Me.Panel2.Size = New System.Drawing.Size(932, 568)
         Me.Panel2.TabIndex = 1
         '
+        'lblHoras
+        '
+        Me.lblHoras.AutoSize = True
+        Me.lblHoras.Location = New System.Drawing.Point(691, 138)
+        Me.lblHoras.Name = "lblHoras"
+        Me.lblHoras.Size = New System.Drawing.Size(48, 16)
+        Me.lblHoras.TabIndex = 5
+        Me.lblHoras.Text = "Label2"
+        '
+        'lblDias
+        '
+        Me.lblDias.AutoSize = True
+        Me.lblDias.Location = New System.Drawing.Point(204, 138)
+        Me.lblDias.Name = "lblDias"
+        Me.lblDias.Size = New System.Drawing.Size(48, 16)
+        Me.lblDias.TabIndex = 4
+        Me.lblDias.Text = "Label1"
+        '
+        'lblTitHoras
+        '
+        Me.lblTitHoras.AutoSize = True
+        Me.lblTitHoras.Location = New System.Drawing.Point(652, 99)
+        Me.lblTitHoras.Name = "lblTitHoras"
+        Me.lblTitHoras.Size = New System.Drawing.Size(87, 16)
+        Me.lblTitHoras.TabIndex = 2
+        Me.lblTitHoras.Text = "Horas totales"
+        '
+        'lblTitDias
+        '
+        Me.lblTitDias.AutoSize = True
+        Me.lblTitDias.Location = New System.Drawing.Point(143, 99)
+        Me.lblTitDias.Name = "lblTitDias"
+        Me.lblTitDias.Size = New System.Drawing.Size(109, 16)
+        Me.lblTitDias.TabIndex = 1
+        Me.lblTitDias.Text = "Dias Trabajados"
+        '
+        'lblTitulo
+        '
+        Me.lblTitulo.AutoSize = True
+        Me.lblTitulo.Location = New System.Drawing.Point(21, 18)
+        Me.lblTitulo.Name = "lblTitulo"
+        Me.lblTitulo.Size = New System.Drawing.Size(138, 16)
+        Me.lblTitulo.TabIndex = 0
+        Me.lblTitulo.Text = "Jornadas Trabajadas"
+        Me.lblTitulo.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        '
         'DataGridViewJornadas
         '
         Me.DataGridViewJornadas.BackgroundColor = System.Drawing.Color.White
         Me.DataGridViewJornadas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridViewJornadas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.NombreAlumno, Me.HoraEntrada, Me.HorasRestantes, Me.Estado, Me.VerTareas})
-        Me.DataGridViewJornadas.Location = New System.Drawing.Point(0, 0)
+        Me.DataGridViewJornadas.Location = New System.Drawing.Point(0, 175)
         Me.DataGridViewJornadas.Name = "DataGridViewJornadas"
         Me.DataGridViewJornadas.RowHeadersWidth = 51
         Me.DataGridViewJornadas.RowTemplate.Height = 24
-        Me.DataGridViewJornadas.Size = New System.Drawing.Size(1058, 565)
+        Me.DataGridViewJornadas.Size = New System.Drawing.Size(920, 390)
         Me.DataGridViewJornadas.TabIndex = 0
         '
         'NombreAlumno
@@ -181,9 +237,6 @@ Partial Class FrmMenu
         Me.VerTareas.UseColumnTextForButtonValue = True
         Me.VerTareas.Width = 125
         '
-        'TimerRecargarJornadas
-        '
-        '
         'FrmMenu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -195,6 +248,7 @@ Partial Class FrmMenu
         Me.Text = "Form1"
         Me.Panel1.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
+        Me.Panel2.PerformLayout()
         CType(Me.DataGridViewJornadas, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -206,6 +260,11 @@ Partial Class FrmMenu
     Friend WithEvents btnFichar As Button
     Friend WithEvents btnDatos As Button
     Friend WithEvents Panel2 As Panel
+    Friend WithEvents lblTitulo As Label
+    Friend WithEvents lblTitHoras As Label
+    Friend WithEvents lblTitDias As Label
+    Friend WithEvents lblHoras As Label
+    Friend WithEvents lblDias As Label
     Friend WithEvents DataGridViewJornadas As DataGridView
     Friend WithEvents TimerRecargarJornadas As Timer
     Friend WithEvents NombreAlumno As DataGridViewTextBoxColumn

@@ -93,6 +93,25 @@ Public Class gestionJornadas
             conexion.Close()
         End Try
     End Function
+    Public Function ObtenerJornadasAlumno(dni As String) As DataTable
+        Dim conexion As New SqlConnection(cadConexion)
+        Dim tabla As New DataTable()
+        Try
+            conexion.Open()
+            Dim sql As String = "SELECT ID_JORNADA, FECHA_ENTRADA, HORAS, ESTADO
+                             FROM JORNADAS
+                             WHERE DNI = @DNI
+                             ORDER BY FECHA_ENTRADA DESC"
+            Dim cmd As New SqlCommand(sql, conexion)
+            cmd.Parameters.AddWithValue("@DNI", dni)
+            Dim adapter As New SqlDataAdapter(cmd)
+            adapter.Fill(tabla)
+        Catch ex As Exception
+        Finally
+            conexion.Close()
+        End Try
+        Return tabla
+    End Function
 
     Public Function ObtenerJornadaOrdenadasPorDia() As List(Of Jornada)
         Dim lista As New List(Of Jornada)

@@ -54,7 +54,19 @@ Public Class FrmFichar
             fila.Cells(1).Value = txtHoras.Text
             dtgMovimientos.Rows.Add(fila)
         End If
+
+        Dim tablaJornadas As DataTable = gestionJornada.ObtenerJornadasAlumno(alumno.Dni)
+
+        Dim menu As FrmMenu = CType(Application.OpenForms("FrmMenu"), FrmMenu)
+        If menu IsNot Nothing Then
+            menu.lblDias.Text = tablaJornadas.Rows.Count.ToString()
+            Dim totalHoras As Integer = tablaJornadas.AsEnumerable().Sum(Function(r) Convert.ToInt32(r("HORAS")))
+            menu.lblHoras.Text = totalHoras.ToString()
+        End If
+
     End Sub
 
-
+    Private Sub btnVolver_Click(sender As Object, e As EventArgs) Handles btnVolver.Click
+        Me.Close()
+    End Sub
 End Class

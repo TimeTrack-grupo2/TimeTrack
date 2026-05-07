@@ -243,3 +243,59 @@ INSERT INTO RA (id_ra, id_modulo, id_ciclo, RA	) VALUES
 -- FCT
 (48,19,3,'Se integra en el entorno laboral'),
 (49,19,3,'Aplica competencias profesionales en empresa');
+
+--INSERT DE ALUMNOS
+INSERT INTO ALUMNOS (DNI, NOMBRE, APELLIDO1, APELLIDO2, ID_CICLO) VALUES
+('12345678Z', 'Maxim', 'Perez', 'Lopez', 1),
+('23456789D', 'Carlos', 'Garcia', 'Martinez', 1),
+('34567890V', 'Lucia', 'Fernandez', 'Sanchez', 2),
+('45678901G', 'Marta', 'Gomez', 'Ruiz', 2),
+('56789012B', 'Pablo', 'Diaz', 'Hernandez', 1);
+
+--INSERT DE JORNADAS
+INSERT INTO JORNADAS (DNI, ID_JORNADA, HORAS, FECHA_ENTRADA, ESTADO) VALUES
+-- HOY
+('12345678Z', 1, 8, GETDATE(), 'EN CURSO'),
+('23456789D', 2, 6, DATEADD(HOUR, -2, GETDATE()), 'EN CURSO'),
+('34567890V', 3, 4, DATEADD(HOUR, -5, GETDATE()), 'REALIZADO'),
+
+-- AYER
+('45678901G', 4, 8, DATEADD(DAY, -1, GETDATE()), 'REALIZADO'),
+
+-- HACE 2 DIAS
+('56789012B', 5, 7, DATEADD(DAY, -2, GETDATE()), 'REALIZADO'),
+
+-- HOY SIN EMPEZAR
+('12345678Z', 6, 5, DATEADD(HOUR, -1, GETDATE()), 'SIN EMPEZAR');
+
+ALTER TABLE JORNADAS WITH CHECK CHECK CONSTRAINT ALL;
+
+--INSERT DE TAREAS
+INSERT INTO TAREAS (DNI, ID_JORNADA, ID_TAREA, HORAS, DESCRIPCION) VALUES
+
+-- Jornada 1
+('12345678Z', 1, 1, 2, 'Analisis de requisitos'),
+('12345678Z', 1, 2, 3, 'Desarrollo backend'),
+('12345678Z', 1, 3, 1, 'Reunión equipo'),
+
+-- Jornada 2
+('23456789D', 2, 1, 2, 'Diseño base de datos'),
+('23456789D', 2, 2, 1.5, 'Implementación consultas'),
+('23456789D', 2, 3, 1, 'Testing'),
+
+-- Jornada 3
+('34567890V', 3, 1, 2, 'Maquetación UI'),
+('34567890V', 3, 2, 1, 'Corrección errores'),
+
+-- Jornada 4
+('45678901G', 4, 1, 3, 'Documentación'),
+('45678901G', 4, 2, 2, 'Revisión código'),
+
+-- Jornada 5
+('56789012B', 5, 1, 2, 'Investigación'),
+('56789012B', 5, 2, 3, 'Implementación funcionalidad'),
+('56789012B', 5, 3, 1, 'Pruebas'),
+
+-- Jornada 6
+('12345678Z', 6, 1, 1, 'Preparación entorno'),
+('12345678Z', 6, 2, 1.5, 'Planificación tareas');

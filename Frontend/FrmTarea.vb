@@ -1,5 +1,5 @@
 ﻿Public Class FrmTarea
-    Private Sub dgvTareas_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvTareas.CellContentClick
+    Private Sub dgvTareas_CellContentClick(sender As Object, e As DataGridViewCellEventArgs)
 
     End Sub
 
@@ -8,8 +8,12 @@
         Dim listaTareas = gestionTareas.BuscarTarea(alumno)
         If listaTareas IsNot Nothing Then
             For Each tarea In listaTareas
-                dgvTareas.Item
+                DataGridView1.Items.add(tarea)
             Next
         End If
+    End Sub
+
+    Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
+
     End Sub
 End Class

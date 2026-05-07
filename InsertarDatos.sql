@@ -1,10 +1,10 @@
+Delete from TAREA_RA
+Delete from RA
+Delete from MODULOS
+Delete from TAREAS
+Delete from JORNADAS
 Delete from ALUMNOS
 Delete from CICLOS
-Delete from JORNADAS
-Delete from MODULOS
-Delete from RA
-Delete from TAREA_RA
-Delete from TAREAS
 
 
 INSERT INTO CICLOS (ID_CICLO,NOMBRECICLO)

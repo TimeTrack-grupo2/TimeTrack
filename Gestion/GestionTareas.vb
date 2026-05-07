@@ -32,25 +32,7 @@ Public Class GestionTareas
 
     End Function
 
-    Public Function RaPorModulos(idModulo) As List(Of Ra)
-        Dim conexion As New SqlConnection(cadConexion)
-        Dim listaRa As New List(Of Ra)
-        Try
-            conexion.Open()
-            Dim sql As String = "SELECT ID_CICLO, ID_MODULO, ID_RA, RA FROM RA WHERE ID_MODULO = @ID_MODULO"
-            Dim cmd As New SqlCommand(sql, conexion)
-            cmd.Parameters.AddWithValue("@ID_MODULO", idModulo)
-            Dim drRas As SqlDataReader = cmd.ExecuteReader
-            While drRas.Read
-                listaRa.Add(New Ra(drRas("ID_CICLO"), drRas("ID_RA"), drRas("ID_MODULO"), drRas("RA")))
-            End While
-            Return listaRa
-        Catch ex As Exception
-            Return Nothing
-        Finally
-            conexion.Close()
-        End Try
-    End Function
+
     Public Function CalcularIdTareaPorJornada(jornada As Jornada) As Integer
         Dim conexion As New SqlConnection(cadConexion)
         Try

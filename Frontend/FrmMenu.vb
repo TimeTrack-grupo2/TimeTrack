@@ -29,6 +29,7 @@ Public Class FrmMenu
 
     Private Sub TimerRecargarJornadas_Tick(sender As Object, e As EventArgs) Handles TimerRecargarJornadas.Tick
         Dim errorMensaje As String = ""
+
         gestionJornada = New gestionJornadas(errorMensaje)
         gestionTareas = New GestionTareas(errorMensaje)
 
@@ -39,18 +40,28 @@ Public Class FrmMenu
 
         For Each i As Jornada In listaJornadas
 
+            ' Buscar alumno por DNI en la tabla
             Dim filas() As DataRow = tablaAlumnos.Select("DNI = '" & i.Dni & "'")
 
             Dim nombreCompleto As String = ""
+            Dim alumnoActual As Alumno = Nothing
 
             If filas.Length > 0 Then
                 Dim fila As DataRow = filas(0)
+
                 nombreCompleto = fila("NOMBRE").ToString() & " " &
                              fila("APELLIDO1").ToString() & " " &
                              fila("APELLIDO2").ToString()
+
+                ' 🔹 Creamos el objeto Alumno con el DNI
+                alumnoActual = New Alumno(fila("DNI").ToString())
+            Else
+                ' Por si acaso no encuentra el alumno
+                alumnoActual = New Alumno(i.Dni)
             End If
 
-            Dim listaTareas As List(Of Tarea) = gestionTareas.VerTareasPorPersona(i.Dni)
+            ' 🔹 Ahora sí usamos tu método sin tocarlo
+            Dim listaTareas As List(Of Tarea) = gestionTareas.BuscarTarea(alumnoActual)
 
             Dim horasTareas As Integer = 0
 
@@ -70,24 +81,5 @@ Public Class FrmMenu
         )
 
         Next
-    End Sub
-
-    Private Sub FrmMenu_Load(sender As Object, e As EventArgs) Handles Me.Load
-        TimerRecargarJornadas.Interval = 10000
-        TimerRecargarJornadas.Start()
-        TimerRecargarJornadas_Tick(Nothing, Nothing)
-    End Sub
-
-    Private Sub DataGridViewJornadas_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridViewJornadas.CellContentClick
-
-        If e.RowIndex < 0 Then Exit Sub
-
-        If DataGridViewJornadas.Columns(e.ColumnIndex).Name = "VerTareas" Then
-
-            Dim frm As New FrmTarea()
-            frm.ShowDialog()
-
-        End If
-
     End Sub
 End Class

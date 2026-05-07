@@ -117,10 +117,8 @@ Public Class FrmAlumnos
     Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
         If gestionAlumno.ComprobarDatosAlumno(txtDNI.Text) Then
             Dim resultado As DialogResult
-            resultado = MessageBox.Show("¿Estás seguro de que quieres eliminar el alumno?",
-                                "Confirmar eliminación",
-                                MessageBoxButtons.YesNo,
-                                MessageBoxIcon.Warning)
+            resultado = MessageBox.Show("¿Estás seguro de que quieres eliminar el alumno?" + "Ya que tiene jornadas y tareas", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+
             If resultado = DialogResult.No Then Exit Sub
         End If
         MessageBox.Show(gestionAlumno.EliminarAlumno(txtDNI.Text))

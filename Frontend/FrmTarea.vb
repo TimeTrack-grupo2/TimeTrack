@@ -8,7 +8,7 @@
         Dim listaTareas = gestionTareas.BuscarTarea(alumno)
         If listaTareas IsNot Nothing Then
             For Each tarea In listaTareas
-                dgvTareas.Item
+
             Next
         End If
     End Sub

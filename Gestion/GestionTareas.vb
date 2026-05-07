@@ -142,4 +142,45 @@ Public Class GestionTareas
         End Try
         Return listaTareas
     End Function
+
+    Public Function VerTareasPorPersona(dni As String) As List(Of Tarea)
+        Dim lista As New List(Of Tarea)
+        Dim conexion As New SqlConnection(cadConexion)
+
+        Try
+            conexion.Open()
+
+            Dim sql As String = "
+            SELECT *
+            FROM TAREAS
+            WHERE DNI = @dni"
+
+            Dim cmd As New SqlCommand(sql, conexion)
+            cmd.Parameters.AddWithValue("@dni", dni)
+
+            Dim dr As SqlDataReader = cmd.ExecuteReader()
+
+            While dr.Read()
+                Dim tarea As New Tarea(
+                    dr("DNI").ToString(),
+                    Convert.ToInt32(dr("ID_JORNADA")),
+                    Convert.ToInt32(dr("ID_TAREA")),
+                    Convert.ToInt32(dr("HORAS")),
+                    dr("DESCRIPCION").ToString()
+                )
+
+                lista.Add(tarea)
+            End While
+
+            dr.Close()
+
+        Catch ex As Exception
+            Throw
+        Finally
+            conexion.Close()
+        End Try
+
+        Return lista
+    End Function
+
 End Class

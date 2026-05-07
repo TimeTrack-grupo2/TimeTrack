@@ -90,7 +90,7 @@ Public Class FrmMenu
 
     Private Sub DataGridViewJornadas_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridViewJornadas.CellContentClick
 
-        If e.RowIndex >= 0 AndAlso DataGridViewJornadas.Columns(e.ColumnIndex).Name = "verTareas" Then
+        If e.RowIndex >= 0 AndAlso DataGridViewJornadas.Columns(e.ColumnIndex).Name = "VerTareas" Then
             Dim frm As New FrmTarea()
             frm.Show()
         End If

@@ -1,4 +1,5 @@
 ﻿Imports System.Linq.Expressions
+Imports Clases
 Imports Gestion
 
 Public Class FrmMenu
@@ -26,15 +27,59 @@ Public Class FrmMenu
         FrmTarea.Show()
     End Sub
 
-    Private Sub FrmMenu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim tablaJornadas As DataTable = gestionJornada.ObtenerJornadasAlumno(alumno.Dni)
+    Private Sub TimerRecargarJornadas_Tick(sender As Object, e As EventArgs) Handles TimerRecargarJornadas.Tick
+        Dim errorMensaje As String = ""
 
-        lblTitulo.Text = "Jornadas trabajadas — " & alumno.Nombre & " " & alumno.Apellido1 & " " & alumno.Apellido2
+        gestionJornada = New gestionJornadas(errorMensaje)
+        gestionTareas = New GestionTareas(errorMensaje)
 
-        lblDias.Text = tablaJornadas.Rows.Count.ToString()
+        Dim tablaAlumnos As DataTable = gestionAlumno.ObtenerAlumnos(errorMensaje)
+        Dim listaJornadas As List(Of Jornada) = gestionJornada.ObtenerJornadaOrdenadasPorDia()
 
-        Dim totalHoras As Integer = tablaJornadas.AsEnumerable().Sum(Function(r) Convert.ToInt32(r("HORAS")))
-        lblHoras.Text = totalHoras.ToString()
+        DataGridViewJornadas.Rows.Clear()
 
+        For Each i As Jornada In listaJornadas
+
+            ' Buscar alumno por DNI en la tabla
+            Dim filas() As DataRow = tablaAlumnos.Select("DNI = '" & i.Dni & "'")
+
+            Dim nombreCompleto As String = ""
+            Dim alumnoActual As Alumno = Nothing
+
+            If filas.Length > 0 Then
+                Dim fila As DataRow = filas(0)
+
+                nombreCompleto = fila("NOMBRE").ToString() & " " &
+                             fila("APELLIDO1").ToString() & " " &
+                             fila("APELLIDO2").ToString()
+
+                ' 🔹 Creamos el objeto Alumno con el DNI
+                alumnoActual = New Alumno(fila("DNI").ToString())
+            Else
+                ' Por si acaso no encuentra el alumno
+                alumnoActual = New Alumno(i.Dni)
+            End If
+
+            ' 🔹 Ahora sí usamos tu método sin tocarlo
+            Dim listaTareas As List(Of Tarea) = gestionTareas.BuscarTarea(alumnoActual)
+
+            Dim horasTareas As Integer = 0
+
+            For Each t As Tarea In listaTareas
+                If t.Id_Jornada = i.ID_JORNADA Then
+                    horasTareas += t.Horas
+                End If
+            Next
+
+            Dim horasRestantes As Integer = i.HORAS - horasTareas
+
+            DataGridViewJornadas.Rows.Add(
+            nombreCompleto,
+            i.FECHA_ENTRADA,
+            horasRestantes,
+            i.ESTADO
+        )
+
+        Next
     End Sub
 End Class

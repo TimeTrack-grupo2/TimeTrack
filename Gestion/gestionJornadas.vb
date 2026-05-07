@@ -1,4 +1,5 @@
 ﻿Imports System.Data.SqlClient
+Imports System.Net
 Imports BuscarServidor
 Imports Clases
 
@@ -110,6 +111,43 @@ Public Class gestionJornadas
             conexion.Close()
         End Try
         Return tabla
+    End Function
+
+    Public Function ObtenerJornadaOrdenadasPorDia() As List(Of Jornada)
+        Dim lista As New List(Of Jornada)
+        Dim conexion As New SqlConnection(cadConexion)
+
+        Try
+            conexion.Open()
+
+            Dim sqlJornadas As String = "
+            SELECT *
+            FROM JORNADAS
+            ORDER BY FECHA_ENTRADA DESC"
+
+            Dim cmd As New SqlCommand(sqlJornadas, conexion)
+            Dim drJornadas As SqlDataReader = cmd.ExecuteReader()
+
+            While drJornadas.Read()
+                Dim jornada As New Jornada(
+                drJornadas("DNI").ToString(),
+                drJornadas("ID_JORNADA").ToString(),
+                Convert.ToInt32(drJornadas("HORAS")),
+                Convert.ToDateTime(drJornadas("FECHA_ENTRADA")),
+                drJornadas("Estado").ToString()
+            )
+                lista.Add(jornada)
+            End While
+
+            drJornadas.Close()
+
+        Catch ex As Exception
+            Throw
+        Finally
+            conexion.Close()
+        End Try
+
+        Return lista
     End Function
 
 End Class

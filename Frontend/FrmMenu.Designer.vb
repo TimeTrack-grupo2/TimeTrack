@@ -186,11 +186,11 @@ Partial Class FrmMenu
         Me.DataGridViewJornadas.BackgroundColor = System.Drawing.Color.White
         Me.DataGridViewJornadas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridViewJornadas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.NombreAlumno, Me.HoraEntrada, Me.HorasRestantes, Me.Estado, Me.VerTareas})
-        Me.DataGridViewJornadas.Location = New System.Drawing.Point(0, 0)
+        Me.DataGridViewJornadas.Location = New System.Drawing.Point(0, 175)
         Me.DataGridViewJornadas.Name = "DataGridViewJornadas"
         Me.DataGridViewJornadas.RowHeadersWidth = 51
         Me.DataGridViewJornadas.RowTemplate.Height = 24
-        Me.DataGridViewJornadas.Size = New System.Drawing.Size(1058, 565)
+        Me.DataGridViewJornadas.Size = New System.Drawing.Size(920, 390)
         Me.DataGridViewJornadas.TabIndex = 0
         '
         'NombreAlumno

@@ -26,8 +26,6 @@ Public Class FrmMenu
     Private Sub btnTareas_Click(sender As Object, e As EventArgs) Handles btnTareas.Click
         FrmTarea.Show()
     End Sub
-
-<<<<<<< HEAD
     Private Sub FrmMenu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim tablaJornadas As DataTable = gestionJornada.ObtenerJornadasAlumno(alumno.Dni)
 
@@ -38,7 +36,8 @@ Public Class FrmMenu
         Dim totalHoras As Integer = tablaJornadas.AsEnumerable().Sum(Function(r) Convert.ToInt32(r("HORAS")))
         lblHoras.Text = totalHoras.ToString()
 
-=======
+        TimerRecargarJornadas_Tick(Nothing, Nothing)
+    End Sub
     Private Sub TimerRecargarJornadas_Tick(sender As Object, e As EventArgs) Handles TimerRecargarJornadas.Tick
         Dim errorMensaje As String = ""
 
@@ -52,11 +51,10 @@ Public Class FrmMenu
 
         For Each i As Jornada In listaJornadas
 
-            ' Buscar alumno por DNI en la tabla
             Dim filas() As DataRow = tablaAlumnos.Select("DNI = '" & i.Dni & "'")
 
             Dim nombreCompleto As String = ""
-            Dim alumnoActual As Alumno = Nothing
+            Dim alumnoActual As Alumno = New Alumno(i.Dni)
 
             If filas.Length > 0 Then
                 Dim fila As DataRow = filas(0)
@@ -64,24 +62,19 @@ Public Class FrmMenu
                 nombreCompleto = fila("NOMBRE").ToString() & " " &
                              fila("APELLIDO1").ToString() & " " &
                              fila("APELLIDO2").ToString()
-
-                ' 🔹 Creamos el objeto Alumno con el DNI
-                alumnoActual = New Alumno(fila("DNI").ToString())
-            Else
-                ' Por si acaso no encuentra el alumno
-                alumnoActual = New Alumno(i.Dni)
             End If
 
-            ' 🔹 Ahora sí usamos tu método sin tocarlo
             Dim listaTareas As List(Of Tarea) = gestionTareas.BuscarTarea(alumnoActual)
 
             Dim horasTareas As Integer = 0
 
-            For Each t As Tarea In listaTareas
-                If t.Id_Jornada = i.ID_JORNADA Then
-                    horasTareas += t.Horas
-                End If
-            Next
+            If listaTareas IsNot Nothing Then
+                For Each t As Tarea In listaTareas
+                    If t.Id_Jornada = i.ID_JORNADA Then
+                        horasTareas += t.Horas
+                    End If
+                Next
+            End If
 
             Dim horasRestantes As Integer = i.HORAS - horasTareas
 
@@ -93,6 +86,14 @@ Public Class FrmMenu
         )
 
         Next
->>>>>>> 3392bd4599d1646f4bb9ee1ce1901e69fb6333fb
+    End Sub
+
+    Private Sub DataGridViewJornadas_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridViewJornadas.CellContentClick
+
+        If e.RowIndex >= 0 AndAlso DataGridViewJornadas.Columns(e.ColumnIndex).Name = "verTareas" Then
+            Dim frm As New FrmTarea()
+            frm.Show()
+        End If
+
     End Sub
 End Class

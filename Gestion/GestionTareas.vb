@@ -93,24 +93,23 @@ Public Class GestionTareas
         End Try
     End Function
 
-    Public Function BuscarTarea(alumno As Alumno) As List(Of Tarea)
+    Public Function BuscarTarea(alumno As Alumno, ByRef mensaje As String) As DataTable
         Dim conexion As New SqlConnection(cadConexion) ' ✅ Añadida cadena
-        Dim listaTareas As New List(Of Tarea)
+        Dim tablaTareas As New DataTable
         Try
             conexion.Open()
             Dim sql As String = "SELECT * FROM TAREAS WHERE TAREAS.DNI = @DNI" ' ✅ Corregido (*)
             Dim cmd As New SqlCommand(sql, conexion)
             cmd.Parameters.AddWithValue("@DNI", alumno.Dni)
-            Dim drCmd As SqlDataReader = cmd.ExecuteReader
-            While drCmd.Read
-                listaTareas.Add(New Tarea(drCmd("DNI"), drCmd("ID_JORNADA"), drCmd("ID_TAREA"), drCmd("HORAS"), drCmd("DESCRIPCION")))
-            End While
+            Dim adapter As New SqlDataAdapter(cmd)
+            adapter.Fill(tablaTareas)
+
         Catch ex As Exception
-            Return Nothing
+            mensaje = ex.Message
         Finally
             conexion.Close()
         End Try
-        Return listaTareas
+        Return tablaTareas
     End Function
 
     Public Function AgregarTareaRa(tarea As Tarea, idCiclo As Integer, idModulo As Integer, idRa As Integer) As Boolean

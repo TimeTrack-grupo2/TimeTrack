@@ -185,13 +185,22 @@ Partial Class FrmTarea
         '
         'DataGridView1
         '
+        Me.DataGridView1.AllowUserToAddRows = False
         Me.DataGridView1.AllowUserToDeleteRows = False
+        Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.DataGridView1.BackgroundColor = System.Drawing.Color.White
+        Me.DataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(216, 4)
+        Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.DataGridView1.GridColor = System.Drawing.SystemColors.ControlLight
+        Me.DataGridView1.Location = New System.Drawing.Point(217, 0)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
+        Me.DataGridView1.RowHeadersVisible = False
         Me.DataGridView1.RowHeadersWidth = 51
-        Me.DataGridView1.Size = New System.Drawing.Size(724, 423)
+        Me.DataGridView1.RowTemplate.Height = 24
+        Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.DataGridView1.Size = New System.Drawing.Size(723, 450)
         Me.DataGridView1.TabIndex = 4
         '
         'FrmTarea

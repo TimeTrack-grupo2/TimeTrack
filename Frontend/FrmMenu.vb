@@ -27,6 +27,18 @@ Public Class FrmMenu
         FrmTarea.Show()
     End Sub
 
+<<<<<<< HEAD
+    Private Sub FrmMenu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim tablaJornadas As DataTable = gestionJornada.ObtenerJornadasAlumno(alumno.Dni)
+
+        lblTitulo.Text = "Jornadas trabajadas — " & alumno.Nombre & " " & alumno.Apellido1 & " " & alumno.Apellido2
+
+        lblDias.Text = tablaJornadas.Rows.Count.ToString()
+
+        Dim totalHoras As Integer = tablaJornadas.AsEnumerable().Sum(Function(r) Convert.ToInt32(r("HORAS")))
+        lblHoras.Text = totalHoras.ToString()
+
+=======
     Private Sub TimerRecargarJornadas_Tick(sender As Object, e As EventArgs) Handles TimerRecargarJornadas.Tick
         Dim errorMensaje As String = ""
 
@@ -81,5 +93,6 @@ Public Class FrmMenu
         )
 
         Next
+>>>>>>> 3392bd4599d1646f4bb9ee1ce1901e69fb6333fb
     End Sub
 End Class

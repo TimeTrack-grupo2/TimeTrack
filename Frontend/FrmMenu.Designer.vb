@@ -43,7 +43,6 @@ Partial Class FrmMenu
         Me.TimerRecargarJornadas = New System.Windows.Forms.Timer(Me.components)
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
-        Me.Panel2.SuspendLayout()
         CType(Me.DataGridViewJornadas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -238,9 +237,6 @@ Partial Class FrmMenu
         Me.VerTareas.UseColumnTextForButtonValue = True
         Me.VerTareas.Width = 125
         '
-        'TimerRecargarJornadas
-        '
-        '
         'FrmMenu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -253,7 +249,6 @@ Partial Class FrmMenu
         Me.Panel1.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
-        Me.Panel2.ResumeLayout(False)
         CType(Me.DataGridViewJornadas, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 

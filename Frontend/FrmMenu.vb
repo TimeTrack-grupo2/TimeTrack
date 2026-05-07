@@ -23,9 +23,6 @@ Public Class FrmMenu
         Me.Close()
     End Sub
 
-    Private Sub btnTareas_Click(sender As Object, e As EventArgs) Handles btnTareas.Click
-        FrmTarea.Show()
-    End Sub
     Private Sub FrmMenu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim tablaJornadas As DataTable = gestionJornada.ObtenerJornadasAlumno(alumno.Dni)
 
@@ -45,7 +42,15 @@ Public Class FrmMenu
         gestionTareas = New GestionTareas(errorMensaje)
 
         Dim tablaAlumnos As DataTable = gestionAlumno.ObtenerAlumnos(errorMensaje)
-        Dim listaJornadas As List(Of Jornada) = gestionJornada.ObtenerJornadaOrdenadasPorDia()
+        Dim listaJornadas As List(Of Jornada)
+
+        If logIn = GestionAlumno.TipoLogin.Administrador Then
+            listaJornadas = gestionJornada.ObtenerJornadaOrdenadasPorDia()
+        Else
+            listaJornadas = gestionJornada.ObtenerJornadaOrdenadasPorDia() _
+                        .Where(Function(j) j.Dni = alumno.Dni) _
+                        .ToList()
+        End If
 
         DataGridViewJornadas.Rows.Clear()
 
@@ -54,7 +59,6 @@ Public Class FrmMenu
             Dim filas() As DataRow = tablaAlumnos.Select("DNI = '" & i.Dni & "'")
 
             Dim nombreCompleto As String = ""
-            Dim alumnoActual As Alumno = New Alumno(i.Dni)
 
             If filas.Length > 0 Then
                 Dim fila As DataRow = filas(0)
@@ -64,7 +68,7 @@ Public Class FrmMenu
                              fila("APELLIDO2").ToString()
             End If
 
-            Dim tablaTareas As DataTable = gestionTareas.BuscarTarea(alumnoActual, errorMensaje)
+            Dim tablaTareas As DataTable = gestionTareas.BuscarTarea(i.Dni, i.ID_JORNADA, errorMensaje)
 
             Dim horasTareas As Integer = 0
 
@@ -79,11 +83,13 @@ Public Class FrmMenu
             Dim horasRestantes As Integer = i.HORAS - horasTareas
 
             DataGridViewJornadas.Rows.Add(
-            nombreCompleto,
-            i.FECHA_ENTRADA,
-            horasRestantes,
-            i.ESTADO
-        )
+                i.ID_JORNADA,
+                i.Dni,
+                nombreCompleto,
+                i.FECHA_ENTRADA,
+                horasRestantes,
+                i.ESTADO
+            )
 
         Next
     End Sub
@@ -91,8 +97,13 @@ Public Class FrmMenu
     Private Sub DataGridViewJornadas_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridViewJornadas.CellContentClick
 
         If e.RowIndex >= 0 AndAlso DataGridViewJornadas.Columns(e.ColumnIndex).Name = "VerTareas" Then
-            Dim frm As New FrmTarea()
+
+            Dim idJornada As Integer = Convert.ToInt32(DataGridViewJornadas.Rows(e.RowIndex).Cells("ID_JORNADA").Value)
+            Dim dni As String = DataGridViewJornadas.Rows(e.RowIndex).Cells("DNI").Value.ToString()
+
+            Dim frm As New FrmTarea(dni, idJornada)
             frm.Show()
+
         End If
 
     End Sub

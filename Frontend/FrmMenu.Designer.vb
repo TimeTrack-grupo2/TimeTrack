@@ -35,12 +35,14 @@ Partial Class FrmMenu
         Me.lblTitDias = New System.Windows.Forms.Label()
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.DataGridViewJornadas = New System.Windows.Forms.DataGridView()
+        Me.TimerRecargarJornadas = New System.Windows.Forms.Timer(Me.components)
+        Me.ID_JORNADA = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DNI = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.NombreAlumno = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.HoraEntrada = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.HorasRestantes = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Estado = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.VerTareas = New System.Windows.Forms.DataGridViewButtonColumn()
-        Me.TimerRecargarJornadas = New System.Windows.Forms.Timer(Me.components)
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         CType(Me.DataGridViewJornadas, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -185,13 +187,34 @@ Partial Class FrmMenu
         '
         Me.DataGridViewJornadas.BackgroundColor = System.Drawing.Color.White
         Me.DataGridViewJornadas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridViewJornadas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.NombreAlumno, Me.HoraEntrada, Me.HorasRestantes, Me.Estado, Me.VerTareas})
+        Me.DataGridViewJornadas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ID_JORNADA, Me.DNI, Me.NombreAlumno, Me.HoraEntrada, Me.HorasRestantes, Me.Estado, Me.VerTareas})
         Me.DataGridViewJornadas.Location = New System.Drawing.Point(0, 175)
         Me.DataGridViewJornadas.Name = "DataGridViewJornadas"
         Me.DataGridViewJornadas.RowHeadersWidth = 51
         Me.DataGridViewJornadas.RowTemplate.Height = 24
         Me.DataGridViewJornadas.Size = New System.Drawing.Size(920, 390)
         Me.DataGridViewJornadas.TabIndex = 0
+        '
+        'TimerRecargarJornadas
+        '
+        '
+        'ID_JORNADA
+        '
+        Me.ID_JORNADA.HeaderText = "Id"
+        Me.ID_JORNADA.MinimumWidth = 6
+        Me.ID_JORNADA.Name = "ID_JORNADA"
+        Me.ID_JORNADA.ReadOnly = True
+        Me.ID_JORNADA.Visible = False
+        Me.ID_JORNADA.Width = 125
+        '
+        'DNI
+        '
+        Me.DNI.HeaderText = "Dni"
+        Me.DNI.MinimumWidth = 6
+        Me.DNI.Name = "DNI"
+        Me.DNI.ReadOnly = True
+        Me.DNI.Visible = False
+        Me.DNI.Width = 125
         '
         'NombreAlumno
         '
@@ -267,6 +290,8 @@ Partial Class FrmMenu
     Friend WithEvents lblDias As Label
     Friend WithEvents DataGridViewJornadas As DataGridView
     Friend WithEvents TimerRecargarJornadas As Timer
+    Friend WithEvents ID_JORNADA As DataGridViewTextBoxColumn
+    Friend WithEvents DNI As DataGridViewTextBoxColumn
     Friend WithEvents NombreAlumno As DataGridViewTextBoxColumn
     Friend WithEvents HoraEntrada As DataGridViewTextBoxColumn
     Friend WithEvents HorasRestantes As DataGridViewTextBoxColumn

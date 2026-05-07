@@ -93,14 +93,15 @@ Public Class GestionTareas
         End Try
     End Function
 
-    Public Function BuscarTarea(alumno As Alumno, ByRef mensaje As String) As DataTable
+    Public Function BuscarTarea(dni As String, id As Integer, ByRef mensaje As String) As DataTable
         Dim conexion As New SqlConnection(cadConexion) ' ✅ Añadida cadena
         Dim tablaTareas As New DataTable
         Try
             conexion.Open()
-            Dim sql As String = "SELECT * FROM TAREAS WHERE TAREAS.DNI = @DNI" ' ✅ Corregido (*)
+            Dim sql As String = "SELECT * FROM TAREAS WHERE TAREAS.DNI = @DNI AND TAREAS.ID_JORNADA = @ID" ' ✅ Corregido (*)
             Dim cmd As New SqlCommand(sql, conexion)
-            cmd.Parameters.AddWithValue("@DNI", alumno.Dni)
+            cmd.Parameters.AddWithValue("@DNI", dni)
+            cmd.Parameters.AddWithValue("@ID", id)
             Dim adapter As New SqlDataAdapter(cmd)
             adapter.Fill(tablaTareas)
 

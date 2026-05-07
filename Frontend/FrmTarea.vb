@@ -1,6 +1,15 @@
 ﻿Imports Gestion
 
 Public Class FrmTarea
+
+    Private idJornada As Integer
+    Private dniAlumno As String
+
+    Public Sub New(dni As String, id As Integer)
+        InitializeComponent()
+        idJornada = id
+        dniAlumno = dni
+    End Sub
     Private Sub dgvTareas_CellContentClick(sender As Object, e As DataGridViewCellEventArgs)
 
     End Sub
@@ -13,7 +22,7 @@ Public Class FrmTarea
             Return
         End If
         Dim errorMensaje As String = ""
-        Dim tabla As DataTable = gestor.BuscarTarea(alumno, errorConexion)
+        Dim tabla As DataTable = gestor.BuscarTarea(dniAlumno, idJornada, errorConexion)
 
         If Not String.IsNullOrEmpty(errorMensaje) Then
             MessageBox.Show($"Error al obtener tareas: {errorMensaje}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)

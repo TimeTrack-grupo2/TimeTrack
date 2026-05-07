@@ -25,4 +25,16 @@ Public Class FrmMenu
     Private Sub btnTareas_Click(sender As Object, e As EventArgs) Handles btnTareas.Click
         FrmTarea.Show()
     End Sub
+
+    Private Sub FrmMenu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim tablaJornadas As DataTable = gestionJornada.ObtenerJornadasAlumno(alumno.Dni)
+
+        lblTitulo.Text = "Jornadas trabajadas — " & alumno.Nombre & " " & alumno.Apellido1 & " " & alumno.Apellido2
+
+        lblDias.Text = tablaJornadas.Rows.Count.ToString()
+
+        Dim totalHoras As Integer = tablaJornadas.AsEnumerable().Sum(Function(r) Convert.ToInt32(r("HORAS")))
+        lblHoras.Text = totalHoras.ToString()
+
+    End Sub
 End Class

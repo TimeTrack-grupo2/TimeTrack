@@ -23,6 +23,7 @@ Public Class FrmLogIn
     Private Sub FrmLogIn_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim errorEnLaConexion As String = ""
         gestionAlumno = New GestionAlumno(errorEnLaConexion)
+        gestionJornada = New gestionJornadas(errorEnLaConexion)
         If Not String.IsNullOrWhiteSpace(errorEnLaConexion) Then
             MessageBox.Show(errorEnLaConexion)
         End If

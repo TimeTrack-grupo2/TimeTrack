@@ -64,14 +64,14 @@ Public Class FrmMenu
                              fila("APELLIDO2").ToString()
             End If
 
-            Dim listaTareas As List(Of Tarea) = gestionTareas.BuscarTarea(alumnoActual)
+            Dim tablaTareas As DataTable = gestionTareas.BuscarTarea(alumnoActual, errorMensaje)
 
             Dim horasTareas As Integer = 0
 
-            If listaTareas IsNot Nothing Then
-                For Each t As Tarea In listaTareas
-                    If t.Id_Jornada = i.ID_JORNADA Then
-                        horasTareas += t.Horas
+            If tablaTareas IsNot Nothing Then
+                For Each row As DataRow In tablaTareas.Rows
+                    If row("ID_JORNADA") = i.ID_JORNADA Then
+                        horasTareas += Convert.ToInt32(row("HORAS"))
                     End If
                 Next
             End If

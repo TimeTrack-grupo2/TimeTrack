@@ -28,6 +28,9 @@ Partial Class FrmMenu
         Me.btnFichar = New System.Windows.Forms.Button()
         Me.btnDatos = New System.Windows.Forms.Button()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.lblNombre = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.txtBuscarNombre = New System.Windows.Forms.TextBox()
         Me.lblHoras = New System.Windows.Forms.Label()
         Me.lblDias = New System.Windows.Forms.Label()
         Me.lblTitHoras = New System.Windows.Forms.Label()
@@ -42,8 +45,6 @@ Partial Class FrmMenu
         Me.Estado = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.VerTareas = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.TimerRecargarJornadas = New System.Windows.Forms.Timer(Me.components)
-        Me.txtBuscarNombre = New System.Windows.Forms.TextBox()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         CType(Me.DataGridViewJornadas, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -109,6 +110,7 @@ Partial Class FrmMenu
         'Panel2
         '
         Me.Panel2.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.Panel2.Controls.Add(Me.lblNombre)
         Me.Panel2.Controls.Add(Me.Label1)
         Me.Panel2.Controls.Add(Me.txtBuscarNombre)
         Me.Panel2.Controls.Add(Me.lblHoras)
@@ -123,6 +125,31 @@ Partial Class FrmMenu
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(932, 568)
         Me.Panel2.TabIndex = 1
+        '
+        'lblNombre
+        '
+        Me.lblNombre.AutoSize = True
+        Me.lblNombre.Location = New System.Drawing.Point(17, 18)
+        Me.lblNombre.Name = "lblNombre"
+        Me.lblNombre.Size = New System.Drawing.Size(80, 16)
+        Me.lblNombre.TabIndex = 8
+        Me.lblNombre.Text = "Bueno Dias,"
+        '
+        'Label1
+        '
+        Me.Label1.Location = New System.Drawing.Point(6, 128)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(153, 16)
+        Me.Label1.TabIndex = 7
+        Me.Label1.Text = "Buscar alumno"
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'txtBuscarNombre
+        '
+        Me.txtBuscarNombre.Location = New System.Drawing.Point(3, 147)
+        Me.txtBuscarNombre.Name = "txtBuscarNombre"
+        Me.txtBuscarNombre.Size = New System.Drawing.Size(156, 22)
+        Me.txtBuscarNombre.TabIndex = 6
         '
         'lblHoras
         '
@@ -154,7 +181,7 @@ Partial Class FrmMenu
         'lblTitDias
         '
         Me.lblTitDias.AutoSize = True
-        Me.lblTitDias.Location = New System.Drawing.Point(130, 50)
+        Me.lblTitDias.Location = New System.Drawing.Point(160, 50)
         Me.lblTitDias.Name = "lblTitDias"
         Me.lblTitDias.Size = New System.Drawing.Size(109, 16)
         Me.lblTitDias.TabIndex = 1
@@ -162,10 +189,9 @@ Partial Class FrmMenu
         '
         'lblTitulo
         '
-        Me.lblTitulo.AutoSize = True
-        Me.lblTitulo.Location = New System.Drawing.Point(16, 50)
+        Me.lblTitulo.Location = New System.Drawing.Point(325, 35)
         Me.lblTitulo.Name = "lblTitulo"
-        Me.lblTitulo.Size = New System.Drawing.Size(138, 16)
+        Me.lblTitulo.Size = New System.Drawing.Size(240, 40)
         Me.lblTitulo.TabIndex = 0
         Me.lblTitulo.Text = "Jornadas Trabajadas"
         Me.lblTitulo.TextAlign = System.Drawing.ContentAlignment.TopCenter
@@ -248,22 +274,6 @@ Partial Class FrmMenu
         'TimerRecargarJornadas
         '
         '
-        'txtBuscarNombre
-        '
-        Me.txtBuscarNombre.Location = New System.Drawing.Point(3, 147)
-        Me.txtBuscarNombre.Name = "txtBuscarNombre"
-        Me.txtBuscarNombre.Size = New System.Drawing.Size(156, 22)
-        Me.txtBuscarNombre.TabIndex = 6
-        '
-        'Label1
-        '
-        Me.Label1.Location = New System.Drawing.Point(6, 128)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(153, 16)
-        Me.Label1.TabIndex = 7
-        Me.Label1.Text = "Buscar alumno"
-        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
         'FrmMenu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -302,4 +312,5 @@ Partial Class FrmMenu
     Friend WithEvents VerTareas As DataGridViewButtonColumn
     Friend WithEvents Label1 As Label
     Friend WithEvents txtBuscarNombre As TextBox
+    Friend WithEvents lblNombre As Label
 End Class

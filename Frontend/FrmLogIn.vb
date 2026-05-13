@@ -10,8 +10,8 @@ Public Class FrmLogIn
         If logIn = GestionAlumno.TipoLogin.Incorrecto Then
             MessageBox.Show(mensaje)
         Else
-            alumno = New Alumno(dniText)
-            FrmMenu.Show()
+            alumno = New Alumno(dniText.ToUpper)
+            FrmMenu.ShowDialog()
         End If
 
     End Sub

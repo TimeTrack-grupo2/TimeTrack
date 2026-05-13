@@ -28,17 +28,18 @@ Public Class FrmMenu
     End Sub
 
     Private Sub FrmMenu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim fila As DataRow = gestionAlumno.ObtenerAlumnoPorDni(alumno.Dni)
         If logIn = GestionAlumno.TipoLogin.Administrador Then
             lblNombre.Text = "Buenos días, ADMIN"
+        Else
+            Dim fila As DataRow = gestionAlumno.ObtenerAlumnoPorDni(alumno.Dni)
             If fila IsNot Nothing Then
                 alumno.Nombre = fila("NOMBRE").ToString()
                 alumno.Apellido1 = fila("APELLIDO1").ToString()
                 alumno.Apellido2 = fila("APELLIDO2").ToString()
             End If
-
             lblNombre.Text = "Buenos días, " & alumno.Nombre & " " & alumno.Apellido1
         End If
+
         Dim tablaJornadas As DataTable = gestionJornada.ObtenerJornadasAlumno(alumno.Dni)
         lblDias.Text = tablaJornadas.Rows.Count.ToString()
         Dim totalHoras As Integer = tablaJornadas.AsEnumerable().Sum(Function(r) Convert.ToInt32(r("HORAS")))

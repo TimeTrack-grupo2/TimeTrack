@@ -11,7 +11,7 @@ Public Class FrmLogIn
             MessageBox.Show(mensaje)
         Else
             alumno = New Alumno(dniText)
-            FrmMenu.Show()
+            FrmMenu.ShowDialog()
         End If
 
     End Sub

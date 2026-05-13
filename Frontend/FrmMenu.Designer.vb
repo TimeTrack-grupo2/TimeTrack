@@ -159,7 +159,7 @@ Partial Class FrmMenu
         'lblTitulo
         '
         Me.lblTitulo.AutoSize = True
-        Me.lblTitulo.Location = New System.Drawing.Point(21, 18)
+        Me.lblTitulo.Location = New System.Drawing.Point(16, 50)
         Me.lblTitulo.Name = "lblTitulo"
         Me.lblTitulo.Size = New System.Drawing.Size(138, 16)
         Me.lblTitulo.TabIndex = 0

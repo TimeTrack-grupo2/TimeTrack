@@ -34,10 +34,11 @@ El proyecto sigue una arquitectura en capas que separa la lógica de negocio, el
 
 ```
 TimeTrack/
-├── Presentación/        # Interfaz de usuario (formularios, paneles)
-├── Lógica de negocio/   # Reglas de la aplicación, cálculo de horas, alertas
-├── Acceso a datos/      # Repositorios y conexión con SQL Server
-└── Tests/               # Pruebas unitarias con nUnit
+├── BuscarServidor/
+├── Clases/
+├── Frontend/
+├── Gestión/
+└── Test/
 ```
 
 ### Usuarios del sistema

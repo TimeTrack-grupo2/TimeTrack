@@ -16,9 +16,10 @@ Los tutores/as del centro necesitan una herramienta que digitalice y centralice 
 
 
 ## Tecnologías
-| **SQL Server** | Base de datos relacional para almacenamiento de alumnos, empresas, fichajes y tareas |
-| **Visual Studio** | Entorno de desarrollo principal |
-| **nUnit** | Framework de pruebas unitarias |
+- **SQL Server** | Base de datos relacional para almacenamiento de alumnos, empresas, fichajes y tareas. 
+- **Visual Studio** | Entorno de desarrollo principal. 
+- **nUnit** | Framework de pruebas unitarias.
+- **Trello** | Herramienta de gestión de tareas.
 
 
 

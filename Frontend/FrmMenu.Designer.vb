@@ -42,6 +42,8 @@ Partial Class FrmMenu
         Me.Estado = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.VerTareas = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.TimerRecargarJornadas = New System.Windows.Forms.Timer(Me.components)
+        Me.txtBuscarNombre = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         CType(Me.DataGridViewJornadas, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -107,6 +109,8 @@ Partial Class FrmMenu
         'Panel2
         '
         Me.Panel2.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.Panel2.Controls.Add(Me.Label1)
+        Me.Panel2.Controls.Add(Me.txtBuscarNombre)
         Me.Panel2.Controls.Add(Me.lblHoras)
         Me.Panel2.Controls.Add(Me.lblDias)
         Me.Panel2.Controls.Add(Me.lblTitHoras)
@@ -123,7 +127,7 @@ Partial Class FrmMenu
         'lblHoras
         '
         Me.lblHoras.AutoSize = True
-        Me.lblHoras.Location = New System.Drawing.Point(691, 138)
+        Me.lblHoras.Location = New System.Drawing.Point(678, 89)
         Me.lblHoras.Name = "lblHoras"
         Me.lblHoras.Size = New System.Drawing.Size(48, 16)
         Me.lblHoras.TabIndex = 5
@@ -132,7 +136,7 @@ Partial Class FrmMenu
         'lblDias
         '
         Me.lblDias.AutoSize = True
-        Me.lblDias.Location = New System.Drawing.Point(204, 138)
+        Me.lblDias.Location = New System.Drawing.Point(191, 89)
         Me.lblDias.Name = "lblDias"
         Me.lblDias.Size = New System.Drawing.Size(48, 16)
         Me.lblDias.TabIndex = 4
@@ -141,7 +145,7 @@ Partial Class FrmMenu
         'lblTitHoras
         '
         Me.lblTitHoras.AutoSize = True
-        Me.lblTitHoras.Location = New System.Drawing.Point(652, 99)
+        Me.lblTitHoras.Location = New System.Drawing.Point(639, 50)
         Me.lblTitHoras.Name = "lblTitHoras"
         Me.lblTitHoras.Size = New System.Drawing.Size(87, 16)
         Me.lblTitHoras.TabIndex = 2
@@ -150,7 +154,7 @@ Partial Class FrmMenu
         'lblTitDias
         '
         Me.lblTitDias.AutoSize = True
-        Me.lblTitDias.Location = New System.Drawing.Point(143, 99)
+        Me.lblTitDias.Location = New System.Drawing.Point(130, 50)
         Me.lblTitDias.Name = "lblTitDias"
         Me.lblTitDias.Size = New System.Drawing.Size(109, 16)
         Me.lblTitDias.TabIndex = 1
@@ -173,6 +177,7 @@ Partial Class FrmMenu
         Me.DataGridViewJornadas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ID_JORNADA, Me.DNI, Me.NombreAlumno, Me.HoraEntrada, Me.HorasRestantes, Me.Estado, Me.VerTareas})
         Me.DataGridViewJornadas.Location = New System.Drawing.Point(0, 175)
         Me.DataGridViewJornadas.Name = "DataGridViewJornadas"
+        Me.DataGridViewJornadas.RowHeadersVisible = False
         Me.DataGridViewJornadas.RowHeadersWidth = 51
         Me.DataGridViewJornadas.RowTemplate.Height = 24
         Me.DataGridViewJornadas.Size = New System.Drawing.Size(920, 390)
@@ -243,6 +248,22 @@ Partial Class FrmMenu
         'TimerRecargarJornadas
         '
         '
+        'txtBuscarNombre
+        '
+        Me.txtBuscarNombre.Location = New System.Drawing.Point(3, 147)
+        Me.txtBuscarNombre.Name = "txtBuscarNombre"
+        Me.txtBuscarNombre.Size = New System.Drawing.Size(156, 22)
+        Me.txtBuscarNombre.TabIndex = 6
+        '
+        'Label1
+        '
+        Me.Label1.Location = New System.Drawing.Point(6, 128)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(153, 16)
+        Me.Label1.TabIndex = 7
+        Me.Label1.Text = "Buscar alumno"
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
         'FrmMenu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -279,4 +300,6 @@ Partial Class FrmMenu
     Friend WithEvents HorasRestantes As DataGridViewTextBoxColumn
     Friend WithEvents Estado As DataGridViewTextBoxColumn
     Friend WithEvents VerTareas As DataGridViewButtonColumn
+    Friend WithEvents Label1 As Label
+    Friend WithEvents txtBuscarNombre As TextBox
 End Class

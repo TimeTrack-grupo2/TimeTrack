@@ -111,4 +111,17 @@ Public Class FrmMenu
         End If
 
     End Sub
+
+    Private bs As New BindingSource()
+
+    Private Sub txtBuscarNombre_TextChanged(sender As Object, e As EventArgs) Handles txtBuscarNombre.TextChanged
+        Dim texto As String = txtBuscarNombre.Text.Trim().ToLower()
+        DataGridViewJornadas.CurrentCell = Nothing
+        For Each fila As DataGridViewRow In DataGridViewJornadas.Rows
+            If Not fila.IsNewRow Then
+                Dim nombre As String = fila.Cells(2).Value.ToString().ToLower()
+                fila.Visible = nombre.Contains(texto)
+            End If
+        Next
+    End Sub
 End Class

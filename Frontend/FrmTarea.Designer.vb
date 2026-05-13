@@ -31,10 +31,8 @@ Partial Class FrmTarea
         Me.btnGuardar = New System.Windows.Forms.Button()
         Me.txtDescripcion = New System.Windows.Forms.TextBox()
         Me.txtHoras = New System.Windows.Forms.TextBox()
-        Me.txtNombre = New System.Windows.Forms.TextBox()
         Me.lblApellido2 = New System.Windows.Forms.Label()
         Me.lblApellido = New System.Windows.Forms.Label()
-        Me.lblNombre = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.Panel1.SuspendLayout()
@@ -52,10 +50,8 @@ Partial Class FrmTarea
         Me.Panel1.Controls.Add(Me.btnGuardar)
         Me.Panel1.Controls.Add(Me.txtDescripcion)
         Me.Panel1.Controls.Add(Me.txtHoras)
-        Me.Panel1.Controls.Add(Me.txtNombre)
         Me.Panel1.Controls.Add(Me.lblApellido2)
         Me.Panel1.Controls.Add(Me.lblApellido)
-        Me.Panel1.Controls.Add(Me.lblNombre)
         Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Left
         Me.Panel1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
@@ -138,13 +134,6 @@ Partial Class FrmTarea
         Me.txtHoras.Size = New System.Drawing.Size(100, 22)
         Me.txtHoras.TabIndex = 7
         '
-        'txtNombre
-        '
-        Me.txtNombre.Location = New System.Drawing.Point(45, 89)
-        Me.txtNombre.Name = "txtNombre"
-        Me.txtNombre.Size = New System.Drawing.Size(100, 22)
-        Me.txtNombre.TabIndex = 6
-        '
         'lblApellido2
         '
         Me.lblApellido2.AutoSize = True
@@ -162,15 +151,6 @@ Partial Class FrmTarea
         Me.lblApellido.Size = New System.Drawing.Size(47, 16)
         Me.lblApellido.TabIndex = 2
         Me.lblApellido.Text = "Horas:"
-        '
-        'lblNombre
-        '
-        Me.lblNombre.AutoSize = True
-        Me.lblNombre.Location = New System.Drawing.Point(42, 70)
-        Me.lblNombre.Name = "lblNombre"
-        Me.lblNombre.Size = New System.Drawing.Size(99, 16)
-        Me.lblNombre.TabIndex = 1
-        Me.lblNombre.Text = "Jornada actual:"
         '
         'Label1
         '
@@ -227,10 +207,8 @@ Partial Class FrmTarea
     Friend WithEvents btnGuardar As Button
     Friend WithEvents txtDescripcion As TextBox
     Friend WithEvents txtHoras As TextBox
-    Friend WithEvents txtNombre As TextBox
     Friend WithEvents lblApellido2 As Label
     Friend WithEvents lblApellido As Label
-    Friend WithEvents lblNombre As Label
     Friend WithEvents Label1 As Label
     Friend WithEvents DataGridView1 As DataGridView
 End Class

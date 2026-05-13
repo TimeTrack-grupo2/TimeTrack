@@ -4,8 +4,6 @@ Imports Clases
 Imports Gestion
 
 Public Class FrmMenu
-
-
     Private Sub btnDatos_Click(sender As Object, e As EventArgs) Handles btnDatos.Click
         If logIn = GestionAlumno.TipoLogin.Administrador Then
             FrmAlumnos.ShowDialog()

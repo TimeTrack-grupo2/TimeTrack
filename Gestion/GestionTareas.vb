@@ -29,7 +29,6 @@ Public Class GestionTareas
         Finally
             conexion.Close()
         End Try
-
     End Function
 
 

@@ -65,7 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GestionAlumno.vb" />
-    <Compile Include="gestionJornadas.vb" />
+    <Compile Include="GestionJornadas.vb" />
     <Compile Include="GestionTareas.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">

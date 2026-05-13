@@ -3,14 +3,13 @@ Imports System.Net
 Imports BuscarServidor
 Imports Clases
 
-Public Class gestionJornadas
+Public Class GestionJornadas
     Private cadConexion As String
 
     Public Sub New(ByRef errorConexion As String)
         cadConexion = $"Data Source = {MiServidor.Servidor(errorConexion)}; Initial Catalog = GRUPO2; Integrated Security = SSPI; MultipleActiveResultSets=true"
     End Sub
 
-    ' Función auxiliar para calcular el siguiente ID_JORNADA
     Private Function ObtenerNuevoId(conexion As SqlConnection, jornada As Jornada) As Integer
         Dim sqlMaxId As String = "SELECT ISNULL(MAX(ID_JORNADA), 0) + 1 FROM JORNADAS WHERE DNI = @DNI"
         Dim cmdMaxId As New SqlCommand(sqlMaxId, conexion)
@@ -23,7 +22,6 @@ Public Class gestionJornadas
         Try
             conexion.Open()
 
-            ' 1. Verificar que el alumno existe
             Dim sql As String = "SELECT COUNT(*) FROM ALUMNOS WHERE DNI = @dni"
             Dim cmdAlumno As New SqlCommand(sql, conexion)
             cmdAlumno.Parameters.AddWithValue("@dni", jornada.Dni)
@@ -33,10 +31,8 @@ Public Class gestionJornadas
                 Return "El alumno no existe en la base de datos."
             End If
 
-            ' 2. Obtener el siguiente ID_JORNADA (función separada)
             Dim nuevoId As Integer = ObtenerNuevoId(conexion, jornada)
 
-            ' 3. Insertar la jornada con el nuevo ID
             Dim sql2 As String = "INSERT INTO JORNADAS VALUES(@DNI, @ID_JORNADA, @HORAS, @FECHA_ENTRADA, @ESTADO)"
             Dim cmdAnadir As New SqlCommand(sql2, conexion)
             cmdAnadir.Parameters.AddWithValue("@DNI", jornada.Dni)
@@ -50,7 +46,6 @@ Public Class gestionJornadas
                 Return "Error al añadir jornada."
             End If
 
-            ' Actualizar el ID en el objeto jornada
             jornada.ID_JORNADA = nuevoId
 
             Return $"La jornada {jornada.ID_JORNADA} {jornada.FECHA_ENTRADA}, {jornada.ESTADO} se ha añadido con éxito."
@@ -66,7 +61,6 @@ Public Class gestionJornadas
         Try
             conexion.Open()
 
-            ' 1. Verificar que el alumno existe
             Dim sqlDni As String = "SELECT COUNT(*) FROM ALUMNOS WHERE DNI = @DNI"
             Dim cmdDni As New SqlCommand(sqlDni, conexion)
             cmdDni.Parameters.AddWithValue("@DNI", dni)

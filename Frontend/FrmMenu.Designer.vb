@@ -25,7 +25,6 @@ Partial Class FrmMenu
         Me.components = New System.ComponentModel.Container()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.btnVolver = New System.Windows.Forms.Button()
-        Me.btnTareas = New System.Windows.Forms.Button()
         Me.btnFichar = New System.Windows.Forms.Button()
         Me.btnDatos = New System.Windows.Forms.Button()
         Me.Panel2 = New System.Windows.Forms.Panel()
@@ -35,7 +34,6 @@ Partial Class FrmMenu
         Me.lblTitDias = New System.Windows.Forms.Label()
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.DataGridViewJornadas = New System.Windows.Forms.DataGridView()
-        Me.TimerRecargarJornadas = New System.Windows.Forms.Timer(Me.components)
         Me.ID_JORNADA = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DNI = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.NombreAlumno = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -43,6 +41,7 @@ Partial Class FrmMenu
         Me.HorasRestantes = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Estado = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.VerTareas = New System.Windows.Forms.DataGridViewButtonColumn()
+        Me.TimerRecargarJornadas = New System.Windows.Forms.Timer(Me.components)
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         CType(Me.DataGridViewJornadas, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -52,7 +51,6 @@ Partial Class FrmMenu
         '
         Me.Panel1.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.Panel1.Controls.Add(Me.btnVolver)
-        Me.Panel1.Controls.Add(Me.btnTareas)
         Me.Panel1.Controls.Add(Me.btnFichar)
         Me.Panel1.Controls.Add(Me.btnDatos)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Left
@@ -75,21 +73,6 @@ Partial Class FrmMenu
         Me.btnVolver.TabIndex = 3
         Me.btnVolver.Text = "Volver"
         Me.btnVolver.UseVisualStyleBackColor = True
-        '
-        'btnTareas
-        '
-        Me.btnTareas.Dock = System.Windows.Forms.DockStyle.Top
-        Me.btnTareas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(26, Byte), Integer), CType(CType(188, Byte), Integer), CType(CType(156, Byte), Integer))
-        Me.btnTareas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(52, Byte), Integer), CType(CType(73, Byte), Integer), CType(CType(94, Byte), Integer))
-        Me.btnTareas.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnTareas.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnTareas.ForeColor = System.Drawing.Color.Black
-        Me.btnTareas.Location = New System.Drawing.Point(0, 100)
-        Me.btnTareas.Name = "btnTareas"
-        Me.btnTareas.Size = New System.Drawing.Size(200, 50)
-        Me.btnTareas.TabIndex = 2
-        Me.btnTareas.Text = "Tareas"
-        Me.btnTareas.UseVisualStyleBackColor = True
         '
         'btnFichar
         '
@@ -118,7 +101,7 @@ Partial Class FrmMenu
         Me.btnDatos.Name = "btnDatos"
         Me.btnDatos.Size = New System.Drawing.Size(200, 50)
         Me.btnDatos.TabIndex = 0
-        Me.btnDatos.Text = "Base de Datos"
+        Me.btnDatos.Text = "Alumnos"
         Me.btnDatos.UseVisualStyleBackColor = True
         '
         'Panel2
@@ -195,9 +178,6 @@ Partial Class FrmMenu
         Me.DataGridViewJornadas.Size = New System.Drawing.Size(920, 390)
         Me.DataGridViewJornadas.TabIndex = 0
         '
-        'TimerRecargarJornadas
-        '
-        '
         'ID_JORNADA
         '
         Me.ID_JORNADA.HeaderText = "Id"
@@ -260,6 +240,9 @@ Partial Class FrmMenu
         Me.VerTareas.UseColumnTextForButtonValue = True
         Me.VerTareas.Width = 125
         '
+        'TimerRecargarJornadas
+        '
+        '
         'FrmMenu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -279,7 +262,6 @@ Partial Class FrmMenu
 
     Friend WithEvents Panel1 As Panel
     Friend WithEvents btnVolver As Button
-    Friend WithEvents btnTareas As Button
     Friend WithEvents btnFichar As Button
     Friend WithEvents btnDatos As Button
     Friend WithEvents Panel2 As Panel

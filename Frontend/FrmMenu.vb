@@ -1,4 +1,5 @@
-﻿Imports System.Linq.Expressions
+﻿Imports System.Diagnostics.Eventing.Reader
+Imports System.Linq.Expressions
 Imports Clases
 Imports Gestion
 
@@ -12,8 +13,11 @@ Public Class FrmMenu
     End Sub
 
     Private Sub btnFichar_Click(sender As Object, e As EventArgs) Handles btnFichar.Click
-        FrmFichar.ShowDialog()
-
+        If logIn = GestionAlumno.TipoLogin.Administrador Then
+            MessageBox.Show("Los admin no pueden ")
+        Else
+            FrmFichar.ShowDialog()
+        End If
     End Sub
 
     Private Sub btnVolver_Click(sender As Object, e As EventArgs) Handles btnVolver.Click
@@ -36,7 +40,7 @@ Public Class FrmMenu
     Private Sub TimerRecargarJornadas_Tick(sender As Object, e As EventArgs) Handles TimerRecargarJornadas.Tick
         Dim errorMensaje As String = ""
 
-        gestionJornada = New gestionJornadas(errorMensaje)
+        gestionJornada = New GestionJornadas(errorMensaje)
         gestionTareas = New GestionTareas(errorMensaje)
 
         Dim tablaAlumnos As DataTable = gestionAlumno.ObtenerAlumnos(errorMensaje)

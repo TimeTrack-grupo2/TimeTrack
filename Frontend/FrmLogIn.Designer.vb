@@ -24,7 +24,7 @@ Partial Class FrmLogIn
     Private Sub InitializeComponent()
         Me.btnacceder = New System.Windows.Forms.Button()
         Me.lbliniciar = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.txtDni = New System.Windows.Forms.TextBox()
         Me.lbllogin = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel1.SuspendLayout()
@@ -50,13 +50,13 @@ Partial Class FrmLogIn
         Me.lbliniciar.Text = "Inicia sesión con el DNI"
         Me.lbliniciar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'TextBox1
+        'txtDni
         '
-        Me.TextBox1.Location = New System.Drawing.Point(52, 154)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(186, 22)
-        Me.TextBox1.TabIndex = 2
-        Me.TextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.txtDni.Location = New System.Drawing.Point(52, 154)
+        Me.txtDni.Name = "txtDni"
+        Me.txtDni.Size = New System.Drawing.Size(186, 22)
+        Me.txtDni.TabIndex = 2
+        Me.txtDni.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'lbllogin
         '
@@ -76,7 +76,7 @@ Partial Class FrmLogIn
         Me.Panel1.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.Panel1.Controls.Add(Me.lbllogin)
         Me.Panel1.Controls.Add(Me.btnacceder)
-        Me.Panel1.Controls.Add(Me.TextBox1)
+        Me.Panel1.Controls.Add(Me.txtDni)
         Me.Panel1.Controls.Add(Me.lbliniciar)
         Me.Panel1.Location = New System.Drawing.Point(256, 77)
         Me.Panel1.Name = "Panel1"
@@ -99,7 +99,7 @@ Partial Class FrmLogIn
     End Sub
     Friend WithEvents btnacceder As Button
     Friend WithEvents lbliniciar As Label
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents txtDni As TextBox
     Friend WithEvents lbllogin As Label
     Friend WithEvents Panel1 As Panel
 End Class

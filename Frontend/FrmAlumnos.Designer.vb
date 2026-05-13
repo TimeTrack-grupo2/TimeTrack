@@ -35,10 +35,10 @@ Partial Class FrmAlumnos
         Me.lblApellido = New System.Windows.Forms.Label()
         Me.lblNombre = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewAlumnos = New System.Windows.Forms.DataGridView()
         Me.btnEliminar = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataGridViewAlumnos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel1
@@ -168,25 +168,25 @@ Partial Class FrmAlumnos
         Me.Label1.Text = "Base de Datos"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
-        'DataGridView1
+        'DataGridViewAlumnos
         '
-        Me.DataGridView1.AllowUserToAddRows = False
-        Me.DataGridView1.AllowUserToDeleteRows = False
-        Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.DataGridView1.BackgroundColor = System.Drawing.Color.White
-        Me.DataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.DataGridView1.GridColor = System.Drawing.SystemColors.ControlLight
-        Me.DataGridView1.Location = New System.Drawing.Point(200, 0)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.ReadOnly = True
-        Me.DataGridView1.RowHeadersVisible = False
-        Me.DataGridView1.RowHeadersWidth = 51
-        Me.DataGridView1.RowTemplate.Height = 24
-        Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridView1.Size = New System.Drawing.Size(600, 450)
-        Me.DataGridView1.TabIndex = 1
+        Me.DataGridViewAlumnos.AllowUserToAddRows = False
+        Me.DataGridViewAlumnos.AllowUserToDeleteRows = False
+        Me.DataGridViewAlumnos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.DataGridViewAlumnos.BackgroundColor = System.Drawing.Color.White
+        Me.DataGridViewAlumnos.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.DataGridViewAlumnos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridViewAlumnos.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.DataGridViewAlumnos.GridColor = System.Drawing.SystemColors.ControlLight
+        Me.DataGridViewAlumnos.Location = New System.Drawing.Point(200, 0)
+        Me.DataGridViewAlumnos.Name = "DataGridViewAlumnos"
+        Me.DataGridViewAlumnos.ReadOnly = True
+        Me.DataGridViewAlumnos.RowHeadersVisible = False
+        Me.DataGridViewAlumnos.RowHeadersWidth = 51
+        Me.DataGridViewAlumnos.RowTemplate.Height = 24
+        Me.DataGridViewAlumnos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.DataGridViewAlumnos.Size = New System.Drawing.Size(600, 450)
+        Me.DataGridViewAlumnos.TabIndex = 1
         '
         'btnEliminar
         '
@@ -203,13 +203,13 @@ Partial Class FrmAlumnos
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
         Me.Controls.Add(Me.btnEliminar)
-        Me.Controls.Add(Me.DataGridView1)
+        Me.Controls.Add(Me.DataGridViewAlumnos)
         Me.Controls.Add(Me.Panel1)
         Me.Name = "FrmAlumnos"
         Me.Text = "Form1"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataGridViewAlumnos, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -225,7 +225,7 @@ Partial Class FrmAlumnos
     Friend WithEvents lblDNI As Label
     Friend WithEvents txtDNI As TextBox
     Friend WithEvents txtApellido2 As TextBox
-    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents DataGridViewAlumnos As DataGridView
     Friend WithEvents btnGuardar As Button
     Friend WithEvents btnEliminar As Button
     Friend WithEvents cboCiclos As ComboBox

@@ -23,14 +23,14 @@ Partial Class FrmTarea
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.ComboBox2 = New System.Windows.Forms.ComboBox()
+        Me.btnEliminar = New System.Windows.Forms.Button()
+        Me.cboResultadosAprendizaje = New System.Windows.Forms.ComboBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.cboModulos = New System.Windows.Forms.ComboBox()
         Me.btnGuardar = New System.Windows.Forms.Button()
-        Me.txtApellido2 = New System.Windows.Forms.TextBox()
-        Me.txtApellido = New System.Windows.Forms.TextBox()
+        Me.txtDescripcion = New System.Windows.Forms.TextBox()
+        Me.txtHoras = New System.Windows.Forms.TextBox()
         Me.txtNombre = New System.Windows.Forms.TextBox()
         Me.lblApellido2 = New System.Windows.Forms.Label()
         Me.lblApellido = New System.Windows.Forms.Label()
@@ -44,14 +44,14 @@ Partial Class FrmTarea
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.Panel1.Controls.Add(Me.Button1)
-        Me.Panel1.Controls.Add(Me.ComboBox2)
+        Me.Panel1.Controls.Add(Me.btnEliminar)
+        Me.Panel1.Controls.Add(Me.cboResultadosAprendizaje)
         Me.Panel1.Controls.Add(Me.Label3)
         Me.Panel1.Controls.Add(Me.Label2)
-        Me.Panel1.Controls.Add(Me.ComboBox1)
+        Me.Panel1.Controls.Add(Me.cboModulos)
         Me.Panel1.Controls.Add(Me.btnGuardar)
-        Me.Panel1.Controls.Add(Me.txtApellido2)
-        Me.Panel1.Controls.Add(Me.txtApellido)
+        Me.Panel1.Controls.Add(Me.txtDescripcion)
+        Me.Panel1.Controls.Add(Me.txtHoras)
         Me.Panel1.Controls.Add(Me.txtNombre)
         Me.Panel1.Controls.Add(Me.lblApellido2)
         Me.Panel1.Controls.Add(Me.lblApellido)
@@ -64,26 +64,26 @@ Partial Class FrmTarea
         Me.Panel1.Size = New System.Drawing.Size(217, 450)
         Me.Panel1.TabIndex = 3
         '
-        'Button1
+        'btnEliminar
         '
-        Me.Button1.BackColor = System.Drawing.SystemColors.ButtonFace
-        Me.Button1.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ControlLight
-        Me.Button1.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDark
-        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(112, 398)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 30)
-        Me.Button1.TabIndex = 16
-        Me.Button1.Text = "Eliminar"
-        Me.Button1.UseVisualStyleBackColor = False
+        Me.btnEliminar.BackColor = System.Drawing.SystemColors.ButtonFace
+        Me.btnEliminar.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ControlLight
+        Me.btnEliminar.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDark
+        Me.btnEliminar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnEliminar.Location = New System.Drawing.Point(112, 398)
+        Me.btnEliminar.Name = "btnEliminar"
+        Me.btnEliminar.Size = New System.Drawing.Size(75, 30)
+        Me.btnEliminar.TabIndex = 16
+        Me.btnEliminar.Text = "Eliminar"
+        Me.btnEliminar.UseVisualStyleBackColor = False
         '
-        'ComboBox2
+        'cboResultadosAprendizaje
         '
-        Me.ComboBox2.FormattingEnabled = True
-        Me.ComboBox2.Location = New System.Drawing.Point(45, 340)
-        Me.ComboBox2.Name = "ComboBox2"
-        Me.ComboBox2.Size = New System.Drawing.Size(121, 24)
-        Me.ComboBox2.TabIndex = 15
+        Me.cboResultadosAprendizaje.FormattingEnabled = True
+        Me.cboResultadosAprendizaje.Location = New System.Drawing.Point(45, 340)
+        Me.cboResultadosAprendizaje.Name = "cboResultadosAprendizaje"
+        Me.cboResultadosAprendizaje.Size = New System.Drawing.Size(121, 24)
+        Me.cboResultadosAprendizaje.TabIndex = 15
         '
         'Label3
         '
@@ -103,13 +103,13 @@ Partial Class FrmTarea
         Me.Label2.TabIndex = 13
         Me.Label2.Text = "Módulo:"
         '
-        'ComboBox1
+        'cboModulos
         '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(45, 280)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(121, 24)
-        Me.ComboBox1.TabIndex = 12
+        Me.cboModulos.FormattingEnabled = True
+        Me.cboModulos.Location = New System.Drawing.Point(45, 280)
+        Me.cboModulos.Name = "cboModulos"
+        Me.cboModulos.Size = New System.Drawing.Size(121, 24)
+        Me.cboModulos.TabIndex = 12
         '
         'btnGuardar
         '
@@ -124,19 +124,19 @@ Partial Class FrmTarea
         Me.btnGuardar.Text = "Guardar"
         Me.btnGuardar.UseVisualStyleBackColor = False
         '
-        'txtApellido2
+        'txtDescripcion
         '
-        Me.txtApellido2.Location = New System.Drawing.Point(45, 200)
-        Me.txtApellido2.Name = "txtApellido2"
-        Me.txtApellido2.Size = New System.Drawing.Size(100, 22)
-        Me.txtApellido2.TabIndex = 8
+        Me.txtDescripcion.Location = New System.Drawing.Point(45, 200)
+        Me.txtDescripcion.Name = "txtDescripcion"
+        Me.txtDescripcion.Size = New System.Drawing.Size(100, 22)
+        Me.txtDescripcion.TabIndex = 8
         '
-        'txtApellido
+        'txtHoras
         '
-        Me.txtApellido.Location = New System.Drawing.Point(45, 143)
-        Me.txtApellido.Name = "txtApellido"
-        Me.txtApellido.Size = New System.Drawing.Size(100, 22)
-        Me.txtApellido.TabIndex = 7
+        Me.txtHoras.Location = New System.Drawing.Point(45, 143)
+        Me.txtHoras.Name = "txtHoras"
+        Me.txtHoras.Size = New System.Drawing.Size(100, 22)
+        Me.txtHoras.TabIndex = 7
         '
         'txtNombre
         '
@@ -219,14 +219,14 @@ Partial Class FrmTarea
 
     End Sub
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents Button1 As Button
-    Friend WithEvents ComboBox2 As ComboBox
+    Friend WithEvents btnEliminar As Button
+    Friend WithEvents cboResultadosAprendizaje As ComboBox
     Friend WithEvents Label3 As Label
     Friend WithEvents Label2 As Label
-    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents cboModulos As ComboBox
     Friend WithEvents btnGuardar As Button
-    Friend WithEvents txtApellido2 As TextBox
-    Friend WithEvents txtApellido As TextBox
+    Friend WithEvents txtDescripcion As TextBox
+    Friend WithEvents txtHoras As TextBox
     Friend WithEvents txtNombre As TextBox
     Friend WithEvents lblApellido2 As Label
     Friend WithEvents lblApellido As Label

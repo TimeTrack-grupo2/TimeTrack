@@ -34,14 +34,14 @@ Partial Class FrmFichar
         Me.lblCurso = New System.Windows.Forms.Label()
         Me.btnEntrada = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.dtgMovimientos = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewMovimientos = New System.Windows.Forms.DataGridView()
         Me.Dia = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Hora = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.txtHoras = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtCurso = New System.Windows.Forms.TextBox()
         Me.btnVolver = New System.Windows.Forms.Button()
-        CType(Me.dtgMovimientos, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataGridViewMovimientos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'LabelTitulo
@@ -140,19 +140,19 @@ Partial Class FrmFichar
         Me.Label1.TabIndex = 17
         Me.Label1.Text = "Registro de Movimientos"
         '
-        'dtgMovimientos
+        'DataGridViewMovimientos
         '
-        Me.dtgMovimientos.BackgroundColor = System.Drawing.SystemColors.ActiveCaption
-        Me.dtgMovimientos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dtgMovimientos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Dia, Me.Hora})
-        Me.dtgMovimientos.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.dtgMovimientos.Location = New System.Drawing.Point(0, 341)
-        Me.dtgMovimientos.Name = "dtgMovimientos"
-        Me.dtgMovimientos.RowHeadersVisible = False
-        Me.dtgMovimientos.RowHeadersWidth = 51
-        Me.dtgMovimientos.RowTemplate.Height = 24
-        Me.dtgMovimientos.Size = New System.Drawing.Size(658, 150)
-        Me.dtgMovimientos.TabIndex = 18
+        Me.DataGridViewMovimientos.BackgroundColor = System.Drawing.SystemColors.ActiveCaption
+        Me.DataGridViewMovimientos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridViewMovimientos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Dia, Me.Hora})
+        Me.DataGridViewMovimientos.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.DataGridViewMovimientos.Location = New System.Drawing.Point(0, 341)
+        Me.DataGridViewMovimientos.Name = "DataGridViewMovimientos"
+        Me.DataGridViewMovimientos.RowHeadersVisible = False
+        Me.DataGridViewMovimientos.RowHeadersWidth = 51
+        Me.DataGridViewMovimientos.RowTemplate.Height = 24
+        Me.DataGridViewMovimientos.Size = New System.Drawing.Size(658, 150)
+        Me.DataGridViewMovimientos.TabIndex = 18
         '
         'Dia
         '
@@ -209,7 +209,7 @@ Partial Class FrmFichar
         Me.Controls.Add(Me.txtCurso)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.txtHoras)
-        Me.Controls.Add(Me.dtgMovimientos)
+        Me.Controls.Add(Me.DataGridViewMovimientos)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.btnEntrada)
         Me.Controls.Add(Me.lblCurso)
@@ -222,7 +222,7 @@ Partial Class FrmFichar
         Me.Controls.Add(Me.LabelTitulo)
         Me.Name = "FrmFichar"
         Me.Text = "FrmFichar"
-        CType(Me.dtgMovimientos, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataGridViewMovimientos, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -239,7 +239,7 @@ Partial Class FrmFichar
     Friend WithEvents lblCurso As Label
     Friend WithEvents btnEntrada As Button
     Friend WithEvents Label1 As Label
-    Friend WithEvents dtgMovimientos As DataGridView
+    Friend WithEvents DataGridViewMovimientos As DataGridView
     Friend WithEvents Dia As DataGridViewTextBoxColumn
     Friend WithEvents Hora As DataGridViewTextBoxColumn
     Friend WithEvents txtHoras As TextBox

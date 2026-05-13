@@ -42,17 +42,17 @@ Public Class FrmFichar
 
         ' Llamar a AnadirJornada solo con la jornada
         Dim errorConexion As String = ""
-        Dim gestionJornada As New gestionJornadas(errorConexion)
+        Dim gestionJornada As New GestionJornadas(errorConexion)
         Dim resultado As String = gestionJornada.AnadirJornada(jornada)
 
         MessageBox.Show(resultado, "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
         If resultado.Contains("con éxito") Then
             Dim fila As New DataGridViewRow()
-            fila.CreateCells(dtgMovimientos)
+            fila.CreateCells(DataGridViewMovimientos)
             fila.Cells(0).Value = DateTime.Now.ToShortDateString
             fila.Cells(1).Value = txtHoras.Text
-            dtgMovimientos.Rows.Add(fila)
+            DataGridViewMovimientos.Rows.Add(fila)
         End If
 
         Dim tablaJornadas As DataTable = gestionJornada.ObtenerJornadasAlumno(alumno.Dni)

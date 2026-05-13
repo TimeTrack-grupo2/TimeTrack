@@ -83,8 +83,8 @@ Public Class FrmAlumnos
             Return
         End If
 
-        DataGridView1.DataSource = Nothing  ' <- Limpia cualquier enlace previo
-        DataGridView1.DataSource = tabla
+        DataGridViewAlumnos.DataSource = Nothing  ' <- Limpia cualquier enlace previo
+        DataGridViewAlumnos.DataSource = tabla
     End Sub
     Private Sub LimpiarFormulario()
         txtNombre.Text = ""
@@ -97,16 +97,16 @@ Public Class FrmAlumnos
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CargarDatosGrid()
-        Dim ciclos = gestionAlumno.ciclos
+        Dim ciclos = gestionAlumno.Ciclos
         For Each ciclo In ciclos
             cboCiclos.Items.Add(ciclo)
         Next
         cboCiclos.DisplayMember = "NombreCiclo"
     End Sub
 
-    Private Sub DataGridView1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellClick
+    Private Sub DataGridView1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridViewAlumnos.CellClick
         If e.RowIndex >= 0 Then
-            Dim fila As DataGridViewRow = DataGridView1.Rows(e.RowIndex)
+            Dim fila As DataGridViewRow = DataGridViewAlumnos.Rows(e.RowIndex)
             Dim dniSeleccionado As String = fila.Cells(0).Value.ToString()
 
             ' Guardarlo en una variable global o textbox
@@ -126,7 +126,7 @@ Public Class FrmAlumnos
 
     End Sub
 
-    Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
+    Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridViewAlumnos.CellContentClick
 
     End Sub
 End Class

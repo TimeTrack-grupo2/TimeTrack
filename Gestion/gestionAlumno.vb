@@ -100,7 +100,7 @@ Public Class GestionAlumno
 
     End Function
 
-    Public Function ciclos() As List(Of Ciclos)
+    Public Function Ciclos() As List(Of Ciclos)
         Dim conexion As New SqlConnection(cadConexion)
         Try
             conexion.Open()
@@ -127,7 +127,7 @@ Public Class GestionAlumno
             cmdCiclo.Parameters.AddWithValue("@NOMBRE_CICLO", ciclo)
             Dim drCiclo As SqlDataReader = cmdCiclo.ExecuteReader
             If drCiclo.Read Then
-                Dim id_Ciclo As Integer = drCiclo.GetInt16(0) ' Convert.ToInt32(drCiclo("id_ciclo")) ' drCiclo.GetInt32(id_Ciclo)
+                Dim id_Ciclo As Integer = drCiclo.GetInt16(0)
                 Return id_Ciclo
             End If
             mesage = "No existe ningun ciclo con ese nombre"
@@ -136,8 +136,6 @@ Public Class GestionAlumno
             mesage = ex.Message
         End Try
     End Function
-
-    ' Método 2: Elimina tareas, jornadas y el alumno directamente
 
     Public Function ComprobarDatosAlumno(dni As String) As Boolean
         Dim conexion As New SqlConnection(cadConexion)

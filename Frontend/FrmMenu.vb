@@ -13,11 +13,7 @@ Public Class FrmMenu
     End Sub
 
     Private Sub btnFichar_Click(sender As Object, e As EventArgs) Handles btnFichar.Click
-        If logIn = GestionAlumno.TipoLogin.Administrador Then
-            MessageBox.Show("Los admin no pueden ")
-        Else
-            FrmFichar.ShowDialog()
-        End If
+        FrmFichar.ShowDialog()
     End Sub
 
     Private Sub btnVolver_Click(sender As Object, e As EventArgs) Handles btnVolver.Click

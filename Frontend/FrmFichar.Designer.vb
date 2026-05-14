@@ -25,7 +25,7 @@ Partial Class FrmFichar
         Me.components = New System.ComponentModel.Container()
         Me.LabelTitulo = New System.Windows.Forms.Label()
         Me.lblFecha = New System.Windows.Forms.Label()
-        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.TimerFecha = New System.Windows.Forms.Timer(Me.components)
         Me.lvlFecha1 = New System.Windows.Forms.Label()
         Me.txtDNI = New System.Windows.Forms.TextBox()
         Me.txtNombre = New System.Windows.Forms.TextBox()
@@ -64,8 +64,9 @@ Partial Class FrmFichar
         Me.lblFecha.TabIndex = 1
         Me.lblFecha.Text = "Fecha"
         '
-        'Timer1
+        'TimerFecha
         '
+        Me.TimerFecha.Interval = 1000
         '
         'lvlFecha1
         '
@@ -78,14 +79,14 @@ Partial Class FrmFichar
         '
         'txtDNI
         '
-        Me.txtDNI.Location = New System.Drawing.Point(78, 100)
+        Me.txtDNI.Location = New System.Drawing.Point(86, 100)
         Me.txtDNI.Name = "txtDNI"
         Me.txtDNI.Size = New System.Drawing.Size(116, 22)
         Me.txtDNI.TabIndex = 5
         '
         'txtNombre
         '
-        Me.txtNombre.Location = New System.Drawing.Point(78, 132)
+        Me.txtNombre.Location = New System.Drawing.Point(86, 132)
         Me.txtNombre.Name = "txtNombre"
         Me.txtNombre.Size = New System.Drawing.Size(174, 22)
         Me.txtNombre.TabIndex = 6
@@ -170,7 +171,7 @@ Partial Class FrmFichar
         '
         'txtHoras
         '
-        Me.txtHoras.Location = New System.Drawing.Point(140, 201)
+        Me.txtHoras.Location = New System.Drawing.Point(140, 204)
         Me.txtHoras.Name = "txtHoras"
         Me.txtHoras.Size = New System.Drawing.Size(125, 22)
         Me.txtHoras.TabIndex = 19
@@ -186,7 +187,7 @@ Partial Class FrmFichar
         '
         'txtCurso
         '
-        Me.txtCurso.Location = New System.Drawing.Point(78, 164)
+        Me.txtCurso.Location = New System.Drawing.Point(86, 164)
         Me.txtCurso.Name = "txtCurso"
         Me.txtCurso.Size = New System.Drawing.Size(100, 22)
         Me.txtCurso.TabIndex = 21
@@ -230,7 +231,7 @@ Partial Class FrmFichar
 
     Friend WithEvents LabelTitulo As Label
     Friend WithEvents lblFecha As Label
-    Friend WithEvents Timer1 As Timer
+    Friend WithEvents TimerFecha As Timer
     Friend WithEvents lvlFecha1 As Label
     Friend WithEvents txtDNI As TextBox
     Friend WithEvents txtNombre As TextBox

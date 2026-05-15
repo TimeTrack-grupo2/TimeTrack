@@ -3,7 +3,7 @@
 Namespace Tests
 
     Public Class Tests
-
+        Private loginManager As AccesoManager
         <SetUp>
         Public Sub Setup()
         End Sub

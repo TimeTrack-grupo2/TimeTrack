@@ -13,7 +13,25 @@ Public Class GestionAlumno
     Public Sub New(ByRef errorConexion As String)
         cadConexion = $"Data Source = {MiServidor.Servidor(errorConexion)}; Initial Catalog = GRUPO2; Integrated Security = SSPI; MultipleActiveResultSets=true"
     End Sub
-
+    Public Function ObtenerAlumnoQueIniciaSesion(dni As String) As Alumno
+        Dim conexion As New SqlConnection(cadConexion)
+        Try
+            conexion.Open()
+            Dim sql As String = "SELECT * FROM ALUMNOS WHERE DNI = @DNI"
+            Dim cmd As New SqlCommand(sql, conexion)
+            cmd.Parameters.AddWithValue("@DNI", dni)
+            Dim drAlumno As SqlDataReader = cmd.ExecuteReader()
+            If drAlumno.Read() Then
+                Dim idCiclo As Integer = If(IsDBNull(drAlumno("ID_CICLO")), 0, CInt(drAlumno("ID_CICLO")))
+                Return New Alumno(drAlumno("DNI"), drAlumno("NOMBRE"), drAlumno("APELLIDO1"), drAlumno("APELLIDO2"), idCiclo)
+            End If
+        Catch ex As Exception
+            Return Nothing
+        Finally
+            conexion.Close()
+        End Try
+        Return New Alumno()
+    End Function
     Public Function LogIn(dni As String, ByRef mensaje As String) As TipoLogin
         mensaje = ""
         Dim conexion As New SqlConnection(cadConexion)

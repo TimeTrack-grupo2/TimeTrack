@@ -32,13 +32,13 @@ Public Class GestionTareas
     End Function
 
 
-    Public Function CalcularIdTareaPorJornada(jornada As Jornada) As Integer
+    Public Function CalcularIdTareaPorJornada(idJornada As Integer) As Integer
         Dim conexion As New SqlConnection(cadConexion)
         Try
             conexion.Open()
             Dim sqlMaxId As String = "SELECT ISNULL(MAX(ID_TAREA), 0) + 1 FROM TAREAS WHERE TAREAS.ID_JORNADA = @IDJORNADA"
             Dim cmdMaxId As New SqlCommand(sqlMaxId, conexion)
-            cmdMaxId.Parameters.AddWithValue("@IDJORNADA", jornada.ID_JORNADA)
+            cmdMaxId.Parameters.AddWithValue("@IDJORNADA", idJornada)
             Dim nuevoId As Integer = CInt(cmdMaxId.ExecuteScalar())
             If (nuevoId = 0) Then
                 Return Nothing

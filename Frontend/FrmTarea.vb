@@ -9,16 +9,14 @@ Public Class FrmTarea
     Private horas As Integer
     Private idTarea As Integer
     Private descripcion As String
-    Dim tarea As New Tarea(dniAlumno, idJornada, idTarea, horas, descripcion)
+
 
     Public Sub New(dni As String, id As Integer)
         InitializeComponent()
         idJornada = id
         dniAlumno = dni
     End Sub
-    Private Sub dgvTareas_CellContentClick(sender As Object, e As DataGridViewCellEventArgs)
 
-    End Sub
     Private Sub CargarDatosGrid()
         Dim errorConexion As String = ""
         Dim gestor As New GestionTareas(errorConexion)
@@ -56,7 +54,9 @@ Public Class FrmTarea
             MessageBox.Show("Error tienes que introducir una descripcion en este campo")
         End If
         Dim modulos As Modulo = TryCast(cboModulos.SelectedItem, Modulo)
-        Dim resultado As String = gestionTareas.AgregarTarea(tarea)
+        Dim ra As Ra = TryCast(cboResultadosAprendizaje.SelectedItem, Ra)
+        Dim idTarea As Integer = gestionTareas.CalcularIdTareaPorJornada(idJornada)
+        Dim resultado As String = gestionTareas.AgregarTarea(New Tarea(dniAlumno, idJornada, idTarea, horas, txtDescripcion.Text))
         MessageBox.Show(resultado, "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information)
         If resultado.Contains("con éxito") Then
             CargarDatosGrid()
@@ -66,12 +66,12 @@ Public Class FrmTarea
     End Sub
 
     Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
-        If gestionTareas.EliminarTareaRa(tarea) Then
-            Dim resultado As DialogResult
-            resultado = MessageBox.Show("¿Estás seguro de que quieres eliminar la tarea del alumno?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+        'If gestionTareas.EliminarTareaRa() Then
+        '    Dim resultado As DialogResult
+        '    resultado = MessageBox.Show("¿Estás seguro de que quieres eliminar la tarea del alumno?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
 
-            If resultado = DialogResult.No Then Exit Sub
-        End If
+        '    If resultado = DialogResult.No Then Exit Sub
+        'End If
 
         'ESTO CREOOO QUE SERIA EL CODIGO PARA ELIMAR LA TAREA PERO FALTARA ALGUNA COSA
     End Sub

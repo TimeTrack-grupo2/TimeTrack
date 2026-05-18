@@ -8,27 +8,27 @@ Delete from CICLOS
 
 
 INSERT INTO CICLOS (ID_CICLO,NOMBRECICLO)
-VALUES (1,'1篋AM')
+VALUES (1,'1潞DAM')
 
 
 INSERT INTO MODULOS (id_ciclo, id_modulo, MODULO) VALUES
-(1,1, 'Programaci髇'),
+(1,1, 'Programaci贸n'),
 (1,2, 'Bases de Datos'),
-(1,3, 'Sistemas Inform醫icos'),
+(1,3, 'Sistemas Inform谩ticos'),
 (1,4, 'Lenguajes de Marcas'),
 (1,5, 'Entornos de Desarrollo'),
 (1,6, 'Itinerario Personal para la Empleabilidad'),
 (1,7, 'Sostenibilidad'),
-(1,8, 'Digitalizaci髇'),
-(1,9, 'Programaci髇'),
-(1,10, 'Ingl閟');
+(1,8, 'Digitalizaci贸n'),
+(1,9, 'Programaci贸n'),
+(1,10, 'Ingl茅s');
 
 
 
 INSERT INTO RA (id_ra, id_modulo, id_ciclo, RA) VALUES
--- Programaci髇 (1)
-(1,1,1,'Reconoce la estructura de un programa inform醫ico'),
-(2,1,1,'Escribe programas utilizando un lenguaje de programaci髇'),
+-- Programaci贸n (1)
+(1,1,1,'Reconoce la estructura de un programa inform谩tico'),
+(2,1,1,'Escribe programas utilizando un lenguaje de programaci贸n'),
 (3,1,1,'Utiliza estructuras de control'),
 (4,1,1,'Desarrolla programas mediante funciones'),
 
@@ -37,9 +37,9 @@ INSERT INTO RA (id_ra, id_modulo, id_ciclo, RA) VALUES
 (6,2,1,'Crea bases de datos relacionales'),
 (7,2,1,'Realiza consultas SQL'),
 
--- Sistemas Inform醫icos (3)
+-- Sistemas Inform谩ticos (3)
 (8,3,1,'Instala sistemas operativos'),
-(9,3,1,'Configura sistemas inform醫icos'),
+(9,3,1,'Configura sistemas inform谩ticos'),
 
 -- Lenguajes de Marcas (4)
 (10,4,1,'Reconoce lenguajes de marcas'),
@@ -47,7 +47,7 @@ INSERT INTO RA (id_ra, id_modulo, id_ciclo, RA) VALUES
 
 -- Entornos de Desarrollo (5)
 (12,5,1,'Reconoce entornos de desarrollo'),
-(13,5,1,'Utiliza herramientas de programaci髇'),
+(13,5,1,'Utiliza herramientas de programaci贸n'),
 
 -- Itinerario Personal para la Empleabilidad (6)
 (14,6,1,'Identifica oportunidades de empleo'),
@@ -57,48 +57,48 @@ INSERT INTO RA (id_ra, id_modulo, id_ciclo, RA) VALUES
 (16,7,1,'Aplica principios de sostenibilidad'),
 (17,7,1,'Analiza impacto ambiental'),
 
--- Digitalizaci髇 (8)
-(18,8,1,'Comprende procesos de digitalizaci髇'),
+-- Digitalizaci贸n (8)
+(18,8,1,'Comprende procesos de digitalizaci贸n'),
 (19,8,1,'Utiliza herramientas digitales'),
 
--- Programaci髇 (repetido 9)
-(20,9,1,'Aplica t閏nicas avanzadas de programaci髇'),
-(21,9,1,'Optimiza c骴igo'),
+-- Programaci贸n (repetido 9)
+(20,9,1,'Aplica t茅cnicas avanzadas de programaci贸n'),
+(21,9,1,'Optimiza c贸digo'),
 
--- Ingl閟 (10)
-(22,10,1,'Comprende documentaci髇 t閏nica en ingl閟'),
-(23,10,1,'Se comunica en ingl閟 en entorno profesional');
+-- Ingl茅s (10)
+(22,10,1,'Comprende documentaci贸n t茅cnica en ingl茅s'),
+(23,10,1,'Se comunica en ingl茅s en entorno profesional');
 
 
 INSERT INTO CICLOS (ID_CICLO,NOMBRECICLO) 
-VALUES (2,'2篋AM');
+VALUES (2,'2潞DAM');
 
 INSERT INTO MODULOS (id_ciclo, id_modulo, MODULO) VALUES 
 (2,1, 'Acceso a Datos'),
 (2,2, 'Desarrollo de Interfaces'),
-(2,3, 'Programaci髇 Multimedia y Dispositivos M髒iles'),
-(2,4, 'Programaci髇 de Servicios y Procesos'),
-(2,5, 'Sistemas de Gesti髇 Empresarial'),
+(2,3, 'Programaci贸n Multimedia y Dispositivos M贸viles'),
+(2,4, 'Programaci贸n de Servicios y Procesos'),
+(2,5, 'Sistemas de Gesti贸n Empresarial'),
 (2,6, 'Empresa e Iniciativa Emprendedora'),
 (2,7, 'Proyecto de Desarrollo de Aplicaciones Multiplataforma'),
-(2,8, 'Formaci髇 en Centros de Trabajo');
+(2,8, 'Formaci贸n en Centros de Trabajo');
 
 
 INSERT INTO RA (id_ra, id_modulo, id_ciclo, RA) VALUES 
 
 -- Acceso a Datos
-(1,1,2,'Desarrolla aplicaciones que gestionan informaci髇 en bases de datos relacionales'),
+(1,1,2,'Desarrolla aplicaciones que gestionan informaci贸n en bases de datos relacionales'),
 (2,1,2,'Implementa acceso a datos mediante ficheros'),
 (3,1,2,'Gestiona persistencia de objetos'),
 
 -- Desarrollo de Interfaces
-(4,2,2,'Dise馻 interfaces gr醘icas de usuario'),
+(4,2,2,'Dise帽a interfaces gr谩ficas de usuario'),
 (5,2,2,'Desarrolla aplicaciones con interfaces adaptativas'),
 (6,2,2,'Aplica criterios de usabilidad y accesibilidad'),
 
--- Programaci髇 Multimedia y M髒iles
+-- Programaci贸n Multimedia y M贸viles
 (7,3,2,'Desarrolla aplicaciones multimedia'),
-(8,3,2,'Programa aplicaciones para dispositivos m髒iles'),
+(8,3,2,'Programa aplicaciones para dispositivos m贸viles'),
 (9,3,2,'Gestiona recursos multimedia'),
 
 -- Servicios y Procesos
@@ -106,9 +106,9 @@ INSERT INTO RA (id_ra, id_modulo, id_ciclo, RA) VALUES
 (11,4,2,'Programa servicios en red'),
 (12,4,2,'Gestiona procesos del sistema'),
 
--- Sistemas de Gesti髇 Empresarial
+-- Sistemas de Gesti贸n Empresarial
 (13,5,2,'Instala sistemas ERP'),
-(14,5,2,'Configura m骴ulos empresariales'),
+(14,5,2,'Configura m贸dulos empresariales'),
 (15,5,2,'Desarrolla adaptaciones en sistemas ERP'),
 
 -- Empresa
@@ -116,7 +116,7 @@ INSERT INTO RA (id_ra, id_modulo, id_ciclo, RA) VALUES
 (17,6,2,'Elabora un plan de empresa'),
 
 -- Proyecto
-(18,7,2,'Desarrolla un proyecto completo de aplicaci髇'),
+(18,7,2,'Desarrolla un proyecto completo de aplicaci贸n'),
 (19,7,2,'Documenta y presenta el proyecto'),
 
 -- FCT
@@ -124,25 +124,18 @@ INSERT INTO RA (id_ra, id_modulo, id_ciclo, RA) VALUES
 (21,8,2,'Aplica competencias profesionales en empresa');
 
 INSERT INTO CICLOS (ID_CICLO,NOMBRECICLO) 
-VALUES (3,'1篈SIR');
+VALUES (3,'1潞ASIR');
 
 INSERT INTO MODULOS (id_ciclo, id_modulo, MODULO) VALUES 
-(3,1, 'Implantaci髇 de Sistemas Operativos'),
-(3,2, 'Planificaci髇 y Administraci髇 de Redes'),
+(3,1, 'Implantaci贸n de Sistemas Operativos'),
+(3,2, 'Planificaci贸n y Administraci贸n de Redes'),
 (3,3, 'Fundamentos de Hardware'),
-(3,4, 'Gesti髇 de Bases de Datos'),
-(3,5, 'Lenguajes de Marcas y Sistemas de Gesti髇 de Informaci髇'),
-(3,6, 'Administraci髇 de Sistemas Operativos'),
-(3,7, 'Servicios de Red e Internet'),
-(3,8, 'Implantaci髇 de Aplicaciones Web'),
-(3,9, 'Administraci髇 de Sistemas Gestores de Bases de Datos'),
-(3,10, 'Seguridad y Alta Disponibilidad'),
-(3,11, 'Proyecto de Administraci髇 de Sistemas Inform醫icos en Red'),
-(3,12, 'Formaci髇 en Centros de Trabajo');
+(3,4, 'Gesti贸n de Bases de Datos'),
+(3,5, 'Lenguajes de Marcas y Sistemas de Gesti贸n de Informaci贸n'),
 
 INSERT INTO RA (id_ra, id_modulo, id_ciclo, RA) VALUES 
 
--- Implantaci髇 de Sistemas Operativos
+-- Implantaci贸n de Sistemas Operativos
 (1,1,3,'Instala sistemas operativos'),
 (2,1,3,'Configura sistemas operativos'),
 (3,1,3,'Gestiona recursos del sistema'),
@@ -155,7 +148,7 @@ INSERT INTO RA (id_ra, id_modulo, id_ciclo, RA) VALUES
 -- Hardware
 (7,3,3,'Identifica componentes hardware'),
 (8,3,3,'Monta y configura equipos'),
-(9,3,3,'Diagnostica fallos f韘icos'),
+(9,3,3,'Diagnostica fallos f铆sicos'),
 
 -- Bases de datos
 (10,4,3,'Instala gestores de bases de datos'),
@@ -164,9 +157,9 @@ INSERT INTO RA (id_ra, id_modulo, id_ciclo, RA) VALUES
 
 -- Lenguajes de marcas
 (13,5,3,'Elabora documentos XML'),
-(14,5,3,'Gestiona informaci髇 estructurada'),
+(14,5,3,'Gestiona informaci贸n estructurada'),
 
--- Administraci髇 de SO
+-- Administraci贸n de SO
 (15,6,3,'Administra usuarios y permisos'),
 (16,6,3,'Automatiza tareas del sistema'),
 (17,6,3,'Supervisa rendimiento'),
@@ -198,23 +191,23 @@ INSERT INTO RA (id_ra, id_modulo, id_ciclo, RA) VALUES
 
 
 INSERT INTO CICLOS (ID_CICLO,NOMBRECICLO) 
-VALUES (4,'2篈SIR');
+VALUES (4,'2潞ASIR');
 
 INSERT INTO MODULOS (id_ciclo, id_modulo, MODULO) VALUES 
-(3,13, 'Administraci髇 de Sistemas Operativos'),
+(3,13, 'Administraci贸n de Sistemas Operativos'),
 (3,14, 'Servicios de Red e Internet'),
-(3,15, 'Implantaci髇 de Aplicaciones Web'),
-(3,16, 'Administraci髇 de Sistemas Gestores de Bases de Datos'),
+(3,15, 'Implantaci贸n de Aplicaciones Web'),
+(3,16, 'Administraci贸n de Sistemas Gestores de Bases de Datos'),
 (3,17, 'Seguridad y Alta Disponibilidad'),
-(3,18, 'Proyecto de Administraci髇 de Sistemas Inform醫icos en Red'),
-(3,19, 'Formaci髇 en Centros de Trabajo');
+(3,18, 'Proyecto de Administraci贸n de Sistemas Inform谩ticos en Red'),
+(3,19, 'Formaci贸n en Centros de Trabajo');
 
 INSERT INTO RA (id_ra, id_modulo, id_ciclo, RA	) VALUES 
 
--- Administraci髇 de SO
+-- Administraci贸n de SO
 (31,13,3,'Administra sistemas operativos en red'),
 (32,13,3,'Gestiona usuarios, grupos y permisos'),
-(33,13,3,'Automatiza tareas de administraci髇'),
+(33,13,3,'Automatiza tareas de administraci贸n'),
 
 -- Servicios de red
 (34,14,3,'Configura servicios web'),
@@ -224,7 +217,7 @@ INSERT INTO RA (id_ra, id_modulo, id_ciclo, RA	) VALUES
 -- Aplicaciones web
 (37,15,3,'Implanta aplicaciones web'),
 (38,15,3,'Administra servidores de aplicaciones'),
-(39,15,3,'Configura entornos de ejecuci髇'),
+(39,15,3,'Configura entornos de ejecuci贸n'),
 
 -- SGBD
 (40,16,3,'Administra sistemas gestores de bases de datos'),
@@ -276,26 +269,26 @@ INSERT INTO TAREAS (DNI, ID_JORNADA, ID_TAREA, HORAS, DESCRIPCION) VALUES
 -- Jornada 1
 ('12345678Z', 1, 1, 2, 'Analisis de requisitos'),
 ('12345678Z', 1, 2, 3, 'Desarrollo backend'),
-('12345678Z', 1, 3, 1, 'Reuni髇 equipo'),
+('12345678Z', 1, 3, 1, 'Reuni贸n equipo'),
 
 -- Jornada 2
-('23456789D', 2, 1, 2, 'Dise駉 base de datos'),
-('23456789D', 2, 2, 1.5, 'Implementaci髇 consultas'),
+('23456789D', 2, 1, 2, 'Dise帽o base de datos'),
+('23456789D', 2, 2, 1.5, 'Implementaci贸n consultas'),
 ('23456789D', 2, 3, 1, 'Testing'),
 
 -- Jornada 3
-('34567890V', 3, 1, 2, 'Maquetaci髇 UI'),
-('34567890V', 3, 2, 1, 'Correcci髇 errores'),
+('34567890V', 3, 1, 2, 'Maquetaci贸n UI'),
+('34567890V', 3, 2, 1, 'Correcci贸n errores'),
 
 -- Jornada 4
-('45678901G', 4, 1, 3, 'Documentaci髇'),
-('45678901G', 4, 2, 2, 'Revisi髇 c骴igo'),
+('45678901G', 4, 1, 3, 'Documentaci贸n'),
+('45678901G', 4, 2, 2, 'Revisi贸n c贸digo'),
 
 -- Jornada 5
-('56789012B', 5, 1, 2, 'Investigaci髇'),
-('56789012B', 5, 2, 3, 'Implementaci髇 funcionalidad'),
+('56789012B', 5, 1, 2, 'Investigaci贸n'),
+('56789012B', 5, 2, 3, 'Implementaci贸n funcionalidad'),
 ('56789012B', 5, 3, 1, 'Pruebas'),
 
 -- Jornada 6
-('12345678Z', 6, 1, 1, 'Preparaci髇 entorno'),
-('12345678Z', 6, 2, 1.5, 'Planificaci髇 tareas');
+('12345678Z', 6, 1, 1, 'Preparaci贸n entorno'),
+('12345678Z', 6, 2, 1.5, 'Planificaci贸n tareas');

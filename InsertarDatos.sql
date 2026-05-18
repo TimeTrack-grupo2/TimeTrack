@@ -1,3 +1,6 @@
+use GRUPO2
+go
+
 Delete from TAREA_RA
 Delete from RA
 Delete from MODULOS

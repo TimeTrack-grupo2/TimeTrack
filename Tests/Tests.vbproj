@@ -20,4 +20,9 @@
     <ProjectReference Include="..\Gestion\Gestion.vbproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BuscarServidor\BuscarServidor.vbproj" />
+    <ProjectReference Include="..\Gestion\Gestion.vbproj" />
+  </ItemGroup>
+
 </Project>

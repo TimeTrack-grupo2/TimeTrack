@@ -35,12 +35,13 @@ Partial Class FrmFichar
         Me.btnEntrada = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.DataGridViewMovimientos = New System.Windows.Forms.DataGridView()
-        Me.Dia = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Hora = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.txtHoras = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtCurso = New System.Windows.Forms.TextBox()
         Me.btnVolver = New System.Windows.Forms.Button()
+        Me.Dia = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Hora = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.HorasJornada = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.DataGridViewMovimientos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -145,7 +146,7 @@ Partial Class FrmFichar
         '
         Me.DataGridViewMovimientos.BackgroundColor = System.Drawing.SystemColors.ActiveCaption
         Me.DataGridViewMovimientos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridViewMovimientos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Dia, Me.Hora})
+        Me.DataGridViewMovimientos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Dia, Me.Hora, Me.HorasJornada})
         Me.DataGridViewMovimientos.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.DataGridViewMovimientos.Location = New System.Drawing.Point(0, 341)
         Me.DataGridViewMovimientos.Name = "DataGridViewMovimientos"
@@ -154,20 +155,6 @@ Partial Class FrmFichar
         Me.DataGridViewMovimientos.RowTemplate.Height = 24
         Me.DataGridViewMovimientos.Size = New System.Drawing.Size(658, 150)
         Me.DataGridViewMovimientos.TabIndex = 18
-        '
-        'Dia
-        '
-        Me.Dia.HeaderText = "Dia"
-        Me.Dia.MinimumWidth = 6
-        Me.Dia.Name = "Dia"
-        Me.Dia.Width = 125
-        '
-        'Hora
-        '
-        Me.Hora.HeaderText = "Hora"
-        Me.Hora.MinimumWidth = 6
-        Me.Hora.Name = "Hora"
-        Me.Hora.Width = 125
         '
         'txtHoras
         '
@@ -200,6 +187,28 @@ Partial Class FrmFichar
         Me.btnVolver.TabIndex = 22
         Me.btnVolver.Text = "Volver"
         Me.btnVolver.UseVisualStyleBackColor = True
+        '
+        'Dia
+        '
+        Me.Dia.HeaderText = "Dia"
+        Me.Dia.MinimumWidth = 6
+        Me.Dia.Name = "Dia"
+        Me.Dia.Width = 125
+        '
+        'Hora
+        '
+        Me.Hora.HeaderText = "Hora"
+        Me.Hora.MinimumWidth = 6
+        Me.Hora.Name = "Hora"
+        Me.Hora.Width = 125
+        '
+        'HorasJornada
+        '
+        Me.HorasJornada.HeaderText = "Horas de jornada"
+        Me.HorasJornada.MinimumWidth = 6
+        Me.HorasJornada.Name = "HorasJornada"
+        Me.HorasJornada.ReadOnly = True
+        Me.HorasJornada.Width = 125
         '
         'FrmFichar
         '
@@ -241,10 +250,11 @@ Partial Class FrmFichar
     Friend WithEvents btnEntrada As Button
     Friend WithEvents Label1 As Label
     Friend WithEvents DataGridViewMovimientos As DataGridView
-    Friend WithEvents Dia As DataGridViewTextBoxColumn
-    Friend WithEvents Hora As DataGridViewTextBoxColumn
     Friend WithEvents txtHoras As TextBox
     Friend WithEvents Label2 As Label
     Friend WithEvents txtCurso As TextBox
     Friend WithEvents btnVolver As Button
+    Friend WithEvents Dia As DataGridViewTextBoxColumn
+    Friend WithEvents Hora As DataGridViewTextBoxColumn
+    Friend WithEvents HorasJornada As DataGridViewTextBoxColumn
 End Class

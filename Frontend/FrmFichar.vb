@@ -101,15 +101,15 @@ Public Class FrmFichar
 
         DataGridViewMovimientos.Rows.Clear()
 
-
         For Each fila As DataRow In tabla.Rows
 
             Dim fecha As DateTime = Convert.ToDateTime(fila("FECHA_ENTRADA"))
 
             Dim dia As String = fecha.ToString("dd/MM/yyyy")
             Dim hora As String = fecha.ToString("HH:mm")
+            Dim horasJornada As Integer = Convert.ToInt32(fila("HORAS"))
 
-            DataGridViewMovimientos.Rows.Add(dia, hora)
+            DataGridViewMovimientos.Rows.Add(dia, hora, horasJornada)
 
         Next
 
@@ -165,9 +165,13 @@ Public Class FrmFichar
 
         If resultado.Contains("con éxito") Then
             Dim fila As New DataGridViewRow()
+
             fila.CreateCells(DataGridViewMovimientos)
-            fila.Cells(0).Value = jornada.FECHA_ENTRADA.ToShortDateString
-            fila.Cells(1).Value = txtHoras.Text
+
+            fila.Cells(0).Value = jornada.FECHA_ENTRADA.ToString("dd/MM/yyyy")
+            fila.Cells(1).Value = jornada.FECHA_ENTRADA.ToString("HH:mm")
+            fila.Cells(2).Value = jornada.HORAS
+
             DataGridViewMovimientos.Rows.Add(fila)
         End If
 

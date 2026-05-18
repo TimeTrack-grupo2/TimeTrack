@@ -19,22 +19,37 @@ Public Class GestionJornadas
 
     Public Function AnadirJornada(jornada As Jornada) As String
         Dim conexion As New SqlConnection(cadConexion)
+
         Try
             conexion.Open()
 
             Dim sql As String = "SELECT COUNT(*) FROM ALUMNOS WHERE DNI = @dni"
             Dim cmdAlumno As New SqlCommand(sql, conexion)
             cmdAlumno.Parameters.AddWithValue("@dni", jornada.Dni)
+
             Dim alumnoExiste As Integer = CInt(cmdAlumno.ExecuteScalar())
 
             If alumnoExiste = 0 Then
                 Return "El alumno no existe en la base de datos."
             End If
 
+            Dim sqlExisteDia As String = "SELECT COUNT(*) FROM JORNADAS WHERE DNI = @DNI AND CAST(FECHA_ENTRADA AS DATE) = CAST (@FECHA_ENTRADA AS DATE)"
+
+            Dim cmdExisteDia As New SqlCommand(sqlExisteDia, conexion)
+            cmdExisteDia.Parameters.AddWithValue("@DNI", jornada.Dni)
+            cmdExisteDia.Parameters.AddWithValue("@FECHA_ENTRADA", jornada.FECHA_ENTRADA)
+
+            Dim existeDia As Integer = CInt(cmdExisteDia.ExecuteScalar())
+
+            If existeDia > 0 Then
+                Return "Ya existe una jornada para este día."
+            End If
+
             Dim nuevoId As Integer = ObtenerNuevoId(conexion, jornada)
 
             Dim sql2 As String = "INSERT INTO JORNADAS VALUES(@DNI, @ID_JORNADA, @HORAS, @FECHA_ENTRADA, @ESTADO)"
             Dim cmdAnadir As New SqlCommand(sql2, conexion)
+
             cmdAnadir.Parameters.AddWithValue("@DNI", jornada.Dni)
             cmdAnadir.Parameters.AddWithValue("@ID_JORNADA", nuevoId)
             cmdAnadir.Parameters.AddWithValue("@HORAS", jornada.HORAS)
@@ -42,6 +57,7 @@ Public Class GestionJornadas
             cmdAnadir.Parameters.AddWithValue("@ESTADO", jornada.ESTADO)
 
             Dim numFilas As Integer = cmdAnadir.ExecuteNonQuery()
+
             If numFilas = 0 Then
                 Return "Error al añadir jornada."
             End If

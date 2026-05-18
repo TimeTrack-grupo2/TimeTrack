@@ -12,7 +12,9 @@
         Me.idModulo = idModulo
         Me.ra = ra
     End Sub
-
+    Public Overrides Function toString() As String
+        Return ra
+    End Function
     Public Overrides Function Equals(obj As Object) As Boolean
         Return Equals(TryCast(obj, Ra))
     End Function

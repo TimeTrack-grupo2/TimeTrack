@@ -41,6 +41,9 @@ Public Class FrmTarea
     Private Sub FrmTarea_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CargarDatosGrid()
 
+        cboModulos.DisplayMember = "nombreModulo"
+
+        cboModulos.DataSource = gestionTareas.ModulosPorCiclo(alumno.Id_ciclo)
     End Sub
 
     Private Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
@@ -62,16 +65,6 @@ Public Class FrmTarea
 
     End Sub
 
-    Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
-        CargarDatosGrid()
-        Dim idCiclo As Integer
-        Dim modulos = gestionTareas.ModulosPorCiclo(idCiclo)
-        For Each modulo In modulos
-            cboModulos.Items.Add(modulo)
-        Next
-        cboModulos.DisplayMember = "NombreCiclo"
-    End Sub
-
     Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
         If gestionTareas.EliminarTareaRa(tarea) Then
             Dim resultado As DialogResult
@@ -81,5 +74,14 @@ Public Class FrmTarea
         End If
 
         'ESTO CREOOO QUE SERIA EL CODIGO PARA ELIMAR LA TAREA PERO FALTARA ALGUNA COSA
+    End Sub
+
+    Private Sub cboModulos_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboModulos.SelectedIndexChanged
+        Dim modulo As Modulo = TryCast(cboModulos.SelectedItem, Modulo)
+
+        If modulo Is Nothing Then Return
+
+        cboResultadosAprendizaje.DisplayMember = "ra"
+        cboResultadosAprendizaje.DataSource = gestionTareas.RaPorModulos(modulo.idModulo)
     End Sub
 End Class

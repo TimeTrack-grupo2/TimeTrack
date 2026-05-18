@@ -3,13 +3,13 @@
 
     Public idCiclo As String
     Public idModulo As String
-    Public modulo As String
+    Public nombreModulo As String
 
 
     Public Sub New(idCiclo As String, idModulo As String, modulo As String)
         Me.idCiclo = idCiclo
         Me.idModulo = idModulo
-        Me.modulo = modulo
+        Me.nombreModulo = modulo
     End Sub
 
     Public Overrides Function Equals(obj As Object) As Boolean
@@ -22,6 +22,9 @@
                idModulo = other.idModulo
     End Function
 
+    Public Overrides Function toString() As String
+        Return nombreModulo
+    End Function
     Public Overrides Function GetHashCode() As Integer
         Return (idCiclo, idModulo).GetHashCode()
     End Function

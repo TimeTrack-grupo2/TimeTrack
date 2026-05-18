@@ -5,7 +5,7 @@ Imports Gestion
 Namespace Tests
 
     <TestFixture>
-    Public Class Tests
+    Public Class AccesoDniTest
 
         Private gestionAlumno As GestionAlumno
 

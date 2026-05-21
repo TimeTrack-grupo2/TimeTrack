@@ -30,7 +30,7 @@ Partial Class FrmMenu
         Me.btnDatos = New System.Windows.Forms.Button()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.lblNombre = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.lblBuscar = New System.Windows.Forms.Label()
         Me.txtBuscarNombre = New System.Windows.Forms.TextBox()
         Me.lblHoras = New System.Windows.Forms.Label()
         Me.lblDias = New System.Windows.Forms.Label()
@@ -128,7 +128,7 @@ Partial Class FrmMenu
         '
         Me.Panel2.BackColor = System.Drawing.Color.WhiteSmoke
         Me.Panel2.Controls.Add(Me.lblNombre)
-        Me.Panel2.Controls.Add(Me.Label1)
+        Me.Panel2.Controls.Add(Me.lblBuscar)
         Me.Panel2.Controls.Add(Me.txtBuscarNombre)
         Me.Panel2.Controls.Add(Me.lblHoras)
         Me.Panel2.Controls.Add(Me.lblDias)
@@ -152,14 +152,14 @@ Partial Class FrmMenu
         Me.lblNombre.TabIndex = 8
         Me.lblNombre.Text = "Bueno Dias,"
         '
-        'Label1
+        'lblBuscar
         '
-        Me.Label1.Location = New System.Drawing.Point(6, 128)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(153, 16)
-        Me.Label1.TabIndex = 7
-        Me.Label1.Text = "Buscar alumno"
-        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lblBuscar.Location = New System.Drawing.Point(6, 128)
+        Me.lblBuscar.Name = "lblBuscar"
+        Me.lblBuscar.Size = New System.Drawing.Size(153, 16)
+        Me.lblBuscar.TabIndex = 7
+        Me.lblBuscar.Text = "Buscar alumno"
+        Me.lblBuscar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'txtBuscarNombre
         '
@@ -215,6 +215,7 @@ Partial Class FrmMenu
         '
         'DataGridViewJornadas
         '
+        Me.DataGridViewJornadas.AllowUserToAddRows = False
         Me.DataGridViewJornadas.BackgroundColor = System.Drawing.Color.White
         Me.DataGridViewJornadas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridViewJornadas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ID_JORNADA, Me.DNI, Me.NombreAlumno, Me.HoraEntrada, Me.HorasRestantes, Me.Estado, Me.VerTareas})
@@ -329,7 +330,7 @@ Partial Class FrmMenu
     Friend WithEvents HorasRestantes As DataGridViewTextBoxColumn
     Friend WithEvents Estado As DataGridViewTextBoxColumn
     Friend WithEvents VerTareas As DataGridViewButtonColumn
-    Friend WithEvents Label1 As Label
+    Friend WithEvents lblBuscar As Label
     Friend WithEvents txtBuscarNombre As TextBox
     Friend WithEvents lblNombre As Label
     Friend WithEvents btnCiclos As Button

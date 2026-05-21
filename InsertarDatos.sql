@@ -302,3 +302,47 @@ INSERT INTO TAREAS (DNI, ID_JORNADA, ID_TAREA, HORAS, DESCRIPCION) VALUES
 -- Jornada 6
 ('12345678Z', 6, 1, 1, 'Preparación entorno'),
 ('12345678Z', 6, 2, 1.5, 'Planificación tareas');
+
+-- INSERT DE TAREA_RA
+INSERT INTO TAREA_RA (ID_CICLO, ID_MODULO, ID_RA, DNI, ID_JORNADA, ID_TAREA) VALUES
+
+-- MAXIM (1º DAM)
+
+-- Jornada 1
+(1,1,2,'12345678Z',1,1), -- Programación
+(1,2,7,'12345678Z',1,2), -- Bases de Datos
+(1,5,12,'12345678Z',1,3), -- Entornos
+
+-- Jornada 6
+(1,3,8,'12345678Z',6,1), -- Sistemas
+(1,6,14,'12345678Z',6,2), -- IPE
+
+
+-- CARLOS (1º DAM)
+
+-- Jornada 2
+(1,2,6,'23456789D',2,1), -- Bases de Datos
+(1,2,7,'23456789D',2,2), -- Bases de Datos
+(1,5,13,'23456789D',2,3), -- Entornos
+
+
+-- LUCIA (2º DAM)
+
+-- Jornada 3
+(2,2,4,'34567890V',3,1), -- Desarrollo Interfaces
+(2,2,5,'34567890V',3,2), -- Desarrollo Interfaces
+
+
+-- MARTA (2º DAM)
+
+-- Jornada 4
+(2,6,16,'45678901G',4,1), -- Empresa
+(2,7,18,'45678901G',4,2), -- Proyecto
+
+
+-- PABLO (1º DAM)
+
+-- Jornada 5
+(1,5,12,'56789012B',5,1), -- Entornos
+(1,1,3,'56789012B',5,2), -- Programación
+(1,1,4,'56789012B',5,3); -- Programación

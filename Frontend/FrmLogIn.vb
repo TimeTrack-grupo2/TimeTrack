@@ -11,7 +11,8 @@ Public Class FrmLogIn
             MessageBox.Show(mensaje)
         Else
             alumno = gestionAlumno.ObtenerAlumnoQueIniciaSesion(dniText)
-            FrmMenu.ShowDialog()
+            Dim frm As New FrmMenu
+            frm.ShowDialog()
         End If
 
     End Sub

@@ -24,14 +24,14 @@ Partial Class FrmCiclos
     Private Sub InitializeComponent()
         Me.DataGridViewCiclos = New System.Windows.Forms.DataGridView()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.btnLimpiar = New System.Windows.Forms.Button()
         Me.cboCiclo = New System.Windows.Forms.ComboBox()
         Me.btnEliminar = New System.Windows.Forms.Button()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.cboModulo = New System.Windows.Forms.ComboBox()
         Me.btnGuardar = New System.Windows.Forms.Button()
         Me.lblCiclos = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.btnLimpiar = New System.Windows.Forms.Button()
+        Me.cboModulo = New System.Windows.Forms.ComboBox()
+        Me.Label2 = New System.Windows.Forms.Label()
         CType(Me.DataGridViewCiclos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -59,11 +59,11 @@ Partial Class FrmCiclos
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.Panel1.Controls.Add(Me.cboModulo)
+        Me.Panel1.Controls.Add(Me.Label2)
         Me.Panel1.Controls.Add(Me.btnLimpiar)
         Me.Panel1.Controls.Add(Me.cboCiclo)
         Me.Panel1.Controls.Add(Me.btnEliminar)
-        Me.Panel1.Controls.Add(Me.Label2)
-        Me.Panel1.Controls.Add(Me.cboModulo)
         Me.Panel1.Controls.Add(Me.btnGuardar)
         Me.Panel1.Controls.Add(Me.lblCiclos)
         Me.Panel1.Controls.Add(Me.Label1)
@@ -73,6 +73,19 @@ Partial Class FrmCiclos
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(217, 450)
         Me.Panel1.TabIndex = 5
+        '
+        'btnLimpiar
+        '
+        Me.btnLimpiar.BackColor = System.Drawing.SystemColors.ButtonFace
+        Me.btnLimpiar.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ControlLight
+        Me.btnLimpiar.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDark
+        Me.btnLimpiar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnLimpiar.Location = New System.Drawing.Point(64, 362)
+        Me.btnLimpiar.Name = "btnLimpiar"
+        Me.btnLimpiar.Size = New System.Drawing.Size(75, 30)
+        Me.btnLimpiar.TabIndex = 18
+        Me.btnLimpiar.Text = "Limpiar"
+        Me.btnLimpiar.UseVisualStyleBackColor = False
         '
         'cboCiclo
         '
@@ -94,23 +107,6 @@ Partial Class FrmCiclos
         Me.btnEliminar.TabIndex = 16
         Me.btnEliminar.Text = "Eliminar"
         Me.btnEliminar.UseVisualStyleBackColor = False
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(42, 178)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(55, 16)
-        Me.Label2.TabIndex = 13
-        Me.Label2.Text = "Módulo:"
-        '
-        'cboModulo
-        '
-        Me.cboModulo.FormattingEnabled = True
-        Me.cboModulo.Location = New System.Drawing.Point(45, 197)
-        Me.cboModulo.Name = "cboModulo"
-        Me.cboModulo.Size = New System.Drawing.Size(121, 24)
-        Me.cboModulo.TabIndex = 12
         '
         'btnGuardar
         '
@@ -138,25 +134,29 @@ Partial Class FrmCiclos
         '
         Me.Label1.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(12, 9)
+        Me.Label1.Location = New System.Drawing.Point(21, 9)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(175, 61)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Gestión de ciclos"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
-        'btnLimpiar
+        'cboModulo
         '
-        Me.btnLimpiar.BackColor = System.Drawing.SystemColors.ButtonFace
-        Me.btnLimpiar.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ControlLight
-        Me.btnLimpiar.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDark
-        Me.btnLimpiar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnLimpiar.Location = New System.Drawing.Point(64, 362)
-        Me.btnLimpiar.Name = "btnLimpiar"
-        Me.btnLimpiar.Size = New System.Drawing.Size(75, 30)
-        Me.btnLimpiar.TabIndex = 18
-        Me.btnLimpiar.Text = "Limpiar"
-        Me.btnLimpiar.UseVisualStyleBackColor = False
+        Me.cboModulo.FormattingEnabled = True
+        Me.cboModulo.Location = New System.Drawing.Point(45, 203)
+        Me.cboModulo.Name = "cboModulo"
+        Me.cboModulo.Size = New System.Drawing.Size(121, 24)
+        Me.cboModulo.TabIndex = 20
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(42, 184)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(55, 16)
+        Me.Label2.TabIndex = 19
+        Me.Label2.Text = "Módulo:"
         '
         'FrmCiclos
         '
@@ -177,11 +177,11 @@ Partial Class FrmCiclos
     Friend WithEvents DataGridViewCiclos As DataGridView
     Friend WithEvents Panel1 As Panel
     Friend WithEvents btnEliminar As Button
-    Friend WithEvents Label2 As Label
-    Friend WithEvents cboModulo As ComboBox
     Friend WithEvents btnGuardar As Button
     Friend WithEvents lblCiclos As Label
     Friend WithEvents Label1 As Label
     Friend WithEvents cboCiclo As ComboBox
     Friend WithEvents btnLimpiar As Button
+    Friend WithEvents cboModulo As ComboBox
+    Friend WithEvents Label2 As Label
 End Class

@@ -58,6 +58,7 @@ Public Class FrmMenu
             listaJornadas = gestionJornada.ObtenerJornadaOrdenadasPorDia() _
                         .Where(Function(j) j.Dni = alumno.Dni) _
                         .ToList()
+            DataGridViewJornadas.Columns("NombreAlumno").Visible = False
         End If
 
         DataGridViewJornadas.Rows.Clear()

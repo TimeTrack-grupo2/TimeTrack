@@ -57,7 +57,7 @@ Public Class FrmCiclos
         CargarDataGrid()
     End Sub
 
-    Private Sub cboModulo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboModulo.SelectedIndexChanged
+    Private Sub cboModulo_SelectedIndexChanged(sender As Object, e As EventArgs) 
         If cboModulo.SelectedIndex = -1 Then Exit Sub
 
         Dim filaSeleccionada As DataRowView = CType(cboModulo.SelectedItem, DataRowView)
@@ -188,4 +188,24 @@ Public Class FrmCiclos
 
         CargarDataGrid()
     End Sub
+
+    Private Sub DataGridViewCiclos_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridViewCiclos.CellDoubleClick
+        If e.RowIndex < 0 Then Exit Sub
+
+        If cboCiclo.SelectedIndex <> -1 Then Exit Sub
+
+        Dim nombreCiclo As String =
+        DataGridViewCiclos.Rows(e.RowIndex).Cells("Nombre").Value.ToString()
+
+        For i As Integer = 0 To cboCiclo.Items.Count - 1
+            Dim fila As DataRowView =
+            CType(cboCiclo.Items(i), DataRowView)
+
+            If fila("NOMBRECICLO").ToString() = nombreCiclo Then
+                cboCiclo.SelectedIndex = i
+                Exit For
+            End If
+        Next
+    End Sub
+
 End Class

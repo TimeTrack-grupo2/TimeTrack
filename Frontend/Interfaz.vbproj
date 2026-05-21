@@ -79,6 +79,12 @@
     <Compile Include="FrmAlumnos.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FrmCiclos.Designer.vb">
+      <DependentUpon>FrmCiclos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCiclos.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmFichar.Designer.vb">
       <DependentUpon>FrmFichar.vb</DependentUpon>
     </Compile>
@@ -124,6 +130,9 @@
   <ItemGroup>
     <EmbeddedResource Include="FrmAlumnos.resx">
       <DependentUpon>FrmAlumnos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCiclos.resx">
+      <DependentUpon>FrmCiclos.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmFichar.resx">
       <DependentUpon>FrmFichar.vb</DependentUpon>

@@ -1,3 +1,6 @@
+use GRUPO2
+go
+
 Delete from TAREA_RA
 Delete from RA
 Delete from MODULOS
@@ -8,27 +11,27 @@ Delete from CICLOS
 
 
 INSERT INTO CICLOS (ID_CICLO,NOMBRECICLO)
-VALUES (1,'1ºDAM')
+VALUES (1,'1�DAM')
 
 
 INSERT INTO MODULOS (id_ciclo, id_modulo, MODULO) VALUES
-(1,1, 'Programación'),
+(1,1, 'Programaci�n'),
 (1,2, 'Bases de Datos'),
-(1,3, 'Sistemas Informáticos'),
+(1,3, 'Sistemas Inform�ticos'),
 (1,4, 'Lenguajes de Marcas'),
 (1,5, 'Entornos de Desarrollo'),
 (1,6, 'Itinerario Personal para la Empleabilidad'),
 (1,7, 'Sostenibilidad'),
-(1,8, 'Digitalización'),
-(1,9, 'Programación'),
-(1,10, 'Inglés');
+(1,8, 'Digitalizaci�n'),
+(1,9, 'Programaci�n'),
+(1,10, 'Ingl�s');
 
 
 
 INSERT INTO RA (id_ra, id_modulo, id_ciclo, RA) VALUES
--- Programación (1)
-(1,1,1,'Reconoce la estructura de un programa informático'),
-(2,1,1,'Escribe programas utilizando un lenguaje de programación'),
+-- Programaci�n (1)
+(1,1,1,'Reconoce la estructura de un programa inform�tico'),
+(2,1,1,'Escribe programas utilizando un lenguaje de programaci�n'),
 (3,1,1,'Utiliza estructuras de control'),
 (4,1,1,'Desarrolla programas mediante funciones'),
 
@@ -37,9 +40,9 @@ INSERT INTO RA (id_ra, id_modulo, id_ciclo, RA) VALUES
 (6,2,1,'Crea bases de datos relacionales'),
 (7,2,1,'Realiza consultas SQL'),
 
--- Sistemas Informáticos (3)
+-- Sistemas Inform�ticos (3)
 (8,3,1,'Instala sistemas operativos'),
-(9,3,1,'Configura sistemas informáticos'),
+(9,3,1,'Configura sistemas inform�ticos'),
 
 -- Lenguajes de Marcas (4)
 (10,4,1,'Reconoce lenguajes de marcas'),
@@ -47,7 +50,7 @@ INSERT INTO RA (id_ra, id_modulo, id_ciclo, RA) VALUES
 
 -- Entornos de Desarrollo (5)
 (12,5,1,'Reconoce entornos de desarrollo'),
-(13,5,1,'Utiliza herramientas de programación'),
+(13,5,1,'Utiliza herramientas de programaci�n'),
 
 -- Itinerario Personal para la Empleabilidad (6)
 (14,6,1,'Identifica oportunidades de empleo'),
@@ -57,48 +60,48 @@ INSERT INTO RA (id_ra, id_modulo, id_ciclo, RA) VALUES
 (16,7,1,'Aplica principios de sostenibilidad'),
 (17,7,1,'Analiza impacto ambiental'),
 
--- Digitalización (8)
-(18,8,1,'Comprende procesos de digitalización'),
+-- Digitalizaci�n (8)
+(18,8,1,'Comprende procesos de digitalizaci�n'),
 (19,8,1,'Utiliza herramientas digitales'),
 
--- Programación (repetido 9)
-(20,9,1,'Aplica técnicas avanzadas de programación'),
-(21,9,1,'Optimiza código'),
+-- Programaci�n (repetido 9)
+(20,9,1,'Aplica t�cnicas avanzadas de programaci�n'),
+(21,9,1,'Optimiza c�digo'),
 
--- Inglés (10)
-(22,10,1,'Comprende documentación técnica en inglés'),
-(23,10,1,'Se comunica en inglés en entorno profesional');
+-- Ingl�s (10)
+(22,10,1,'Comprende documentaci�n t�cnica en ingl�s'),
+(23,10,1,'Se comunica en ingl�s en entorno profesional');
 
 
 INSERT INTO CICLOS (ID_CICLO,NOMBRECICLO) 
-VALUES (2,'2ºDAM');
+VALUES (2,'2�DAM');
 
 INSERT INTO MODULOS (id_ciclo, id_modulo, MODULO) VALUES 
 (2,1, 'Acceso a Datos'),
 (2,2, 'Desarrollo de Interfaces'),
-(2,3, 'Programación Multimedia y Dispositivos Móviles'),
-(2,4, 'Programación de Servicios y Procesos'),
-(2,5, 'Sistemas de Gestión Empresarial'),
+(2,3, 'Programaci�n Multimedia y Dispositivos M�viles'),
+(2,4, 'Programaci�n de Servicios y Procesos'),
+(2,5, 'Sistemas de Gesti�n Empresarial'),
 (2,6, 'Empresa e Iniciativa Emprendedora'),
 (2,7, 'Proyecto de Desarrollo de Aplicaciones Multiplataforma'),
-(2,8, 'Formación en Centros de Trabajo');
+(2,8, 'Formaci�n en Centros de Trabajo');
 
 
 INSERT INTO RA (id_ra, id_modulo, id_ciclo, RA) VALUES 
 
 -- Acceso a Datos
-(1,1,2,'Desarrolla aplicaciones que gestionan información en bases de datos relacionales'),
+(1,1,2,'Desarrolla aplicaciones que gestionan informaci�n en bases de datos relacionales'),
 (2,1,2,'Implementa acceso a datos mediante ficheros'),
 (3,1,2,'Gestiona persistencia de objetos'),
 
 -- Desarrollo de Interfaces
-(4,2,2,'Diseña interfaces gráficas de usuario'),
+(4,2,2,'Dise�a interfaces gr�ficas de usuario'),
 (5,2,2,'Desarrolla aplicaciones con interfaces adaptativas'),
 (6,2,2,'Aplica criterios de usabilidad y accesibilidad'),
 
--- Programación Multimedia y Móviles
+-- Programaci�n Multimedia y M�viles
 (7,3,2,'Desarrolla aplicaciones multimedia'),
-(8,3,2,'Programa aplicaciones para dispositivos móviles'),
+(8,3,2,'Programa aplicaciones para dispositivos m�viles'),
 (9,3,2,'Gestiona recursos multimedia'),
 
 -- Servicios y Procesos
@@ -106,9 +109,9 @@ INSERT INTO RA (id_ra, id_modulo, id_ciclo, RA) VALUES
 (11,4,2,'Programa servicios en red'),
 (12,4,2,'Gestiona procesos del sistema'),
 
--- Sistemas de Gestión Empresarial
+-- Sistemas de Gesti�n Empresarial
 (13,5,2,'Instala sistemas ERP'),
-(14,5,2,'Configura módulos empresariales'),
+(14,5,2,'Configura m�dulos empresariales'),
 (15,5,2,'Desarrolla adaptaciones en sistemas ERP'),
 
 -- Empresa
@@ -116,7 +119,7 @@ INSERT INTO RA (id_ra, id_modulo, id_ciclo, RA) VALUES
 (17,6,2,'Elabora un plan de empresa'),
 
 -- Proyecto
-(18,7,2,'Desarrolla un proyecto completo de aplicación'),
+(18,7,2,'Desarrolla un proyecto completo de aplicaci�n'),
 (19,7,2,'Documenta y presenta el proyecto'),
 
 -- FCT
@@ -124,18 +127,18 @@ INSERT INTO RA (id_ra, id_modulo, id_ciclo, RA) VALUES
 (21,8,2,'Aplica competencias profesionales en empresa');
 
 INSERT INTO CICLOS (ID_CICLO,NOMBRECICLO) 
-VALUES (3,'1ºASIR');
+VALUES (3,'1�ASIR');
 
 INSERT INTO MODULOS (id_ciclo, id_modulo, MODULO) VALUES 
-(3,1, 'Implantación de Sistemas Operativos'),
-(3,2, 'Planificación y Administración de Redes'),
+(3,1, 'Implantaci�n de Sistemas Operativos'),
+(3,2, 'Planificaci�n y Administraci�n de Redes'),
 (3,3, 'Fundamentos de Hardware'),
-(3,4, 'Gestión de Bases de Datos'),
-(3,5, 'Lenguajes de Marcas y Sistemas de Gestión de Información'),
+(3,4, 'Gesti�n de Bases de Datos'),
+(3,5, 'Lenguajes de Marcas y Sistemas de Gesti�n de Informaci�n'),
 
 INSERT INTO RA (id_ra, id_modulo, id_ciclo, RA) VALUES 
 
--- Implantación de Sistemas Operativos
+-- Implantaci�n de Sistemas Operativos
 (1,1,3,'Instala sistemas operativos'),
 (2,1,3,'Configura sistemas operativos'),
 (3,1,3,'Gestiona recursos del sistema'),
@@ -148,7 +151,7 @@ INSERT INTO RA (id_ra, id_modulo, id_ciclo, RA) VALUES
 -- Hardware
 (7,3,3,'Identifica componentes hardware'),
 (8,3,3,'Monta y configura equipos'),
-(9,3,3,'Diagnostica fallos físicos'),
+(9,3,3,'Diagnostica fallos f�sicos'),
 
 -- Bases de datos
 (10,4,3,'Instala gestores de bases de datos'),
@@ -157,9 +160,9 @@ INSERT INTO RA (id_ra, id_modulo, id_ciclo, RA) VALUES
 
 -- Lenguajes de marcas
 (13,5,3,'Elabora documentos XML'),
-(14,5,3,'Gestiona información estructurada'),
+(14,5,3,'Gestiona informaci�n estructurada'),
 
--- Administración de SO
+-- Administraci�n de SO
 (15,6,3,'Administra usuarios y permisos'),
 (16,6,3,'Automatiza tareas del sistema'),
 (17,6,3,'Supervisa rendimiento'),
@@ -191,23 +194,23 @@ INSERT INTO RA (id_ra, id_modulo, id_ciclo, RA) VALUES
 
 
 INSERT INTO CICLOS (ID_CICLO,NOMBRECICLO) 
-VALUES (4,'2ºASIR');
+VALUES (4,'2�ASIR');
 
 INSERT INTO MODULOS (id_ciclo, id_modulo, MODULO) VALUES 
-(3,13, 'Administración de Sistemas Operativos'),
+(3,13, 'Administraci�n de Sistemas Operativos'),
 (3,14, 'Servicios de Red e Internet'),
-(3,15, 'Implantación de Aplicaciones Web'),
-(3,16, 'Administración de Sistemas Gestores de Bases de Datos'),
+(3,15, 'Implantaci�n de Aplicaciones Web'),
+(3,16, 'Administraci�n de Sistemas Gestores de Bases de Datos'),
 (3,17, 'Seguridad y Alta Disponibilidad'),
-(3,18, 'Proyecto de Administración de Sistemas Informáticos en Red'),
-(3,19, 'Formación en Centros de Trabajo');
+(3,18, 'Proyecto de Administraci�n de Sistemas Inform�ticos en Red'),
+(3,19, 'Formaci�n en Centros de Trabajo');
 
 INSERT INTO RA (id_ra, id_modulo, id_ciclo, RA	) VALUES 
 
--- Administración de SO
+-- Administraci�n de SO
 (31,13,3,'Administra sistemas operativos en red'),
 (32,13,3,'Gestiona usuarios, grupos y permisos'),
-(33,13,3,'Automatiza tareas de administración'),
+(33,13,3,'Automatiza tareas de administraci�n'),
 
 -- Servicios de red
 (34,14,3,'Configura servicios web'),
@@ -217,7 +220,7 @@ INSERT INTO RA (id_ra, id_modulo, id_ciclo, RA	) VALUES
 -- Aplicaciones web
 (37,15,3,'Implanta aplicaciones web'),
 (38,15,3,'Administra servidores de aplicaciones'),
-(39,15,3,'Configura entornos de ejecución'),
+(39,15,3,'Configura entornos de ejecuci�n'),
 
 -- SGBD
 (40,16,3,'Administra sistemas gestores de bases de datos'),
@@ -269,26 +272,70 @@ INSERT INTO TAREAS (DNI, ID_JORNADA, ID_TAREA, HORAS, DESCRIPCION) VALUES
 -- Jornada 1
 ('12345678Z', 1, 1, 2, 'Analisis de requisitos'),
 ('12345678Z', 1, 2, 3, 'Desarrollo backend'),
-('12345678Z', 1, 3, 1, 'Reunión equipo'),
+('12345678Z', 1, 3, 1, 'Reuni�n equipo'),
 
 -- Jornada 2
-('23456789D', 2, 1, 2, 'Diseño base de datos'),
-('23456789D', 2, 2, 1.5, 'Implementación consultas'),
+('23456789D', 2, 1, 2, 'Dise�o base de datos'),
+('23456789D', 2, 2, 1.5, 'Implementaci�n consultas'),
 ('23456789D', 2, 3, 1, 'Testing'),
 
 -- Jornada 3
-('34567890V', 3, 1, 2, 'Maquetación UI'),
-('34567890V', 3, 2, 1, 'Corrección errores'),
+('34567890V', 3, 1, 2, 'Maquetaci�n UI'),
+('34567890V', 3, 2, 1, 'Correcci�n errores'),
 
 -- Jornada 4
-('45678901G', 4, 1, 3, 'Documentación'),
-('45678901G', 4, 2, 2, 'Revisión código'),
+('45678901G', 4, 1, 3, 'Documentaci�n'),
+('45678901G', 4, 2, 2, 'Revisi�n c�digo'),
 
 -- Jornada 5
-('56789012B', 5, 1, 2, 'Investigación'),
-('56789012B', 5, 2, 3, 'Implementación funcionalidad'),
+('56789012B', 5, 1, 2, 'Investigaci�n'),
+('56789012B', 5, 2, 3, 'Implementaci�n funcionalidad'),
 ('56789012B', 5, 3, 1, 'Pruebas'),
 
 -- Jornada 6
-('12345678Z', 6, 1, 1, 'Preparación entorno'),
+('12345678Z', 6, 1, 1, 'Preparaci�n entorno'),
 ('12345678Z', 6, 2, 1.5, 'Planificación tareas');
+
+-- INSERT DE TAREA_RA
+INSERT INTO TAREA_RA (ID_CICLO, ID_MODULO, ID_RA, DNI, ID_JORNADA, ID_TAREA) VALUES
+
+-- MAXIM (1º DAM)
+
+-- Jornada 1
+(1,1,2,'12345678Z',1,1), -- Programación
+(1,2,7,'12345678Z',1,2), -- Bases de Datos
+(1,5,12,'12345678Z',1,3), -- Entornos
+
+-- Jornada 6
+(1,3,8,'12345678Z',6,1), -- Sistemas
+(1,6,14,'12345678Z',6,2), -- IPE
+
+
+-- CARLOS (1º DAM)
+
+-- Jornada 2
+(1,2,6,'23456789D',2,1), -- Bases de Datos
+(1,2,7,'23456789D',2,2), -- Bases de Datos
+(1,5,13,'23456789D',2,3), -- Entornos
+
+
+-- LUCIA (2º DAM)
+
+-- Jornada 3
+(2,2,4,'34567890V',3,1), -- Desarrollo Interfaces
+(2,2,5,'34567890V',3,2), -- Desarrollo Interfaces
+
+
+-- MARTA (2º DAM)
+
+-- Jornada 4
+(2,6,16,'45678901G',4,1), -- Empresa
+(2,7,18,'45678901G',4,2), -- Proyecto
+
+
+-- PABLO (1º DAM)
+
+-- Jornada 5
+(1,5,12,'56789012B',5,1), -- Entornos
+(1,1,3,'56789012B',5,2), -- Programación
+(1,1,4,'56789012B',5,3); -- Programación

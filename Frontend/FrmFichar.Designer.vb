@@ -25,7 +25,7 @@ Partial Class FrmFichar
         Me.components = New System.ComponentModel.Container()
         Me.LabelTitulo = New System.Windows.Forms.Label()
         Me.lblFecha = New System.Windows.Forms.Label()
-        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.TimerFecha = New System.Windows.Forms.Timer(Me.components)
         Me.lvlFecha1 = New System.Windows.Forms.Label()
         Me.txtDNI = New System.Windows.Forms.TextBox()
         Me.txtNombre = New System.Windows.Forms.TextBox()
@@ -34,14 +34,15 @@ Partial Class FrmFichar
         Me.lblCurso = New System.Windows.Forms.Label()
         Me.btnEntrada = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.dtgMovimientos = New System.Windows.Forms.DataGridView()
-        Me.Dia = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Hora = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewMovimientos = New System.Windows.Forms.DataGridView()
         Me.txtHoras = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtCurso = New System.Windows.Forms.TextBox()
         Me.btnVolver = New System.Windows.Forms.Button()
-        CType(Me.dtgMovimientos, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Dia = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Hora = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.HorasJornada = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        CType(Me.DataGridViewMovimientos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'LabelTitulo
@@ -64,8 +65,9 @@ Partial Class FrmFichar
         Me.lblFecha.TabIndex = 1
         Me.lblFecha.Text = "Fecha"
         '
-        'Timer1
+        'TimerFecha
         '
+        Me.TimerFecha.Interval = 1000
         '
         'lvlFecha1
         '
@@ -78,14 +80,14 @@ Partial Class FrmFichar
         '
         'txtDNI
         '
-        Me.txtDNI.Location = New System.Drawing.Point(78, 100)
+        Me.txtDNI.Location = New System.Drawing.Point(86, 100)
         Me.txtDNI.Name = "txtDNI"
         Me.txtDNI.Size = New System.Drawing.Size(116, 22)
         Me.txtDNI.TabIndex = 5
         '
         'txtNombre
         '
-        Me.txtNombre.Location = New System.Drawing.Point(78, 132)
+        Me.txtNombre.Location = New System.Drawing.Point(86, 132)
         Me.txtNombre.Name = "txtNombre"
         Me.txtNombre.Size = New System.Drawing.Size(174, 22)
         Me.txtNombre.TabIndex = 6
@@ -140,37 +142,23 @@ Partial Class FrmFichar
         Me.Label1.TabIndex = 17
         Me.Label1.Text = "Registro de Movimientos"
         '
-        'dtgMovimientos
+        'DataGridViewMovimientos
         '
-        Me.dtgMovimientos.BackgroundColor = System.Drawing.SystemColors.ActiveCaption
-        Me.dtgMovimientos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dtgMovimientos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Dia, Me.Hora})
-        Me.dtgMovimientos.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.dtgMovimientos.Location = New System.Drawing.Point(0, 341)
-        Me.dtgMovimientos.Name = "dtgMovimientos"
-        Me.dtgMovimientos.RowHeadersVisible = False
-        Me.dtgMovimientos.RowHeadersWidth = 51
-        Me.dtgMovimientos.RowTemplate.Height = 24
-        Me.dtgMovimientos.Size = New System.Drawing.Size(658, 150)
-        Me.dtgMovimientos.TabIndex = 18
-        '
-        'Dia
-        '
-        Me.Dia.HeaderText = "Dia"
-        Me.Dia.MinimumWidth = 6
-        Me.Dia.Name = "Dia"
-        Me.Dia.Width = 125
-        '
-        'Hora
-        '
-        Me.Hora.HeaderText = "Hora"
-        Me.Hora.MinimumWidth = 6
-        Me.Hora.Name = "Hora"
-        Me.Hora.Width = 125
+        Me.DataGridViewMovimientos.BackgroundColor = System.Drawing.SystemColors.ActiveCaption
+        Me.DataGridViewMovimientos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridViewMovimientos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Dia, Me.Hora, Me.HorasJornada})
+        Me.DataGridViewMovimientos.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.DataGridViewMovimientos.Location = New System.Drawing.Point(0, 341)
+        Me.DataGridViewMovimientos.Name = "DataGridViewMovimientos"
+        Me.DataGridViewMovimientos.RowHeadersVisible = False
+        Me.DataGridViewMovimientos.RowHeadersWidth = 51
+        Me.DataGridViewMovimientos.RowTemplate.Height = 24
+        Me.DataGridViewMovimientos.Size = New System.Drawing.Size(658, 150)
+        Me.DataGridViewMovimientos.TabIndex = 18
         '
         'txtHoras
         '
-        Me.txtHoras.Location = New System.Drawing.Point(140, 201)
+        Me.txtHoras.Location = New System.Drawing.Point(140, 204)
         Me.txtHoras.Name = "txtHoras"
         Me.txtHoras.Size = New System.Drawing.Size(125, 22)
         Me.txtHoras.TabIndex = 19
@@ -186,7 +174,7 @@ Partial Class FrmFichar
         '
         'txtCurso
         '
-        Me.txtCurso.Location = New System.Drawing.Point(78, 164)
+        Me.txtCurso.Location = New System.Drawing.Point(86, 164)
         Me.txtCurso.Name = "txtCurso"
         Me.txtCurso.Size = New System.Drawing.Size(100, 22)
         Me.txtCurso.TabIndex = 21
@@ -200,6 +188,28 @@ Partial Class FrmFichar
         Me.btnVolver.Text = "Volver"
         Me.btnVolver.UseVisualStyleBackColor = True
         '
+        'Dia
+        '
+        Me.Dia.HeaderText = "Dia"
+        Me.Dia.MinimumWidth = 6
+        Me.Dia.Name = "Dia"
+        Me.Dia.Width = 125
+        '
+        'Hora
+        '
+        Me.Hora.HeaderText = "Hora"
+        Me.Hora.MinimumWidth = 6
+        Me.Hora.Name = "Hora"
+        Me.Hora.Width = 125
+        '
+        'HorasJornada
+        '
+        Me.HorasJornada.HeaderText = "Horas de jornada"
+        Me.HorasJornada.MinimumWidth = 6
+        Me.HorasJornada.Name = "HorasJornada"
+        Me.HorasJornada.ReadOnly = True
+        Me.HorasJornada.Width = 125
+        '
         'FrmFichar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -209,7 +219,7 @@ Partial Class FrmFichar
         Me.Controls.Add(Me.txtCurso)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.txtHoras)
-        Me.Controls.Add(Me.dtgMovimientos)
+        Me.Controls.Add(Me.DataGridViewMovimientos)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.btnEntrada)
         Me.Controls.Add(Me.lblCurso)
@@ -222,7 +232,7 @@ Partial Class FrmFichar
         Me.Controls.Add(Me.LabelTitulo)
         Me.Name = "FrmFichar"
         Me.Text = "FrmFichar"
-        CType(Me.dtgMovimientos, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataGridViewMovimientos, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -230,7 +240,7 @@ Partial Class FrmFichar
 
     Friend WithEvents LabelTitulo As Label
     Friend WithEvents lblFecha As Label
-    Friend WithEvents Timer1 As Timer
+    Friend WithEvents TimerFecha As Timer
     Friend WithEvents lvlFecha1 As Label
     Friend WithEvents txtDNI As TextBox
     Friend WithEvents txtNombre As TextBox
@@ -239,11 +249,12 @@ Partial Class FrmFichar
     Friend WithEvents lblCurso As Label
     Friend WithEvents btnEntrada As Button
     Friend WithEvents Label1 As Label
-    Friend WithEvents dtgMovimientos As DataGridView
-    Friend WithEvents Dia As DataGridViewTextBoxColumn
-    Friend WithEvents Hora As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewMovimientos As DataGridView
     Friend WithEvents txtHoras As TextBox
     Friend WithEvents Label2 As Label
     Friend WithEvents txtCurso As TextBox
     Friend WithEvents btnVolver As Button
+    Friend WithEvents Dia As DataGridViewTextBoxColumn
+    Friend WithEvents Hora As DataGridViewTextBoxColumn
+    Friend WithEvents HorasJornada As DataGridViewTextBoxColumn
 End Class

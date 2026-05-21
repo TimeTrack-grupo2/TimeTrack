@@ -29,17 +29,16 @@ Public Class GestionTareas
         Finally
             conexion.Close()
         End Try
-
     End Function
 
 
-    Public Function CalcularIdTareaPorJornada(jornada As Jornada) As Integer
+    Public Function CalcularIdTareaPorJornada(idJornada As Integer) As Integer
         Dim conexion As New SqlConnection(cadConexion)
         Try
             conexion.Open()
             Dim sqlMaxId As String = "SELECT ISNULL(MAX(ID_TAREA), 0) + 1 FROM TAREAS WHERE TAREAS.ID_JORNADA = @IDJORNADA"
             Dim cmdMaxId As New SqlCommand(sqlMaxId, conexion)
-            cmdMaxId.Parameters.AddWithValue("@IDJORNADA", jornada.ID_JORNADA)
+            cmdMaxId.Parameters.AddWithValue("@IDJORNADA", idJornada)
             Dim nuevoId As Integer = CInt(cmdMaxId.ExecuteScalar())
             If (nuevoId = 0) Then
                 Return Nothing
@@ -53,7 +52,7 @@ Public Class GestionTareas
         End Try
     End Function
     Public Function RaPorModulos(idModulo) As List(Of Ra)
-        Dim conexion As New SqlConnection(cadConexion) ' ✅ Añadida cadena
+        Dim conexion As New SqlConnection(cadConexion)
         Dim listaRa As New List(Of Ra)
         Try
             conexion.Open()
@@ -94,11 +93,11 @@ Public Class GestionTareas
     End Function
 
     Public Function BuscarTarea(dni As String, id As Integer, ByRef mensaje As String) As DataTable
-        Dim conexion As New SqlConnection(cadConexion) ' ✅ Añadida cadena
+        Dim conexion As New SqlConnection(cadConexion)
         Dim tablaTareas As New DataTable
         Try
             conexion.Open()
-            Dim sql As String = "SELECT * FROM TAREAS WHERE TAREAS.DNI = @DNI AND TAREAS.ID_JORNADA = @ID" ' ✅ Corregido (*)
+            Dim sql As String = "SELECT * FROM TAREAS WHERE TAREAS.DNI = @DNI AND TAREAS.ID_JORNADA = @ID"
             Dim cmd As New SqlCommand(sql, conexion)
             cmd.Parameters.AddWithValue("@DNI", dni)
             cmd.Parameters.AddWithValue("@ID", id)
@@ -136,7 +135,6 @@ Public Class GestionTareas
         End Try
     End Function
 
-    ' Al eliminar una tarea, primero eliminar sus registros en TAREA_RA
     Public Function EliminarTareaRa(tarea As Tarea) As Boolean
         Dim conexion As New SqlConnection(cadConexion)
         Try

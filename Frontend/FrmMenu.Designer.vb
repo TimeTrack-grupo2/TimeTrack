@@ -24,18 +24,20 @@ Partial Class FrmMenu
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.btnCiclos = New System.Windows.Forms.Button()
         Me.btnVolver = New System.Windows.Forms.Button()
-        Me.btnTareas = New System.Windows.Forms.Button()
         Me.btnFichar = New System.Windows.Forms.Button()
         Me.btnDatos = New System.Windows.Forms.Button()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.lblNombre = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.txtBuscarNombre = New System.Windows.Forms.TextBox()
         Me.lblHoras = New System.Windows.Forms.Label()
         Me.lblDias = New System.Windows.Forms.Label()
         Me.lblTitHoras = New System.Windows.Forms.Label()
         Me.lblTitDias = New System.Windows.Forms.Label()
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.DataGridViewJornadas = New System.Windows.Forms.DataGridView()
-        Me.TimerRecargarJornadas = New System.Windows.Forms.Timer(Me.components)
         Me.ID_JORNADA = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DNI = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.NombreAlumno = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -43,6 +45,7 @@ Partial Class FrmMenu
         Me.HorasRestantes = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Estado = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.VerTareas = New System.Windows.Forms.DataGridViewButtonColumn()
+        Me.TimerRecargarJornadas = New System.Windows.Forms.Timer(Me.components)
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         CType(Me.DataGridViewJornadas, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -51,8 +54,8 @@ Partial Class FrmMenu
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.Panel1.Controls.Add(Me.btnCiclos)
         Me.Panel1.Controls.Add(Me.btnVolver)
-        Me.Panel1.Controls.Add(Me.btnTareas)
         Me.Panel1.Controls.Add(Me.btnFichar)
         Me.Panel1.Controls.Add(Me.btnDatos)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Left
@@ -60,6 +63,21 @@ Partial Class FrmMenu
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(200, 568)
         Me.Panel1.TabIndex = 0
+        '
+        'btnCiclos
+        '
+        Me.btnCiclos.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnCiclos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(26, Byte), Integer), CType(CType(188, Byte), Integer), CType(CType(156, Byte), Integer))
+        Me.btnCiclos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(52, Byte), Integer), CType(CType(73, Byte), Integer), CType(CType(94, Byte), Integer))
+        Me.btnCiclos.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnCiclos.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCiclos.ForeColor = System.Drawing.Color.Black
+        Me.btnCiclos.Location = New System.Drawing.Point(0, 100)
+        Me.btnCiclos.Name = "btnCiclos"
+        Me.btnCiclos.Size = New System.Drawing.Size(200, 50)
+        Me.btnCiclos.TabIndex = 4
+        Me.btnCiclos.Text = "Ciclos"
+        Me.btnCiclos.UseVisualStyleBackColor = True
         '
         'btnVolver
         '
@@ -75,21 +93,6 @@ Partial Class FrmMenu
         Me.btnVolver.TabIndex = 3
         Me.btnVolver.Text = "Volver"
         Me.btnVolver.UseVisualStyleBackColor = True
-        '
-        'btnTareas
-        '
-        Me.btnTareas.Dock = System.Windows.Forms.DockStyle.Top
-        Me.btnTareas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(26, Byte), Integer), CType(CType(188, Byte), Integer), CType(CType(156, Byte), Integer))
-        Me.btnTareas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(52, Byte), Integer), CType(CType(73, Byte), Integer), CType(CType(94, Byte), Integer))
-        Me.btnTareas.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnTareas.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnTareas.ForeColor = System.Drawing.Color.Black
-        Me.btnTareas.Location = New System.Drawing.Point(0, 100)
-        Me.btnTareas.Name = "btnTareas"
-        Me.btnTareas.Size = New System.Drawing.Size(200, 50)
-        Me.btnTareas.TabIndex = 2
-        Me.btnTareas.Text = "Tareas"
-        Me.btnTareas.UseVisualStyleBackColor = True
         '
         'btnFichar
         '
@@ -118,12 +121,15 @@ Partial Class FrmMenu
         Me.btnDatos.Name = "btnDatos"
         Me.btnDatos.Size = New System.Drawing.Size(200, 50)
         Me.btnDatos.TabIndex = 0
-        Me.btnDatos.Text = "Base de Datos"
+        Me.btnDatos.Text = "Alumnos"
         Me.btnDatos.UseVisualStyleBackColor = True
         '
         'Panel2
         '
         Me.Panel2.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.Panel2.Controls.Add(Me.lblNombre)
+        Me.Panel2.Controls.Add(Me.Label1)
+        Me.Panel2.Controls.Add(Me.txtBuscarNombre)
         Me.Panel2.Controls.Add(Me.lblHoras)
         Me.Panel2.Controls.Add(Me.lblDias)
         Me.Panel2.Controls.Add(Me.lblTitHoras)
@@ -137,10 +143,35 @@ Partial Class FrmMenu
         Me.Panel2.Size = New System.Drawing.Size(932, 568)
         Me.Panel2.TabIndex = 1
         '
+        'lblNombre
+        '
+        Me.lblNombre.AutoSize = True
+        Me.lblNombre.Location = New System.Drawing.Point(17, 18)
+        Me.lblNombre.Name = "lblNombre"
+        Me.lblNombre.Size = New System.Drawing.Size(80, 16)
+        Me.lblNombre.TabIndex = 8
+        Me.lblNombre.Text = "Bueno Dias,"
+        '
+        'Label1
+        '
+        Me.Label1.Location = New System.Drawing.Point(6, 128)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(153, 16)
+        Me.Label1.TabIndex = 7
+        Me.Label1.Text = "Buscar alumno"
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'txtBuscarNombre
+        '
+        Me.txtBuscarNombre.Location = New System.Drawing.Point(3, 147)
+        Me.txtBuscarNombre.Name = "txtBuscarNombre"
+        Me.txtBuscarNombre.Size = New System.Drawing.Size(156, 22)
+        Me.txtBuscarNombre.TabIndex = 6
+        '
         'lblHoras
         '
         Me.lblHoras.AutoSize = True
-        Me.lblHoras.Location = New System.Drawing.Point(691, 138)
+        Me.lblHoras.Location = New System.Drawing.Point(678, 89)
         Me.lblHoras.Name = "lblHoras"
         Me.lblHoras.Size = New System.Drawing.Size(48, 16)
         Me.lblHoras.TabIndex = 5
@@ -149,7 +180,7 @@ Partial Class FrmMenu
         'lblDias
         '
         Me.lblDias.AutoSize = True
-        Me.lblDias.Location = New System.Drawing.Point(204, 138)
+        Me.lblDias.Location = New System.Drawing.Point(191, 89)
         Me.lblDias.Name = "lblDias"
         Me.lblDias.Size = New System.Drawing.Size(48, 16)
         Me.lblDias.TabIndex = 4
@@ -158,7 +189,7 @@ Partial Class FrmMenu
         'lblTitHoras
         '
         Me.lblTitHoras.AutoSize = True
-        Me.lblTitHoras.Location = New System.Drawing.Point(652, 99)
+        Me.lblTitHoras.Location = New System.Drawing.Point(639, 50)
         Me.lblTitHoras.Name = "lblTitHoras"
         Me.lblTitHoras.Size = New System.Drawing.Size(87, 16)
         Me.lblTitHoras.TabIndex = 2
@@ -167,7 +198,7 @@ Partial Class FrmMenu
         'lblTitDias
         '
         Me.lblTitDias.AutoSize = True
-        Me.lblTitDias.Location = New System.Drawing.Point(143, 99)
+        Me.lblTitDias.Location = New System.Drawing.Point(160, 50)
         Me.lblTitDias.Name = "lblTitDias"
         Me.lblTitDias.Size = New System.Drawing.Size(109, 16)
         Me.lblTitDias.TabIndex = 1
@@ -175,10 +206,9 @@ Partial Class FrmMenu
         '
         'lblTitulo
         '
-        Me.lblTitulo.AutoSize = True
-        Me.lblTitulo.Location = New System.Drawing.Point(21, 18)
+        Me.lblTitulo.Location = New System.Drawing.Point(325, 35)
         Me.lblTitulo.Name = "lblTitulo"
-        Me.lblTitulo.Size = New System.Drawing.Size(138, 16)
+        Me.lblTitulo.Size = New System.Drawing.Size(240, 40)
         Me.lblTitulo.TabIndex = 0
         Me.lblTitulo.Text = "Jornadas Trabajadas"
         Me.lblTitulo.TextAlign = System.Drawing.ContentAlignment.TopCenter
@@ -190,13 +220,11 @@ Partial Class FrmMenu
         Me.DataGridViewJornadas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ID_JORNADA, Me.DNI, Me.NombreAlumno, Me.HoraEntrada, Me.HorasRestantes, Me.Estado, Me.VerTareas})
         Me.DataGridViewJornadas.Location = New System.Drawing.Point(0, 175)
         Me.DataGridViewJornadas.Name = "DataGridViewJornadas"
+        Me.DataGridViewJornadas.RowHeadersVisible = False
         Me.DataGridViewJornadas.RowHeadersWidth = 51
         Me.DataGridViewJornadas.RowTemplate.Height = 24
         Me.DataGridViewJornadas.Size = New System.Drawing.Size(920, 390)
         Me.DataGridViewJornadas.TabIndex = 0
-        '
-        'TimerRecargarJornadas
-        '
         '
         'ID_JORNADA
         '
@@ -260,6 +288,11 @@ Partial Class FrmMenu
         Me.VerTareas.UseColumnTextForButtonValue = True
         Me.VerTareas.Width = 125
         '
+        'TimerRecargarJornadas
+        '
+        Me.TimerRecargarJornadas.Enabled = True
+        Me.TimerRecargarJornadas.Interval = 5000
+        '
         'FrmMenu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -279,7 +312,6 @@ Partial Class FrmMenu
 
     Friend WithEvents Panel1 As Panel
     Friend WithEvents btnVolver As Button
-    Friend WithEvents btnTareas As Button
     Friend WithEvents btnFichar As Button
     Friend WithEvents btnDatos As Button
     Friend WithEvents Panel2 As Panel
@@ -297,4 +329,8 @@ Partial Class FrmMenu
     Friend WithEvents HorasRestantes As DataGridViewTextBoxColumn
     Friend WithEvents Estado As DataGridViewTextBoxColumn
     Friend WithEvents VerTareas As DataGridViewButtonColumn
+    Friend WithEvents Label1 As Label
+    Friend WithEvents txtBuscarNombre As TextBox
+    Friend WithEvents lblNombre As Label
+    Friend WithEvents btnCiclos As Button
 End Class

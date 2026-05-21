@@ -13,7 +13,25 @@ Public Class GestionAlumno
     Public Sub New(ByRef errorConexion As String)
         cadConexion = $"Data Source = {MiServidor.Servidor(errorConexion)}; Initial Catalog = GRUPO2; Integrated Security = SSPI; MultipleActiveResultSets=true"
     End Sub
-
+    Public Function ObtenerAlumnoQueIniciaSesion(dni As String) As Alumno
+        Dim conexion As New SqlConnection(cadConexion)
+        Try
+            conexion.Open()
+            Dim sql As String = "SELECT * FROM ALUMNOS WHERE DNI = @DNI"
+            Dim cmd As New SqlCommand(sql, conexion)
+            cmd.Parameters.AddWithValue("@DNI", dni)
+            Dim drAlumno As SqlDataReader = cmd.ExecuteReader()
+            If drAlumno.Read() Then
+                Dim idCiclo As Integer = If(IsDBNull(drAlumno("ID_CICLO")), 0, CInt(drAlumno("ID_CICLO")))
+                Return New Alumno(drAlumno("DNI"), drAlumno("NOMBRE"), drAlumno("APELLIDO1"), drAlumno("APELLIDO2"), idCiclo)
+            End If
+        Catch ex As Exception
+            Return Nothing
+        Finally
+            conexion.Close()
+        End Try
+        Return New Alumno()
+    End Function
     Public Function LogIn(dni As String, ByRef mensaje As String) As TipoLogin
         mensaje = ""
         Dim conexion As New SqlConnection(cadConexion)
@@ -100,7 +118,7 @@ Public Class GestionAlumno
 
     End Function
 
-    Public Function ciclos() As List(Of Ciclos)
+    Public Function Ciclos() As List(Of Ciclos)
         Dim conexion As New SqlConnection(cadConexion)
         Try
             conexion.Open()
@@ -127,7 +145,7 @@ Public Class GestionAlumno
             cmdCiclo.Parameters.AddWithValue("@NOMBRE_CICLO", ciclo)
             Dim drCiclo As SqlDataReader = cmdCiclo.ExecuteReader
             If drCiclo.Read Then
-                Dim id_Ciclo As Integer = drCiclo.GetInt16(0) ' Convert.ToInt32(drCiclo("id_ciclo")) ' drCiclo.GetInt32(id_Ciclo)
+                Dim id_Ciclo As Integer = drCiclo.GetInt16(0)
                 Return id_Ciclo
             End If
             mesage = "No existe ningun ciclo con ese nombre"
@@ -136,8 +154,6 @@ Public Class GestionAlumno
             mesage = ex.Message
         End Try
     End Function
-
-    ' Método 2: Elimina tareas, jornadas y el alumno directamente
 
     Public Function ComprobarDatosAlumno(dni As String) As Boolean
         Dim conexion As New SqlConnection(cadConexion)

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 18
-VisualStudioVersion = 18.4.11626.88 stable
+VisualStudioVersion = 18.5.11801.241 oobstable
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Clases", "Clases\Clases.vbproj", "{725FF945-8E29-4E4C-8E70-117466C83BAA}"
 EndProject
@@ -12,6 +12,11 @@ EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Interfaz", "Frontend\Interfaz.vbproj", "{7F972B99-AC07-4030-90BF-21ABF5E279BD}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Tests", "Tests\Tests.vbproj", "{94CAF0BA-605A-4CFB-BAC8-B27C7AD4F5CF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Elementos de la solución", "Elementos de la solución", "{D107F4C8-89CC-BEA8-D3D7-CA6B7733353D}"
+	ProjectSection(SolutionItems) = preProject
+		Correcciones.docx = Correcciones.docx
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -134,7 +134,7 @@ INSERT INTO MODULOS (id_ciclo, id_modulo, MODULO) VALUES
 (3,2, 'Planificaci�n y Administraci�n de Redes'),
 (3,3, 'Fundamentos de Hardware'),
 (3,4, 'Gesti�n de Bases de Datos'),
-(3,5, 'Lenguajes de Marcas y Sistemas de Gesti�n de Informaci�n'),
+(3,5, 'Lenguajes de Marcas y Sistemas de Gesti�n de Informaci�n')
 
 INSERT INTO RA (id_ra, id_modulo, id_ciclo, RA) VALUES 
 

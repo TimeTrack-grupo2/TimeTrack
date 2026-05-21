@@ -273,6 +273,8 @@ Partial Class FrmMenu
         '
         'TimerRecargarJornadas
         '
+        Me.TimerRecargarJornadas.Enabled = True
+        Me.TimerRecargarJornadas.Interval = 5000
         '
         'FrmMenu
         '

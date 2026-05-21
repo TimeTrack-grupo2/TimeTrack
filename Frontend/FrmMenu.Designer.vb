@@ -24,6 +24,7 @@ Partial Class FrmMenu
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.btnCiclos = New System.Windows.Forms.Button()
         Me.btnVolver = New System.Windows.Forms.Button()
         Me.btnFichar = New System.Windows.Forms.Button()
         Me.btnDatos = New System.Windows.Forms.Button()
@@ -53,6 +54,7 @@ Partial Class FrmMenu
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.Panel1.Controls.Add(Me.btnCiclos)
         Me.Panel1.Controls.Add(Me.btnVolver)
         Me.Panel1.Controls.Add(Me.btnFichar)
         Me.Panel1.Controls.Add(Me.btnDatos)
@@ -61,6 +63,21 @@ Partial Class FrmMenu
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(200, 568)
         Me.Panel1.TabIndex = 0
+        '
+        'btnCiclos
+        '
+        Me.btnCiclos.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnCiclos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(26, Byte), Integer), CType(CType(188, Byte), Integer), CType(CType(156, Byte), Integer))
+        Me.btnCiclos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(52, Byte), Integer), CType(CType(73, Byte), Integer), CType(CType(94, Byte), Integer))
+        Me.btnCiclos.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnCiclos.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCiclos.ForeColor = System.Drawing.Color.Black
+        Me.btnCiclos.Location = New System.Drawing.Point(0, 100)
+        Me.btnCiclos.Name = "btnCiclos"
+        Me.btnCiclos.Size = New System.Drawing.Size(200, 50)
+        Me.btnCiclos.TabIndex = 4
+        Me.btnCiclos.Text = "Ciclos"
+        Me.btnCiclos.UseVisualStyleBackColor = True
         '
         'btnVolver
         '
@@ -315,4 +332,5 @@ Partial Class FrmMenu
     Friend WithEvents Label1 As Label
     Friend WithEvents txtBuscarNombre As TextBox
     Friend WithEvents lblNombre As Label
+    Friend WithEvents btnCiclos As Button
 End Class

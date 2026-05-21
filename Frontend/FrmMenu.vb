@@ -129,5 +129,12 @@ Public Class FrmMenu
         Next
     End Sub
 
-
+    Private Sub btnCiclos_Click(sender As Object, e As EventArgs) Handles btnCiclos.Click
+        If logIn = GestionAlumno.TipoLogin.Administrador Then
+            Dim frm As New FrmCiclos()
+            frm.ShowDialog()
+        Else
+            MessageBox.Show("No eres administrador de la aplicación.")
+        End If
+    End Sub
 End Class

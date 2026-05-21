@@ -159,18 +159,39 @@ Public Class GestionTareas
         End Try
     End Function
 
-    Public Function EliminarTareaRa(tarea As Tarea) As Boolean
+
+    Private Sub EliminarTareaRA(tarea As Tarea, conexion As SqlConnection)
+        Dim sql As String = "DELETE FROM TAREA_RA WHERE DNI = @DNI AND ID_JORNADA = @ID_JORNADA AND ID_TAREA = @ID_TAREA"
+        Dim cmd As New SqlCommand(sql, conexion)
+        cmd.Parameters.AddWithValue("@DNI", tarea.Dni)
+        cmd.Parameters.AddWithValue("@ID_JORNADA", tarea.Id_Jornada)
+        cmd.Parameters.AddWithValue("@ID_TAREA", tarea.Id_Tarea)
+        cmd.ExecuteNonQuery()
+    End Sub
+
+    Private Sub EliminarTarea(tarea As Tarea, conexion As SqlConnection)
+        Dim sql As String = "DELETE FROM TAREAS WHERE DNI = @DNI AND ID_JORNADA = @ID_JORNADA AND ID_TAREA = @ID_TAREA"
+        Dim cmd As New SqlCommand(sql, conexion)
+        cmd.Parameters.AddWithValue("@DNI", tarea.Dni)
+        cmd.Parameters.AddWithValue("@ID_JORNADA", tarea.Id_Jornada)
+        cmd.Parameters.AddWithValue("@ID_TAREA", tarea.Id_Tarea)
+        cmd.ExecuteNonQuery()
+    End Sub
+
+    Public Function BorrarTarea(tarea As Tarea) As String
         Dim conexion As New SqlConnection(cadConexion)
+
         Try
             conexion.Open()
-            Dim sql As String = "DELETE FROM TAREA_RA WHERE DNI = @DNI AND ID_JORNADA = @ID_JORNADA"
-            Dim cmd As New SqlCommand(sql, conexion)
-            cmd.Parameters.AddWithValue("@DNI", tarea.Dni)
-            cmd.Parameters.AddWithValue("@ID_JORNADA", tarea.Id_Jornada)
-            cmd.ExecuteNonQuery()
-            Return True
+
+
+            EliminarTareaRA(tarea, conexion)
+            EliminarTarea(tarea, conexion)
+
+
+            Return "La tarea se ha eliminado con éxito."
         Catch ex As Exception
-            Return False
+            Return ex.Message
         Finally
             conexion.Close()
         End Try

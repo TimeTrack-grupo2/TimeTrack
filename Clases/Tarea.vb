@@ -7,6 +7,9 @@
     Public Property Horas As Integer
     Public Property Descripcion As String
 
+    Public Sub New()
+
+    End Sub
     Public Sub New(dni As String, id_Jornada As Integer, id_Tarea As Integer, horas As Integer, descripcion As String)
         Me.Dni = dni
         Me.Id_Jornada = id_Jornada

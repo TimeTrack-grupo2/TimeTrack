@@ -71,15 +71,6 @@ Public Class FrmTarea
 
     End Sub
 
-    Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
-        'If gestionTareas.EliminarTareaRa() Then
-        '    Dim resultado As DialogResult
-        '    resultado = MessageBox.Show("¿Estás seguro de que quieres eliminar la tarea del alumno?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
-
-        '    If resultado = DialogResult.No Then Exit Sub
-        'End If
-
-    End Sub
 
     Private Sub cboModulos_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboModulos.SelectedIndexChanged
         Dim modulo As Modulo = TryCast(cboModulos.SelectedItem, Modulo)
@@ -90,17 +81,22 @@ Public Class FrmTarea
         cboResultadosAprendizaje.DataSource = gestionTareas.RaPorModulos(modulo.idModulo)
     End Sub
 
-    Private Sub DataGridView1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellClick
-        If e.RowIndex >= 0 Then
-            Dim fila As DataGridViewRow = DataGridView1.Rows(e.RowIndex)
-            Me.dniAlumno = fila.Cells(0).Value.ToString()
 
-            ' Guardarlo en una variable global o textbox
-
+    Private Sub btnElimina_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
+        If DataGridView1.CurrentRow Is Nothing Then
+            MessageBox.Show("Selecciona una tarea primero.")
+            Return
         End If
-    End Sub
 
-    Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
+        Dim fila = DataGridView1.CurrentRow
+        Dim tarea As New Tarea
+        tarea.Dni = fila.Cells("DNI").Value.ToString()
+        tarea.Id_Jornada = Convert.ToInt32(fila.Cells("ID_JORNADA").Value)
+        tarea.Id_Tarea = Convert.ToInt32(fila.Cells("ID_TAREA").Value)
 
+        Dim resultado As String = gestionTareas.BorrarTarea(tarea)
+        MessageBox.Show(resultado)
+
+        CargarDatosGrid()
     End Sub
 End Class

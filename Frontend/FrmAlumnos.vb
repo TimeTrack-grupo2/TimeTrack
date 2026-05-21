@@ -126,9 +126,6 @@ Public Class FrmAlumnos
 
     End Sub
 
-    Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridViewAlumnos.CellContentClick
-
-    End Sub
 
     Private Sub cboCiclos_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboCiclos.SelectedIndexChanged
 

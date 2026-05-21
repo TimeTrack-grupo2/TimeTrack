@@ -71,21 +71,45 @@ Public Class GestionTareas
         End Try
     End Function
 
-    Public Function AgregarTarea(tarea As Tarea) As String
+    Private Function InsertarTarea(tarea As Tarea, conexion As SqlConnection, transaccion As SqlTransaction) As String
+        Dim sqlTarea As String = "INSERT INTO TAREAS VALUES(@DNI, @ID_JORNADA, @ID_TAREA, @HORAS, @DESCRIPCION)"
+        Dim cmdTarea As New SqlCommand(sqlTarea, conexion, transaccion)
+        cmdTarea.Parameters.AddWithValue("@DNI", tarea.Dni)
+        cmdTarea.Parameters.AddWithValue("@ID_JORNADA", tarea.Id_Jornada)
+        cmdTarea.Parameters.AddWithValue("@ID_TAREA", tarea.Id_Tarea)
+        cmdTarea.Parameters.AddWithValue("@HORAS", tarea.Horas)
+        cmdTarea.Parameters.AddWithValue("@DESCRIPCION", tarea.Descripcion)
+        cmdTarea.ExecuteNonQuery()
+        Return "OK"
+    End Function
+
+    Private Function InsertarTareaRA(tarea As Tarea, idModulo As Integer, idRA As Integer, idCiclo As Integer, conexion As SqlConnection, transaccion As SqlTransaction) As String
+        Dim sqlRA As String = "INSERT INTO TAREA_RA VALUES(@ID_CICLO, @ID_MODULO, @ID_RA, @DNI, @ID_JORNADA, @ID_TAREA)"
+        Dim cmdRA As New SqlCommand(sqlRA, conexion, transaccion)
+        cmdRA.Parameters.AddWithValue("@ID_CICLO", idCiclo)
+        cmdRA.Parameters.AddWithValue("@ID_MODULO", idModulo)
+        cmdRA.Parameters.AddWithValue("@ID_RA", idRA)
+        cmdRA.Parameters.AddWithValue("@DNI", tarea.Dni)
+        cmdRA.Parameters.AddWithValue("@ID_JORNADA", tarea.Id_Jornada)
+        cmdRA.Parameters.AddWithValue("@ID_TAREA", tarea.Id_Tarea)
+        cmdRA.ExecuteNonQuery()
+        Return "OK"
+    End Function
+
+    Public Function AgregarTarea(tarea As Tarea, idModulo As Integer, idRA As Integer, idCiclo As Integer) As String
         Dim conexion As New SqlConnection(cadConexion)
+        Dim transaccion As SqlTransaction = Nothing
         Try
             conexion.Open()
-            Dim sqlInsertar As String = "INSERT INTO TAREAS VALUES(@DNI, @ID_JORNADA, @ID_TAREA, @HORAS, @DESCRIPCION)"
-            Dim cmdInsert As New SqlCommand(sqlInsertar, conexion)
-            cmdInsert.Parameters.AddWithValue("@DNI", tarea.Dni)
-            cmdInsert.Parameters.AddWithValue("@ID_JORNADA", tarea.Id_Jornada)
-            cmdInsert.Parameters.AddWithValue("@ID_TAREA", tarea.Id_Tarea)
-            cmdInsert.Parameters.AddWithValue("@HORAS", tarea.Horas)
-            cmdInsert.Parameters.AddWithValue("@DESCRIPCION", tarea.Descripcion)
-            Dim numFilas As Integer = cmdInsert.ExecuteNonQuery()
-            If numFilas = 0 Then Return "Error al añadir la tarea."
+            transaccion = conexion.BeginTransaction()
+
+            InsertarTarea(tarea, conexion, transaccion)
+            InsertarTareaRA(tarea, idModulo, idRA, idCiclo, conexion, transaccion)
+
+            transaccion.Commit()
             Return "La tarea se ha añadido con éxito."
         Catch ex As Exception
+            If transaccion IsNot Nothing Then transaccion.Rollback()
             Return ex.Message
         Finally
             conexion.Close()
@@ -97,7 +121,7 @@ Public Class GestionTareas
         Dim tablaTareas As New DataTable
         Try
             conexion.Open()
-            Dim sql As String = "SELECT * FROM TAREAS WHERE TAREAS.DNI = @DNI AND TAREAS.ID_JORNADA = @ID"
+            Dim sql As String = "SELECT T.DNI, T.ID_JORNADA, T.ID_TAREA, M.MODULO, R.RA, T.HORAS, T.DESCRIPCION FROM TAREAS T INNER JOIN TAREA_RA TR ON T.DNI = TR.DNI AND T.ID_JORNADA = TR.ID_JORNADA AND T.ID_TAREA = TR.ID_TAREA INNER JOIN MODULOS M ON TR.ID_CICLO = M.ID_CICLO AND TR.ID_MODULO = M.ID_MODULO INNER JOIN RA R ON TR.ID_CICLO = R.ID_CICLO AND TR.ID_MODULO = R.ID_MODULO AND TR.ID_RA = R.ID_RA WHERE T.DNI = @DNI AND T.ID_JORNADA = @ID"
             Dim cmd As New SqlCommand(sql, conexion)
             cmd.Parameters.AddWithValue("@DNI", dni)
             cmd.Parameters.AddWithValue("@ID", id)

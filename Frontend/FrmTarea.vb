@@ -10,7 +10,8 @@ Public Class FrmTarea
     Private idTarea As Integer
     Private descripcion As String
 
-
+    Private raTarea As Integer
+    Private moduloTarea As Integer
     Public Sub New(dni As String, id As Integer)
         InitializeComponent()
         idJornada = id
@@ -35,6 +36,10 @@ Public Class FrmTarea
 
         DataGridView1.DataSource = Nothing  ' <- Limpia cualquier enlace previo
         DataGridView1.DataSource = tabla
+
+        DataGridView1.Columns("DNI").Visible = False
+        DataGridView1.Columns("ID_JORNADA").Visible = False
+        DataGridView1.Columns("ID_TAREA").Visible = False
     End Sub
     Private Sub FrmTarea_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CargarDatosGrid()
@@ -45,7 +50,8 @@ Public Class FrmTarea
     End Sub
 
     Private Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
-
+        Dim ra As Ra = TryCast(cboResultadosAprendizaje.SelectedItem, Ra)
+        Me.raTarea = ra.idRa
         If Not Integer.TryParse(txtHoras.Text, horas) Then
             MessageBox.Show("Error tienes que introducir un valor numerico")
         End If
@@ -53,10 +59,10 @@ Public Class FrmTarea
         If String.IsNullOrWhiteSpace(txtDescripcion.Text) Then
             MessageBox.Show("Error tienes que introducir una descripcion en este campo")
         End If
-        Dim modulos As Modulo = TryCast(cboModulos.SelectedItem, Modulo)
-        Dim ra As Ra = TryCast(cboResultadosAprendizaje.SelectedItem, Ra)
+        Dim moduloSelecionado As Modulo = TryCast(cboModulos.SelectedItem, Modulo)
+        Dim raSelecionado As Ra = TryCast(cboResultadosAprendizaje.SelectedItem, Ra)
         Dim idTarea As Integer = gestionTareas.CalcularIdTareaPorJornada(idJornada)
-        Dim resultado As String = gestionTareas.AgregarTarea(New Tarea(dniAlumno, idJornada, idTarea, horas, txtDescripcion.Text))
+        Dim resultado As String = gestionTareas.AgregarTarea(New Tarea(dniAlumno, idJornada, idTarea, horas, txtDescripcion.Text), Me.moduloTarea, Me.raTarea, alumno.Id_ciclo)
         MessageBox.Show(resultado, "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information)
         If resultado.Contains("con éxito") Then
             CargarDatosGrid()
@@ -73,15 +79,28 @@ Public Class FrmTarea
         '    If resultado = DialogResult.No Then Exit Sub
         'End If
 
-        'ESTO CREOOO QUE SERIA EL CODIGO PARA ELIMAR LA TAREA PERO FALTARA ALGUNA COSA
     End Sub
 
     Private Sub cboModulos_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboModulos.SelectedIndexChanged
         Dim modulo As Modulo = TryCast(cboModulos.SelectedItem, Modulo)
 
         If modulo Is Nothing Then Return
-
+        Me.moduloTarea = modulo.idModulo
         cboResultadosAprendizaje.DisplayMember = "ra"
         cboResultadosAprendizaje.DataSource = gestionTareas.RaPorModulos(modulo.idModulo)
+    End Sub
+
+    Private Sub DataGridView1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellClick
+        If e.RowIndex >= 0 Then
+            Dim fila As DataGridViewRow = DataGridView1.Rows(e.RowIndex)
+            Me.dniAlumno = fila.Cells(0).Value.ToString()
+
+            ' Guardarlo en una variable global o textbox
+
+        End If
+    End Sub
+
+    Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
+
     End Sub
 End Class

@@ -248,11 +248,13 @@ INSERT INTO ALUMNOS (DNI, NOMBRE, APELLIDO1, APELLIDO2, ID_CICLO) VALUES
 ('45678901G', 'Marta', 'Gomez', 'Ruiz', 2),
 ('56789012B', 'Pablo', 'Diaz', 'Hernandez', 1);
 
---INSERT DE JORNADAS
+-- INSERT DE JORNADAS
 INSERT INTO JORNADAS (DNI, ID_JORNADA, HORAS, FECHA_ENTRADA, ESTADO) VALUES
 -- HOY
 ('12345678Z', 1, 8, GETDATE(), 'EN CURSO'),
 ('23456789D', 2, 6, DATEADD(HOUR, -2, GETDATE()), 'EN CURSO'),
+
+-- HACE 5 DIAS
 ('34567890V', 3, 4, DATEADD(DAY, -5, GETDATE()), 'REALIZADO'),
 
 -- AYER
@@ -266,34 +268,35 @@ INSERT INTO JORNADAS (DNI, ID_JORNADA, HORAS, FECHA_ENTRADA, ESTADO) VALUES
 
 ALTER TABLE JORNADAS WITH CHECK CHECK CONSTRAINT ALL;
 
---INSERT DE TAREAS
+
+-- INSERT DE TAREAS
 INSERT INTO TAREAS (DNI, ID_JORNADA, ID_TAREA, HORAS, DESCRIPCION) VALUES
 
--- Jornada 1
+-- Jornada 1 (Total = 6h / 8h)
 ('12345678Z', 1, 1, 2, 'Analisis de requisitos'),
 ('12345678Z', 1, 2, 3, 'Desarrollo backend'),
-('12345678Z', 1, 3, 1, 'Reuni�n equipo'),
+('12345678Z', 1, 3, 1, 'Reunion equipo'),
 
--- Jornada 2
-('23456789D', 2, 1, 2, 'Dise�o base de datos'),
-('23456789D', 2, 2, 1.5, 'Implementaci�n consultas'),
+-- Jornada 2 (Total = 4.5h / 6h)
+('23456789D', 2, 1, 2, 'Diseño base de datos'),
+('23456789D', 2, 2, 1.5, 'Implementación consultas'),
 ('23456789D', 2, 3, 1, 'Testing'),
 
--- Jornada 3
-('34567890V', 3, 1, 2, 'Maquetaci�n UI'),
-('34567890V', 3, 2, 1, 'Correcci�n errores'),
+-- Jornada 3 (Total = 3h / 4h)
+('34567890V', 3, 1, 2, 'Maquetación UI'),
+('34567890V', 3, 2, 1, 'Corrección errores'),
 
--- Jornada 4
-('45678901G', 4, 1, 3, 'Documentaci�n'),
-('45678901G', 4, 2, 2, 'Revisi�n c�digo'),
+-- Jornada 4 (Total = 5h / 8h)
+('45678901G', 4, 1, 3, 'Documentación'),
+('45678901G', 4, 2, 2, 'Revisión código'),
 
--- Jornada 5
-('56789012B', 5, 1, 2, 'Investigaci�n'),
-('56789012B', 5, 2, 3, 'Implementaci�n funcionalidad'),
+-- Jornada 5 (Total = 6h / 7h)
+('56789012B', 5, 1, 2, 'Investigación'),
+('56789012B', 5, 2, 3, 'Implementación funcionalidad'),
 ('56789012B', 5, 3, 1, 'Pruebas'),
 
--- Jornada 6
-('12345678Z', 6, 1, 1, 'Preparaci�n entorno'),
+-- Jornada 6 (Total = 2.5h / 5h)
+('12345678Z', 6, 1, 1, 'Preparación entorno'),
 ('12345678Z', 6, 2, 1.5, 'Planificación tareas');
 
 -- INSERT DE TAREA_RA

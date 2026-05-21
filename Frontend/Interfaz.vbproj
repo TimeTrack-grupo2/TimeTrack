@@ -94,9 +94,7 @@
     <Compile Include="FrmMenu.Designer.vb">
       <DependentUpon>FrmMenu.vb</DependentUpon>
     </Compile>
-    <Compile Include="FrmMenu.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="FrmMenu.vb" />
     <Compile Include="FrmTarea.Designer.vb">
       <DependentUpon>FrmTarea.vb</DependentUpon>
     </Compile>

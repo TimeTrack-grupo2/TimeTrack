@@ -18,12 +18,10 @@ Namespace Tests
             Try
                 conexion.Open()
 
-                ' Primero eliminamos por si quedó de una ejecución anterior
                 Dim sqlDelete As String = "DELETE FROM ALUMNOS WHERE DNI = '99999999Z'"
                 Dim cmdDelete As New SqlCommand(sqlDelete, conexion)
                 cmdDelete.ExecuteNonQuery()
 
-                ' Ahora insertamos limpio
                 Dim sqlInsert As String = "INSERT INTO ALUMNOS (DNI, NOMBRE, APELLIDO1, APELLIDO2, ID_CICLO) " &
                                   "VALUES ('99999999Z', 'TEST', 'APELLIDO1TEST', 'APELLIDO2TEST', 1)"
                 Dim cmdInsert As New SqlCommand(sqlInsert, conexion)

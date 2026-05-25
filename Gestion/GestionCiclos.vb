@@ -345,6 +345,34 @@ Public Class GestionCiclos
 
     End Function
 
+    Public Function ObtenerHorasModuloPorAlumno(idCiclo As Integer, idModulo As Integer, ByRef errorMensaje As String) As DataTable
+
+        Dim tabla As New DataTable
+        Dim conexion As New SqlConnection(cadConexion)
+
+        Try
+            conexion.Open()
+
+            Dim sql As String = "SELECT A.DNI, A.NOMBRE, A.APELLIDO1, SUM(T.HORAS) AS HORAS_TRABAJADAS, COUNT(DISTINCT CAST(J.FECHA_ENTRADA AS DATE)) AS DIAS_TRABAJADOS FROM TAREA_RA TR INNER JOIN TAREAS T ON TR.DNI = T.DNI AND TR.ID_JORNADA = T.ID_JORNADA AND TR.ID_TAREA = T.ID_TAREA INNER JOIN JORNADAS J ON T.DNI = J.DNI AND T.ID_JORNADA = J.ID_JORNADA INNER JOIN ALUMNOS A ON T.DNI = A.DNI WHERE TR.ID_CICLO = @idCiclo AND TR.ID_MODULO = @idModulo GROUP BY A.DNI, A.NOMBRE, A.APELLIDO1 ORDER BY A.NOMBRE"
+
+            Dim cmd As New SqlCommand(sql, conexion)
+
+            cmd.Parameters.AddWithValue("@idCiclo", idCiclo)
+            cmd.Parameters.AddWithValue("@idModulo", idModulo)
+
+            Dim da As New SqlDataAdapter(cmd)
+            da.Fill(tabla)
+
+        Catch ex As Exception
+            errorMensaje = ex.Message
+        Finally
+            conexion.Close()
+        End Try
+
+        Return tabla
+
+    End Function
+
 
 
 End Class

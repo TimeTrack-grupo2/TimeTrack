@@ -23,8 +23,7 @@ INSERT INTO MODULOS (id_ciclo, id_modulo, MODULO) VALUES
 (1,6, 'Itinerario Personal para la Empleabilidad'),
 (1,7, 'Sostenibilidad'),
 (1,8, 'Digitalizaci�n'),
-(1,9, 'Programaci�n'),
-(1,10, 'Ingl�s');
+(1,9, 'Ingl�s');
 
 
 

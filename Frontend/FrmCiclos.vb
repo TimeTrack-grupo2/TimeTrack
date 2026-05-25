@@ -191,22 +191,45 @@ Public Class FrmCiclos
     End Sub
 
     Private Sub DataGridViewCiclos_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridViewCiclos.CellDoubleClick
+
         If e.RowIndex < 0 Then Exit Sub
 
-        If cboCiclo.SelectedIndex <> -1 Then Exit Sub
+        If cboCiclo.SelectedIndex = -1 Then
 
-        Dim nombreCiclo As String =
-        DataGridViewCiclos.Rows(e.RowIndex).Cells("Nombre").Value.ToString()
+            Dim nombreCiclo As String = DataGridViewCiclos.Rows(e.RowIndex).Cells("Nombre").Value.ToString()
 
-        For i As Integer = 0 To cboCiclo.Items.Count - 1
-            Dim fila As DataRowView =
-            CType(cboCiclo.Items(i), DataRowView)
+            For i As Integer = 0 To cboCiclo.Items.Count - 1
 
-            If fila("NOMBRECICLO").ToString() = nombreCiclo Then
-                cboCiclo.SelectedIndex = i
-                Exit For
-            End If
-        Next
+                Dim fila As DataRowView = CType(cboCiclo.Items(i), DataRowView)
+
+                If fila("NOMBRECICLO").ToString() = nombreCiclo Then
+
+                    cboCiclo.SelectedIndex = i
+                    Exit For
+
+                End If
+
+            Next
+
+        ElseIf cboModulo.SelectedIndex = -1 Then
+
+            Dim nombreModulo As String = DataGridViewCiclos.Rows(e.RowIndex).Cells(0).Value.ToString()
+
+            For i As Integer = 0 To cboModulo.Items.Count - 1
+
+                Dim fila As DataRowView = CType(cboModulo.Items(i), DataRowView)
+
+                If fila("MODULO").ToString() = nombreModulo Then
+
+                    cboModulo.SelectedIndex = i
+                    Exit For
+
+                End If
+
+            Next
+
+        End If
+
     End Sub
 
     Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
@@ -277,6 +300,28 @@ Public Class FrmCiclos
 
             MessageBox.Show("Selecciona un ciclo o un módulo.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning)
 
+        End If
+
+    End Sub
+
+    Private Sub cboModulo_SelectedIndexChanged_1(sender As Object, e As EventArgs) Handles cboModulo.SelectedIndexChanged
+
+        If cboCiclo.SelectedIndex = -1 Then Exit Sub
+        If cboModulo.SelectedIndex = -1 Then Exit Sub
+
+        If TypeOf cboCiclo.SelectedValue Is DataRowView Then Exit Sub
+        If TypeOf cboModulo.SelectedValue Is DataRowView Then Exit Sub
+
+        Dim errorMensaje As String = ""
+
+        Dim idCiclo As Integer = CInt(cboCiclo.SelectedValue)
+
+        Dim idModulo As Integer = CInt(cboModulo.SelectedValue)
+
+        DataGridViewCiclos.DataSource = gestionCiclos.ObtenerHorasModuloPorAlumno(idCiclo, idModulo, errorMensaje)
+
+        If errorMensaje <> "" Then
+            MessageBox.Show(errorMensaje)
         End If
 
     End Sub

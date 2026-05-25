@@ -11,7 +11,7 @@ Public Class FrmCiclos
         Dim tablaCiclos As DataTable = gestionCiclos.ObtenerCiclos(errorMensaje)
 
         If errorMensaje <> "" Then
-            MessageBox.Show(errorMensaje)
+            MessageBox.Show(errorMensaje, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Exit Sub
         End If
 
@@ -44,7 +44,7 @@ Public Class FrmCiclos
         Dim tablaModulos As DataTable = gestionCiclos.ObtenerModulosPorCiclo(idCiclo, errorMensaje)
 
         If errorMensaje <> "" Then
-            MessageBox.Show(errorMensaje)
+            MessageBox.Show(errorMensaje, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Exit Sub
         End If
 
@@ -75,11 +75,12 @@ Public Class FrmCiclos
     End Sub
 
     Private Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
+
         Dim errorConexion As String = ""
         gestionCiclos = New GestionCiclos(errorConexion)
 
         If errorConexion <> "" Then
-            MessageBox.Show(errorConexion)
+            MessageBox.Show(errorConexion, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Exit Sub
         End If
 
@@ -87,7 +88,7 @@ Public Class FrmCiclos
         Dim nombreModulo As String = cboModulo.Text.Trim()
 
         If nombreCiclo = "" Then
-            MessageBox.Show("Introduce un nombre para el ciclo.")
+            MessageBox.Show("Introduce un nombre para el ciclo.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Exit Sub
         End If
 
@@ -99,7 +100,7 @@ Public Class FrmCiclos
         Dim tablaCiclos As DataTable = gestionCiclos.ObtenerCiclos(errorMensaje)
 
         If errorMensaje <> "" Then
-            MessageBox.Show(errorMensaje)
+            MessageBox.Show(errorMensaje, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Exit Sub
         End If
 
@@ -111,7 +112,7 @@ Public Class FrmCiclos
         Next
 
         If idCiclo = -1 Then
-            MessageBox.Show("No se pudo obtener el ciclo.")
+            MessageBox.Show("No se pudo obtener el ciclo.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Exit Sub
         End If
 
@@ -119,7 +120,7 @@ Public Class FrmCiclos
        Not mensajeCiclo.ToLower().Contains("éxito") AndAlso
        Not mensajeCiclo.ToLower().Contains("existe") Then
 
-            MessageBox.Show(mensajeCiclo)
+            MessageBox.Show(mensajeCiclo, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Exit Sub
         End If
 
@@ -130,7 +131,7 @@ Public Class FrmCiclos
             If mensajeModulo <> "" AndAlso
            Not mensajeModulo.ToLower().Contains("éxito") Then
 
-                MessageBox.Show(mensajeModulo)
+                MessageBox.Show(mensajeModulo, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 Exit Sub
             End If
         End If
@@ -149,7 +150,7 @@ Public Class FrmCiclos
         gestionCiclos = New GestionCiclos(errorConexion)
 
         If errorConexion <> "" Then
-            MessageBox.Show(errorConexion)
+            MessageBox.Show(errorConexion, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Exit Sub
         End If
 
@@ -169,7 +170,7 @@ Public Class FrmCiclos
         End If
 
         If errorMensaje <> "" Then
-            MessageBox.Show(errorMensaje)
+            MessageBox.Show(errorMensaje, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Exit Sub
         End If
 
@@ -208,4 +209,29 @@ Public Class FrmCiclos
         Next
     End Sub
 
+    Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
+
+        Dim mensaje As String = ""
+        gestionCiclos = New GestionCiclos(mensaje)
+
+        If cboModulo.SelectedItem IsNot Nothing Then
+
+            Dim modulo As Modulo = TryCast(cboModulo.SelectedItem, Modulo)
+
+            mensaje = gestionCiclos.EliminarModulo(modulo.idModulo)
+
+        ElseIf cboCiclo.SelectedItem IsNot Nothing Then
+
+            Dim ciclo As Ciclos = TryCast(cboCiclo.SelectedItem, Ciclos)
+
+            mensaje = gestionCiclos.EliminarCiclo(ciclo.Id_ciclo)
+
+        Else
+            MessageBox.Show("Selecciona un ciclo o módulo.")
+            Return
+        End If
+
+        MessageBox.Show(mensaje)
+
+    End Sub
 End Class

@@ -24,14 +24,14 @@ Partial Class FrmCiclos
     Private Sub InitializeComponent()
         Me.DataGridViewCiclos = New System.Windows.Forms.DataGridView()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.cboModulo = New System.Windows.Forms.ComboBox()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.btnLimpiar = New System.Windows.Forms.Button()
         Me.cboCiclo = New System.Windows.Forms.ComboBox()
         Me.btnEliminar = New System.Windows.Forms.Button()
         Me.btnGuardar = New System.Windows.Forms.Button()
         Me.lblCiclos = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.cboModulo = New System.Windows.Forms.ComboBox()
-        Me.Label2 = New System.Windows.Forms.Label()
         CType(Me.DataGridViewCiclos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -73,6 +73,23 @@ Partial Class FrmCiclos
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(217, 450)
         Me.Panel1.TabIndex = 5
+        '
+        'cboModulo
+        '
+        Me.cboModulo.FormattingEnabled = True
+        Me.cboModulo.Location = New System.Drawing.Point(45, 203)
+        Me.cboModulo.Name = "cboModulo"
+        Me.cboModulo.Size = New System.Drawing.Size(121, 24)
+        Me.cboModulo.TabIndex = 20
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(42, 184)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(55, 16)
+        Me.Label2.TabIndex = 19
+        Me.Label2.Text = "Módulo:"
         '
         'btnLimpiar
         '
@@ -141,23 +158,6 @@ Partial Class FrmCiclos
         Me.Label1.Text = "Gestión de ciclos"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
-        'cboModulo
-        '
-        Me.cboModulo.FormattingEnabled = True
-        Me.cboModulo.Location = New System.Drawing.Point(45, 203)
-        Me.cboModulo.Name = "cboModulo"
-        Me.cboModulo.Size = New System.Drawing.Size(121, 24)
-        Me.cboModulo.TabIndex = 20
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(42, 184)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(55, 16)
-        Me.Label2.TabIndex = 19
-        Me.Label2.Text = "Módulo:"
-        '
         'FrmCiclos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -166,7 +166,7 @@ Partial Class FrmCiclos
         Me.Controls.Add(Me.DataGridViewCiclos)
         Me.Controls.Add(Me.Panel1)
         Me.Name = "FrmCiclos"
-        Me.Text = "FrmCiclos"
+        Me.Text = "Gestión de ciclos"
         CType(Me.DataGridViewCiclos, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()

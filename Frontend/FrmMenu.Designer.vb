@@ -302,7 +302,7 @@ Partial Class FrmMenu
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
         Me.Name = "FrmMenu"
-        Me.Text = "Form1"
+        Me.Text = "Menú principal"
         Me.Panel1.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()

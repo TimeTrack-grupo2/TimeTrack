@@ -56,6 +56,7 @@ Public Class FrmFichar
             cbo.Location = txtNombre.Location
             cbo.Size = txtNombre.Size
             cbo.Name = "cboAlumno"
+            cbo.DropDownStyle = ComboBoxStyle.DropDownList
 
             Me.Controls.Add(cbo)
 
@@ -127,7 +128,7 @@ Public Class FrmFichar
         Dim horas As Integer
 
         If Integer.TryParse(txtHoras.Text, horas) = False Then
-            MessageBox.Show("Introduce un número válido.")
+            MessageBox.Show("Introduce un número válido.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Return
         End If
 
@@ -139,7 +140,7 @@ Public Class FrmFichar
             Dim horaPicker As DateTimePicker = TryCast(Me.Controls("horaPicker"), DateTimePicker)
 
             If calendario Is Nothing OrElse horaPicker Is Nothing Then
-                MessageBox.Show("No se encontraron los controles.")
+                MessageBox.Show("No se encontraron los controles.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 Return
             End If
 
@@ -161,7 +162,7 @@ Public Class FrmFichar
         Dim gestionJornada As New GestionJornadas(errorConexion)
         Dim resultado As String = gestionJornada.AnadirJornada(jornada)
 
-        MessageBox.Show(resultado, "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
 
         If resultado.Contains("con éxito") Then
             Dim fila As New DataGridViewRow()
@@ -173,6 +174,8 @@ Public Class FrmFichar
             fila.Cells(2).Value = jornada.HORAS
 
             DataGridViewMovimientos.Rows.Add(fila)
+        Else
+            MessageBox.Show(resultado, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning)
         End If
 
         Dim tablaJornadas As DataTable = gestionJornada.ObtenerJornadasAlumno(alumno.Dni)

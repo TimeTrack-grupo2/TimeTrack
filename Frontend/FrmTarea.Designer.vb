@@ -75,6 +75,7 @@ Partial Class FrmTarea
         '
         'cboResultadosAprendizaje
         '
+        Me.cboResultadosAprendizaje.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboResultadosAprendizaje.FormattingEnabled = True
         Me.cboResultadosAprendizaje.Location = New System.Drawing.Point(45, 340)
         Me.cboResultadosAprendizaje.Name = "cboResultadosAprendizaje"
@@ -101,6 +102,7 @@ Partial Class FrmTarea
         '
         'cboModulos
         '
+        Me.cboModulos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboModulos.FormattingEnabled = True
         Me.cboModulos.Location = New System.Drawing.Point(45, 280)
         Me.cboModulos.Name = "cboModulos"
@@ -191,7 +193,7 @@ Partial Class FrmTarea
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.Panel1)
         Me.Name = "FrmTarea"
-        Me.Text = "FrmTarea"
+        Me.Text = "Gestión de tareas"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()

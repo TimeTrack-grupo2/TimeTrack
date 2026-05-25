@@ -210,4 +210,62 @@ Public Class GestionCiclos
         Return tabla
     End Function
 
+    Public Function EliminarCiclo(idCiclo As Integer) As String
+
+        Dim conexion As New SqlConnection(cadConexion)
+
+        Try
+            conexion.Open()
+
+            Dim sql As String = "DELETE FROM CICLOS WHERE ID_CICLO = @idCiclo"
+
+            Dim cmd As New SqlCommand(sql, conexion)
+            cmd.Parameters.AddWithValue("@idCiclo", idCiclo)
+
+            Dim filasAfectadas As Integer = cmd.ExecuteNonQuery()
+
+            If filasAfectadas > 0 Then
+                Return "Ciclo eliminado correctamente."
+            Else
+                Return "No se encontró el ciclo."
+            End If
+
+        Catch ex As Exception
+            Return "Error al eliminar el ciclo: " & ex.Message
+
+        Finally
+            conexion.Close()
+        End Try
+
+    End Function
+
+    Public Function EliminarModulo(idModulo As Integer) As String
+
+        Dim conexion As New SqlConnection(cadConexion)
+
+        Try
+            conexion.Open()
+
+            Dim sql As String = "DELETE FROM MODULOS WHERE ID_MODULO = @idModulo"
+
+            Dim cmd As New SqlCommand(sql, conexion)
+            cmd.Parameters.AddWithValue("@idModulo", idModulo)
+
+            Dim filasAfectadas As Integer = cmd.ExecuteNonQuery()
+
+            If filasAfectadas > 0 Then
+                Return "Módulo eliminado correctamente."
+            Else
+                Return "No se encontró el módulo."
+            End If
+
+        Catch ex As Exception
+            Return "Error al eliminar el módulo: " & ex.Message
+
+        Finally
+            conexion.Close()
+        End Try
+
+    End Function
+
 End Class

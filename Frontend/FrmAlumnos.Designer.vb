@@ -179,7 +179,7 @@ Partial Class FrmAlumnos
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(175, 41)
         Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Base de Datos"
+        Me.Label1.Text = "Alumnos"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
         'DataGridViewAlumnos
@@ -210,7 +210,7 @@ Partial Class FrmAlumnos
         Me.Controls.Add(Me.DataGridViewAlumnos)
         Me.Controls.Add(Me.Panel1)
         Me.Name = "FrmAlumnos"
-        Me.Text = "Form1"
+        Me.Text = "Gestión de alumnos"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         CType(Me.DataGridViewAlumnos, System.ComponentModel.ISupportInitialize).EndInit()

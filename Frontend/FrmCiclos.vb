@@ -212,26 +212,72 @@ Public Class FrmCiclos
     Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
 
         Dim mensaje As String = ""
+
         gestionCiclos = New GestionCiclos(mensaje)
 
-        If cboModulo.SelectedItem IsNot Nothing Then
+        If cboModulo.SelectedIndex <> -1 Then
 
-            Dim modulo As Modulo = TryCast(cboModulo.SelectedItem, Modulo)
+            Dim idModulo As Integer = CInt(cboModulo.SelectedValue)
+            Dim idCiclo As Integer = CInt(cboCiclo.SelectedValue)
 
-            mensaje = gestionCiclos.EliminarModulo(modulo.idModulo)
+            mensaje = gestionCiclos.EliminarModulo(idCiclo, idModulo, False)
 
-        ElseIf cboCiclo.SelectedItem IsNot Nothing Then
+            If mensaje.Contains("RA asociados") Then
 
-            Dim ciclo As Ciclos = TryCast(cboCiclo.SelectedItem, Ciclos)
+                Dim respuesta As DialogResult =
+            MessageBox.Show("Este módulo tiene RA asociados. ¿Quieres eliminarlos también?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
-            mensaje = gestionCiclos.EliminarCiclo(ciclo.Id_ciclo)
+                If respuesta = DialogResult.Yes Then
+
+                    mensaje = gestionCiclos.EliminarModulo(idCiclo, idModulo, True)
+
+                Else
+                    Return
+                End If
+
+            End If
+
+            If mensaje.Contains("correctamente") Then
+
+                cboModulo.DataSource = gestionCiclos.ObtenerModulosPorCiclo(idCiclo, mensaje)
+                CargarDataGrid()
+
+            Else
+
+                MessageBox.Show(mensaje, "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+
+            End If
+
+        ElseIf cboCiclo.SelectedIndex <> -1 Then
+
+            Dim idCiclo As Integer =
+            CInt(cboCiclo.SelectedValue)
+
+            Dim respuesta As DialogResult =
+        MessageBox.Show("¿Quieres eliminar también módulos, RA y relaciones asociadas?", "Eliminar en cascada", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question)
+
+            If respuesta = DialogResult.Cancel Then Return
+
+            Dim borrarEnCascada As Boolean =
+            (respuesta = DialogResult.Yes)
+
+            mensaje = gestionCiclos.EliminarCiclo(idCiclo, borrarEnCascada)
+
+            If mensaje.Contains("correctamente") Then
+
+                FrmCiclos_Load(Nothing, Nothing)
+
+            Else
+
+                MessageBox.Show(mensaje, "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+
+            End If
 
         Else
-            MessageBox.Show("Selecciona un ciclo o módulo.")
-            Return
-        End If
 
-        MessageBox.Show(mensaje)
+            MessageBox.Show("Selecciona un ciclo o un módulo.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+
+        End If
 
     End Sub
 End Class

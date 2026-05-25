@@ -210,28 +210,74 @@ Public Class GestionCiclos
         Return tabla
     End Function
 
-    Public Function EliminarCiclo(idCiclo As Integer) As String
+    Public Function EliminarCiclo(idCiclo As Integer, borrarEnCascada As Boolean) As String
 
         Dim conexion As New SqlConnection(cadConexion)
 
         Try
             conexion.Open()
 
-            Dim sql As String = "DELETE FROM CICLOS WHERE ID_CICLO = @idCiclo"
+            Dim sqlAlumnos As String = "SELECT COUNT(*) FROM ALUMNOS WHERE ID_CICLO = @idCiclo"
 
-            Dim cmd As New SqlCommand(sql, conexion)
-            cmd.Parameters.AddWithValue("@idCiclo", idCiclo)
+            Dim cmdAlumnos As New SqlCommand(sqlAlumnos, conexion)
+            cmdAlumnos.Parameters.AddWithValue("@idCiclo", idCiclo)
 
-            Dim filasAfectadas As Integer = cmd.ExecuteNonQuery()
+            Dim numAlumnos As Integer =
+            CInt(cmdAlumnos.ExecuteScalar())
 
-            If filasAfectadas > 0 Then
-                Return "Ciclo eliminado correctamente."
-            Else
+            If numAlumnos > 0 Then
+                Return "No se puede eliminar el ciclo porque hay alumnos asociados."
+            End If
+
+            Dim transaccion As SqlTransaction =
+            conexion.BeginTransaction()
+
+            Try
+
+                If borrarEnCascada Then
+
+                    Dim sql1 As String = "DELETE FROM TAREA_RA WHERE ID_CICLO = @idCiclo"
+                    Dim cmd1 As New SqlCommand(sql1, conexion, transaccion)
+                    cmd1.Parameters.AddWithValue("@idCiclo", idCiclo)
+                    cmd1.ExecuteNonQuery()
+
+
+                    Dim sql2 As String = "DELETE FROM RA WHERE ID_CICLO = @idCiclo"
+                    Dim cmd2 As New SqlCommand(sql2, conexion, transaccion)
+                    cmd2.Parameters.AddWithValue("@idCiclo", idCiclo)
+                    cmd2.ExecuteNonQuery()
+
+
+                    Dim sql3 As String = "DELETE FROM MODULOS WHERE ID_CICLO = @idCiclo"
+                    Dim cmd3 As New SqlCommand(sql3, conexion, transaccion)
+                    cmd3.Parameters.AddWithValue("@idCiclo", idCiclo)
+                    cmd3.ExecuteNonQuery()
+
+                End If
+
+                Dim sql4 As String = "DELETE FROM CICLOS WHERE ID_CICLO = @idCiclo"
+
+                Dim cmd4 As New SqlCommand(sql4, conexion, transaccion)
+
+                cmd4.Parameters.AddWithValue("@idCiclo", idCiclo)
+
+                Dim filas As Integer = cmd4.ExecuteNonQuery()
+
+                transaccion.Commit()
+
+                If filas > 0 Then
+                    Return "Ciclo eliminado correctamente."
+                End If
+
                 Return "No se encontró el ciclo."
-            End If
+
+            Catch ex As Exception
+                transaccion.Rollback()
+                Return ex.Message
+            End Try
 
         Catch ex As Exception
-            Return "Error al eliminar el ciclo: " & ex.Message
+            Return ex.Message
 
         Finally
             conexion.Close()
@@ -239,33 +285,66 @@ Public Class GestionCiclos
 
     End Function
 
-    Public Function EliminarModulo(idModulo As Integer) As String
+    Public Function EliminarModulo(idCiclo As Integer,
+                               idModulo As Integer,
+                               borrarRA As Boolean) As String
 
         Dim conexion As New SqlConnection(cadConexion)
 
         Try
             conexion.Open()
 
-            Dim sql As String = "DELETE FROM MODULOS WHERE ID_MODULO = @idModulo"
+            Dim transaccion As SqlTransaction =
+            conexion.BeginTransaction()
 
-            Dim cmd As New SqlCommand(sql, conexion)
-            cmd.Parameters.AddWithValue("@idModulo", idModulo)
+            Try
 
-            Dim filasAfectadas As Integer = cmd.ExecuteNonQuery()
+                If borrarRA Then
 
-            If filasAfectadas > 0 Then
+                    Dim cmd1 As New SqlCommand("DELETE FROM TAREA_RA WHERE ID_CICLO=@idCiclo AND ID_MODULO=@idModulo", conexion, transaccion)
+                    cmd1.Parameters.AddWithValue("@idCiclo", idCiclo)
+                    cmd1.Parameters.AddWithValue("@idModulo", idModulo)
+                    cmd1.ExecuteNonQuery()
+
+
+                    Dim cmd2 As New SqlCommand("DELETE FROM RA WHERE ID_CICLO=@idCiclo AND ID_MODULO=@idModulo", conexion, transaccion)
+                    cmd2.Parameters.AddWithValue("@idCiclo", idCiclo)
+                    cmd2.Parameters.AddWithValue("@idModulo", idModulo)
+                    cmd2.ExecuteNonQuery()
+
+                End If
+
+                Dim cmd3 As New SqlCommand("DELETE FROM MODULOS WHERE ID_CICLO=@idCiclo AND ID_MODULO=@idModulo", conexion, transaccion)
+                cmd3.Parameters.AddWithValue("@idCiclo", idCiclo)
+                cmd3.Parameters.AddWithValue("@idModulo", idModulo)
+
+                If cmd3.ExecuteNonQuery() = 0 Then
+                    transaccion.Rollback()
+                    Return "No se encontró el módulo."
+                End If
+
+                transaccion.Commit()
                 Return "Módulo eliminado correctamente."
-            Else
-                Return "No se encontró el módulo."
-            End If
+
+            Catch ex As Exception
+                transaccion.Rollback()
+
+                If ex.Message.Contains("FK_RA_MODULO") Then
+                    Return "El módulo tiene RA asociados."
+                End If
+
+                Return ex.Message
+            End Try
 
         Catch ex As Exception
-            Return "Error al eliminar el módulo: " & ex.Message
+            Return ex.Message
 
         Finally
             conexion.Close()
         End Try
 
     End Function
+
+
 
 End Class

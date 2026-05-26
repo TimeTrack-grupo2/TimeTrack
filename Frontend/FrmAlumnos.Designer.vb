@@ -199,14 +199,14 @@ Partial Class FrmAlumnos
         Me.DataGridViewAlumnos.RowHeadersWidth = 51
         Me.DataGridViewAlumnos.RowTemplate.Height = 24
         Me.DataGridViewAlumnos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridViewAlumnos.Size = New System.Drawing.Size(600, 450)
+        Me.DataGridViewAlumnos.Size = New System.Drawing.Size(696, 450)
         Me.DataGridViewAlumnos.TabIndex = 1
         '
         'FrmAlumnos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(896, 450)
         Me.Controls.Add(Me.DataGridViewAlumnos)
         Me.Controls.Add(Me.Panel1)
         Me.Name = "FrmAlumnos"

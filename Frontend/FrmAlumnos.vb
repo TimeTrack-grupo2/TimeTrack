@@ -84,6 +84,28 @@ Public Class FrmAlumnos
             Return
         End If
 
+        Dim tablaHoras As DataTable = gestor.ObtenerDiasYHorasAlumnos(errorMensaje)
+
+        tabla.Columns.Add("DIAS_TRABAJADOS", GetType(Integer))
+        tabla.Columns.Add("HORAS_TOTALES", GetType(Double))
+
+        For Each fila As DataRow In tabla.Rows
+
+            Dim dni As String = fila("DNI").ToString()
+
+            Dim resultado() As DataRow =
+        tablaHoras.Select("DNI = '" & dni & "'")
+
+            If resultado.Length > 0 Then
+                fila("DIAS_TRABAJADOS") = resultado(0)("DIAS_TRABAJADOS")
+                fila("HORAS_TOTALES") = resultado(0)("HORAS_TOTALES")
+            Else
+                fila("DIAS_TRABAJADOS") = 0
+                fila("HORAS_TOTALES") = 0
+            End If
+
+        Next
+
         DataGridViewAlumnos.DataSource = Nothing
         DataGridViewAlumnos.DataSource = tabla
     End Sub

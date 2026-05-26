@@ -192,52 +192,52 @@ INSERT INTO RA (id_ra, id_modulo, id_ciclo, RA) VALUES
 (30,12,3,'Aplica competencias profesionales');
 
 
-INSERT INTO CICLOS (ID_CICLO,NOMBRECICLO) 
-VALUES (4,'2�ASIR');
+INSERT INTO CICLOS (ID_CICLO, NOMBRECICLO) 
+VALUES (4, '2ºASIR');
 
-INSERT INTO MODULOS (id_ciclo, id_modulo, MODULO) VALUES 
-(3,13, 'Administraci�n de Sistemas Operativos'),
-(3,14, 'Servicios de Red e Internet'),
-(3,15, 'Implantaci�n de Aplicaciones Web'),
-(3,16, 'Administraci�n de Sistemas Gestores de Bases de Datos'),
-(3,17, 'Seguridad y Alta Disponibilidad'),
-(3,18, 'Proyecto de Administraci�n de Sistemas Inform�ticos en Red'),
-(3,19, 'Formaci�n en Centros de Trabajo');
+INSERT INTO MODULOS (ID_CICLO, ID_MODULO, MODULO) VALUES 
+(4,13, 'Administración de Sistemas Operativos'),
+(4,14, 'Servicios de Red e Internet'),
+(4,15, 'Implantación de Aplicaciones Web'),
+(4,16, 'Administración de Sistemas Gestores de Bases de Datos'),
+(4,17, 'Seguridad y Alta Disponibilidad'),
+(4,18, 'Proyecto de Administración de Sistemas Informáticos en Red'),
+(4,19, 'Formación en Centros de Trabajo');
 
-INSERT INTO RA (id_ra, id_modulo, id_ciclo, RA	) VALUES 
+INSERT INTO RA (ID_RA, ID_MODULO, ID_CICLO, RA) VALUES 
 
--- Administraci�n de SO
-(31,13,3,'Administra sistemas operativos en red'),
-(32,13,3,'Gestiona usuarios, grupos y permisos'),
-(33,13,3,'Automatiza tareas de administraci�n'),
+-- Administración de SO
+(31,13,4,'Administra sistemas operativos en red'),
+(32,13,4,'Gestiona usuarios, grupos y permisos'),
+(33,13,4,'Automatiza tareas de administración'),
 
 -- Servicios de red
-(34,14,3,'Configura servicios web'),
-(35,14,3,'Administra servicios de red'),
-(36,14,3,'Implementa servicios de correo y DNS'),
+(34,14,4,'Configura servicios web'),
+(35,14,4,'Administra servicios de red'),
+(36,14,4,'Implementa servicios de correo y DNS'),
 
 -- Aplicaciones web
-(37,15,3,'Implanta aplicaciones web'),
-(38,15,3,'Administra servidores de aplicaciones'),
-(39,15,3,'Configura entornos de ejecuci�n'),
+(37,15,4,'Implanta aplicaciones web'),
+(38,15,4,'Administra servidores de aplicaciones'),
+(39,15,4,'Configura entornos de ejecución'),
 
 -- SGBD
-(40,16,3,'Administra sistemas gestores de bases de datos'),
-(41,16,3,'Optimiza el rendimiento de bases de datos'),
-(42,16,3,'Garantiza la seguridad y disponibilidad'),
+(40,16,4,'Administra sistemas gestores de bases de datos'),
+(41,16,4,'Optimiza el rendimiento de bases de datos'),
+(42,16,4,'Garantiza la seguridad y disponibilidad'),
 
 -- Seguridad
-(43,17,3,'Aplica medidas de seguridad en sistemas'),
-(44,17,3,'Configura sistemas de alta disponibilidad'),
-(45,17,3,'Supervisa incidencias de seguridad'),
+(43,17,4,'Aplica medidas de seguridad en sistemas'),
+(44,17,4,'Configura sistemas de alta disponibilidad'),
+(45,17,4,'Supervisa incidencias de seguridad'),
 
 -- Proyecto
-(46,18,3,'Desarrolla un proyecto integral ASIR'),
-(47,18,3,'Documenta y presenta el proyecto'),
+(46,18,4,'Desarrolla un proyecto integral ASIR'),
+(47,18,4,'Documenta y presenta el proyecto'),
 
 -- FCT
-(48,19,3,'Se integra en el entorno laboral'),
-(49,19,3,'Aplica competencias profesionales en empresa');
+(48,19,4,'Se integra en el entorno laboral'),
+(49,19,4,'Aplica competencias profesionales en empresa');
 
 --INSERT DE ALUMNOS
 INSERT INTO ALUMNOS (DNI, NOMBRE, APELLIDO1, APELLIDO2, ID_CICLO) VALUES

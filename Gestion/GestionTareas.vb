@@ -159,6 +159,32 @@ Public Class GestionTareas
         End Try
     End Function
 
+    Public Function ControlarHoras(dni As String, id_jornada As Integer, horas As Integer, ByRef mensaje As String) As Boolean
+        Dim conexion As New SqlConnection(cadConexion)
+        Try
+            conexion.Open()
+
+            Dim sql As String = "SELECT HORAS FROM JORNADAS WHERE DNI = @DNI AND ID_JORNADA = @ID_JORNADA"
+            Dim cmd As New SqlCommand(sql, conexion)
+            cmd.Parameters.AddWithValue("@DNI", dni)
+            cmd.Parameters.AddWithValue("@ID_JORNADA", id_jornada)
+            Dim horasJornada As Integer = CInt(cmd.ExecuteScalar())
+
+            Dim sql2 As String = "SELECT ISNULL(SUM(HORAS), 0) FROM TAREAS WHERE DNI = @DNI AND ID_JORNADA = @ID_JORNADA"
+            Dim cmd2 As New SqlCommand(sql2, conexion)
+            cmd2.Parameters.AddWithValue("@DNI", dni)
+            cmd2.Parameters.AddWithValue("@ID_JORNADA", id_jornada)
+            Dim horasTotalesTareas As Integer = CInt(cmd2.ExecuteScalar())
+
+            Return (horasTotalesTareas + horas) <= horasJornada
+
+        Catch ex As Exception
+            mensaje = ex.Message
+            Return False
+        Finally
+            conexion.Close()
+        End Try
+    End Function
 
     Private Sub EliminarTareaRA(tarea As Tarea, conexion As SqlConnection)
         Dim sql As String = "DELETE FROM TAREA_RA WHERE DNI = @DNI AND ID_JORNADA = @ID_JORNADA AND ID_TAREA = @ID_TAREA"

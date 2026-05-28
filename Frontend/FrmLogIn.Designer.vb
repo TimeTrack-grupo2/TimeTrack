@@ -91,7 +91,7 @@ Partial Class FrmLogIn
         Me.ClientSize = New System.Drawing.Size(819, 426)
         Me.Controls.Add(Me.Panel1)
         Me.Name = "FrmLogIn"
-        Me.Text = "Form1"
+        Me.Text = "Inicio de sesión"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.ResumeLayout(False)

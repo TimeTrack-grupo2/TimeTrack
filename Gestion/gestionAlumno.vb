@@ -256,5 +256,46 @@ Public Class GestionAlumno
         End Try
     End Function
 
+    Public Function ObtenerDiasYHorasAlumnos(ByRef errorMensaje As String) As DataTable
+        Dim conexion As New SqlConnection(cadConexion)
+        Dim tabla As New DataTable()
+
+        Try
+            conexion.Open()
+
+            Dim sql As String = "SELECT A.DNI, A.NOMBRE, COUNT(DISTINCT CAST(J.FECHA_ENTRADA AS DATE)) AS DIAS_TRABAJADOS, ISNULL(SUM(J.HORAS), 0) AS HORAS_TOTALES FROM ALUMNOS A LEFT JOIN JORNADAS J ON A.DNI = J.DNI GROUP BY A.DNI, A.NOMBRE ORDER BY A.NOMBRE"
+
+            Dim cmd As New SqlCommand(sql, conexion)
+
+            Dim da As New SqlDataAdapter(cmd)
+            da.Fill(tabla)
+
+        Catch ex As Exception
+            errorMensaje = ex.Message
+        Finally
+            conexion.Close()
+        End Try
+
+        Return tabla
+    End Function
+
+    Public Function ObtenerIdCicloDeAlumno(dni As String) As Integer
+        Dim conexion As New SqlConnection(cadConexion)
+        Try
+            conexion.Open()
+            Dim sql As String = "SELECT id_Ciclo
+                             FROM ALUMNOS
+                             WHERE DNI = @DNI"
+            Dim cmd As New SqlCommand(sql, conexion)
+            cmd.Parameters.AddWithValue("@DNI", dni)
+            Dim idCicloAlumno As Integer = CInt(cmd.ExecuteScalar())
+            Return idCicloAlumno
+        Catch ex As Exception
+            Return Nothing
+        Finally
+            conexion.Close()
+        End Try
+    End Function
+
 End Class
 

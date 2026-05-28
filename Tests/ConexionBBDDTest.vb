@@ -1,19 +1,40 @@
-﻿Imports Microsoft.VisualStudio.TestTools.UnitTesting
-Imports System.Data.SqlClient
+﻿Imports System.Data
+Imports BuscarServidor
+Imports Clases
+Imports Gestion
+Imports Microsoft.Data.SqlClient
+Imports NUnit.Framework
+Imports NUnit.Framework.Constraints
 
-<TestClass()>
-Public Class BaseDatosTests
+Namespace Tests
 
-    <TestMethod()>
-    Public Sub Test_VerificarConexion_Exitosa()
-        Dim gestorBD As New BuscarServidor()
+    <TestFixture>
+    Public Class ConexionBBDDTest
 
-        Dim cadenaConexionValida As String = "Server=localhost;Database=GRUPO2;Trusted_Connection=True;"
-        Dim estadoEsperado As String = "Open"
+        Private errorConexion As String = ""
+        Private cadConexion As String = $"Data Source={MiServidor.Servidor(errorConexion)}; Initial Catalog=GRUPO2; Integrated Security=SSPI; MultipleActiveResultSets=true; TrustServerCertificate=True"
 
-        Dim estadoReal As String = gestorBD.IntentarConectar(cadenaConexionValida)
+        <Test>
+        Public Sub ConexionBBDD()
 
-        Assert.AreEqual(estadoEsperado, estadoReal)
-    End Sub
+            Dim conexion As New SqlConnection(cadConexion)
 
-End Class
+            Try
+                conexion.Open()
+
+                Assert.That(conexion.State,
+                    NUnit.Framework.Is.EqualTo(ConnectionState.Open))
+
+            Catch ex As Exception
+                Assert.Fail(ex.Message)
+
+            Finally
+                conexion.Close()
+            End Try
+
+        End Sub
+
+
+    End Class
+
+End Namespace

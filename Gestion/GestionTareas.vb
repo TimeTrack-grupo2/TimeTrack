@@ -1,5 +1,6 @@
 ﻿Imports System.ComponentModel.Design
 Imports System.Data.SqlClient
+Imports System.Net
 Imports BuscarServidor
 Imports Clases
 
@@ -71,21 +72,45 @@ Public Class GestionTareas
         End Try
     End Function
 
-    Public Function AgregarTarea(tarea As Tarea) As String
+    Private Function InsertarTarea(tarea As Tarea, conexion As SqlConnection, transaccion As SqlTransaction) As String
+        Dim sqlTarea As String = "INSERT INTO TAREAS VALUES(@DNI, @ID_JORNADA, @ID_TAREA, @HORAS, @DESCRIPCION)"
+        Dim cmdTarea As New SqlCommand(sqlTarea, conexion, transaccion)
+        cmdTarea.Parameters.AddWithValue("@DNI", tarea.Dni)
+        cmdTarea.Parameters.AddWithValue("@ID_JORNADA", tarea.Id_Jornada)
+        cmdTarea.Parameters.AddWithValue("@ID_TAREA", tarea.Id_Tarea)
+        cmdTarea.Parameters.AddWithValue("@HORAS", tarea.Horas)
+        cmdTarea.Parameters.AddWithValue("@DESCRIPCION", tarea.Descripcion)
+        cmdTarea.ExecuteNonQuery()
+        Return "OK"
+    End Function
+
+    Private Function InsertarTareaRA(tarea As Tarea, idModulo As Integer, idRA As Integer, idCiclo As Integer, conexion As SqlConnection, transaccion As SqlTransaction) As String
+        Dim sqlRA As String = "INSERT INTO TAREA_RA VALUES(@ID_CICLO, @ID_MODULO, @ID_RA, @DNI, @ID_JORNADA, @ID_TAREA)"
+        Dim cmdRA As New SqlCommand(sqlRA, conexion, transaccion)
+        cmdRA.Parameters.AddWithValue("@ID_CICLO", idCiclo)
+        cmdRA.Parameters.AddWithValue("@ID_MODULO", idModulo)
+        cmdRA.Parameters.AddWithValue("@ID_RA", idRA)
+        cmdRA.Parameters.AddWithValue("@DNI", tarea.Dni)
+        cmdRA.Parameters.AddWithValue("@ID_JORNADA", tarea.Id_Jornada)
+        cmdRA.Parameters.AddWithValue("@ID_TAREA", tarea.Id_Tarea)
+        cmdRA.ExecuteNonQuery()
+        Return "OK"
+    End Function
+
+    Public Function AgregarTarea(tarea As Tarea, idModulo As Integer, idRA As Integer, idCiclo As Integer) As String
         Dim conexion As New SqlConnection(cadConexion)
+        Dim transaccion As SqlTransaction = Nothing
         Try
             conexion.Open()
-            Dim sqlInsertar As String = "INSERT INTO TAREAS VALUES(@DNI, @ID_JORNADA, @ID_TAREA, @HORAS, @DESCRIPCION)"
-            Dim cmdInsert As New SqlCommand(sqlInsertar, conexion)
-            cmdInsert.Parameters.AddWithValue("@DNI", tarea.Dni)
-            cmdInsert.Parameters.AddWithValue("@ID_JORNADA", tarea.Id_Jornada)
-            cmdInsert.Parameters.AddWithValue("@ID_TAREA", tarea.Id_Tarea)
-            cmdInsert.Parameters.AddWithValue("@HORAS", tarea.Horas)
-            cmdInsert.Parameters.AddWithValue("@DESCRIPCION", tarea.Descripcion)
-            Dim numFilas As Integer = cmdInsert.ExecuteNonQuery()
-            If numFilas = 0 Then Return "Error al añadir la tarea."
+            transaccion = conexion.BeginTransaction()
+
+            InsertarTarea(tarea, conexion, transaccion)
+            InsertarTareaRA(tarea, idModulo, idRA, idCiclo, conexion, transaccion)
+
+            transaccion.Commit()
             Return "La tarea se ha añadido con éxito."
         Catch ex As Exception
+            If transaccion IsNot Nothing Then transaccion.Rollback()
             Return ex.Message
         Finally
             conexion.Close()
@@ -97,7 +122,7 @@ Public Class GestionTareas
         Dim tablaTareas As New DataTable
         Try
             conexion.Open()
-            Dim sql As String = "SELECT * FROM TAREAS WHERE TAREAS.DNI = @DNI AND TAREAS.ID_JORNADA = @ID"
+            Dim sql As String = "SELECT T.DNI, T.ID_JORNADA, T.ID_TAREA, M.MODULO, R.RA, T.HORAS, T.DESCRIPCION FROM TAREAS T INNER JOIN TAREA_RA TR ON T.DNI = TR.DNI AND T.ID_JORNADA = TR.ID_JORNADA AND T.ID_TAREA = TR.ID_TAREA INNER JOIN MODULOS M ON TR.ID_CICLO = M.ID_CICLO AND TR.ID_MODULO = M.ID_MODULO INNER JOIN RA R ON TR.ID_CICLO = R.ID_CICLO AND TR.ID_MODULO = R.ID_MODULO AND TR.ID_RA = R.ID_RA WHERE T.DNI = @DNI AND T.ID_JORNADA = @ID"
             Dim cmd As New SqlCommand(sql, conexion)
             cmd.Parameters.AddWithValue("@DNI", dni)
             cmd.Parameters.AddWithValue("@ID", id)
@@ -135,20 +160,113 @@ Public Class GestionTareas
         End Try
     End Function
 
-    Public Function EliminarTareaRa(tarea As Tarea) As Boolean
+    Public Function ControlarHoras(dni As String, id_jornada As Integer, horas As Integer, ByRef mensaje As String) As Boolean
         Dim conexion As New SqlConnection(cadConexion)
         Try
             conexion.Open()
-            Dim sql As String = "DELETE FROM TAREA_RA WHERE DNI = @DNI AND ID_JORNADA = @ID_JORNADA"
+
+            Dim sql As String = "SELECT HORAS FROM JORNADAS WHERE DNI = @DNI AND ID_JORNADA = @ID_JORNADA"
             Dim cmd As New SqlCommand(sql, conexion)
-            cmd.Parameters.AddWithValue("@DNI", tarea.Dni)
-            cmd.Parameters.AddWithValue("@ID_JORNADA", tarea.Id_Jornada)
-            cmd.ExecuteNonQuery()
-            Return True
+            cmd.Parameters.AddWithValue("@DNI", dni)
+            cmd.Parameters.AddWithValue("@ID_JORNADA", id_jornada)
+            Dim horasJornada As Integer = CInt(cmd.ExecuteScalar())
+
+            Dim sql2 As String = "SELECT ISNULL(SUM(HORAS), 0) FROM TAREAS WHERE DNI = @DNI AND ID_JORNADA = @ID_JORNADA"
+            Dim cmd2 As New SqlCommand(sql2, conexion)
+            cmd2.Parameters.AddWithValue("@DNI", dni)
+            cmd2.Parameters.AddWithValue("@ID_JORNADA", id_jornada)
+            Dim horasTotalesTareas As Integer = CInt(cmd2.ExecuteScalar())
+
+            Return (horasTotalesTareas + horas) <= horasJornada
+
         Catch ex As Exception
+            mensaje = ex.Message
             Return False
         Finally
             conexion.Close()
         End Try
     End Function
+
+    Private Sub EliminarTareaRA(tarea As Tarea, conexion As SqlConnection)
+        Dim sql As String = "DELETE FROM TAREA_RA WHERE DNI = @DNI AND ID_JORNADA = @ID_JORNADA AND ID_TAREA = @ID_TAREA"
+        Dim cmd As New SqlCommand(sql, conexion)
+        cmd.Parameters.AddWithValue("@DNI", tarea.Dni)
+        cmd.Parameters.AddWithValue("@ID_JORNADA", tarea.Id_Jornada)
+        cmd.Parameters.AddWithValue("@ID_TAREA", tarea.Id_Tarea)
+        cmd.ExecuteNonQuery()
+    End Sub
+
+    Private Sub EliminarTarea(tarea As Tarea, conexion As SqlConnection)
+        Dim sql As String = "DELETE FROM TAREAS WHERE DNI = @DNI AND ID_JORNADA = @ID_JORNADA AND ID_TAREA = @ID_TAREA"
+        Dim cmd As New SqlCommand(sql, conexion)
+        cmd.Parameters.AddWithValue("@DNI", tarea.Dni)
+        cmd.Parameters.AddWithValue("@ID_JORNADA", tarea.Id_Jornada)
+        cmd.Parameters.AddWithValue("@ID_TAREA", tarea.Id_Tarea)
+        cmd.ExecuteNonQuery()
+    End Sub
+
+    Public Function BorrarTarea(tarea As Tarea) As String
+        Dim conexion As New SqlConnection(cadConexion)
+
+        Try
+            conexion.Open()
+
+
+            EliminarTareaRA(tarea, conexion)
+            EliminarTarea(tarea, conexion)
+
+
+            Return "La tarea se ha eliminado con éxito."
+        Catch ex As Exception
+            Return ex.Message
+        Finally
+            conexion.Close()
+        End Try
+    End Function
+
+    Public Sub ActualizarEstadoJornada(dni As String, id_jornada As Integer, ByRef mensaje As String)
+        Dim conexion As New SqlConnection(cadConexion)
+        Try
+            conexion.Open()
+
+            Dim sqlJornada As String = "SELECT HORAS FROM JORNADAS WHERE DNI = @DNI AND ID_JORNADA = @ID_JORNADA"
+
+            Dim cmdJornada As New SqlCommand(sqlJornada, conexion)
+            cmdJornada.Parameters.AddWithValue("@DNI", dni)
+            cmdJornada.Parameters.AddWithValue("@ID_JORNADA", id_jornada)
+            Dim horasJornada As Integer = CInt(cmdJornada.ExecuteScalar())
+
+            Dim sqlTareas As String = "SELECT ISNULL(SUM(HORAS), 0) FROM TAREAS WHERE DNI = @DNI AND ID_JORNADA = @ID_JORNADA"
+            Dim cmdTareas As New SqlCommand(sqlTareas, conexion)
+            cmdTareas.Parameters.AddWithValue("@DNI", dni)
+            cmdTareas.Parameters.AddWithValue("@ID_JORNADA", id_jornada)
+            Dim horasTareas As Integer = CInt(cmdTareas.ExecuteScalar())
+
+            Dim nuevoEstado As String
+            If horasTareas = 0 Then
+                nuevoEstado = "SIN EMPEZAR"
+            ElseIf horasTareas >= horasJornada Then
+                nuevoEstado = "REALIZADO"
+            Else
+                nuevoEstado = "EN CURSO"
+            End If
+
+            Dim sqlUpdate As String = "UPDATE JORNADAS SET ESTADO = @ESTADO WHERE DNI = @DNI AND ID_JORNADA = @ID_JORNADA"
+
+            Dim cmdUpdate As New SqlCommand(sqlUpdate, conexion)
+            cmdUpdate.Parameters.AddWithValue("@ESTADO", nuevoEstado)
+            cmdUpdate.Parameters.AddWithValue("@DNI", dni)
+            cmdUpdate.Parameters.AddWithValue("@ID_JORNADA", id_jornada)
+            cmdUpdate.ExecuteNonQuery()
+
+        Catch ex As Exception
+            mensaje = "Error al actualizar estado: " & ex.Message
+        Finally
+            conexion.Close()
+        End Try
+    End Sub
+
+
+
+
 End Class

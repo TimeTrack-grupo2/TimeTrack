@@ -23,6 +23,7 @@ Partial Class FrmAlumnos
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.btnEliminar = New System.Windows.Forms.Button()
         Me.cboCiclos = New System.Windows.Forms.ComboBox()
         Me.btnGuardar = New System.Windows.Forms.Button()
         Me.txtDNI = New System.Windows.Forms.TextBox()
@@ -36,7 +37,6 @@ Partial Class FrmAlumnos
         Me.lblNombre = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.DataGridViewAlumnos = New System.Windows.Forms.DataGridView()
-        Me.btnEliminar = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         CType(Me.DataGridViewAlumnos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -44,6 +44,7 @@ Partial Class FrmAlumnos
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.Panel1.Controls.Add(Me.btnEliminar)
         Me.Panel1.Controls.Add(Me.cboCiclos)
         Me.Panel1.Controls.Add(Me.btnGuardar)
         Me.Panel1.Controls.Add(Me.txtDNI)
@@ -63,6 +64,19 @@ Partial Class FrmAlumnos
         Me.Panel1.Size = New System.Drawing.Size(200, 450)
         Me.Panel1.TabIndex = 0
         '
+        'btnEliminar
+        '
+        Me.btnEliminar.BackColor = System.Drawing.SystemColors.ButtonFace
+        Me.btnEliminar.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ControlLight
+        Me.btnEliminar.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDark
+        Me.btnEliminar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnEliminar.Location = New System.Drawing.Point(107, 395)
+        Me.btnEliminar.Name = "btnEliminar"
+        Me.btnEliminar.Size = New System.Drawing.Size(80, 28)
+        Me.btnEliminar.TabIndex = 12
+        Me.btnEliminar.Text = "Eliminar"
+        Me.btnEliminar.UseVisualStyleBackColor = False
+        '
         'cboCiclos
         '
         Me.cboCiclos.FormattingEnabled = True
@@ -77,9 +91,9 @@ Partial Class FrmAlumnos
         Me.btnGuardar.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ControlLight
         Me.btnGuardar.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDark
         Me.btnGuardar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnGuardar.Location = New System.Drawing.Point(44, 388)
+        Me.btnGuardar.Location = New System.Drawing.Point(17, 395)
         Me.btnGuardar.Name = "btnGuardar"
-        Me.btnGuardar.Size = New System.Drawing.Size(91, 28)
+        Me.btnGuardar.Size = New System.Drawing.Size(80, 28)
         Me.btnGuardar.TabIndex = 11
         Me.btnGuardar.Text = "Guardar"
         Me.btnGuardar.UseVisualStyleBackColor = False
@@ -165,7 +179,7 @@ Partial Class FrmAlumnos
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(175, 41)
         Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Base de Datos"
+        Me.Label1.Text = "Alumnos"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
         'DataGridViewAlumnos
@@ -185,28 +199,18 @@ Partial Class FrmAlumnos
         Me.DataGridViewAlumnos.RowHeadersWidth = 51
         Me.DataGridViewAlumnos.RowTemplate.Height = 24
         Me.DataGridViewAlumnos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridViewAlumnos.Size = New System.Drawing.Size(600, 450)
+        Me.DataGridViewAlumnos.Size = New System.Drawing.Size(696, 450)
         Me.DataGridViewAlumnos.TabIndex = 1
-        '
-        'btnEliminar
-        '
-        Me.btnEliminar.Location = New System.Drawing.Point(344, 404)
-        Me.btnEliminar.Name = "btnEliminar"
-        Me.btnEliminar.Size = New System.Drawing.Size(112, 34)
-        Me.btnEliminar.TabIndex = 2
-        Me.btnEliminar.Text = "Eliminar Alumno"
-        Me.btnEliminar.UseVisualStyleBackColor = True
         '
         'FrmAlumnos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
-        Me.Controls.Add(Me.btnEliminar)
+        Me.ClientSize = New System.Drawing.Size(896, 450)
         Me.Controls.Add(Me.DataGridViewAlumnos)
         Me.Controls.Add(Me.Panel1)
         Me.Name = "FrmAlumnos"
-        Me.Text = "Form1"
+        Me.Text = "Gestión de alumnos"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         CType(Me.DataGridViewAlumnos, System.ComponentModel.ISupportInitialize).EndInit()
@@ -227,6 +231,6 @@ Partial Class FrmAlumnos
     Friend WithEvents txtApellido2 As TextBox
     Friend WithEvents DataGridViewAlumnos As DataGridView
     Friend WithEvents btnGuardar As Button
-    Friend WithEvents btnEliminar As Button
     Friend WithEvents cboCiclos As ComboBox
+    Friend WithEvents btnEliminar As Button
 End Class

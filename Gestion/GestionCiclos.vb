@@ -210,4 +210,169 @@ Public Class GestionCiclos
         Return tabla
     End Function
 
+    Public Function EliminarCiclo(idCiclo As Integer, borrarEnCascada As Boolean) As String
+
+        Dim conexion As New SqlConnection(cadConexion)
+
+        Try
+            conexion.Open()
+
+            Dim sqlAlumnos As String = "SELECT COUNT(*) FROM ALUMNOS WHERE ID_CICLO = @idCiclo"
+
+            Dim cmdAlumnos As New SqlCommand(sqlAlumnos, conexion)
+            cmdAlumnos.Parameters.AddWithValue("@idCiclo", idCiclo)
+
+            Dim numAlumnos As Integer =
+            CInt(cmdAlumnos.ExecuteScalar())
+
+            If numAlumnos > 0 Then
+                Return "No se puede eliminar el ciclo porque hay alumnos asociados."
+            End If
+
+            Dim transaccion As SqlTransaction =
+            conexion.BeginTransaction()
+
+            Try
+
+                If borrarEnCascada Then
+
+                    Dim sql1 As String = "DELETE FROM TAREA_RA WHERE ID_CICLO = @idCiclo"
+                    Dim cmd1 As New SqlCommand(sql1, conexion, transaccion)
+                    cmd1.Parameters.AddWithValue("@idCiclo", idCiclo)
+                    cmd1.ExecuteNonQuery()
+
+
+                    Dim sql2 As String = "DELETE FROM RA WHERE ID_CICLO = @idCiclo"
+                    Dim cmd2 As New SqlCommand(sql2, conexion, transaccion)
+                    cmd2.Parameters.AddWithValue("@idCiclo", idCiclo)
+                    cmd2.ExecuteNonQuery()
+
+
+                    Dim sql3 As String = "DELETE FROM MODULOS WHERE ID_CICLO = @idCiclo"
+                    Dim cmd3 As New SqlCommand(sql3, conexion, transaccion)
+                    cmd3.Parameters.AddWithValue("@idCiclo", idCiclo)
+                    cmd3.ExecuteNonQuery()
+
+                End If
+
+                Dim sql4 As String = "DELETE FROM CICLOS WHERE ID_CICLO = @idCiclo"
+
+                Dim cmd4 As New SqlCommand(sql4, conexion, transaccion)
+
+                cmd4.Parameters.AddWithValue("@idCiclo", idCiclo)
+
+                Dim filas As Integer = cmd4.ExecuteNonQuery()
+
+                transaccion.Commit()
+
+                If filas > 0 Then
+                    Return "Ciclo eliminado correctamente."
+                End If
+
+                Return "No se encontró el ciclo."
+
+            Catch ex As Exception
+                transaccion.Rollback()
+                Return ex.Message
+            End Try
+
+        Catch ex As Exception
+            Return ex.Message
+
+        Finally
+            conexion.Close()
+        End Try
+
+    End Function
+
+    Public Function EliminarModulo(idCiclo As Integer,
+                               idModulo As Integer,
+                               borrarRA As Boolean) As String
+
+        Dim conexion As New SqlConnection(cadConexion)
+
+        Try
+            conexion.Open()
+
+            Dim transaccion As SqlTransaction =
+            conexion.BeginTransaction()
+
+            Try
+
+                If borrarRA Then
+
+                    Dim cmd1 As New SqlCommand("DELETE FROM TAREA_RA WHERE ID_CICLO=@idCiclo AND ID_MODULO=@idModulo", conexion, transaccion)
+                    cmd1.Parameters.AddWithValue("@idCiclo", idCiclo)
+                    cmd1.Parameters.AddWithValue("@idModulo", idModulo)
+                    cmd1.ExecuteNonQuery()
+
+
+                    Dim cmd2 As New SqlCommand("DELETE FROM RA WHERE ID_CICLO=@idCiclo AND ID_MODULO=@idModulo", conexion, transaccion)
+                    cmd2.Parameters.AddWithValue("@idCiclo", idCiclo)
+                    cmd2.Parameters.AddWithValue("@idModulo", idModulo)
+                    cmd2.ExecuteNonQuery()
+
+                End If
+
+                Dim cmd3 As New SqlCommand("DELETE FROM MODULOS WHERE ID_CICLO=@idCiclo AND ID_MODULO=@idModulo", conexion, transaccion)
+                cmd3.Parameters.AddWithValue("@idCiclo", idCiclo)
+                cmd3.Parameters.AddWithValue("@idModulo", idModulo)
+
+                If cmd3.ExecuteNonQuery() = 0 Then
+                    transaccion.Rollback()
+                    Return "No se encontró el módulo."
+                End If
+
+                transaccion.Commit()
+                Return "Módulo eliminado correctamente."
+
+            Catch ex As Exception
+                transaccion.Rollback()
+
+                If ex.Message.Contains("FK_RA_MODULO") Then
+                    Return "El módulo tiene RA asociados."
+                End If
+
+                Return ex.Message
+            End Try
+
+        Catch ex As Exception
+            Return ex.Message
+
+        Finally
+            conexion.Close()
+        End Try
+
+    End Function
+
+    Public Function ObtenerHorasModuloPorAlumno(idCiclo As Integer, idModulo As Integer, ByRef errorMensaje As String) As DataTable
+
+        Dim tabla As New DataTable
+        Dim conexion As New SqlConnection(cadConexion)
+
+        Try
+            conexion.Open()
+
+            Dim sql As String = "SELECT A.DNI, A.NOMBRE, A.APELLIDO1, SUM(T.HORAS) AS HORAS_TRABAJADAS, COUNT(DISTINCT CAST(J.FECHA_ENTRADA AS DATE)) AS DIAS_TRABAJADOS FROM TAREA_RA TR INNER JOIN TAREAS T ON TR.DNI = T.DNI AND TR.ID_JORNADA = T.ID_JORNADA AND TR.ID_TAREA = T.ID_TAREA INNER JOIN JORNADAS J ON T.DNI = J.DNI AND T.ID_JORNADA = J.ID_JORNADA INNER JOIN ALUMNOS A ON T.DNI = A.DNI WHERE TR.ID_CICLO = @idCiclo AND TR.ID_MODULO = @idModulo GROUP BY A.DNI, A.NOMBRE, A.APELLIDO1 ORDER BY A.NOMBRE"
+
+            Dim cmd As New SqlCommand(sql, conexion)
+
+            cmd.Parameters.AddWithValue("@idCiclo", idCiclo)
+            cmd.Parameters.AddWithValue("@idModulo", idModulo)
+
+            Dim da As New SqlDataAdapter(cmd)
+            da.Fill(tabla)
+
+        Catch ex As Exception
+            errorMensaje = ex.Message
+        Finally
+            conexion.Close()
+        End Try
+
+        Return tabla
+
+    End Function
+
+
+
 End Class

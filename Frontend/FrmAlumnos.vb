@@ -4,21 +4,24 @@ Imports Gestion
 Public Class FrmAlumnos
     Private Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
 
-        ' Validación: Nombre no vacío
         If String.IsNullOrWhiteSpace(txtNombre.Text) Then
             MessageBox.Show("El nombre no puede estar vacío.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             txtNombre.Focus()
             Return
         End If
 
-        ' Validación: DNI no vacío
+        If String.IsNullOrWhiteSpace(txtApellido.Text) Then
+            MessageBox.Show("El apellido no puede estar vacío.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            txtNombre.Focus()
+            Return
+        End If
+
         If String.IsNullOrWhiteSpace(txtDNI.Text) Then
             MessageBox.Show("El DNI no puede estar vacío.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             txtDNI.Focus()
             Return
         End If
 
-        ' Validación: formato DNI (8 números + 1 letra)
         Dim regexDNI As New System.Text.RegularExpressions.Regex("^\d{8}[A-Za-z]$")
         If Not regexDNI.IsMatch(txtDNI.Text.Trim()) Then
             MessageBox.Show("El DNI debe tener 8 números seguidos de una letra (Ej: 12345678A).", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning)
@@ -26,7 +29,6 @@ Public Class FrmAlumnos
             Return
         End If
 
-        ' Instanciar gestionAlumno
         Dim errorConexion As String = ""
         Dim gestor As New gestionAlumno(errorConexion)
 
@@ -35,9 +37,15 @@ Public Class FrmAlumnos
             Return
         End If
 
-        ' Obtener el ID del ciclo a partir del nombre escrito
         Dim mensajeCiclo As String = ""
         Dim ciclo As Ciclos = TryCast(cboCiclos.SelectedItem, Ciclos)
+
+        If ciclo Is Nothing Then
+            MessageBox.Show("Debes seleccionar un ciclo.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            cboCiclos.Focus()
+            Return
+        End If
+
         Dim idCiclo As Integer = ciclo.Id_ciclo
 
         If Not String.IsNullOrEmpty(mensajeCiclo) Then
@@ -46,23 +54,22 @@ Public Class FrmAlumnos
             Return
         End If
 
-        ' Crear objeto Alumno
         Dim alumno As New Alumno()
         alumno.Nombre = txtNombre.Text.Trim()
         alumno.Apellido1 = txtApellido.Text.Trim()
         alumno.Apellido2 = txtApellido2.Text.Trim()
-        alumno.Id_ciclo = idCiclo  ' Usamos el ID obtenido de la BD
+        alumno.Id_ciclo = idCiclo
         alumno.Dni = txtDNI.Text.Trim().ToUpper()
 
-        ' Llamar a AñadirAlumno
         Dim resultado As String = gestor.AñadirAlumno(alumno)
 
-        MessageBox.Show(resultado, "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-        ' Si se añadió con éxito, limpiar y recargar la tabla
+
         If resultado.Contains("con exito") Then
             LimpiarFormulario()
             CargarDatosGrid()
+        Else
+            MessageBox.Show(resultado, "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Warning)
         End If
 
     End Sub
@@ -83,7 +90,29 @@ Public Class FrmAlumnos
             Return
         End If
 
-        DataGridViewAlumnos.DataSource = Nothing  ' <- Limpia cualquier enlace previo
+        Dim tablaHoras As DataTable = gestor.ObtenerDiasYHorasAlumnos(errorMensaje)
+
+        tabla.Columns.Add("DIAS_TRABAJADOS", GetType(Integer))
+        tabla.Columns.Add("HORAS_TOTALES", GetType(Double))
+
+        For Each fila As DataRow In tabla.Rows
+
+            Dim dni As String = fila("DNI").ToString()
+
+            Dim resultado() As DataRow =
+        tablaHoras.Select("DNI = '" & dni & "'")
+
+            If resultado.Length > 0 Then
+                fila("DIAS_TRABAJADOS") = resultado(0)("DIAS_TRABAJADOS")
+                fila("HORAS_TOTALES") = resultado(0)("HORAS_TOTALES")
+            Else
+                fila("DIAS_TRABAJADOS") = 0
+                fila("HORAS_TOTALES") = 0
+            End If
+
+        Next
+
+        DataGridViewAlumnos.DataSource = Nothing
         DataGridViewAlumnos.DataSource = tabla
     End Sub
     Private Sub LimpiarFormulario()
@@ -109,7 +138,6 @@ Public Class FrmAlumnos
             Dim fila As DataGridViewRow = DataGridViewAlumnos.Rows(e.RowIndex)
             Dim dniSeleccionado As String = fila.Cells(0).Value.ToString()
 
-            ' Guardarlo en una variable global o textbox
             txtDNI.Text = dniSeleccionado
         End If
     End Sub
@@ -117,20 +145,22 @@ Public Class FrmAlumnos
     Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
         If gestionAlumno.ComprobarDatosAlumno(txtDNI.Text) Then
             Dim resultado As DialogResult
-            resultado = MessageBox.Show("¿Estás seguro de que quieres eliminar el alumno?" + "Ya que tiene jornadas y tareas", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+            resultado = MessageBox.Show("¿Estás seguro de que quieres eliminar el alumno?" + " Ya que tiene jornadas y tareas", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
 
             If resultado = DialogResult.No Then Exit Sub
         End If
-        MessageBox.Show(gestionAlumno.EliminarAlumno(txtDNI.Text))
-        CargarDatosGrid()
+        Dim mensaje As String = ""
+        mensaje = gestionAlumno.EliminarAlumno(txtDNI.Text)
+        If mensaje.Contains("Alumno eliminado correctamente.") Then
+            CargarDatosGrid()
+            txtDNI.Text = ""
+        Else
+            MessageBox.Show(mensaje, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        End If
+
+
 
     End Sub
 
-    Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridViewAlumnos.CellContentClick
 
-    End Sub
-
-    Private Sub cboCiclos_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboCiclos.SelectedIndexChanged
-
-    End Sub
 End Class

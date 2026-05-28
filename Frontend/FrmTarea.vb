@@ -1,4 +1,5 @@
-﻿Imports System.Windows.Forms.MonthCalendar
+﻿Imports System.Net
+Imports System.Windows.Forms.MonthCalendar
 Imports Clases
 Imports Gestion
 
@@ -10,7 +11,8 @@ Public Class FrmTarea
     Private idTarea As Integer
     Private descripcion As String
 
-
+    Private raTarea As Integer
+    Private moduloTarea As Integer
     Public Sub New(dni As String, id As Integer)
         InitializeComponent()
         idJornada = id
@@ -33,55 +35,113 @@ Public Class FrmTarea
             Return
         End If
 
-        DataGridView1.DataSource = Nothing  ' <- Limpia cualquier enlace previo
+        DataGridView1.DataSource = Nothing
         DataGridView1.DataSource = tabla
+
+        DataGridView1.Columns("DNI").Visible = False
+        DataGridView1.Columns("ID_JORNADA").Visible = False
+        DataGridView1.Columns("ID_TAREA").Visible = False
     End Sub
     Private Sub FrmTarea_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CargarDatosGrid()
 
         cboModulos.DisplayMember = "nombreModulo"
 
-        cboModulos.DataSource = gestionTareas.ModulosPorCiclo(alumno.Id_ciclo)
+        Dim idCicloDelAlumno As Integer = gestionAlumno.ObtenerIdCicloDeAlumno(dniAlumno)
+
+        cboModulos.DataSource = gestionTareas.ModulosPorCiclo(idCicloDelAlumno)
     End Sub
 
     Private Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
 
         If Not Integer.TryParse(txtHoras.Text, horas) Then
-            MessageBox.Show("Error tienes que introducir un valor numerico")
+            MessageBox.Show("Tienes que introducir un valor numérico.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            txtHoras.Focus()
+            Return
         End If
 
         If String.IsNullOrWhiteSpace(txtDescripcion.Text) Then
-            MessageBox.Show("Error tienes que introducir una descripcion en este campo")
+            MessageBox.Show("Tienes que introducir una descripción.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            txtDescripcion.Focus()
+            Return
         End If
-        Dim modulos As Modulo = TryCast(cboModulos.SelectedItem, Modulo)
-        Dim ra As Ra = TryCast(cboResultadosAprendizaje.SelectedItem, Ra)
+
+        Dim moduloSeleccionado As Modulo = TryCast(cboModulos.SelectedItem, Modulo)
+
+        If moduloSeleccionado Is Nothing Then
+            MessageBox.Show("Selecciona un módulo.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            cboModulos.Focus()
+            Return
+        End If
+
+        Dim raSeleccionado As Ra = TryCast(cboResultadosAprendizaje.SelectedItem, Ra)
+
+        If raSeleccionado Is Nothing Then
+            MessageBox.Show("Selecciona un resultado de aprendizaje.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            cboResultadosAprendizaje.Focus()
+            Return
+        End If
+
+        Me.moduloTarea = moduloSeleccionado.idModulo
+        Me.raTarea = raSeleccionado.idRa
+
         Dim idTarea As Integer = gestionTareas.CalcularIdTareaPorJornada(idJornada)
-        Dim resultado As String = gestionTareas.AgregarTarea(New Tarea(dniAlumno, idJornada, idTarea, horas, txtDescripcion.Text))
+        Dim resultado As String = ""
+        Dim errorSql As String = ""
+        Dim idCicloDelAlumno As Integer = gestionAlumno.ObtenerIdCicloDeAlumno(dniAlumno)
+        If (gestionTareas.ControlarHoras(Me.dniAlumno, Me.idJornada, horas, errorSql)) Then
+            resultado = gestionTareas.AgregarTarea(New Tarea(dniAlumno, idJornada, idTarea, horas, txtDescripcion.Text), Me.moduloTarea, Me.raTarea, idCicloDelAlumno)
+
+        Else
+            resultado = "Las horas totales de las tarea no pueden superar las de la jornada."
+        End If
+
         MessageBox.Show(resultado, "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
         If resultado.Contains("con éxito") Then
             CargarDatosGrid()
+            gestionTareas.ActualizarEstadoJornada(Me.dniAlumno, Me.idJornada, errorSql)
         End If
 
 
     End Sub
 
-    Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
-        'If gestionTareas.EliminarTareaRa() Then
-        '    Dim resultado As DialogResult
-        '    resultado = MessageBox.Show("¿Estás seguro de que quieres eliminar la tarea del alumno?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
-
-        '    If resultado = DialogResult.No Then Exit Sub
-        'End If
-
-        'ESTO CREOOO QUE SERIA EL CODIGO PARA ELIMAR LA TAREA PERO FALTARA ALGUNA COSA
-    End Sub
 
     Private Sub cboModulos_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboModulos.SelectedIndexChanged
         Dim modulo As Modulo = TryCast(cboModulos.SelectedItem, Modulo)
 
         If modulo Is Nothing Then Return
-
+        Me.moduloTarea = modulo.idModulo
         cboResultadosAprendizaje.DisplayMember = "ra"
         cboResultadosAprendizaje.DataSource = gestionTareas.RaPorModulos(modulo.idModulo)
+    End Sub
+
+
+
+    Private Sub btnElimina_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
+        Dim errorSql As String = ""
+        If DataGridView1.CurrentRow Is Nothing Then
+            MessageBox.Show("Selecciona una tarea primero.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
+
+        Dim fila = DataGridView1.CurrentRow
+        Dim tarea As New Tarea
+        tarea.Dni = fila.Cells("DNI").Value.ToString()
+        tarea.Id_Jornada = Convert.ToInt32(fila.Cells("ID_JORNADA").Value)
+        tarea.Id_Tarea = Convert.ToInt32(fila.Cells("ID_TAREA").Value)
+
+        Dim resultado As String = gestionTareas.BorrarTarea(tarea)
+        If Not resultado.Contains("con éxito") Then
+            MessageBox.Show(resultado, "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        End If
+
+
+        CargarDatosGrid()
+        gestionTareas.ActualizarEstadoJornada(Me.dniAlumno, Me.idJornada, errorSql)
+    End Sub
+
+    Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
+
     End Sub
 End Class

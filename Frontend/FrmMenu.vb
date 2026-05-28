@@ -24,24 +24,41 @@ Public Class FrmMenu
     End Sub
 
     Private Sub FrmMenu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        Dim listaJornadas As List(Of Jornada)
+
         If logIn = GestionAlumno.TipoLogin.Administrador Then
             lblNombre.Text = "Buenos días, ADMIN"
+
+            lblBuscar.Hide()
+            txtBuscarNombre.Hide()
+
+            listaJornadas = gestionJornada.ObtenerJornadaOrdenadasPorDia()
+
         Else
             Dim fila As DataRow = gestionAlumno.ObtenerAlumnoPorDni(alumno.Dni)
+
             If fila IsNot Nothing Then
                 alumno.Nombre = fila("NOMBRE").ToString()
                 alumno.Apellido1 = fila("APELLIDO1").ToString()
                 alumno.Apellido2 = fila("APELLIDO2").ToString()
             End If
+
             lblNombre.Text = "Buenos días, " & alumno.Nombre & " " & alumno.Apellido1
+
+            listaJornadas = gestionJornada.ObtenerJornadaOrdenadasPorDia().
+            Where(Function(j) j.Dni = alumno.Dni).
+            ToList()
         End If
 
-        Dim tablaJornadas As DataTable = gestionJornada.ObtenerJornadasAlumno(alumno.Dni)
-        lblDias.Text = tablaJornadas.Rows.Count.ToString()
-        Dim totalHoras As Integer = tablaJornadas.AsEnumerable().Sum(Function(r) Convert.ToInt32(r("HORAS")))
+        lblDias.Text = listaJornadas.Count.ToString()
+
+        Dim totalHoras As Integer = listaJornadas.Sum(Function(j) j.HORAS)
+
         lblHoras.Text = totalHoras.ToString()
 
         TimerRecargarJornadas_Tick(Nothing, Nothing)
+
     End Sub
     Private Sub TimerRecargarJornadas_Tick(sender As Object, e As EventArgs) Handles TimerRecargarJornadas.Tick
         Dim errorMensaje As String = ""
@@ -58,6 +75,7 @@ Public Class FrmMenu
             listaJornadas = gestionJornada.ObtenerJornadaOrdenadasPorDia() _
                         .Where(Function(j) j.Dni = alumno.Dni) _
                         .ToList()
+            DataGridViewJornadas.Columns("NombreAlumno").Visible = False
         End If
 
         DataGridViewJornadas.Rows.Clear()
@@ -102,7 +120,7 @@ Public Class FrmMenu
         Next
     End Sub
 
-    Private Sub DataGridViewJornadas_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridViewJornadas.CellContentClick
+    Private Sub DataGridViewJornadas_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridViewJornadas.CellClick
 
         If e.RowIndex >= 0 AndAlso DataGridViewJornadas.Columns(e.ColumnIndex).Name = "VerTareas" Then
 
@@ -115,8 +133,6 @@ Public Class FrmMenu
         End If
 
     End Sub
-
-    Private bs As New BindingSource()
 
     Private Sub txtBuscarNombre_TextChanged(sender As Object, e As EventArgs) Handles txtBuscarNombre.TextChanged
         Dim texto As String = txtBuscarNombre.Text.Trim().ToLower()

@@ -30,12 +30,12 @@ Public Class FrmMenu
         If logIn = GestionAlumno.TipoLogin.Administrador Then
             lblNombre.Text = "Buenos días, ADMIN"
 
-            lblBuscar.Hide()
-            txtBuscarNombre.Hide()
-
             listaJornadas = gestionJornada.ObtenerJornadaOrdenadasPorDia()
 
         Else
+
+            lblBuscar.Hide()
+            txtBuscarNombre.Hide()
             Dim fila As DataRow = gestionAlumno.ObtenerAlumnoPorDni(alumno.Dni)
 
             If fila IsNot Nothing Then
@@ -53,7 +53,7 @@ Public Class FrmMenu
 
         lblDias.Text = listaJornadas.Count.ToString()
 
-        Dim totalHoras As Integer = listaJornadas.Sum(Function(j) j.HORAS)
+        Dim totalHoras As Integer = gestionJornada.ObtenerHorasTrabajadas(alumno.Nombre, alumno.Apellido1, alumno.Apellido2)
 
         lblHoras.Text = totalHoras.ToString()
 

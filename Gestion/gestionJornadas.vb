@@ -164,4 +164,39 @@ Public Class GestionJornadas
         Return lista
     End Function
 
+    Public Function ObtenerHorasTrabajadas(nombre As String, apellido1 As String, apellido2 As String) As Integer
+
+        Dim horas As Integer = 0
+
+        Try
+            Using conexion As New SqlConnection(cadConexion)
+                conexion.Open()
+
+                Using cmd As New SqlCommand("sp_horas_trabajadas", conexion)
+
+                    cmd.CommandType = CommandType.StoredProcedure
+
+                    cmd.Parameters.AddWithValue("@NOMBRE", nombre)
+                    cmd.Parameters.AddWithValue("@APELLIDO1", apellido1)
+                    cmd.Parameters.AddWithValue("@APELLIDO2", apellido2)
+
+                    Dim retorno As New SqlParameter()
+                    retorno.Direction = ParameterDirection.ReturnValue
+                    cmd.Parameters.Add(retorno)
+
+                    cmd.ExecuteNonQuery()
+
+                    horas = Convert.ToInt32(retorno.Value)
+
+                End Using
+            End Using
+
+        Catch ex As Exception
+            Return 0
+        End Try
+
+        Return horas
+
+    End Function
+
 End Class

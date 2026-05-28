@@ -63,13 +63,9 @@ INSERT INTO RA (id_ra, id_modulo, id_ciclo, RA) VALUES
 (18,8,1,'Comprende procesos de digitalizaci�n'),
 (19,8,1,'Utiliza herramientas digitales'),
 
--- Programaci�n (repetido 9)
-(20,9,1,'Aplica t�cnicas avanzadas de programaci�n'),
-(21,9,1,'Optimiza c�digo'),
-
 -- Ingl�s (10)
-(22,10,1,'Comprende documentaci�n t�cnica en ingl�s'),
-(23,10,1,'Se comunica en ingl�s en entorno profesional');
+(22,9,1,'Comprende documentaci�n t�cnica en ingl�s'),
+(23,9,1,'Se comunica en ingl�s en entorno profesional');
 
 
 INSERT INTO CICLOS (ID_CICLO,NOMBRECICLO) 
@@ -159,37 +155,7 @@ INSERT INTO RA (id_ra, id_modulo, id_ciclo, RA) VALUES
 
 -- Lenguajes de marcas
 (13,5,3,'Elabora documentos XML'),
-(14,5,3,'Gestiona informaci�n estructurada'),
-
--- Administraci�n de SO
-(15,6,3,'Administra usuarios y permisos'),
-(16,6,3,'Automatiza tareas del sistema'),
-(17,6,3,'Supervisa rendimiento'),
-
--- Servicios de red
-(18,7,3,'Configura servicios web'),
-(19,7,3,'Administra servicios de red'),
-(20,7,3,'Implementa servicios de correo'),
-
--- Aplicaciones web
-(21,8,3,'Implanta aplicaciones web'),
-(22,8,3,'Configura servidores de aplicaciones'),
-
--- SGBD
-(23,9,3,'Administra SGBD'),
-(24,9,3,'Optimiza consultas'),
-
--- Seguridad
-(25,10,3,'Aplica medidas de seguridad'),
-(26,10,3,'Configura sistemas de alta disponibilidad'),
-
--- Proyecto
-(27,11,3,'Desarrolla proyecto ASIR'),
-(28,11,3,'Documenta y presenta proyecto'),
-
--- FCT
-(29,12,3,'Se integra en la empresa'),
-(30,12,3,'Aplica competencias profesionales');
+(14,5,3,'Gestiona informaci�n estructurada')
 
 
 INSERT INTO CICLOS (ID_CICLO, NOMBRECICLO) 

@@ -279,5 +279,23 @@ Public Class GestionAlumno
         Return tabla
     End Function
 
+    Public Function ObtenerIdCicloDeAlumno(dni As String) As Integer
+        Dim conexion As New SqlConnection(cadConexion)
+        Try
+            conexion.Open()
+            Dim sql As String = "SELECT id_Ciclo
+                             FROM ALUMNOS
+                             WHERE DNI = @DNI"
+            Dim cmd As New SqlCommand(sql, conexion)
+            cmd.Parameters.AddWithValue("@DNI", dni)
+            Dim idCicloAlumno As Integer = CInt(cmd.ExecuteScalar())
+            Return idCicloAlumno
+        Catch ex As Exception
+            Return Nothing
+        Finally
+            conexion.Close()
+        End Try
+    End Function
+
 End Class
 

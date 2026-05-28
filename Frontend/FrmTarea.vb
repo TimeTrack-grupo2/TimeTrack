@@ -47,19 +47,21 @@ Public Class FrmTarea
 
         cboModulos.DisplayMember = "nombreModulo"
 
-        cboModulos.DataSource = gestionTareas.ModulosPorCiclo(alumno.Id_ciclo)
+        Dim idCicloDelAlumno As Integer = gestionAlumno.ObtenerIdCicloDeAlumno(dniAlumno)
+
+        cboModulos.DataSource = gestionTareas.ModulosPorCiclo(idCicloDelAlumno)
     End Sub
 
     Private Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
 
         If Not Integer.TryParse(txtHoras.Text, horas) Then
-            MessageBox.Show("Tienes que introducir un valor numérico.")
+            MessageBox.Show("Tienes que introducir un valor numérico.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             txtHoras.Focus()
             Return
         End If
 
         If String.IsNullOrWhiteSpace(txtDescripcion.Text) Then
-            MessageBox.Show("Tienes que introducir una descripción.")
+            MessageBox.Show("Tienes que introducir una descripción.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             txtDescripcion.Focus()
             Return
         End If
@@ -67,7 +69,7 @@ Public Class FrmTarea
         Dim moduloSeleccionado As Modulo = TryCast(cboModulos.SelectedItem, Modulo)
 
         If moduloSeleccionado Is Nothing Then
-            MessageBox.Show("Selecciona un módulo.")
+            MessageBox.Show("Selecciona un módulo.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             cboModulos.Focus()
             Return
         End If
@@ -75,7 +77,7 @@ Public Class FrmTarea
         Dim raSeleccionado As Ra = TryCast(cboResultadosAprendizaje.SelectedItem, Ra)
 
         If raSeleccionado Is Nothing Then
-            MessageBox.Show("Selecciona un resultado de aprendizaje.")
+            MessageBox.Show("Selecciona un resultado de aprendizaje.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             cboResultadosAprendizaje.Focus()
             Return
         End If
@@ -86,8 +88,9 @@ Public Class FrmTarea
         Dim idTarea As Integer = gestionTareas.CalcularIdTareaPorJornada(idJornada)
         Dim resultado As String = ""
         Dim errorSql As String = ""
+        Dim idCicloDelAlumno As Integer = gestionAlumno.ObtenerIdCicloDeAlumno(dniAlumno)
         If (gestionTareas.ControlarHoras(Me.dniAlumno, Me.idJornada, horas, errorSql)) Then
-            resultado = gestionTareas.AgregarTarea(New Tarea(dniAlumno, idJornada, idTarea, horas, txtDescripcion.Text), Me.moduloTarea, Me.raTarea, alumno.Id_ciclo)
+            resultado = gestionTareas.AgregarTarea(New Tarea(dniAlumno, idJornada, idTarea, horas, txtDescripcion.Text), Me.moduloTarea, Me.raTarea, idCicloDelAlumno)
 
         Else
             resultado = "Las horas totales de las tarea no pueden superar las de la jornada."
@@ -118,7 +121,7 @@ Public Class FrmTarea
     Private Sub btnElimina_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
         Dim errorSql As String = ""
         If DataGridView1.CurrentRow Is Nothing Then
-            MessageBox.Show("Selecciona una tarea primero.")
+            MessageBox.Show("Selecciona una tarea primero.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Return
         End If
 
@@ -129,7 +132,10 @@ Public Class FrmTarea
         tarea.Id_Tarea = Convert.ToInt32(fila.Cells("ID_TAREA").Value)
 
         Dim resultado As String = gestionTareas.BorrarTarea(tarea)
-        MessageBox.Show(resultado)
+        If Not resultado.Contains("con éxito") Then
+            MessageBox.Show(resultado, "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        End If
+
 
         CargarDatosGrid()
         gestionTareas.ActualizarEstadoJornada(Me.dniAlumno, Me.idJornada, errorSql)

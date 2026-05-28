@@ -1,5 +1,6 @@
 ﻿Imports System.ComponentModel.Design
 Imports System.Data.SqlClient
+Imports System.Net
 Imports BuscarServidor
 Imports Clases
 
@@ -228,7 +229,6 @@ Public Class GestionTareas
         Try
             conexion.Open()
 
-            ' 1. Obtener horas de la jornada
             Dim sqlJornada As String = "SELECT HORAS FROM JORNADAS WHERE DNI = @DNI AND ID_JORNADA = @ID_JORNADA"
 
             Dim cmdJornada As New SqlCommand(sqlJornada, conexion)
@@ -236,14 +236,12 @@ Public Class GestionTareas
             cmdJornada.Parameters.AddWithValue("@ID_JORNADA", id_jornada)
             Dim horasJornada As Integer = CInt(cmdJornada.ExecuteScalar())
 
-            ' 2. Sumar horas de las tareas
             Dim sqlTareas As String = "SELECT ISNULL(SUM(HORAS), 0) FROM TAREAS WHERE DNI = @DNI AND ID_JORNADA = @ID_JORNADA"
             Dim cmdTareas As New SqlCommand(sqlTareas, conexion)
             cmdTareas.Parameters.AddWithValue("@DNI", dni)
             cmdTareas.Parameters.AddWithValue("@ID_JORNADA", id_jornada)
             Dim horasTareas As Integer = CInt(cmdTareas.ExecuteScalar())
 
-            ' 3. Determinar el nuevo estado
             Dim nuevoEstado As String
             If horasTareas = 0 Then
                 nuevoEstado = "SIN EMPEZAR"
@@ -253,7 +251,6 @@ Public Class GestionTareas
                 nuevoEstado = "EN CURSO"
             End If
 
-            ' 4. Actualizar el estado en la BD
             Dim sqlUpdate As String = "UPDATE JORNADAS SET ESTADO = @ESTADO WHERE DNI = @DNI AND ID_JORNADA = @ID_JORNADA"
 
             Dim cmdUpdate As New SqlCommand(sqlUpdate, conexion)
@@ -268,4 +265,8 @@ Public Class GestionTareas
             conexion.Close()
         End Try
     End Sub
+
+
+
+
 End Class

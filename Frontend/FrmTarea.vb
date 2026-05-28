@@ -1,4 +1,5 @@
-﻿Imports System.Windows.Forms.MonthCalendar
+﻿Imports System.Net
+Imports System.Windows.Forms.MonthCalendar
 Imports Clases
 Imports Gestion
 
@@ -96,7 +97,9 @@ Public Class FrmTarea
 
         If resultado.Contains("con éxito") Then
             CargarDatosGrid()
+            gestionTareas.ActualizarEstadoJornada(Me.dniAlumno, Me.idJornada, errorSql)
         End If
+
 
     End Sub
 
@@ -113,6 +116,7 @@ Public Class FrmTarea
 
 
     Private Sub btnElimina_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
+        Dim errorSql As String = ""
         If DataGridView1.CurrentRow Is Nothing Then
             MessageBox.Show("Selecciona una tarea primero.")
             Return
@@ -128,5 +132,10 @@ Public Class FrmTarea
         MessageBox.Show(resultado)
 
         CargarDatosGrid()
+        gestionTareas.ActualizarEstadoJornada(Me.dniAlumno, Me.idJornada, errorSql)
+    End Sub
+
+    Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
+
     End Sub
 End Class

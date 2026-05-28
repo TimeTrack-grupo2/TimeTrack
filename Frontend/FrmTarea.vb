@@ -83,13 +83,14 @@ Public Class FrmTarea
         Me.raTarea = raSeleccionado.idRa
 
         Dim idTarea As Integer = gestionTareas.CalcularIdTareaPorJornada(idJornada)
+        Dim resultado As String = ""
+        Dim errorSql As String = ""
+        If (gestionTareas.ControlarHoras(Me.dniAlumno, Me.idJornada, horas, errorSql)) Then
+            resultado = gestionTareas.AgregarTarea(New Tarea(dniAlumno, idJornada, idTarea, horas, txtDescripcion.Text), Me.moduloTarea, Me.raTarea, alumno.Id_ciclo)
 
-        Dim resultado As String = gestionTareas.AgregarTarea(
-        New Tarea(dniAlumno, idJornada, idTarea, horas, txtDescripcion.Text),
-        Me.moduloTarea,
-        Me.raTarea,
-        alumno.Id_ciclo
-    )
+        Else
+            resultado = "Las horas totales de las tarea no pueden superar las de la jornada."
+        End If
 
         MessageBox.Show(resultado, "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
@@ -108,6 +109,7 @@ Public Class FrmTarea
         cboResultadosAprendizaje.DisplayMember = "ra"
         cboResultadosAprendizaje.DataSource = gestionTareas.RaPorModulos(modulo.idModulo)
     End Sub
+
 
 
     Private Sub btnElimina_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click

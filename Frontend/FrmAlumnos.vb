@@ -10,6 +10,12 @@ Public Class FrmAlumnos
             Return
         End If
 
+        If String.IsNullOrWhiteSpace(txtApellido.Text) Then
+            MessageBox.Show("El apellido no puede estar vacío.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            txtNombre.Focus()
+            Return
+        End If
+
         If String.IsNullOrWhiteSpace(txtDNI.Text) Then
             MessageBox.Show("El DNI no puede estar vacío.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             txtDNI.Focus()

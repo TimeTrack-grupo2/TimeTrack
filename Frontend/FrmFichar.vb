@@ -149,11 +149,11 @@ Public Class FrmFichar
 
             Dim fechaCompleta As DateTime = fecha.Add(hora.TimeOfDay)
 
-            jornada = New Jornada(dni, 0, horas, fechaCompleta, "EN CURSO")
+            jornada = New Jornada(dni, 0, horas, fechaCompleta, "SIN EMPEZAR")
 
         Else
 
-            jornada = New Jornada(dni, 0, horas, DateTime.Now, "EN CURSO")
+            jornada = New Jornada(dni, 0, horas, DateTime.Now, "SIN EMPEZAR")
 
         End If
 

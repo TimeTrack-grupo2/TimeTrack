@@ -222,4 +222,50 @@ Public Class GestionTareas
             conexion.Close()
         End Try
     End Function
+
+    Public Sub ActualizarEstadoJornada(dni As String, id_jornada As Integer, ByRef mensaje As String)
+        Dim conexion As New SqlConnection(cadConexion)
+        Try
+            conexion.Open()
+
+            ' 1. Obtener horas de la jornada
+            Dim sqlJornada As String = "SELECT HORAS FROM JORNADAS WHERE DNI = @DNI AND ID_JORNADA = @ID_JORNADA"
+
+            Dim cmdJornada As New SqlCommand(sqlJornada, conexion)
+            cmdJornada.Parameters.AddWithValue("@DNI", dni)
+            cmdJornada.Parameters.AddWithValue("@ID_JORNADA", id_jornada)
+            Dim horasJornada As Integer = CInt(cmdJornada.ExecuteScalar())
+
+            ' 2. Sumar horas de las tareas
+            Dim sqlTareas As String = "SELECT ISNULL(SUM(HORAS), 0) FROM TAREAS WHERE DNI = @DNI AND ID_JORNADA = @ID_JORNADA"
+            Dim cmdTareas As New SqlCommand(sqlTareas, conexion)
+            cmdTareas.Parameters.AddWithValue("@DNI", dni)
+            cmdTareas.Parameters.AddWithValue("@ID_JORNADA", id_jornada)
+            Dim horasTareas As Integer = CInt(cmdTareas.ExecuteScalar())
+
+            ' 3. Determinar el nuevo estado
+            Dim nuevoEstado As String
+            If horasTareas = 0 Then
+                nuevoEstado = "SIN EMPEZAR"
+            ElseIf horasTareas >= horasJornada Then
+                nuevoEstado = "REALIZADO"
+            Else
+                nuevoEstado = "EN CURSO"
+            End If
+
+            ' 4. Actualizar el estado en la BD
+            Dim sqlUpdate As String = "UPDATE JORNADAS SET ESTADO = @ESTADO WHERE DNI = @DNI AND ID_JORNADA = @ID_JORNADA"
+
+            Dim cmdUpdate As New SqlCommand(sqlUpdate, conexion)
+            cmdUpdate.Parameters.AddWithValue("@ESTADO", nuevoEstado)
+            cmdUpdate.Parameters.AddWithValue("@DNI", dni)
+            cmdUpdate.Parameters.AddWithValue("@ID_JORNADA", id_jornada)
+            cmdUpdate.ExecuteNonQuery()
+
+        Catch ex As Exception
+            mensaje = "Error al actualizar estado: " & ex.Message
+        Finally
+            conexion.Close()
+        End Try
+    End Sub
 End Class

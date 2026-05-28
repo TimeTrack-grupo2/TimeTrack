@@ -34,7 +34,7 @@ Public Class FrmTarea
             Return
         End If
 
-        DataGridView1.DataSource = Nothing  ' <- Limpia cualquier enlace previo
+        DataGridView1.DataSource = Nothing
         DataGridView1.DataSource = tabla
 
         DataGridView1.Columns("DNI").Visible = False
@@ -50,17 +50,38 @@ Public Class FrmTarea
     End Sub
 
     Private Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
-        Dim ra As Ra = TryCast(cboResultadosAprendizaje.SelectedItem, Ra)
-        Me.raTarea = ra.idRa
+
         If Not Integer.TryParse(txtHoras.Text, horas) Then
-            MessageBox.Show("Error tienes que introducir un valor numerico")
+            MessageBox.Show("Tienes que introducir un valor numérico.")
+            txtHoras.Focus()
+            Return
         End If
 
         If String.IsNullOrWhiteSpace(txtDescripcion.Text) Then
-            MessageBox.Show("Error tienes que introducir una descripcion en este campo")
+            MessageBox.Show("Tienes que introducir una descripción.")
+            txtDescripcion.Focus()
+            Return
         End If
-        Dim moduloSelecionado As Modulo = TryCast(cboModulos.SelectedItem, Modulo)
-        Dim raSelecionado As Ra = TryCast(cboResultadosAprendizaje.SelectedItem, Ra)
+
+        Dim moduloSeleccionado As Modulo = TryCast(cboModulos.SelectedItem, Modulo)
+
+        If moduloSeleccionado Is Nothing Then
+            MessageBox.Show("Selecciona un módulo.")
+            cboModulos.Focus()
+            Return
+        End If
+
+        Dim raSeleccionado As Ra = TryCast(cboResultadosAprendizaje.SelectedItem, Ra)
+
+        If raSeleccionado Is Nothing Then
+            MessageBox.Show("Selecciona un resultado de aprendizaje.")
+            cboResultadosAprendizaje.Focus()
+            Return
+        End If
+
+        Me.moduloTarea = moduloSeleccionado.idModulo
+        Me.raTarea = raSeleccionado.idRa
+
         Dim idTarea As Integer = gestionTareas.CalcularIdTareaPorJornada(idJornada)
         Dim resultado As String = ""
         Dim errorSql As String = ""
@@ -72,10 +93,10 @@ Public Class FrmTarea
         End If
 
         MessageBox.Show(resultado, "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
         If resultado.Contains("con éxito") Then
             CargarDatosGrid()
         End If
-
 
     End Sub
 

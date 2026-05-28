@@ -179,7 +179,7 @@ Partial Class FrmAlumnos
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(175, 41)
         Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Base de Datos"
+        Me.Label1.Text = "Alumnos"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
         'DataGridViewAlumnos
@@ -199,18 +199,18 @@ Partial Class FrmAlumnos
         Me.DataGridViewAlumnos.RowHeadersWidth = 51
         Me.DataGridViewAlumnos.RowTemplate.Height = 24
         Me.DataGridViewAlumnos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridViewAlumnos.Size = New System.Drawing.Size(600, 450)
+        Me.DataGridViewAlumnos.Size = New System.Drawing.Size(696, 450)
         Me.DataGridViewAlumnos.TabIndex = 1
         '
         'FrmAlumnos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(896, 450)
         Me.Controls.Add(Me.DataGridViewAlumnos)
         Me.Controls.Add(Me.Panel1)
         Me.Name = "FrmAlumnos"
-        Me.Text = "Form1"
+        Me.Text = "Gestión de alumnos"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         CType(Me.DataGridViewAlumnos, System.ComponentModel.ISupportInitialize).EndInit()

@@ -120,7 +120,7 @@ Public Class FrmMenu
         Next
     End Sub
 
-    Private Sub DataGridViewJornadas_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridViewJornadas.CellContentClick
+    Private Sub DataGridViewJornadas_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridViewJornadas.CellClick
 
         If e.RowIndex >= 0 AndAlso DataGridViewJornadas.Columns(e.ColumnIndex).Name = "VerTareas" Then
 
@@ -133,8 +133,6 @@ Public Class FrmMenu
         End If
 
     End Sub
-
-    Private bs As New BindingSource()
 
     Private Sub txtBuscarNombre_TextChanged(sender As Object, e As EventArgs) Handles txtBuscarNombre.TextChanged
         Dim texto As String = txtBuscarNombre.Text.Trim().ToLower()

@@ -232,7 +232,7 @@ Partial Class FrmFichar
         Me.Controls.Add(Me.lblFecha)
         Me.Controls.Add(Me.LabelTitulo)
         Me.Name = "FrmFichar"
-        Me.Text = "FrmFichar"
+        Me.Text = "Fichajes"
         CType(Me.DataGridViewMovimientos, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()

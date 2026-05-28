@@ -45,6 +45,10 @@ Public Class GestionJornadas
                 Return "Ya existe una jornada para este día."
             End If
 
+            If jornada.FECHA_ENTRADA.Date > Date.Today Then
+                Return "La fecha de entrada no puede ser posterior a hoy."
+            End If
+
             Dim nuevoId As Integer = ObtenerNuevoId(conexion, jornada)
 
             Dim sql2 As String = "INSERT INTO JORNADAS VALUES(@DNI, @ID_JORNADA, @HORAS, @FECHA_ENTRADA, @ESTADO)"
